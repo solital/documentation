@@ -1,0 +1,38 @@
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    margin-top: 30px;
+}
+
+h3 {
+    margin-top: 30px;
+}
+
+pre {
+    background-color: #E8E8E8;
+    border: 1px solid #DCDCDC;
+    font-weight: 500;
+}
+
+code {
+    color: #1E90FF;
+}
+
+.comment {
+    color: #9C9C9C;
+}
+
+.fa-arrows-alt-v {
+    float: right;
+    color: grey;
+}
+
+/* 
+
+method : txt-1
+function : txt-6 
+commands txt-7
+
+*/
