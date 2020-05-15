@@ -218,13 +218,18 @@ $aspas_simples = "'";
                                 <span>Sessions e Cookies</span>
                             </li>
                         </a>
+                        <a href="#">
+                            <li class="padding-submenu">
+                                <span>CSS</span>
+                            </li>
+                        </a>
                     </ul>
                 </ul>
             </div>
 
             <hr>
-            <button class="btn btn-1 dropdown-toggle ml-2" type="button" id="dropdownMenuButton"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-1 dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 Versão do Solital
             </button>
             <div class="dropdown-menu bg-1" aria-labelledby="dropdownMenuButton">
@@ -236,8 +241,8 @@ $aspas_simples = "'";
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <nav class="navbar navbar-expand-lg navbar-light w-100" style="margin-left: -1px;">
-                <button class="btn btn-1" id="menu-toggle">
+            <nav class="navbar navbar-expand-lg navbar-light bg-1 w-100" style="margin-left: -1px;">
+                <button class="btn btn-2" id="menu-toggle">
                     <i class="fas fa-arrows-alt-h p-1"></i>
                 </button>
 
@@ -253,6 +258,10 @@ $aspas_simples = "'";
                             <form action="#">
                                 <input type="text" placeholder="&#xf002; Search..." class="input-search">
                             </form>
+                        </li>
+                        <li class="nav-item mr-3 li-main-menu">
+                            <a class="nav-link pl-0 txt-8 font-weight-bold itens-main-menu" href="index.html">
+                                Página inicial</a>
                         </li>
                     </ul>
                 </div>

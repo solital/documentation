@@ -5,51 +5,51 @@ body {
 }
 
 .txt-1 {
-    color: #0071E3;
+    color: #0071E3 !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .txt-2 {
-    color: #EEC900;
+    color: #EEC900 !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .txt-3 {
-    color: #008B45;
+    color: #008B45 !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .txt-4 {
-    color: #CD0000;
+    color: #CD0000 !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .txt-5 {
-    color: #363636;
+    color: #363636 !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .txt-6 {
-    color: #CD3700;
+    color: #CD3700 !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .txt-7 {
-    color: #B452CD;
+    color: #B452CD !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .txt-8 {
-    color: #FFF;
+    color: #FFF !important;
     font-family: 'Montserrat', sans-serif;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .btn {
@@ -67,6 +67,18 @@ body {
     cursor: pointer;
 }
 
+.btn-sm {
+    font-size: 15px;
+}
+
+.btn-md {
+    font-size: 20px;
+}
+
+.btn-lg {
+    font-size: 30px;
+}
+
 .btn-1 {
     background-color: #0071E3;
     color: #FFF;
@@ -75,12 +87,13 @@ body {
 
 .btn-1:hover {
     background-color: #1E90FF;
+    color: #FFF;
     transition: 0.2s;
 }
 
 .btn-2 {
     background-color: #EEC900;
-    color: #000;
+    color: #000 !important;
     transition: 0.2s;
 }
 
@@ -366,7 +379,8 @@ input[type=date] {
 }
 
 .border-menu:hover {
-    border-top: 1px solid #fff;
+    border-top: 1px solid #FFF;
+    margin-top: -1px;
     transition: 0.5s;
 }
 

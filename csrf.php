@@ -11,7 +11,7 @@
         <p>Você pode usar o <code>BaseCsrfVerifier</code> para ativar a validação de CSRF em todas as solicitações. Se você precisar
         desativar a verificação de URLs específicos, consulte a seção "Verificador personalizado de CSRF" abaixo.</p>
 
-        <p>Por padrão, o simple-php-router usará a classe <code>CookieTokenProvider</code>. Esse provedor armazenará o token de
+        <p>Por padrão, o Solital usará a classe <code>CookieTokenProvider</code>. Esse provedor armazenará o token de
         segurança em um cookie na máquina do cliente. Se você deseja armazenar o token em outro lugar, consulte a seção
         "Criando um provedor de token personalizado" abaixo.</p>
 
