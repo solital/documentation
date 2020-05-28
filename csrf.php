@@ -48,10 +48,10 @@
         <p>O exemplo abaixo será publicado no URL atual com um campo oculto "csrf_token".</p>
 
         <pre><code>
-            &lt;form method="post" action="&lt;? = url ();?>">
-                &lt;input type="hidden" name="csrf_token" value="&lt;? = csrf_token ();?>">
-                &lt;! - outros elementos de entrada aqui ->
-            &lt;/form>
+        <span class="txt-1">&lt;form method="<span class="txt-3">post</span>" action="<span class="txt-5">&lt;?= <span class="txt-7">url()</span>; ?></span>"></span>
+            <span class="txt-1">&lt;input type="<span class="txt-3">hidden</span>" name="<span class="txt-3">csrf_token</span>" value="<span class="txt-5">&lt;?= <span class="txt-7">csrf_token()</span>; ?></span>"></span>
+            <span class="comment">&lt;! - outros elementos de entrada aqui -></span>
+        <span class="txt-1">&lt;/form></span>
         </code></pre>
 
         <h2>Verificador CSRF personalizado</h2>

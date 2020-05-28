@@ -106,6 +106,10 @@ $aspas_simples = "'";
                         </a>
                     </ul>
 
+                    <a href="sessions-cookies.php" class="list-group-item list-group-item-action no-border bg-menu">
+                        Sessions e Cookies
+                    </a>
+
                     <a href="input_params.php" class="list-group-item list-group-item-action no-border bg-menu">
                         Entrada e parâmetros
                     </a>
@@ -131,6 +135,10 @@ $aspas_simples = "'";
                             </li>
                         </a>
                     </ul>
+
+                    <a href="http-1.php" class="list-group-item list-group-item-action no-border bg-menu">
+                        Cliente HTTP
+                    </a>
 
                     <a href="#katrina" class="list-group-item list-group-item-action no-border bg-menu"
                         data-toggle="collapse" aria-expanded="false">
@@ -213,14 +221,9 @@ $aspas_simples = "'";
                                 <span>Uplayer</span>
                             </li>
                         </a>
-                        <a href="sessions-cookies.php">
+                        <a href="mail.php">
                             <li class="padding-submenu">
-                                <span>Sessions e Cookies</span>
-                            </li>
-                        </a>
-                        <a href="#">
-                            <li class="padding-submenu">
-                                <span>CSS</span>
+                                <span>Mail</span>
                             </li>
                         </a>
                     </ul>
@@ -260,7 +263,7 @@ $aspas_simples = "'";
                             </form>
                         </li>
                         <li class="nav-item mr-3 li-main-menu">
-                            <a class="nav-link pl-0 txt-8 font-weight-bold itens-main-menu" href="index.html">
+                            <a class="nav-link pl-0 txt-8 font-weight-bold itens-main-menu" href="index.php">
                                 Página inicial</a>
                         </li>
                     </ul>

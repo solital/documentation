@@ -5,7 +5,7 @@
         <h1 class="p-4 font-weight-normal">Injeção de dependência</h1>
     </div>
     <div class="col-md-12 mt-3">
-        <p>O simple-router suporta injeção de dependência usando a biblioteca <a href="http://php-di.org/">php-di</a>.
+        <p>O Solital suporta injeção de dependência usando a biblioteca <a href="http://php-di.org/">php-di</a>.
         </p>
 
         <p>A injeção de dependência permite que a estrutura "injete" automaticamente (carga) as classes adicionadas como
@@ -54,7 +54,7 @@
                     -><span class="txt-1">useAutowiring</span>(<span class="txt-7">true</span>)
                     -><span class="txt-1">build</span>();
 
-        <span class="comment">// Add our container to simple-router and enable dependency injection</span>
+        <span class="comment">// Add our container to Solital and enable dependency injection</span>
         <span class="txt-6">Course</span>::<span class="txt-1">enableDependencyInjection</span>($container);
         </code></pre>
 
@@ -68,7 +68,7 @@
 
         <pre><code>
         <span class="comment">// Cache directory</span>
-        $cacheDir = <span class="txt-1">sys_get_temp_dir</span>('simple-router');
+        $cacheDir = <span class="txt-1">sys_get_temp_dir</span>('Solital');
 
         <span class="comment">// Create our new php-di container</span>
         $container = (<span class="txt-7">new</span> <span class="txt-1">\DI\ContainerBuilder</span>())
@@ -77,7 +77,7 @@
                     -><span class="txt-1">useAutowiring</span>(<span class="txt-7">true</span>)
                     -><span class="txt-1">build</span>();
 
-        <span class="comment">// Add our container to simple-router and enable dependency injection</span>
+        <span class="comment">// Add our container to Solital and enable dependency injection</span>
         <span class="txt-6">Course</span>::<span class="txt-1">enableDependencyInjection</span>($container);
         </code></pre>
 

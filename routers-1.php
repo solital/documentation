@@ -5,8 +5,11 @@
         <h1 class="p-4 font-weight-normal">Básico de rotas</h1>
     </div>
     <div class="col-md-12 mt-3">
-        <p>Lembre-se do arquivo <code>routes.php</code> necessário em seu <code>index.php</code>? Este arquivo é onde você coloca todas as suas
-        regras personalizadas para roteamento.</p>
+        <p>As rotas serão carregadas através do arquivo <code>routes.php</code> dentro da pasta <code>routers</code>. Você pode criar outros arquivos semelhantes ao <code>routes.php</code>, o Solital irá carregar esses arquivos automaticamente.</p>
+
+        <p>Não é necessário, mas você pode definir <code>Course::setDefaultNamespace('\Demo\Controllers')</code>
+        prefixar todas as rotas com o namespace para seus controladores. Isso simplificará um pouco as coisas, pois
+        você não precisará especificar o namespace dos seus controladores em cada rota.</p>
 
         <h2>Roteamento básico</h2>
         <p>Abaixo está um exemplo muito básico de configuração de uma rota. O primeiro parâmetro é o URL ao qual a rota

@@ -26,15 +26,15 @@
 
         <p>E na sua <code>home.php</code> recupere o valor informado dessa maneira:</p>
         <pre><code>
-            $key['title']
+        <span class="txt-1">&lt;title><span class="txt-5">$title</span>&lt;/title></span>
         </code></pre>
 
-        <p>Não é necessário informar um <code>header.php</code> ou <code>footer.php</code>, o Wolf carrega os arquivos automaticamente. Mas caso não queira carregar um <code>header.php</code> ou <code>footer.php</code>, utilize <code>false</code> no terceiro parâmetro</p>
-
+        <h2>Extensões personalizadas</h2>
+        <p>O Wolf irá buscar arquivos em formato <code>php</code>, mas para buscar um formato diferente, utilize o último parâmetro.</p>
         <pre><code>
         <span class="txt-6">Wolf</span>::<span class="txt-1">loadView</span>(<span class="txt-3">'home'</span>, [
             <span class="txt-3">'title' => 'My Title'</span>
-        ], <span class="txt-7">false</span>);
+        ], <span class="txt-7">false</span>, <span class="txt-3">"html"</span>);
         </code></pre>
 
         <h2>Carregando CSS, JS e imagens</h2>
@@ -42,26 +42,17 @@
 
         <p>Para carregar um arquivo CSS, utilize no seu template a sintaxe abaixo</p>
         <pre><code>
-            &lt;link rel="stylesheet" href="<span class="txt-1">&lt;?</span> <span class="txt-6">self</span>::<span class="txt-1">loadCss</span>('style.css'); <span class="txt-6">?></span>">
+        <span class="txt-1">&lt;link rel="<span class="txt-3">stylesheet</span>" href="<span class="txt-1"><span class="txt-5">&lt;?</span> <span class="txt-6">self</span>::<span class="txt-1">loadCss</span><span class="txt-5">('style.css'); ?></span></span>"></span>
         </code></pre>
 
         <p>Para carregar um arquivo JS, utilize no seu template a sintaxe abaixo</p>
         <pre><code>
-            &lt;style src="<span class="txt-1">&lt;?</span> <span class="txt-6">self</span>::<span class="txt-1">loadJs</span>('file.js'); <span class="txt-1">?></span>">&lt;/style>
+        <span class="txt-1">&lt;link rel="<span class="txt-3">stylesheet</span>" href="<span class="txt-1"><span class="txt-5">&lt;?</span> <span class="txt-6">self</span>::<span class="txt-1">loadJs</span><span class="txt-5">('file.js'); ?></span></span>"></span>
         </code></pre>
 
         <p>Para carregar uma imagem, utilize no seu template a sintaxe abaixo</p>
         <pre><code>
-            &lt;img src="<span class="txt-1">&lt;?</span> <span class="txt-6">self</span>::<span class="txt-1">loadImg</span>('image.png'); <span class="txt-1">?></span>">
-        </code></pre>
-
-        <h2>Header e footer personalizados</h2>
-        <p>Caso tenha um <code>header.php</code> ou <code>footer.php</code> em um diretório diferente de <code>resources/views/</code>, utilize os comandos abaixo no seu template:</p>
-
-        <pre><code>
-            &lt;?php <span class="txt-6">self</span>::<span class="txt-1">loadHeader</span>('path/to/header.php'); ?>
-
-            &lt;?php <span class="txt-6">self</span>::<span class="txt-1">loadFooter</span>('path/to/footer.php'); ?>
+        <span class="txt-1">&lt;img src="<span class="txt-5">&lt;? <span class="txt-6">self</span>::<span class="txt-1">loadImg</span>('image.png'); ?></span>"></span>
         </code></pre>
     </div>
 </div>

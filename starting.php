@@ -34,7 +34,7 @@
         <h2>Requisitos</h2>
         <ul class="ml-5">
             <li>PHP 7.1 ou superior (a versão 3.xe abaixo suporta PHP 5.5+)</li>
-            <li>Extensão PHP JSON ativada.</li>
+            <li>Extensão PHP JSON e PDO ativada.</li>
         </ul>
         
         <h2>Recursos</h2>

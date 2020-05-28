@@ -26,7 +26,7 @@
 
         <pre><code>
             <span class="comment">// Generating URLs...</span>
-            $url = <span class="txt-1">url('profile')</span>;
+            $url = <span class="txt-1">url(<span class="txt-5">'profile'</span>)</span>;
         </code></pre>
 
         <p>Se a rota nomeada definir parâmetros, você poderá passar os parâmetros como o segundo argumento para a função

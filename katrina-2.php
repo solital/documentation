@@ -104,7 +104,7 @@
             <span class="txt-7">public function</span> <span class="txt-1">update()</span>
             {
                 <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">colUpdate(<span class="txt-3">['name']</span>)</span>;
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">update(<span class="txt-3">['Clark']</span>,<span class="txt-5">3</span>)</span>;
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">update(<span class="txt-3">['Clark']</span>, <span class="txt-5">3</span>)</span>;
                 <span class="txt-7">return</span> $res;
             }
         </code></pre>
@@ -125,7 +125,7 @@
         <pre><code>
             <span class="txt-7">public function</span> <span class="txt-1">delete()</span>
             {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">delete(<span class="txt-5">3</span>,<span class="txt-7">true</span>)</span>;
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">delete(<span class="txt-5">3</span>, <span class="txt-7">true</span>)</span>;
                 <span class="txt-7">return</span> $res;
             }
         </code></pre>

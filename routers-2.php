@@ -86,7 +86,7 @@
         </code></pre>
 
         <h2>Regex personalizada para parâmetros correspondentes</h2>
-        <p>Por padrão, o simple-php-router usa a expressão regular <code>\w</code> ao combinar parâmetros. Esta decisão foi tomada com
+        <p>Por padrão, o Solital usa a expressão regular <code>\w</code> ao combinar parâmetros. Esta decisão foi tomada com
         velocidade e confiabilidade em mente, pois esta partida corresponderá a ambas as letras, número e a maioria dos
         símbolos usados ​​na internet.</p>
 

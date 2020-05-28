@@ -87,7 +87,7 @@ body {
 
 .btn-1:hover {
     background-color: #1E90FF;
-    color: #FFF;
+    color: #FFF !important;
     transition: 0.2s;
 }
 
@@ -110,6 +110,7 @@ body {
 
 .btn-3:hover {
     background-color: #00CD66;
+    color: #FFF !important;
     transition: 0.2s;
 }
 
@@ -121,6 +122,7 @@ body {
 
 .btn-4:hover {
     background-color: #FF0000;
+    color: #FFF !important;
     transition: 0.2s;
 }
 
@@ -143,6 +145,7 @@ body {
 
 .btn-6:hover {
     background-color: #FF4500;
+    color: #FFF !important;
     transition: 0.2s;
 }
 
@@ -154,6 +157,7 @@ body {
 
 .btn-7:hover {
     background-color: #E066FF;
+    color: #FFF !important;
     transition: 0.2s;
 }
 
