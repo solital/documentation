@@ -2,16 +2,26 @@
 
 <div class="row">
     <div class="col-md-12 bg-name">
-        <h1 class="p-4 font-weight-normal">Realizando CRUD</h1>
+        <h1 class="p-4 font-weight-normal">Manipulação de dados</h1>
     </div>
     <div class="col-md-12 mt-3">
         <h2>Listar</h2>
-        <p>Para listar todos os campos da tabela, utilize o <code>listAll()</code> como mostrado no exemplo anterior. Por padrão, o metódo irá listar todos os campos da tabela.</p>
+        <p>Para listar todos os campos da tabela, utilize o <code>select()</code> como mostrado no exemplo anterior. Por padrão, o metódo irá listar todos os campos da tabela.</p>
 
         <pre><code>
             <span class="txt-7">public function</span> <span class="txt-1">get()</span>
             {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">listAll()</span>;
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">select()</span>-><span class="txt-1">build(<span class="txt-3">"ALL"</span>)</span>;
+                <span class="txt-7">return</span> $res;
+            }
+        </code></pre>
+
+        <p>Para listar um único valor, passe o id do campo da tabela como parâmetro, e no <code>build()</code> utilize o <span class="txt-3">ONLY</span>.</p>
+
+        <pre><code>
+            <span class="txt-7">public function</span> <span class="txt-1">get()</span>
+            {
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">select(<span class="txt-5">3</span>)</span>-><span class="txt-1">build(<span class="txt-3">"ONLY"</span>)</span>;
                 <span class="txt-7">return</span> $res;
             }
         </code></pre>
@@ -32,26 +42,6 @@
             <span class="txt-7">public function</span> <span class="txt-1">get()</span>
             {
                 $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">listAll(<span class="txt-3">"name, city, country", "name = John AND city = Kansas"</span>)</span>;
-                <span class="txt-7">return</span> $res;
-            }
-        </code></pre>
-
-        <p>Utilize o <code>listOnlyId()</code> para retornar apenas um único valor da tabela.</p>
-
-        <pre><code>
-            <span class="txt-7">public function</span> <span class="txt-1">get()</span>
-            {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">listOnlyId(<span class="txt-5">3</span>)</span>;
-                <span class="txt-7">return</span> $res;
-            }
-        </code></pre>
-
-        <p>Você também pode especificar quais campos da tabela você quer retornar</p>
-
-        <pre><code>
-            <span class="txt-7">public function</span> <span class="txt-1">get()</span>
-            {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">listOnlyId(<span class="txt-3">"name, city, country"</span>, <span class="txt-5">3</span>)</span>;
                 <span class="txt-7">return</span> $res;
             }
         </code></pre>
@@ -87,7 +77,7 @@
         </code></pre>
 
         <h2>Inserir</h2>
-        <p>O método <code>insert()</code> insere os valores na tabela. Para isso crie um array com os valores que o método irá receber</p>
+        <p>O método <code>insert()</code> insere os valores na tabela. NÃO é necessário utilizar o <code>build()</code> na inserção dos dados. Para isso crie um array com os valores que o método irá receber</p>
 
         <pre><code>
             <span class="txt-7">public function</span> <span class="txt-1">insert()</span>
@@ -98,7 +88,7 @@
         </code></pre>
 
         <h2>Atualizar</h2>
-        <p>O método <code>update()</code> atualiza os valores na tabela. Antes utilize o método <code>colUpdate()</code> para especificar as colunas que serão atualizadas. Em seguida crie um array com os valores que o método irá receber junto com a chave primária.</p>
+        <p>O método <code>update()</code> atualiza os valores na tabela. NÃO é necessário utilizar o <code>build()</code> na atualização dos dados. Antes utilize o método <code>colUpdate()</code> para especificar as colunas que serão atualizadas. Em seguida crie um array com os valores que o método irá receber junto com a chave primária.</p>
 
         <pre><code>
             <span class="txt-7">public function</span> <span class="txt-1">update()</span>
@@ -115,17 +105,7 @@
         <pre><code>
             <span class="txt-7">public function</span> <span class="txt-1">delete()</span>
             {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">delete(<span class="txt-5">3</span>)</span>;
-                <span class="txt-7">return</span> $res;
-            }
-        </code></pre>
-
-        <p>Para apagar toda a tabela, informe <code>true</code> no segundo parâmetro</p>
-        
-        <pre><code>
-            <span class="txt-7">public function</span> <span class="txt-1">delete()</span>
-            {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">delete(<span class="txt-5">3</span>, <span class="txt-7">true</span>)</span>;
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">delete(<span class="txt-5">3</span>)</span>-><span class="txt-1">build()</span>;
                 <span class="txt-7">return</span> $res;
             }
         </code></pre>

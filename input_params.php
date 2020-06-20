@@ -5,11 +5,11 @@
         <h1 class="p-4 font-weight-normal">Entrada e parâmetros</h1>
     </div>
     <div class="col-md-12 mt-3">
-        <p>O simple-router oferece bibliotecas e auxiliares que facilitam o gerenciamento e a manipulação de parâmetros
+        <p>O Solital oferece bibliotecas e auxiliares que facilitam o gerenciamento e a manipulação de parâmetros
             de
             entrada como <code>$_POST</code>, <code>$_GET</code> e <code>$_FILE</code>.</p>
 
-        <h2>Usando a classe Input para gerenciar parâmetros</h2>
+        <h2>Usando a classe <code class="code-title">input</code> para gerenciar parâmetros</h2>
         <p>Você pode usar a classe <code>InputHandler</code> para acessar e gerenciar facilmente parâmetros de sua
             solicitação. A classe
             <code>InputHandler</code> oferece recursos estendidos, como copiar/mover arquivos carregados diretamente no
@@ -52,7 +52,7 @@
         $object = <span class="txt-1">input</span>()-><span class="txt-1">find</span>($index, $defaultValue = <span class="txt-7">null</span>, ...$methods);
         </code></pre>
 
-        <h2>Obtendo o parâmetro <code>$_GET</code> específico como objeto <code>InputItem</code>:</h2>
+        <h2>Obtendo o parâmetro <code class="code-title">$_GET</code> específico como objeto <code class="code-title">InputItem</code>:</h2>
 
         <p>O exemplo abaixo retornará um objeto <code>InputItem</code> se o parâmetro foi encontrado ou retornará o
             <code>$defaultValue</code>. Se
@@ -62,7 +62,7 @@
         $object = <span class="txt-1">input</span>()-><span class="txt-1">get</span>($index, $defaultValue = <span class="txt-7">null</span>);
         </code></pre>
 
-        <h2>Obtendo o parâmetro <code>$_POST</code> específico como objeto <code>InputItem</code>:</h2>
+        <h2>Obtendo o parâmetro <code class="code-title">$_POST</code> específico como objeto <code class="code-title">InputItem</code>:</h2>
 
         <p>O exemplo abaixo retornará um objeto <code>InputItem</code> se o parâmetro foi encontrado ou retornará o
             <code>$defaultValue</code>. Se
@@ -72,7 +72,7 @@
         $object = <span class="txt-1">input</span>()-><span class="txt-1">post</span>($index, $defaultValue = <span class="txt-7">null</span>);
         </code></pre>
 
-        <h2>Obtendo o parâmetro <code>$_FILE</code> específico como objeto <code>InputFile</code>:</h2>
+        <h2>Obtendo o parâmetro <code class="code-title">$_FILE</code> específico como objeto <code class="code-title">InputFile</code>:</h2>
 
         <p>O exemplo abaixo retornará um objeto <code>InputFile</code> se o parâmetro foi encontrado ou retornará o
             <code>$defaultValue</code>. Se

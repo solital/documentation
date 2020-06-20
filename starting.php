@@ -8,10 +8,10 @@
         <p>Solital é um framework completo com tudo o que você precisa para criar projetos de alto valor.</p>
 
         <h2>Instalando via Composer</h2>
-        <p>Navegue até a pasta do projeto no terminal e execute o seguinte comando:</p>
+        <p>Para baixar o Solital, utilize o comando abaixo:</p>
 
         <pre><code>
-        <span class="txt-1">composer</span> <span class="txt-7">require</span> solital/solital
+        <span class="txt-1">composer</span> <span class="txt-7">create-project</span> solital/solital solital_project
         </code></pre>
 
         <p>Com o Solital, você pode criar um novo projeto rapidamente, sem depender de uma estrutura.</p>

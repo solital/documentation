@@ -16,7 +16,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light fixed-top bg-1 p-4">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#"><img src="assets/img/solital-icon-white-sm.png" alt="" class="w-75"></a>
         <button class="navbar-toggler btn btn-2" type="button" data-toggle="collapse" data-target="#navbar-menu"
             aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

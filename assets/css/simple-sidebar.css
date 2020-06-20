@@ -8,9 +8,28 @@ body {
   overflow-x: hidden;
 }
 
+hr {
+  color: #fff !important;
+}
+
 /*.row {
   margin-bottom: 20%;
 }*/
+
+::-webkit-scrollbar-track {
+  background-color: #F4F4F4;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  background: #F4F4F4;
+}
+::-webkit-scrollbar-thumb {
+  background: #dad7d7;
+}
+
+.list-group-item-action {
+  font-size: 14px;
+}
 
 .list-group-item-action:hover {
   background-color: #1874CD !important;
@@ -70,22 +89,26 @@ body {
 }
 
 .bg-menu {
-  background-color: #E8E8E8;
+  background-color: #fff;
   color: #000;
   color: inherit;
   transition: 0.2s;
 }
 
 .scroll {
-  height: 480px;
+  height: 70vh;
   overflow: scroll;
   overflow-x: hidden;
 }
 
 .section {
-  height: 550px;
+  height: 90vh;
   overflow: scroll;
   overflow-x: hidden;
+}
+
+#sidebar-wrapper {
+  border-color: #fff !important;
 }
 
 #sidebar-wrapper ul ul li {

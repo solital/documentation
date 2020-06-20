@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-12 bg-name">
-        <h1 class="p-4 font-weight-normal">Guardian</h1>
+        <h1 class="p-4 font-weight-normal">Autenticação</h1>
     </div>
     <div class="col-md-12 mt-3">
         <p>O Guardian auxilia na hora que você utilizar o <code>verifyLogin()</code> da Katrina ORM, para salvar, verificar, validar e fazer logoff.</p>

@@ -7,57 +7,77 @@
     <div class="col-md-12 mt-3">
         <p>Vinci é o assistente de desenvolvimento do Solital. Você pode criar Controllers, Models, Views, arquivos CSS e arquivos JS em modo gráfico diretamente do seu navegador.</p>
 
-        <strong>AVISO: NÃO APAGUE A PASTA <code>VINCI</code>. VINCI É O ASSISTENTE DE DESENVOLVIEMNTO DO SOLITAL E APAGAR A PASTA PODE ACARRETAR EM ERROS NO PROJETO</strong>
-
         <h2>Acessar o Vinci</h2>
-        <p>Para acessar o Vinci, acesse a url <code>/vinci-mode</code></p>
-
-        <p><strong>Nota:</strong> é altamente recomendado que você desative o Vinci em um ambiente que não seja localhost ou quando o projeto tiver concluido. Para desativar o Vinci, acesse o arquivo <code>config.php</code> dentro da pasta <code>config</code> e altere a constante <code>VINCI_MODE</code> para <code>false</code>.</p>
+        <p>Para acessar o Vinci, abra o seu terminal dentro da pasta do seu projeto e digite <code>php vinci about</code> para consultar informações.</p>
 
         <h2>Modo de uso</h2>
-        <p>Não existe muito segredo, apenas informe o nome do arquivo que você deseja criar e o Vinci irá gerar automaticamente o arquivo.</p>
+        <p>Para acessar informações sobre o Solital e seus componentes, abra o seu terminal dentro da pasta do seu projeto e digite <code>php vinci about</code>.</p>
         
-        <h2>Local dos arquivos</h2>
-        <p>Abaixo uma lista de onde os arquivos irão parar quando você cria-los através do Vinci</p>
+        <h2>Comandos de componente</h2>
+        <p>Voce pode criar um novo componente utilizando a sintaxe abaixo.</p>
+        <pre><code>
+            <span class="txt-7">php</span> vinci <span class="txt-3">[component]</span>:<span class="txt-3">[name_file]</span>
+        </code></pre>
 
+        <p>Abaixo um exemplo prático.</p>
+        <pre><code>
+            <span class="txt-7">php</span> vinci <span class="txt-3">controller</span>:<span class="txt-3">user</span>
+        </code></pre>
+
+        <p>Veja a lista de comandos para criar um novo componente abaixo. Ou utilize <code>php vinci show</code> no terminal.</p>
+        
         <table class="table table-action">
             <thead>
                 <tr>
-                    <th>Tipo de arquivo</th>
-                    <th>Diretório</th>
+                    <th>Comando</th>
+                    <th>Descrição</th>
                 </tr>
             </thead>
 
             <tbody>
                 <tr>
-                    <td>Controller</td>
-                    <td><code>app/Solital/Controller</code></td>
+                    <td>controller</td>
+                    <td><code>Cria um novo Controller</code></td>
                 </tr>
 
                 <tr>
-                    <td>Model</td>
-                    <td><code>app/Solital/Model</code></td>
+                    <td>model</td>
+                    <td><code>Cria um novo Model</code></td>
                 </tr>
 
                 <tr>
-                    <td>View</td>
-                    <td><code>resources/view</code></td>
+                    <td>view</td>
+                    <td><code>Cria uma nova View</code></td>
                 </tr>
 
                 <tr>
-                    <td>CSS</td>
-                    <td><code>public/assets/_css</code></td>
+                    <td>css</td>
+                    <td><code>Cria um novo arquivo CSS</code></td>
                 </tr>
 
                 <tr>
-                    <td>Javascript</td>
-                    <td><code>public/assets/_js</code></td>
+                    <td>js</td>
+                    <td><code>Cria um novo arquivo JavaScript</code></td>
+                </tr>
+
+                <tr>
+                    <td>router</td>
+                    <td><code>Cria um novo arquivo para o sistema de rotas</code></td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>Aviso de "Component not created"</h2>
-        <p>É normal receber esse aviso antes de criar um componente, mas caso contuinue recebendo esse aviso, verifique as permissões de pasta do seu sistema operacional.</p>
+        <h3>Remover arquivos criado com o Vinci</h3>
+        <p>Adicione o comando <code>remove-</code> antes de utilizar um dos comandos citado anteriormente.</p>
+        <pre><code>
+            <span class="txt-7">php</span> vinci <span class="txt-3">remove-controller</span>:<span class="txt-3">user</span>
+        </code></pre>
+
+        <h2>Limpando o cache no solital</h2>
+        <p>Para limpar todo o cache do solital, executeo o comando abaixo.</p>
+        <pre><code>
+            <span class="txt-7">php</span> vinci <span class="txt-3">cache-clear</span>
+        </code></pre>
     </div>
 </div>
 

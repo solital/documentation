@@ -21,13 +21,13 @@ $aspas_simples = "'";
     <link href="assets/fonts/fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">
 </head>
 
-<body class="bg-light">
+<body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar -->
-        <div class="border-right bg-menu shadow no-border" id="sidebar-wrapper">
-            <div class="sidebar-heading bg-8 shadow">
+        <div class="border-right bg-menu" id="sidebar-wrapper">
+            <div class="sidebar-heading bg-white">
                 <a class="navbar-brand" href="#">
-                    <img class="logo d-inline-block align-top" src="#">
+                    <img class="logo d-inline-block align-top" src="assets/img/solital-logo-transparency-sm.png">
                 </a>
             </div>
             <div class="scroll">
@@ -44,9 +44,43 @@ $aspas_simples = "'";
                         Arquitetura MVC
                     </a>
 
-                    <a href="vinci.php" class="list-group-item list-group-item-action no-border bg-menu">
-                        Vinci
+                    <a href="#components" class="list-group-item list-group-item-action no-border bg-menu"
+                        data-toggle="collapse" aria-expanded="false">
+                        Componentes
+                        <i class="fas fa-arrows-alt-v"></i>
                     </a>
+                    <ul class="collapse list-unstyled" id="components">
+                    <a href="vinci.php">
+                            <li class="padding-submenu">
+                                <span>Vinci</span>
+                            </li>
+                        </a>
+                        <a href="wolf.php">
+                            <li class="padding-submenu">
+                                <span>Template Wolf</span>
+                            </li>
+                        </a>
+                        <a href="consumer.php">
+                            <li class="padding-submenu">
+                                <span>Consumer API</span>
+                            </li>
+                        </a>
+                        <a href="message.php">
+                            <li class="padding-submenu">
+                                <span>Mensagens</span>
+                            </li>
+                        </a>
+                        <a href="uplayer.php">
+                            <li class="padding-submenu">
+                                <span>Uplayer</span>
+                            </li>
+                        </a>
+                        <a href="mail.php">
+                            <li class="padding-submenu">
+                                <span>Mail</span>
+                            </li>
+                        </a>
+                    </ul>
 
                     <a class="list-group-item list-group-item-action no-border bg-menu" href="#routers"
                         data-toggle="collapse" aria-expanded="false">
@@ -84,11 +118,6 @@ $aspas_simples = "'";
                                 <span>URL's</span>
                             </li>
                         </a>
-                        <a href="routers-8.php">
-                            <li class="padding-submenu">
-                                <span>Injeção de dependência</span>
-                            </li>
-                        </a>
                         <a href="middlewares.php">
                             <li class="padding-submenu">
                                 <span>Middlewares</span>
@@ -99,31 +128,6 @@ $aspas_simples = "'";
                                 <span>Exceções</span>
                             </li>
                         </a>
-                        <a href="routers-9.php">
-                            <li class="padding-submenu">
-                                <span>Mais exemplos</span>
-                            </li>
-                        </a>
-                    </ul>
-
-                    <a href="sessions-cookies.php" class="list-group-item list-group-item-action no-border bg-menu">
-                        Sessions e Cookies
-                    </a>
-
-                    <a href="input_params.php" class="list-group-item list-group-item-action no-border bg-menu">
-                        Entrada e parâmetros
-                    </a>
-
-                    <a href="events.php" class="list-group-item list-group-item-action no-border bg-menu">
-                        Eventos
-                    </a>
-
-                    <a class="list-group-item list-group-item-action no-border bg-menu" href="#advanced"
-                        data-toggle="collapse" aria-expanded="false">
-                        Avançado
-                        <i class="fas fa-arrows-alt-v"></i>
-                    </a>
-                    <ul class="collapse list-unstyled" id="advanced">
                         <a href="advanced-1.php">
                             <li class="padding-submenu">
                                 <span>Reescrita de URL</span>
@@ -132,6 +136,34 @@ $aspas_simples = "'";
                         <a href="advanced-2.php">
                             <li class="padding-submenu">
                                 <span>Estendendo</span>
+                            </li>
+                        </a>
+                        <a href="routers-9.php">
+                            <li class="padding-submenu">
+                                <span>Mais exemplos</span>
+                            </li>
+                        </a>
+                    </ul>
+
+                    <a href="#requests" class="list-group-item list-group-item-action no-border bg-menu"
+                        data-toggle="collapse" aria-expanded="false">
+                        Requisições
+                        <i class="fas fa-arrows-alt-v"></i>
+                    </a>
+                    <ul class="collapse list-unstyled" id="requests">
+                    <a href="sessions-cookies.php">
+                            <li class="padding-submenu">
+                                <span>Sessions e Cookies</span>
+                            </li>
+                        </a>
+                        <a href="input_params.php">
+                            <li class="padding-submenu">
+                                <span>Entrada e parâmetros</span>
+                            </li>
+                        </a>
+                        <a href="events.php">
+                            <li class="padding-submenu">
+                                <span>Eventos</span>
                             </li>
                         </a>
                     </ul>
@@ -153,7 +185,12 @@ $aspas_simples = "'";
                         </a>
                         <a href="katrina-2.php">
                             <li class="padding-submenu">
-                                <span>Realizando CRUD</span>
+                                <span>Manipulação de dados</span>
+                            </li>
+                        </a>
+                        <a href="katrina-7.php">
+                            <li class="padding-submenu">
+                                <span>Manipulando tabelas</span>
                             </li>
                         </a>
                         <a href="katrina-3.php">
@@ -176,11 +213,12 @@ $aspas_simples = "'";
                                 <span>Paginação de resultados</span>
                             </li>
                         </a>
+                        <a href="katrina-8.php">
+                            <li class="padding-submenu">
+                                <span>Tipos de dados</span>
+                            </li>
+                        </a>
                     </ul>
-
-                    <a href="wolf.php" class="list-group-item list-group-item-action no-border bg-menu">
-                        Template Wolf
-                    </a>
 
                     <a href="#security" class="list-group-item list-group-item-action no-border bg-menu"
                         data-toggle="collapse" aria-expanded="false">
@@ -190,7 +228,12 @@ $aspas_simples = "'";
                     <ul class="collapse list-unstyled" id="security">
                         <a href="guardian.php">
                             <li class="padding-submenu">
-                                <span>Guardian</span>
+                                <span>Autenticação</span>
+                            </li>
+                        </a>
+                        <a href="guardian.php">
+                            <li class="padding-submenu">
+                                <span>Injeção de dependência</span>
                             </li>
                         </a>
                         <a href="csrf.php">
@@ -199,37 +242,8 @@ $aspas_simples = "'";
                             </li>
                         </a>
                     </ul>
-
-                    <a href="#components" class="list-group-item list-group-item-action no-border bg-menu"
-                        data-toggle="collapse" aria-expanded="false">
-                        Componentes
-                        <i class="fas fa-arrows-alt-v"></i>
-                    </a>
-                    <ul class="collapse list-unstyled" id="components">
-                        <a href="consumer.php">
-                            <li class="padding-submenu">
-                                <span>Consumer API</span>
-                            </li>
-                        </a>
-                        <a href="message.php">
-                            <li class="padding-submenu">
-                                <span>Message</span>
-                            </li>
-                        </a>
-                        <a href="uplayer.php">
-                            <li class="padding-submenu">
-                                <span>Uplayer</span>
-                            </li>
-                        </a>
-                        <a href="mail.php">
-                            <li class="padding-submenu">
-                                <span>Mail</span>
-                            </li>
-                        </a>
-                    </ul>
                 </ul>
             </div>
-
             <hr>
             <button class="btn btn-1 dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -262,8 +276,8 @@ $aspas_simples = "'";
                                 <input type="text" placeholder="&#xf002; Search..." class="input-search">
                             </form>
                         </li>
-                        <li class="nav-item mr-3 li-main-menu">
-                            <a class="nav-link pl-0 txt-8 font-weight-bold itens-main-menu" href="index.php">
+                        <li class="nav-item mr-3">
+                            <a class="nav-link pl-0 txt-8 font-weight-bold" href="index.php">
                                 Página inicial</a>
                         </li>
                     </ul>

@@ -63,6 +63,14 @@ getParams() : ;
                     <td><code>getUserAgent()</code></td>
                     <td>Retorna o user agent do servidor</td>
                 </tr>
+                <tr>
+                    <td><code>getParamsInput()</code></td>
+                    <td>Retorna os parâmetros recebidos pelo cabeçalho</td>
+                </tr>
+                <tr>
+                    <td><code>getParamInput()</code></td>
+                    <td>Retorna um único parâmetro recebido pelo cabeçalho</td>
+                </tr>
             </tbody>
         </table>
 

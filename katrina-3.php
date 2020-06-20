@@ -11,7 +11,17 @@
         <pre><code>
             <span class="txt-7">public function</span> <span class="txt-1">get()</span>
             {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">innerJoin(<span class="txt-3">"address", "idAddress"</span>)</span>;
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">innerJoin(<span class="txt-3">"address", "idAddress"</span>)</span>-><span class="txt-1">build(<span class="txt-3">"ALL"</span>)</span>;
+                <span class="txt-7">return</span> $res;
+            }
+        </code></pre>
+
+        <p>Se quiser retornar apenas um único valor, utilize o terceiro parâmetro passando a achave primária</p>
+
+        <pre><code>
+            <span class="txt-7">public function</span> <span class="txt-1">get()</span>
+            {
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">innerJoin(<span class="txt-3">"address", "idAddress"</span>, 2)-><span class="txt-1">build(<span class="txt-3">"ALL"</span>)</span></span>;
                 <span class="txt-7">return</span> $res;
             }
         </code></pre>
@@ -21,17 +31,8 @@
         <pre><code>
             <span class="txt-7">public function</span> <span class="txt-1">get()</span>
             {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">innerJoin(<span class="txt-3">"a.idPerson, a.name, b.street", "address", "idAddress"</span>)</span>;
-                <span class="txt-7">return</span> $res;
-            }
-        </code></pre>
-
-        <p>Se quiser retornar apenas um único valor, utilize <code>innerJoinId()</code> adicionando a chave primária no final.</p>
-
-        <pre><code>
-            <span class="txt-7">public function</span> <span class="txt-1">get()</span>
-            {
-                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>-><span class="txt-1">innerJoin(<span class="txt-3">"a.idPerson, a.name, b.street", "address", "idAddress"</span>, <span class="txt-5">3</span>)</span>;
+                $res = <span class="txt-6">$this</span>-><span class="txt-1">dbInstance()</span>
+                -><span class="txt-1">innerJoin(<span class="txt-3">"address", "idAddress"</span>, 2 <span class="txt-3">"a.idPerson, a.name, b.street", "address", "idAddress"</span>)-><span class="txt-1">build(<span class="txt-3">"ALL"</span>)</span></span>;
                 <span class="txt-7">return</span> $res;
             }
         </code></pre>
