@@ -1,0 +1,40 @@
+site_name: Solital Framework 
+nav:
+  - Starting: index.md
+  - Settings:
+    - Installing: installation.md
+    - Environment variables: env.md
+    - Helpers: helpers.md
+  - Routers:
+    - Routes: routes.md
+    - Events: events.md
+    - Input and params: input.md
+  - Components:
+    - Vinci Console: vinci.md
+    - Cache: cache.md
+    - Dependency Container : container.md
+    - HTTP Client: http-client.md
+    - Wolf Template: wolf.md
+  - Resources:
+    - Date and time: date.md
+    - File System: filesystem.md
+    - JSON: json.md
+    - Logger: log.md
+    - Mail: mail.md
+    - Session and Cookie: session-cookie.md
+    - Validation: validate.md
+    - View Alerts: messages.md
+  - Security:
+    - Authenticate: auth.md
+    - Cryptography: crypt.md
+    - CSRF Protection: csrf.md
+    - Recovery Password: forgot.md
+  - Database:
+    - Builder SQL: sql.md
+    - Katrina ORM: katrina.md
+  - Deploy: deploy.md
+theme:
+    name: null
+    custom_dir: basic_theme/
+plugins:
+    - search

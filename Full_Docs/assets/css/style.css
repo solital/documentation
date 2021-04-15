@@ -1,0 +1,11 @@
+.resources-text {
+    color: #363636;
+    text-decoration: none !important;
+    transition: 0.1s;
+}
+
+/* .resources-text:hover {
+    color: #1E90FF;
+    font-weight: bold;
+    transition: 0.1s;
+} */

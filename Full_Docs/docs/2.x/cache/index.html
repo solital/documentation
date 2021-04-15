@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cache - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"> -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/theme-2.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="../css/code-1.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.js"></script>
+  <script src="../js/bootstrap.bundle.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+  <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div class="border-right bg-menu" id="sidebar-wrapper">
+      <div class="sidebar-heading">
+        <a class="navbar-brand">
+          <img class="d-inline-block align-top img-fluid logo-menu" src="../img/solital-logo-2-sm-trans-2.png">
+        </a>
+      </div>
+      <div class="scroll">
+        <ul class="list-group list-group-flush bg-menu">
+          
+          
+  <a href=".." class="list-group-item list-group-item-action no-border bg-menu ">
+    Starting
+  </a>
+
+          
+          
+<a class="list-group-item list-group-item-action no-border bg-menu " href="#Settings"
+data-toggle="collapse" aria-expanded="false">
+  Settings
+</a>
+<ul class="collapse list-unstyled" id="Settings">
+    
+    <a href="../installation/" class="subitem">
+      <li>Installing</li>
+    </a>
+    
+    <a href="../env/" class="subitem">
+      <li>Environment variables</li>
+    </a>
+    
+    <a href="../helpers/" class="subitem">
+      <li>Helpers</li>
+    </a>
+    
+</ul>
+
+          
+          
+<a class="list-group-item list-group-item-action no-border bg-menu " href="#Routers"
+data-toggle="collapse" aria-expanded="false">
+  Routers
+</a>
+<ul class="collapse list-unstyled" id="Routers">
+    
+    <a href="../routes/" class="subitem">
+      <li>Routes</li>
+    </a>
+    
+    <a href="../events/" class="subitem">
+      <li>Events</li>
+    </a>
+    
+    <a href="../input/" class="subitem">
+      <li>Input and params</li>
+    </a>
+    
+</ul>
+
+          
+          
+<a class="list-group-item list-group-item-action no-border bg-menu active-list " href="#Components"
+data-toggle="collapse" aria-expanded="false">
+  Components
+</a>
+<ul class="collapse list-unstyled" id="Components">
+    
+    <a href="../vinci/" class="subitem">
+      <li>Vinci Console</li>
+    </a>
+    
+    <a href="./" class="subitem">
+      <li>Cache</li>
+    </a>
+    
+    <a href="../container/" class="subitem">
+      <li>Dependency Container</li>
+    </a>
+    
+    <a href="../http-client/" class="subitem">
+      <li>HTTP Client</li>
+    </a>
+    
+    <a href="../wolf/" class="subitem">
+      <li>Wolf Template</li>
+    </a>
+    
+</ul>
+
+          
+          
+<a class="list-group-item list-group-item-action no-border bg-menu " href="#Resources"
+data-toggle="collapse" aria-expanded="false">
+  Resources
+</a>
+<ul class="collapse list-unstyled" id="Resources">
+    
+    <a href="../date/" class="subitem">
+      <li>Date and time</li>
+    </a>
+    
+    <a href="../filesystem/" class="subitem">
+      <li>File System</li>
+    </a>
+    
+    <a href="../json/" class="subitem">
+      <li>JSON</li>
+    </a>
+    
+    <a href="../log/" class="subitem">
+      <li>Logger</li>
+    </a>
+    
+    <a href="../mail/" class="subitem">
+      <li>Mail</li>
+    </a>
+    
+    <a href="../session-cookie/" class="subitem">
+      <li>Session and Cookie</li>
+    </a>
+    
+    <a href="../validate/" class="subitem">
+      <li>Validation</li>
+    </a>
+    
+    <a href="../messages/" class="subitem">
+      <li>View Alerts</li>
+    </a>
+    
+</ul>
+
+          
+          
+<a class="list-group-item list-group-item-action no-border bg-menu " href="#Security"
+data-toggle="collapse" aria-expanded="false">
+  Security
+</a>
+<ul class="collapse list-unstyled" id="Security">
+    
+    <a href="../auth/" class="subitem">
+      <li>Authenticate</li>
+    </a>
+    
+    <a href="../crypt/" class="subitem">
+      <li>Cryptography</li>
+    </a>
+    
+    <a href="../csrf/" class="subitem">
+      <li>CSRF Protection</li>
+    </a>
+    
+    <a href="../forgot/" class="subitem">
+      <li>Recovery Password</li>
+    </a>
+    
+</ul>
+
+          
+          
+<a class="list-group-item list-group-item-action no-border bg-menu " href="#Database"
+data-toggle="collapse" aria-expanded="false">
+  Database
+</a>
+<ul class="collapse list-unstyled" id="Database">
+    
+    <a href="../sql/" class="subitem">
+      <li>Builder SQL</li>
+    </a>
+    
+    <a href="../katrina/" class="subitem">
+      <li>Katrina ORM</li>
+    </a>
+    
+</ul>
+
+          
+          
+  <a href="../deploy/" class="list-group-item list-group-item-action no-border bg-menu ">
+    Deploy
+  </a>
+
+          
+        </ul>
+      </div>
+      <!-- <hr>
+      <button class="btn btn-1 dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Versão do Solital
+      </button>
+      <div class="dropdown-menu bg-1" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item text-white" href="#">1.0</a>
+      </div> -->
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light w-100" style="margin-left: -1px;">
+        <button class="btn btn-1" id="menu-toggle">
+          <i class="fas fa-arrows-alt-h p-1"></i>
+        </button>
+
+        <button class="navbar-toggler navbar-icon" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="http://solitalframework.com">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Doc Version
+              </a>
+              <div class="dropdown-menu bg-1" aria-labelledby="navbarDropdown" style="width: 10% !important;">
+                <a class="dropdown-item txt-8" href="https://solital.github.io/docs-v1/">1.x</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <div role="search">
+                <form action="../search.html" method="get">
+                  <input type="search" name="q" placeholder="&#xf002; Search..." class="input-search"
+                    autocomplete="off" />
+                </form>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <section class="container-fluid section">
+        <div class="row">
+          <div class="col-md-12 w-100">
+            <h1 class="mt-4 font-weight-normal">Cache</h1>
+          </div>
+  
+          <div class="col-md-12 mt-3">
+            
+  
+            <ul class="ml-5 mb-5">
+              
+              <li><a href="#how-to-use">How to use</a></li>
+              
+              <li><a href="#clear-cache">Clear cache</a></li>
+              
+              
+              <li><a href="#http-cache">HTTP Cache</a></li>
+              
+              <li><a href="#cache-control">Cache-Control</a></li>
+              
+              <li><a href="#expires">Expires</a></li>
+              
+              <li><a href="#time-based">Time-based</a></li>
+              
+              <li><a href="#etag">Etag</a></li>
+              
+              <li><a href="#cache-prevention">Cache prevention</a></li>
+              
+              
+            </ul>
+  
+            
+            <p>Cache is a layer of high-speed physical data storage that holds a subset of data, usually temporary in nature, so that future requests for that data are answered more quickly than is possible when accessing the primary storage location of data. Caching allows you to efficiently reuse previously recovered or computed data.</p>
+<h2 id="how-to-use">How to use</h2>
+<p><strong>Single cache</strong></p>
+<p>You can cache through PSR-16. To do this, perform the instance of the Cache class as follows:</p>
+<pre><code class="language-php">use Solital\Cache\Cache;
+
+$cache = new Cache();
+
+$list = $this-&gt;instance()-&gt;select()-&gt;build(&quot;all&quot;);
+
+// The 'has' method checks whether the index exists
+if ($cache-&gt;has('list') == true) {
+    echo '&lt;h1&gt;from cache&lt;/h1&gt;';
+    // The 'get' method returns the cached value if it exists
+    $cache-&gt;get('list');
+} else {
+    echo '&lt;h1&gt;created cache&lt;/h1&gt;';
+    // The 'set' method creates the cached file
+    $cache-&gt;set('list', $list, 20);
+}
+
+// Displays the original content of the $list variable
+echo '&lt;h1&gt;from original&lt;/h1&gt;';
+var_dump($list);
+</code></pre>
+<p>To delete the cache that was created, use the <code>delete</code> method passing the cache key as a parameter.</p>
+<pre><code class="language-php">$cache-&gt;delete('list');
+</code></pre>
+<p>The <code>has</code> method checks whether the item key exists. If it exists, use the <code>get</code> method to retrieve the generated cache by passing the key value as a parameter. If it does not exist, the <code>set</code> method creates the cached file, passing in the first parameter the name of the key, the value that will be stored and the time (in <code>int</code>) that this cached file will be valid.</p>
+<p><strong>Mutiple cache</strong></p>
+<p>The syntax is similar to the single cache. But the <code>getMultiple</code> method needs an array containing the key values as a parameter. The <code>setMultiple</code> method generates the cache if it does not exist, but pass as an parameter an array in which the keys will be the indexes of the array, and in the last parameter spend the time that the cache will be valid.</p>
+<pre><code class="language-php">use Solital\Cache\Cache;
+
+$cache = new Cache();
+
+$list = [
+    'nome' =&gt; 'Harvey Specter',
+    'email' =&gt; 'specter@pearsonhardman.com'
+];
+
+$list2 = [
+    'nome' =&gt; 'Louis Litt',
+    'email' =&gt; 'liitup@pearsonhardman.com'
+];
+
+$cache-&gt;getMultiple(['list1', 'list2']);
+
+echo '&lt;h1&gt;created cache&lt;/h1&gt;';
+$cache-&gt;setMultiple([
+    'list1' =&gt; $list,
+    'list2' =&gt; $list2
+], 20);
+
+echo '&lt;h1&gt;from original&lt;/h1&gt;';
+print_r($list);
+print_r($list2);
+</code></pre>
+<p>In the multiple cache, use <code>deleteMultiple</code> by passing an array containing the cache keys to delete the cached files generated with the <code>setMultiple</code> method.</p>
+<pre><code class="language-php">$cache-&gt;deleteMultiple([&quot;list1&quot;, &quot;list2&quot;]);
+</code></pre>
+<h3 id="clear-cache">Clear cache</h3>
+<p>To clear the entire cache created with the <code>Cache</code> class, use the <code>clear</code> function.</p>
+<pre><code class="language-php">$cache-&gt;clear();
+</code></pre>
+<h2 id="http-cache">HTTP Cache</h2>
+<p>Font by <a href="" title="https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers">heroku</a></p>
+<p>The modern day developer has a wide variety of techniques and technologies available to improve application performance and end-user experience. One of the most frequently overlooked technologies is that of the HTTP cache.</p>
+<p>HTTP caching is a universally adopted specification across all modern web browsers, making its implementation in web applications simple. Appropriate use of these standards can benefit your application greatly, improving response times and reducing server load. However, incorrect caching can cause users to see out-of-date content and hard to debug issues. This article discusses the specifics of HTTP caching and in what scenarios to employ an HTTP cache header based strategy.</p>
+<pre><code class="language-php">use Solital\Core\Http\HttpCache;
+
+$cache = new HttpCache();
+</code></pre>
+<h3 id="cache-control">Cache-Control</h3>
+<p>The Cache-Control header is the most important header to set as it effectively ‘switches on’ caching in the browser. With this header in place, and set with a value that enables caching, the browser will cache the file for as long as specified. Without this header the browser will re-request the file on each subsequent request.</p>
+<p><code>public</code> resources can be cached not only by the end-user’s browser but also by any intermediate proxies that may be serving many other users as well.</p>
+<p><code>private</code> resources are bypassed by intermediate proxies and can only be cached by the end-client.</p>
+<p>The value of the Cache-Control header is a composite one, indicating whether the resource is public or private while also indicating the maximum amount of time it can be cached before considered stale. The max-age value sets a timespan for how long to cache the resource (in seconds).</p>
+<p>In the first parameter it is necessary to inform <code>public</code> or <code>private</code>, and in the second parameter the timestamp value of <code>max_age</code>. </p>
+<pre><code class="language-php">$cache-&gt;cacheControl(&quot;public&quot;, 31536000);
+</code></pre>
+<p>While the Cache-Control header turns on client-side caching and sets the max-age of a resource the Expires header is used to specify a specific point in time the resource is no longer valid.</p>
+<h3 id="expires">Expires</h3>
+<p>When accompanying the Cache-Control header, Expires simply sets a date from which the cached resource should no longer be considered valid. From this date forward the browser will request a fresh copy of the resource. Until then, the browsers local cached copy will be used:</p>
+<pre><code class="language-php">$cache-&gt;cacheControl(&quot;public&quot;, 31536000);
+$cache-&gt;expires();
+</code></pre>
+<h3 id="time-based">Time-based</h3>
+<p>A time-based conditional request ensures that only if the requested resource has changed since the browser’s copy was cached will the contents be transferred. If the cached copy is the most up-to-date then the server returns the <code>304</code> response code.</p>
+<p>To enable conditional requests the application specifies the last modified time of a resource via the Last-Modified response header.</p>
+<p>To use this condition, use the <code>lastModified</code> method after the <code>cacheControl</code> method. </p>
+<pre><code class="language-php">$cache-&gt;cacheControl(&quot;public&quot;, 31536000);
+$cache-&gt;lastModified();
+</code></pre>
+<p>The next time the browser requests this resource it will only ask for the contents of the resource if they’re unchanged since this date using the If-Modified-Since request header</p>
+<pre><code class="language-php">$cache-&gt;ifModifiedSince();
+</code></pre>
+<p>If the resource hasn’t changed, the server will return with an empty body with the <code>304</code> response code.</p>
+<h3 id="etag">Etag</h3>
+<p>The ETag (or Entity Tag) works in a similar way to the Last-Modified header except its value is a digest of the resources contents (for instance, an MD5 hash). This allows the server to identify if the cached contents of the resource are different to the most recent version.</p>
+<p>Use the <code>eTag</code> class parameter the value that will be cached.</p>
+<pre><code class="language-php">$cache-&gt;cacheControl(&quot;public&quot;, 31536000);
+$cache-&gt;eTag('value');
+</code></pre>
+<h3 id="cache-prevention">Cache prevention</h3>
+<p>Highly secure or variable resources often require no caching. For instance, anything involving a shopping cart checkout process. Unfortunately, merely omitting cache headers will not work as many modern web browsers cache items based on their own internal algorithms. In such cases it is necessary to tell the browser to explicitly to not cache items.</p>
+<p>In addition to public and private the Cache-Control header can specify no-cache and no-store which informs the browser to not cache the resources under any circumstances.</p>
+<pre><code class="language-php">$cache-&gt;noCacheControl();
+</code></pre>
+            
+  
+            <hr />
+  
+            <h3>What to see next?</h3>
+  
+            <section class="container">
+              
+            
+              <div class="row mt-3">
+                <nav class="col-md-6 col-sm-12">
+                  <ul class="form-inline next">
+                    
+                    <li class="next-li"><a href="../vinci/"
+                        title="Vinci Console">&#8592; Vinci Console</a></li>
+                    
+                    
+                    
+                    <li class="next-li"><a href="../container/" title="Dependency Container" />Dependency Container
+                      &#8594;</a></li>
+                    
+                  </ul>
+                </nav>
+              </div>
+              
+              
+            </section>
+          </div>
+  
+          <hr>
+  
+          <div class="row text-center mt-3">
+            <div class="col-md-12 ml-2">
+              Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+            </div>
+          </div>
+        </div>
+
+        <!--
+          MkDocs version      : 1.1.2
+          Docs Build Date UTC : 2021-04-15 16:31:09.735799+00:00
+          -->
+
+      </section>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+</body>
+
+</html>
