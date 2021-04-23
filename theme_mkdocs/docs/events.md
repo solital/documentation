@@ -133,3 +133,52 @@ class DatabaseDebugHandler implements EventHandlerInterface
 
 }
 ```
+
+## Using the PSR-14
+
+It is possible to use the PSR-14 through the `EventDispatcher` class. You can create the test class below:
+
+```php
+class UserTest
+{
+    public function testLow()
+    {
+        echo "Running Low ...";
+    }
+
+    public function testNormal()
+    {
+        echo "Running Normal ...";
+    }
+
+    public function testHigh()
+    {
+        echo "Running High ...";
+    }
+}
+```
+
+Then, use the `addListener` method to add the event referring to the `UserTest` class. You can define the priority of each method and the order in which it will be executed. To do this, use a number in the last parameter of `addListener`.
+
+```php
+$provider = new ListenerProvider();
+$event = new EventDispatcher($provider);
+
+$user = new UserTest();
+
+$provider->addListener(function (UserTest $user) {
+    $user->testLow();
+}, 1);
+
+$provider->addListener(function (UserTest $user) {
+    $user->testNormal();
+}, 2);
+
+$provider->addListener(function (UserTest $user) {
+    $user->testHigh();
+}, 3);
+
+$event->dispatch($user);
+```
+
+As defined in the priority, the result will be `Running High...`, `Running Normal...` and `Running Low...`.
