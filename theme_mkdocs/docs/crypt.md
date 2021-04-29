@@ -43,3 +43,36 @@ $res = Hash::decrypt('word_to_decrypt')->isValid();
 
 pre($res);
 ```
+
+## Sodium encryption
+
+Solital supports Sodium encryption. To enable, make sure that libsodium is installed in your development environment. You can use the `Hash::checkSodium()` method to check if libsodium is installed.
+
+### Generating a sodium key
+
+First, you need to generate a sodium key. This key is automatically renewed with each new request, so it can be stored in a database, in the session or in another type of storage.
+
+```php
+use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+```
+
+### Encrypting and decrypting with Sodium
+
+Use the `Hash::sodiumCrypt()` (to encrypt), and `Hash::sodiumDecrypt()` (to decrypt) methods. Remember to use the key generated using the `Hash::getSodiumKey()` method.
+
+```php
+use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+
+# Crypt
+$encoded = Hash::sodiumCrypt("HashTest!", $key);
+pre($encoded);
+
+# Decrypt
+$decoded = Hash::sodiumDecrypt($encoded, $key);
+pre($decoded);
+```
+

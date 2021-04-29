@@ -224,6 +224,17 @@ encodeJSON($value)
 decodeJSON($value, bool $toArray = false)
 ```
 
+- Write any message in the browser LOG, which can be viewed at any time.
+
+```php
+/**
+ * @param mixed ...$messages
+ * 
+ * @return void
+ */
+console_log(...$messages)
+```
+
 ## Others
 
 - Removes GET parameters in the URL and reloads the page without those parameters.

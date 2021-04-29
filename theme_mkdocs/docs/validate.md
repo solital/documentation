@@ -2,9 +2,7 @@
 
 You can validate email, string, array and others.
 
-### Validate email, string and more
-
-#### Email
+### Email
 
 ```php
 $res = Valid::email('solital@email.com');
@@ -13,7 +11,7 @@ $res = Valid::email('solital@email.com');
 pre($res);
 ```
 
-#### Number
+### Number
 
 You can validate whether a number is `int` or` float`. 
 
@@ -24,7 +22,7 @@ $res = Valid::number(12.5);
 pre($res);
 ```
 
-#### Null
+### Null
 
 ```php
 $res = Valid::isNull(null);
@@ -33,7 +31,7 @@ $res = Valid::isNull(null);
 pre($res);
 ```
 
-#### Lowercase
+### Lowercase
 
 You can validate a string if it is lowercase. If not, the `isLower` method will 
 convert the string to lowercase. 
@@ -45,7 +43,7 @@ $res = Valid::isLower('SOLITAL');
 pre($res);
 ```
 
-#### Uppercase
+### Uppercase
 
 You can validate a string if it is uppercase. If not, the `isUpper` method will 
 convert the string to uppercase. 
@@ -54,5 +52,28 @@ convert the string to uppercase.
 $res = Valid::isUpper('solital');
 
 /* Return string */
+pre($res);
+```
+
+### Base64
+
+Checks whether a variable is Base64-type encryption.
+
+```php
+$hash = base64_encode("test");
+$res = Valid::isBase64($hash);
+
+/* Return bool */
+pre($res);
+```
+
+### Identical 
+
+Checks if one variable is identical to another.
+
+```php
+$res = Valid::identical("foo", "foo");
+
+/* Return bool */
 pre($res);
 ```

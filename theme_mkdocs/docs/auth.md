@@ -113,4 +113,47 @@ To create a predefined login structure, use `php vinci auth`
 
 This command will create a `LoginController` class, templates for authentication, dashboard and predefined routes. Plus a standard user in the database. To learn more visit [this link](https://solital.github.io/docs-v1/auth).
 
-If you want to remove this structure, use `php vinci remove-auth`
+If you want to remove this structure, use `php vinci remove-auth`.
+
+## Authentication using Sodium encryption
+
+You can create an authentication using Sodium encryption.
+
+### Generating a sodium key
+
+First, you need to generate a sodium key. This key is automatically renewed with each new request, so it can be stored in a database, in the session or in another type of storage.
+
+```php
+use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+```
+
+### Encrypting the password
+
+Use `Auth::sodium()` to encrypt your password. Remember to use it in conjunction with the generated key.
+
+```php
+use Solital\Core\Auth\Auth;
+use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+$encoded = Auth::sodium('password', $key);
+
+pre($encoded);
+```
+
+### Verifying the password with Sodium
+
+To verify the password generated using the `Auth::sodium()` method, use `Auth::sodiumVerify()` together with the generated key, password and hash.
+
+```php
+use Solital\Core\Auth\Auth;
+use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+$encoded = Auth::sodium('password', $key);
+$decoded = Auth::sodiumVerify($encoded, 'password', $key);
+
+pre($decoded);
+```
