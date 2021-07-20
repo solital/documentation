@@ -294,6 +294,8 @@ data-toggle="collapse" aria-expanded="false">
               
               <li><a href="#custom-eventhandlers">Custom EventHandlers</a></li>
               
+              <li><a href="#using-the-psr-14">Using the PSR-14</a></li>
+              
               
             </ul>
   
@@ -487,6 +489,47 @@ class DatabaseDebugHandler implements EventHandlerInterface
 
 }
 </code></pre>
+<h2 id="using-the-psr-14">Using the PSR-14</h2>
+<p>It is possible to use the PSR-14 through the <code>EventDispatcher</code> class. You can create the test class below:</p>
+<pre><code class="language-php">class UserTest
+{
+    public function testLow()
+    {
+        echo &quot;Running Low ...&quot;;
+    }
+
+    public function testNormal()
+    {
+        echo &quot;Running Normal ...&quot;;
+    }
+
+    public function testHigh()
+    {
+        echo &quot;Running High ...&quot;;
+    }
+}
+</code></pre>
+<p>Then, use the <code>addListener</code> method to add the event referring to the <code>UserTest</code> class. You can define the priority of each method and the order in which it will be executed. To do this, use a number in the last parameter of <code>addListener</code>.</p>
+<pre><code class="language-php">$provider = new ListenerProvider();
+$event = new EventDispatcher($provider);
+
+$user = new UserTest();
+
+$provider-&gt;addListener(function (UserTest $user) {
+    $user-&gt;testLow();
+}, 1);
+
+$provider-&gt;addListener(function (UserTest $user) {
+    $user-&gt;testNormal();
+}, 2);
+
+$provider-&gt;addListener(function (UserTest $user) {
+    $user-&gt;testHigh();
+}, 3);
+
+$event-&gt;dispatch($user);
+</code></pre>
+<p>As defined in the priority, the result will be <code>Running High...</code>, <code>Running Normal...</code> and <code>Running Low...</code>.</p>
             
   
             <hr />
@@ -527,7 +570,7 @@ class DatabaseDebugHandler implements EventHandlerInterface
 
         <!--
           MkDocs version      : 1.1.2
-          Docs Build Date UTC : 2021-04-15 16:31:09.751424+00:00
+          Docs Build Date UTC : 2021-07-20 11:35:57.187630+00:00
           -->
 
       </section>

@@ -162,6 +162,8 @@ public function get()
 }
 ```
 
+**WHERE**
+
 If you need the `WHERE` clause, use the second parameter.
 
 ```php
@@ -179,6 +181,55 @@ public function get()
 {
     return $this->instance()->select(3, 'name="Clark"', "name, city, country")
                             ->build("ONLY");
+}
+```
+
+**LIMIT**
+
+```php
+public function get()
+{
+    return $this->instance()->select()->limit(2, 5)->build("ALL");
+}
+```
+
+**LIKE**
+
+The `LIKE` operator must always be used with the `WHERE`.
+
+```php
+public function get()
+{
+    return $this->instance()->select(null, "name")->like("%Harvey%")->build("ALL");
+}
+```
+
+**ORDER BY**
+
+```php
+public function get()
+{
+    return $this->instance()->select()->order("name")->build("ALL");
+}
+```
+
+By default, the result will always return ascending. To return values descending, use `false` in the second parameter.
+
+```php
+public function get()
+{
+    return $this->instance()->select()->order("name", false)->build("ALL");
+}
+```
+
+**BETWEEN**
+
+The `BETWEEN` operator must always be used with the `WHERE`.
+
+```php
+public function get()
+{
+    return $this->instance()->select(null, "age")->between(18, 25)->build("ALL");
 }
 ```
 

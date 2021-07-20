@@ -295,6 +295,13 @@ data-toggle="collapse" aria-expanded="false">
               <li><a href="#check-value">Check value</a></li>
               
               
+              <li><a href="#sodium-encryption">Sodium encryption</a></li>
+              
+              <li><a href="#generating-a-sodium-key">Generating a sodium key</a></li>
+              
+              <li><a href="#encrypting-and-decrypting-with-sodium">Encrypting and decrypting with Sodium</a></li>
+              
+              
             </ul>
   
             
@@ -328,6 +335,28 @@ pre($res);
 $res = Hash::decrypt('word_to_decrypt')-&gt;isValid();
 
 pre($res);
+</code></pre>
+<h2 id="sodium-encryption">Sodium encryption</h2>
+<p>Solital supports Sodium encryption. To enable, make sure that libsodium is installed in your development environment. You can use the <code>Hash::checkSodium()</code> method to check if libsodium is installed.</p>
+<h3 id="generating-a-sodium-key">Generating a sodium key</h3>
+<p>First, you need to generate a sodium key. This key is automatically renewed with each new request, so it can be stored in a database, in the session or in another type of storage.</p>
+<pre><code class="language-php">use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+</code></pre>
+<h3 id="encrypting-and-decrypting-with-sodium">Encrypting and decrypting with Sodium</h3>
+<p>Use the <code>Hash::sodiumCrypt()</code> (to encrypt), and <code>Hash::sodiumDecrypt()</code> (to decrypt) methods. Remember to use the key generated using the <code>Hash::getSodiumKey()</code> method.</p>
+<pre><code class="language-php">use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+
+# Crypt
+$encoded = Hash::sodiumCrypt(&quot;HashTest!&quot;, $key);
+pre($encoded);
+
+# Decrypt
+$decoded = Hash::sodiumDecrypt($encoded, $key);
+pre($decoded);
 </code></pre>
             
   
@@ -369,7 +398,7 @@ pre($res);
 
         <!--
           MkDocs version      : 1.1.2
-          Docs Build Date UTC : 2021-04-15 16:31:09.735799+00:00
+          Docs Build Date UTC : 2021-07-20 11:35:57.172004+00:00
           -->
 
       </section>

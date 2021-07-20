@@ -57,6 +57,16 @@ php vinci [command]
 
 -
 
+### Katrina Commands
+
+| Command           | Description                           |
+|-------------------|---------------------------------------|
+| `katrina-version` | Check the Katrina ORM version         |
+| `katrina-auth`    | Create a default user in the database |
+| `katrina-dump`    | Dump the database                     |
+
+-
+
 You can view the complete list of Vinci commands using `php vinci show`. 
 
 ## Custom Command

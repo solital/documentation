@@ -288,7 +288,19 @@ data-toggle="collapse" aria-expanded="false">
               
               <li><a href="#validation">Validation</a></li>
               
-              <li><a href="#validate-email-string-and-more">Validate email, string and more</a></li>
+              <li><a href="#email">Email</a></li>
+              
+              <li><a href="#number">Number</a></li>
+              
+              <li><a href="#null">Null</a></li>
+              
+              <li><a href="#lowercase">Lowercase</a></li>
+              
+              <li><a href="#uppercase">Uppercase</a></li>
+              
+              <li><a href="#base64">Base64</a></li>
+              
+              <li><a href="#identical">Identical</a></li>
               
               
             </ul>
@@ -296,27 +308,26 @@ data-toggle="collapse" aria-expanded="false">
             
             <h2 id="validation">Validation</h2>
 <p>You can validate email, string, array and others.</p>
-<h3 id="validate-email-string-and-more">Validate email, string and more</h3>
-<h4 id="email">Email</h4>
+<h3 id="email">Email</h3>
 <pre><code class="language-php">$res = Valid::email('solital@email.com');
 
 /* Return `string` if true or `null` if false */
 pre($res);
 </code></pre>
-<h4 id="number">Number</h4>
+<h3 id="number">Number</h3>
 <p>You can validate whether a number is <code>int</code> or<code>float</code>. </p>
 <pre><code class="language-php">$res = Valid::number(12.5);
 
 /* Return `int` or `float` if true or `null` if false */
 pre($res);
 </code></pre>
-<h4 id="null">Null</h4>
+<h3 id="null">Null</h3>
 <pre><code class="language-php">$res = Valid::isNull(null);
 
 /* Return bool */
 pre($res);
 </code></pre>
-<h4 id="lowercase">Lowercase</h4>
+<h3 id="lowercase">Lowercase</h3>
 <p>You can validate a string if it is lowercase. If not, the <code>isLower</code> method will 
 convert the string to lowercase. </p>
 <pre><code class="language-php">$res = Valid::isLower('SOLITAL');
@@ -324,12 +335,27 @@ convert the string to lowercase. </p>
 /* Return string */
 pre($res);
 </code></pre>
-<h4 id="uppercase">Uppercase</h4>
+<h3 id="uppercase">Uppercase</h3>
 <p>You can validate a string if it is uppercase. If not, the <code>isUpper</code> method will 
 convert the string to uppercase. </p>
 <pre><code class="language-php">$res = Valid::isUpper('solital');
 
 /* Return string */
+pre($res);
+</code></pre>
+<h3 id="base64">Base64</h3>
+<p>Checks whether a variable is Base64-type encryption.</p>
+<pre><code class="language-php">$hash = base64_encode(&quot;test&quot;);
+$res = Valid::isBase64($hash);
+
+/* Return bool */
+pre($res);
+</code></pre>
+<h3 id="identical">Identical</h3>
+<p>Checks if one variable is identical to another.</p>
+<pre><code class="language-php">$res = Valid::identical(&quot;foo&quot;, &quot;foo&quot;);
+
+/* Return bool */
 pre($res);
 </code></pre>
             
@@ -372,7 +398,7 @@ pre($res);
 
         <!--
           MkDocs version      : 1.1.2
-          Docs Build Date UTC : 2021-04-15 16:31:09.829588+00:00
+          Docs Build Date UTC : 2021-07-20 11:35:57.265764+00:00
           -->
 
       </section>

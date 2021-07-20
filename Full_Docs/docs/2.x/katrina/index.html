@@ -471,6 +471,7 @@ class User
     return $this-&gt;instance()-&gt;select(null, null, &quot;name, city, country&quot;)-&gt;build(&quot;ALL&quot;);
 }
 </code></pre>
+<p><strong>WHERE</strong></p>
 <p>If you need the <code>WHERE</code> clause, use the second parameter.</p>
 <pre><code class="language-php">public function get()
 {
@@ -483,6 +484,38 @@ class User
 {
     return $this-&gt;instance()-&gt;select(3, 'name=&quot;Clark&quot;', &quot;name, city, country&quot;)
                             -&gt;build(&quot;ONLY&quot;);
+}
+</code></pre>
+<p><strong>LIMIT</strong></p>
+<pre><code class="language-php">public function get()
+{
+    return $this-&gt;instance()-&gt;select()-&gt;limit(2, 5)-&gt;build(&quot;ALL&quot;);
+}
+</code></pre>
+<p><strong>LIKE</strong></p>
+<p>The <code>LIKE</code> operator must always be used with the <code>WHERE</code>.</p>
+<pre><code class="language-php">public function get()
+{
+    return $this-&gt;instance()-&gt;select(null, &quot;name&quot;)-&gt;like(&quot;%Harvey%&quot;)-&gt;build(&quot;ALL&quot;);
+}
+</code></pre>
+<p><strong>ORDER BY</strong></p>
+<pre><code class="language-php">public function get()
+{
+    return $this-&gt;instance()-&gt;select()-&gt;order(&quot;name&quot;)-&gt;build(&quot;ALL&quot;);
+}
+</code></pre>
+<p>By default, the result will always return ascending. To return values descending, use <code>false</code> in the second parameter.</p>
+<pre><code class="language-php">public function get()
+{
+    return $this-&gt;instance()-&gt;select()-&gt;order(&quot;name&quot;, false)-&gt;build(&quot;ALL&quot;);
+}
+</code></pre>
+<p><strong>BETWEEN</strong></p>
+<p>The <code>BETWEEN</code> operator must always be used with the <code>WHERE</code>.</p>
+<pre><code class="language-php">public function get()
+{
+    return $this-&gt;instance()-&gt;select(null, &quot;age&quot;)-&gt;between(18, 25)-&gt;build(&quot;ALL&quot;);
 }
 </code></pre>
 <h3 id="listing-foreign-key">Listing foreign key</h3>
@@ -1068,7 +1101,7 @@ echo $arrows;
 
         <!--
           MkDocs version      : 1.1.2
-          Docs Build Date UTC : 2021-04-15 16:31:09.798331+00:00
+          Docs Build Date UTC : 2021-07-20 11:35:57.234510+00:00
           -->
 
       </section>

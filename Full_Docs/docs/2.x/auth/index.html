@@ -301,6 +301,15 @@ data-toggle="collapse" aria-expanded="false">
               <li><a href="#standard-login-structure">Standard login structure</a></li>
               
               
+              <li><a href="#authentication-using-sodium-encryption">Authentication using Sodium encryption</a></li>
+              
+              <li><a href="#generating-a-sodium-key">Generating a sodium key</a></li>
+              
+              <li><a href="#encrypting-the-password">Encrypting the password</a></li>
+              
+              <li><a href="#verifying-the-password-with-sodium">Verifying the password with Sodium</a></li>
+              
+              
             </ul>
   
             
@@ -386,7 +395,36 @@ public function exit(): void
 <h2 id="standard-login-structure">Standard login structure</h2>
 <p>To create a predefined login structure, use <code>php vinci auth</code></p>
 <p>This command will create a <code>LoginController</code> class, templates for authentication, dashboard and predefined routes. Plus a standard user in the database. To learn more visit <a href="https://solital.github.io/docs-v1/auth">this link</a>.</p>
-<p>If you want to remove this structure, use <code>php vinci remove-auth</code></p>
+<p>If you want to remove this structure, use <code>php vinci remove-auth</code>.</p>
+<h2 id="authentication-using-sodium-encryption">Authentication using Sodium encryption</h2>
+<p>You can create an authentication using Sodium encryption.</p>
+<h3 id="generating-a-sodium-key">Generating a sodium key</h3>
+<p>First, you need to generate a sodium key. This key is automatically renewed with each new request, so it can be stored in a database, in the session or in another type of storage.</p>
+<pre><code class="language-php">use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+</code></pre>
+<h3 id="encrypting-the-password">Encrypting the password</h3>
+<p>Use <code>Auth::sodium()</code> to encrypt your password. Remember to use it in conjunction with the generated key.</p>
+<pre><code class="language-php">use Solital\Core\Auth\Auth;
+use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+$encoded = Auth::sodium('password', $key);
+
+pre($encoded);
+</code></pre>
+<h3 id="verifying-the-password-with-sodium">Verifying the password with Sodium</h3>
+<p>To verify the password generated using the <code>Auth::sodium()</code> method, use <code>Auth::sodiumVerify()</code> together with the generated key, password and hash.</p>
+<pre><code class="language-php">use Solital\Core\Auth\Auth;
+use Solital\Core\Security\Hash;
+
+$key = Hash::getSodiumKey();
+$encoded = Auth::sodium('password', $key);
+$decoded = Auth::sodiumVerify($encoded, 'password', $key);
+
+pre($decoded);
+</code></pre>
             
   
             <hr />
@@ -427,7 +465,7 @@ public function exit(): void
 
         <!--
           MkDocs version      : 1.1.2
-          Docs Build Date UTC : 2021-04-15 16:31:09.735799+00:00
+          Docs Build Date UTC : 2021-07-20 11:35:57.172004+00:00
           -->
 
       </section>
