@@ -260,3 +260,17 @@ is_json($string)
  */
 get_url(string $uri = null)
 ```
+
+- Handles PHP sessions. To get a value from an existing session, leave the `$value` parameter empty. To create a new session, inform the session index in the first parameter, and the session value in the second parameter.
+
+```php
+/**
+ * @param string $index: index that will identify the session
+ * @param mixed $value: session value
+ * @param null|string $key: array of values (see Session class documentation)
+ * @param bool $delete: if the value is `true`, the session will be deleted.
+ * 
+ * @return mixed
+ */
+session(string $index, $value = null, ?string $key = null, bool $delete = false)
+```

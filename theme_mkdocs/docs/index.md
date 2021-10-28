@@ -19,5 +19,5 @@ You are reading the version documentation: `2.x`
 - Sub-domain routing
 - Custom boot managers to rewrite urls to "nicer" ones.
 - Input manager; easily manage GET, POST and FILE values.
-- PSR-3, PSR-11 and PSR-16.
+- PSR-3, PSR-11, PSR-14 and PSR-16.
 

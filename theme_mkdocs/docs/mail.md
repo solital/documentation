@@ -1,34 +1,3 @@
-## Native Mail
-
-Mail is a class of Solital that uses PHP's native mail to send email.
-
-### Use
-
-The sitaxis below is used to be able to send basic e-mail.
-
-```php
-use Solital\Core\Resource\Mail\NativeMail;
-
-NativeMail::send("your_sender@email.com", "your_recipient@email.com", 
-"your_subject", "your_message");
-```
-        
-### Optional parameters
-
-To add a reply, text type, charset and priority, use the optional parameters.
-
-```php
-NativeMail::send("your_sender@email.com", "your_recipient@email.com", "your_subject", 
-"your_message", "your_reply@email.com", "type_text", "your_charset", your_priority);
-```
-
-Optional parameters have the following values by default:
-
-- Reply to: `(string)` null
-- Type: `(string)` text/plan
-- Charset: `(string)` UTF-8
-- Priority: `(int)` 3
-
 ## PHP Mailer
 
 ### Use

@@ -64,3 +64,15 @@ $res = $convertime->addHour('13:00', '03:00');
 /* Return 16:00 */
 pre($res);
 ```
+
+## Check if the date is weekend
+
+To check whether a certain date will be on a weekend, use the `isWeekend()` method.
+
+```php
+$convertime = new Convertime();
+$res = $convertime->isWeekend('2021-07-18');
+
+/* Return bool */
+pre($res);
+```

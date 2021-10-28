@@ -217,6 +217,27 @@ Course::group(['prefix' => '/admin', 'middleware' => '\Solital\Components\Contro
 Or otherwise:
 
 ```php
+<?php
+
+namespace Solital\Components\Controller;
+
+class AdminController extends Controller
+{
+    public function handle(): void
+    {
+        print_r("Middleware");
+    }
+
+    public function login(): void
+    {
+        print_r("Login");
+    }
+}
+```
+
+And in your `routes.php`:
+
+```php
 Course::match(['get', 'post'], '/user/login', 'UserController@login')->addMiddleware('\Solital\Components\Controller\UserController:guest');
 ```
 
