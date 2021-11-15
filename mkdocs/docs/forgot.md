@@ -43,27 +43,6 @@ Auth::forgot('tb_auth')
     ->register();
 ```
 
-### Using PHP Mailer
-
-The password recovery procedure uses the native PHP class for sending e-mail. However, it is not always interesting to use this class, so you can use the `usePHPMailer()` method to send the email using PHP Mailer.
-
-```php
-Auth::forgot('tb_auth')
-    ->columns('username')
-    ->values($email, url('change'))
-    # Here the code
-    ->usePHPMailer()
-    ->register();
-```
-
-If necessary, you can use `true` as a parameter to display PHP Mailer exceptions.
-
-```php
-# ...
-->usePHPMailer(true)
-# ...
-```
-
 ### Changing email fields
 
 By default, "User" is sent as the name of the sender and recipient. "Forgot Password" as the title of the email.

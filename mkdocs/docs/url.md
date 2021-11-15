@@ -2,8 +2,8 @@ By default all controller and resource routes will use a simplified version of t
 
 You easily use the `url()` shortcut helper function to retrieve urls for your routes or manipulate the current url.
 
-`url()` will return a `Url` object which will return a `string` when rendered, so it can be used safely in templates etc. but 
-contains all the useful helpers methods in the `Url` class like `contains`, `indexOf` etc. 
+`url()` will return a `Uri` object which will return a `string` when rendered, so it can be used safely in templates etc. but 
+contains all the useful helpers methods in the `Uri` class like `contains`, `indexOf` etc. 
 Check the [Useful url tricks](#useful-url-tricks) below.
 
 ### Get the current url
@@ -118,7 +118,7 @@ if(url()->contains('/api')) {
 }
 ```
 
-As mentioned earlier, you can also use the `Url` object to show specific parts of the url or control what part of the url you want.
+As mentioned earlier, you can also use the `Uri` object to show specific parts of the url or control what part of the url you want.
 
 ```php
 # Grab the query-string parameter id from the current-url.

@@ -31,7 +31,7 @@ $mailer->attach('image.png', 'image_name');
 $mailer->embeddedImage('image.png', 'image', 'image');
 
 // Send email 
-$mailer->send('E-mail test', '<h1>E-mail test</h1><p>cid:image</p>');
+$mailer->sendEmail('E-mail test', '<h1>E-mail test</h1><p>cid:image</p>');
 
 // If there is an error 
 if ($mailer->error()) {
