@@ -43,8 +43,9 @@ You can change the key by overwriting the constant in your own CSRF-verifier cla
 The example below will post to the current url with a hidden field "`csrf_token`".
 
 ```html
-<form method="post" action="<?= url(); ?>">
-    <?= csrf_token(); ?>
+<form method="post" action="{{ url(); }}">
+    {{ csrf_token(); }}
+    
     <!-- other input elements here -->
 </form>
 ```

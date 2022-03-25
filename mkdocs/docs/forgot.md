@@ -1,12 +1,4 @@
-## Password recovery structure
-
-You can create a predefined password recovery framework. To do so, use the `php vinci forgot` command
-
-This command creates a controller with the name `ForgotController`. With it you will have all the basis to create a password recovery system.
-
 ## Setting
-
-Solital has a standard method for password recovery. For that, it is necessary to configure only the variable `MAIL_SENDER` in the file `.env`, inserting the sender and recipient.
 
 This procedure uses the `forgot` method to define the database table. The `columns` method the form's email field. In the `values` method, the e-mail that will be sent the recovery link is informed in the first parameter, and in the second parameter the URL that will be contained in the e-mail to change the password. The `register` method will check and send the email.
 
@@ -18,7 +10,7 @@ public function forgotPost(): void
 {
     $email = input()->post('email')->getValue();
 
-    $res = Auth::forgot('tb_auth')
+    $res = Auth::forgot('auth_users')
             ->columns('username')
             ->values($email, url('change'))
             ->register();
@@ -35,7 +27,7 @@ public function forgotPost(): void
 By default, the link sent is valid for 1 hour. You can change this behavior using the `timeHash()` method.
 
 ```php
-Auth::forgot('tb_auth')
+Auth::forgot('auth_users')
     ->columns('username')
     ->values($email, url('change'))
     # Here the code
@@ -50,7 +42,7 @@ By default, "User" is sent as the name of the sender and recipient. "Forgot Pass
 To change these fields, use the `fields()` function.
 
 ```php
-Auth::forgot('tb_auth')
+Auth::forgot('auth_users')
     ->columns('username')
     ->values($email, url('change'))
     # Here the code
@@ -71,7 +63,7 @@ $msg = "<h1>Retrieve your password</h1>";
 $msg .= "<p>Click the link below to change your password</p>";
 $msg .= "<a href='".generateLink($email, url('change'), '+2 hours')."'>Change Here!!</a>";
 
-Auth::forgot('tb_auth')
+Auth::forgot('auth_users')
     ->columns('username')
     ->values($email, url('change'))
     # Here the code
@@ -96,7 +88,7 @@ public function change($hash): void
     if ($res == true) {
         $email = Hash::decrypt($hash)->value();
 
-        Wolf::loadView('auth.change-pass-form', [
+        return view('auth.change-pass-form', [
             'title' => 'Change Password',
             'email' => $email,
             'hash' => $hash
@@ -113,9 +105,16 @@ public function change($hash): void
 This procedure uses the `change` method to define the database table. The `columns` method defines the database user and password fields. The `values` method defines the user's email in the first parameter, and the new password in the second parameter. The `register` method will check and change the email.
 
 ```php
-Auth::change('tb_auth')
+Auth::change('auth_users')
     ->columns('username', 'password')
     ->values($email, $pass)
     ->register();
 ```
 
+## Password recovery structure
+
+You can create a predefined password recovery framework. To do so, use the `php vinci auth:skeleton --forgot` command.
+
+This command creates a controller with the name `ForgotController`. With it you will have all the basis to create a password recovery system.
+
+If you want to remove this structure, use `php vinci auth:skeleton --forgot --remove`.

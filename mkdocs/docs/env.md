@@ -12,7 +12,7 @@ ERRORS_DISPLAY="true"
 INDEX_LOGIN="solital_index_login"
 ```
 
-- Database connection variables. To find out more, see [Katrina ORM](katrina.md)
+- Database connection variables. To find out more, see [Katrina ORM](katrina2.md)
 
 ```bash
 DB_DRIVE=""
@@ -23,22 +23,15 @@ DB_PASS=""
 SQLITE_DIR=""
 ```
 
-- Variables of the NativeMail class
+- Variables of the Mailer class
 
 ```bash
-MAIL_SENDER=""
-MAIL_RECIPIENT=""
-```
-
-- Variables of the PHPMailerClass class
-
-```bash
-PHPMAILER_DEBUG=""
-PHPMAILER_HOST=""
-PHPMAILER_USER=""
-PHPMAILER_PASS=""
-PHPMAILER_SECURITY=""
-PHPMAILER_PORT=""
+MAIL_DEBUG=""
+MAIL_HOST=""
+MAIL_USER=""
+MAIL_PASS=""
+MAIL_SECURITY=""
+MAIL_PORT=""
 ```
 
 - Variables used in encryption. It is recommended that you add new values to these variables.
@@ -46,12 +39,4 @@ PHPMAILER_PORT=""
 ```bash
 FIRST_SECRET="first_secret"
 SECOND_SECRET="second_secret"
-```
-
-- These variables are unique to Windows. Add the path of the executable that dumps the database. To learn more, see [Builder SQL](sql.md)
-
-```bash
-MYSQL_DUMP="C:\\xampp\\mysql\\bin\\mysqldump.exe"
-PG_DUMP=""
-SQLITE3=""
 ```

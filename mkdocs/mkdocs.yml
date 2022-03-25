@@ -1,12 +1,17 @@
 site_name: Solital Framework 
 nav:
   - Starting: index.md
+  - Upgrade: 
+    - Release Notes: release-notes.md
+    - Upgrade Guide: upgrade.md
   - Settings:
     - Installing: installation.md
     - Environment variables: env.md
+    - YAML Files: yaml-files.md
     - Helpers: helpers.md
   - Routers:
     - Routes: routes.md
+    - Middleware: middleware.md
     - URL: url.md
     - Events: events.md
     - Input and params: input.md
@@ -21,18 +26,23 @@ nav:
     - File System: filesystem.md
     - JSON: json.md
     - Logger: log.md
-    - Mail: mail.md
+    - Mailer: mail.md
     - Session and Cookie: session-cookie.md
     - Validation: validate.md
     - View Alerts: messages.md
+    - Queue: queue.md
   - Security:
     - Authenticate: auth.md
     - Cryptography: crypt.md
     - CSRF Protection: csrf.md
+    - Secure Password: password.md
+    - Verify Domain: verify-domain.md
     - Recovery Password: forgot.md
   - Database:
-    - Builder SQL: sql.md
-    - Katrina ORM: katrina.md
+    - Migrations: migrations.md
+    - Seeders: seeders.md
+    - Dump: dump.md
+    - Katrina ORM: katrina2.md
   - Deploy: deploy.md
 theme:
     name: null

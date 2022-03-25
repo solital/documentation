@@ -43,8 +43,7 @@ To make use of this component in Wolf, the method of creating the message is exa
 
 namespace Solital\Components\Controller;
 
-use Solital\Components\Controller\Controller;
-use Solital\Core\Wolf\Wolf;
+use Solital\Core\Http\Controller\Controller;
 
 class UserController extends Controller
 {
@@ -61,7 +60,7 @@ class UserController extends Controller
      */
     public function home(): void
     {
-        Wolf::loadView('home', [
+        return view('home', [
             'msg' => $this->message->get('msg.test')
         ]);
     }
@@ -78,10 +77,12 @@ class UserController extends Controller
 
 In your view, display the message this way:
 
-```php
+```html
 <div>
-    <?php if($msg): ?>
-        <p><?= $msg ?></p>
-    <?php endif; ?>
+
+{% if ($msg): %}
+    <p>{{ $msg }}</p>
+{% endif; %}
+
 </div>
 ```

@@ -1,7 +1,7 @@
 It is possible to manipulate dates and times using the `Convertime` class. To begin, run the instance: 
 
 ```php
-use Solital\Core\Resource\Validation\Convertime;
+use Solital\Core\Validation\Convertime;
 
 $convertime = new Convertime();
 ```

@@ -15,7 +15,6 @@ $json = new InputJson();
 
 encodeJSON($json);
 decodeJSON($json);
-
 ```
 
 ## Predefined Constants

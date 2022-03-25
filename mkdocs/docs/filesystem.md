@@ -1,7 +1,7 @@
 You can manipulate folders and files within Solital through the `HandleFiles` class, such as creating folders, removing folders, listing files and deleting files.
 
 ```php
-use Solital\Core\Resource\FileSystem\HandleFiles;
+use Solital\Core\FileSystem\HandleFiles;
 
 $handle = new HandleFiles();
 ```

@@ -9,7 +9,7 @@ INDEX_LOGIN='solital_index_login'
 For this, it is necessary to first define the name of the table in the `login` method. In the `columns` method, the database username and password. Then, in the `values` method, the input values of the form. Finally, the `register` method will perform the login as shown below.
 
 ```php
-$res = Auth::login('tb_auth')
+$res = Auth::login('auth_users')
             ->columns('username', 'password')
             ->values('inputEmail', 'inputPassword')
             ->register();
@@ -31,7 +31,7 @@ Below is an example method of authentication.
 
 namespace Solital\Components\Controller;
 
-use Solital\Components\Controller\Controller;
+use Solital\Core\Http\Controller\Controller;
 use Solital\Core\Auth\Auth;
 
 class UserController extends Controller
@@ -41,7 +41,7 @@ class UserController extends Controller
      */
     public function authPost(): void
     {
-        $res = Auth::login('tb_auth')
+        $res = Auth::login('auth_users')
             ->columns('username', 'password')
             ->values('inputEmail', 'inputPassword')
             ->register();
@@ -55,47 +55,39 @@ class UserController extends Controller
 }
 ```
 
-## Standard login and dashboard
+## Check login
 
-In some cases, your project may have more than one type of login such as e-commerce or multiple logins. Obviously, it is necessary to have several different login and dashboard routes.
-
-You can define these routes for each Controller using the `Auth::defineUrl()` method, passing the login route in the first parameter, and the dashboard route in the second.
-
-If this method is not declared, the `/auth` and `/dashboard` routes will be used by default.
-
-Remember, always declare this method in the class's constructor.
+To ensure that the user is authenticated, use the Auth::isNotLogged() method. If the login has not been validated, the user will be redirected to the route defined in the `auth.yaml` file or to the `/login` route.
 
 ```php
 /**
- * Construct
+ * @return mixed
  */
-public function __construct()
+public function dashboard(): mixed
 {
-    Auth::defineUrl('/custom-login', '/custom-dashboard');
+    Auth::isNotLogged();
+
+    return view('dashboard');
 }
-
-```
-
-## Check login
-
-To ensure that the user is authenticated, use the `Auth::isNotLogged()` method. If the login has not been validated, the user will be redirected to the route defined in the `Auth::defineUrl()` method or to the `/login` route. The example below shows the method together with the Wolf model.
-
-```php
-Auth::isNotLogged()
-            
-Wolf::loadView('home');
 ```
 
 To ensure that the user doesn't fall into the login route when it has already been validated, insert the `Auth::isLogged()` method in your login route. This method will redirect the user to your system's dashboard.
 
 ```php
-Auth::isLogged();
+/**
+ * @return mixed
+ */
+public function auth(): mixed
+{
+    Auth::isLogged();
 
-Wolf::loadView('login');
+    return view('login');
+}
 ```
 
-## Log off
-To log off, use the `Auth::logoff()` method.
+## Logoff
+
+To logoff, use the `Auth::logoff()` method.
 
 ```php
 /**
@@ -109,11 +101,11 @@ public function exit(): void
 
 ## Standard login structure 
 
-To create a predefined login structure, use `php vinci auth`
+To create a predefined login structure, use `php vinci auth:skeleton --login`
 
-This command will create a `LoginController` class, templates for authentication, dashboard and predefined routes. Plus a standard user in the database. To learn more visit [this link](https://solital.github.io/docs-v1/auth).
+This command will create a `LoginController` class, templates for authentication, dashboard and predefined routes. Plus a standard user in the database.
 
-If you want to remove this structure, use `php vinci remove-auth`.
+If you want to remove this structure, use `php vinci auth:skeleton --login --remove`.
 
 ## Authentication using Sodium encryption
 

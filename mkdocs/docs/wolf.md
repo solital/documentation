@@ -1,126 +1,131 @@
-Wolf is Solital's standard template system. You can load any template into the `resource/views` folder
+Wolf is Solital's default template engine. With Wolf, you can display any HTML, CSS and JavaScript code. Wolf has the following features: generate views cache; extend other views; minify CSS and JS files; use native HTML files. You can load any template into the `resource/views` folder
 
 ## Basic
 
-Below is the basic code to load any template:
+To use the Wolf Template, you can use the `view()` helper, or create an instance of the `Wolf` class.
 
 ```php
 use Solital\Core\Wolf\Wolf;
 
-Wolf::loadView('home');
+// With helper
+Course::get('/', function () {
+    return view('welcome');
+});
+
+// With instance
+Course::get('/', function () {
+    echo (new Wolf)->loadView('welcome');
+});
 ```
+
+## Markers in Wolf
+
+Wolf uses markers to interpret PHP code within views. That is, when using `{{ }}`, Wolf will interpret these characters as `<?= ?>`. Likewise, when using `{% %}`, Wolf will interpret it as `<?php ?>`.
+
+That way, you can use native PHP code inside your views using the bookmarks.
         
 ## Parameters
 
-The sitaxe below loads the parameters to be viewed in your template.
+To display data for your view, use the second parameter of the `view` helper or `loadView` method.
 
 ```php
-Wolf::loadView('home', [
-    'title' => 'My Title'
-]);
+// With helper
+Course::get('/', function () {
+    return view('welcome', [
+        'title' => 'My Title'
+    ]);
+});
+
+// With instance
+Course::get('/', function () {
+    echo (new Wolf)->loadView('welcome', [
+        'title' => 'My Title'
+    ]);
+});
 ```
         
 And in your `home.php`, retrieve the value informed in this way:
 
 ```html
-<title>$title</title>
-```
-        
-## Custom extensions
-
-Wolf will search for files in `php` format, but to search for a different format, use the last parameter.
-
-```php
-Wolf::loadView('home', [
-    'title' => 'My Title'
-], "html");
+<title>{{ title }}</title>
 ```
         
 ## Loading CSS, JS and images
 
 Make sure the files exist in the folder `public/assets/_css`, `public/assets/_js` and `public/assets/_img`
 
-To load a CSS file, use the static `loadCss` method in your template.
+To load a CSS file, use the static `load_css` method in your template.
 
 ```html
-<link rel="stylesheet" href="<?= loadCss('style.css'); ?>">
+<link rel="stylesheet" href="{{ load_css('style.css'); }}">
 ```
         
-To load a JS file, use the static `loadJs` method in your template.
+To load a JS file, use the static `load_js` method in your template.
 
 ```html
-<link rel="stylesheet" href="<?= loadJs('file.js'); ?>">
+<link rel="stylesheet" href="{{ load_js('file.js'); }}">
 ```
         
-To load a image file, use the static `loadImg` method in your template.
+To load a image file, use the static `load_img` method in your template.
 
 ```html
-<img src="<?= loadImg('image.png'); ?>">
+<img src="{{ load_img('image.png'); }}">
 ```
 
-To load a file outside the `_css`,` _js` and `_img` folder, use the `loadFile` method.
+To load a file outside the `_css`,` _js` and `_img` folder, use the `load_file` method.
 
 ```html
-<img src="<?= loadFile('path/for/your/file'); ?>">
+<img src="{{ load_file('path/for/your/file'); }}">
 ```
 
 ## Cache templates
+
+**Cache on all pages**
 
 If you have a template that takes a long time to load, or is rarely accessed, consider creating a cache of that template.
 
 Wolf's cache works as follows: a page is loaded, then a page identical to the one that was loaded with all the data already saved in cache is created. When reloading, if this page is still valid, the page's cache will be displayed.
 
+To cache your views, edit the `bootstrap.yaml` file:
+
+```yaml
+wolf_cache:
+  enabled: true # false
+  time: minute  # minute, hour, day, week
+```
+
+In `time`, you can define if you want to cache your views for 1 minute, 1 hour, 1 day or 1 week.
+
+**Cache on a single page**
+
+If you don't want to create a cache file for all templates, consider using the `WolfCache` class to generate a cache file for each template. This class will create a cache file just for a single view (or for several if you add this class in the Controller's constructor).
+
 The syntax below shows how long the template can be cached.
 
 ```php
+use Solital\Core\Wolf\WolfCache;
+
 # The template is cached for one minute
-Wolf::cache()->forOneMinute();
+WolfCache::cache()->forOneMinute();
 
 # The template is cached for an hour
-Wolf::cache()->forOneHour();
+WolfCache::cache()->forOneHour();
 
 # The template is cached for a day
-Wolf::cache()->forOneDay();
+WolfCache::cache()->forOneDay();
 
 # The template is cached for a week
-Wolf::cache()->forOneWeek();
-
-Wolf::loadView('home', [
-    'title' => 'My Title'
-]);
+WolfCache::cache()->forOneWeek();
 ```
 
-To create the cache for all templates, consider using this method in the controller constructor.
+The code above shows how long the view will be cached. To actually generate the view cache, use the `makeCache()` method passing the template name as a parameter.
 
 ```php
-<?php
+Course::get('/', function () {
+    WolfCache::cache()->forOneMinute()->makeCache('welcome');
 
-namespace Solital\Components\Controller;
-
-use Solital\Components\Controller\Controller;
-
-class UserController extends Controller 
-{
-    /**
-    * Construct
-    */
-    public function __construct()
-    {
-        Wolf::cache()->forOneHour();
-    } 
-
-    /**
-    * @return void
-    */
-    public function home(): void
-    {
-        Wolf::loadView('home', [
-            'title' => 'My Title'
-        ]);
-    }
-
-    ## Other methods...
-}
+    return view('welcome');
+});
 ```
 
 ## Minify Assets
@@ -129,27 +134,45 @@ Having to load multiple CSS and Javascript files can be a lot of work and can be
 
 By default, assets are loaded into the `public/assets/` folder. However, there is a second assets folder inside specific `resource/` to minify the CSS/JS files.
 
-When placing files inside `resources/assets/`, you can call the `minify` method. The code below shows the correct use of this method:
+If you want to generate a minified file for your assets, first add your CSS and JavaScript files to the `resource/assets` folder. Then edit the `bootstrap.yaml` file.
 
-```php
-# Minify only CSS files
-Wolf::minify()->style();
-
-# Minify only Javascript files
-Wolf::minify()->script();
-
-# Minify CSS and Javascript files
-Wolf::minify()->all();
+```yaml
+wolf_minify: false
 ```
+
+|   |
+|-----|
+|`style`: minify only CSS files|
+|`script`: minify only JS files|
+|`all`: minify CSS and JS files|
+|`false`: don't minify files|
 
 ### Load minified files into the template
 
-The `loadMinCss()` and `loadMinJs()` functions will load all files that are minified, without having to use the `loadCss()` and `loadJs()` functions.
+The `load_min_css()` and `load_min_js()` functions will load all files that are minified, without having to use the `load_css()` and `load_js()` functions.
 
 ```php
 # Load minify CSS
-<link rel="stylesheet" href="<?= loadMinCss() ?>">
+<link rel="stylesheet" href="{{ load_min_css() }}">
 
 # Load minify JS
-<script src="<?= loadMinJs() ?>"><script>
+<script src="{{ load_min_js() }}"><script>
+```
+
+## Extending templates
+
+It is very common for developers to create a `header.php` file and include it in other files. With Wolf this is also possible using the `extend` method.
+
+The `extend` method includes any template that is inside the `resource/view` folder.
+
+```html
+{% extend('header') %}
+```
+
+It is not necessary to inform the file extension, just use the file home without the extension.
+
+If you want to extend a view inside a folder, use a (.) separator.
+
+```html
+{% extend('auth.header') %}
 ```

@@ -202,45 +202,6 @@ For more information on urls, please see the [Urls](#urls) section.
 
 Route groups allow you to share route attributes, such as middleware or namespaces, across a large number of routes without needing to define those attributes on each individual route. Shared attributes are specified in an array format as the first parameter to the `Course::group` method.
 
-## Middleware
-
-To assign middleware to all routes within a group, you may use the middleware key in the group attribute array. Middleware are executed in the order they are listed in the array:
-
-```php
-Course::group(['prefix' => '/admin', 'middleware' => '\Solital\Components\Controller\UserController'], function ()
-{
-    Course::get("/login", "UserController@login")->name('login');
-    Course::put("/logout", "UserController@logout")->name('logout');
-});
-```
-
-Or otherwise:
-
-```php
-<?php
-
-namespace Solital\Components\Controller;
-
-class AdminController extends Controller
-{
-    public function handle(): void
-    {
-        print_r("Middleware");
-    }
-
-    public function login(): void
-    {
-        print_r("Login");
-    }
-}
-```
-
-And in your `routes.php`:
-
-```php
-Course::match(['get', 'post'], '/user/login', 'UserController@login')->addMiddleware('\Solital\Components\Controller\UserController:guest');
-```
-
 ### Namespaces
 
 Solital already has the default namespace to search for controllers (`Solital\Components\Controller`)
@@ -453,8 +414,8 @@ class Router extends Course {
 HTML forms do not support `PUT`,` PATCH` or `DELETE` actions. Therefore, when defining the `PUT`,` PATCH` or `DELETE` routes that are called from an HTML form, you will need to use the` spoofing` helper to add a hidden `_method` field to the form. The value sent with the `_method` field will be used as the HTTP request method:
 
 ```php
-<form method="post" action="<?= url(); ?>">
-    <?= spoofing('put'); ?>
+<form method="post" action="{{ url() }}">
+    {{ spoofing('put'); }}
     <!-- other input elements here -->
 </form>
 ```

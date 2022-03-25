@@ -59,37 +59,29 @@ $object = input()->file($index, $defaultValue = null);
 
 ## Managing files
 
-The `UP_DIR` constant is present in the `config.php` file. It defines the directory where your files will be stored.
+Below you will find some code to help you upload files in a quick way.
 
 ```php
 /**
  * From a form on the page like this
  * <input type="file" name="images" />
- */
-
-/* @var $image \Solital\Core\Http\Input\InputFile */
-
-/**
+ * 
  * Only file
  */
 $ext = input()->file('image')->getExtension();
 $imgMain = 'IMG-'.uniqid().".".$ext;
-input()->file('image')->move(UP_DIR.'/fotos/'.$imgMain);
+input()->file('image')->move(dirname(__DIR__).'/photos/'.$imgMain);
 
 /**
  * Loop through a collection of files uploaded from a form on the page like this
  * <input type="file" name="images[]" multiple />
- */
-
-/* @var $image \Solital\Core\Http\Input\InputFile */
-
-/**
+ * 
  * Multiple files
  */
 foreach ($photo as $photo) {
     $ext = $photo->getExtension();
     $img = 'IMG-'.uniqid().".".$ext;
-    $photo->move(UP_DIR.'/fotos/'.$img);
+    $photo->move(dirname(__DIR__).'/photos/'.$img);
 }
 
 ```

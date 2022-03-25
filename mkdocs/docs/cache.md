@@ -1,6 +1,6 @@
 Cache is a layer of high-speed physical data storage that holds a subset of data, usually temporary in nature, so that future requests for that data are answered more quickly than is possible when accessing the primary storage location of data. Caching allows you to efficiently reuse previously recovered or computed data.
 
-## How to use
+## How to use - PSR-16
 
 **Single cache**
 
@@ -164,4 +164,28 @@ In addition to public and private the Cache-Control header can specify no-cache 
 
 ```php
 $cache->noCacheControl();
+```
+
+## Clear Solital Cache
+
+When using your project several times, it is common for several stored session files to appear. These files are located inside the `app/Storage/session` folder. If you are using the Wolf cache, then these files can double in size.
+
+If you need to, you can use the Vinci Console to clear the general cache, just the session cache, or just the Wolf cache.
+
+To clear the general cache, use:
+
+```bash
+php vinci cache:clear
+```
+
+If you only want to clear the session cache, use the `--session` option:
+
+```
+php vinci cache:clear --session
+```
+
+And to clear the cache of the `app/Storage/cache/*` folder, use the `--cache` option:
+
+```
+php vinci cache:clear --cache
 ```
