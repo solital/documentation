@@ -8,6 +8,8 @@
 - Added Katrina ORM 2
 - Added YAML files for settings
 - Added `SecurePassword` component
+- Added `mapped_implode`, `middleware`, `cache` and `view` helpers
+- Added `makeCache` method in WolfCache class
 
 **Other news**
 
@@ -22,3 +24,8 @@
 - Added support for creating custom commands
 - Added `Request::limit` and `Request::repeat`
 - Added WolfException class
+- Fixed `htmlspecialchars` in Wolf
+- Fixed filter FILTER_SANITIZE_STRING to FILTER_SANITIZE_FULL_SPECIAL_CHARS
+- Fixed verify `$_GET` and `$_POST` variables
+- Removed `NativeMail` class
+- Removed debug methods

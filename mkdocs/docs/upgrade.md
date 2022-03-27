@@ -99,6 +99,58 @@ Application::autoload("../routers/");
 Application::init();
 ```
 
+## Classes and folders
+
+Some classes and folders will no longer be used by version `3.x`. The following classes should be deleted: **SQL.php** (`app/Database/`) and **CustomConsole.php** (`app/`).
+
+The following folders must be deleted along with all content: **Helpers** (`app/Helpers`).
+
+## Vinci File
+
+The Vinci Console has had a big change compared to the `2.x` version. For that, you'll have to replace all the code in the `vinci` file with this one:
+
+```php
+#!/usr/bin/env php
+<?php
+
+require_once 'vendor/autoload.php';
+
+define('SITE_ROOT', __DIR__);
+
+$class_commands = [
+    \Solital\Core\Kernel\Console\SolitalCommands::class,
+    \Solital\Console\Config::class
+];
+
+(new \Solital\Core\Console\Command($class_commands))->read($argv[1], $argv);
+```
+
+If necessary, manually create the `Config.php` file inside the `app/Console/` folder.
+
+```php
+<?php
+
+namespace Solital\Console;
+
+use Solital\Core\Console\Interface\ExtendCommandsInterface;
+
+class Config implements ExtendCommandsInterface
+{
+    /**
+     * @var array
+     */
+    protected array $command_class = [];
+
+    /**
+     * @return array
+     */
+    public function getCommandClass(): array
+    {
+        return $this->command_class;
+    }
+}
+```
+
 ### Copying new files
 
 After all these changes, you will need to run the following command:

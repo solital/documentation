@@ -505,21 +505,13 @@ By default, the database checks the table's foreign key and locks the truncate c
 To call a database procedure, use the `call()` method.
 
 ```php
-public function get()
-{
-    $res = $this->instance()->call('procedure_name');
-    return $res;
-}
+(new User)->call('procedure_name');
 ```
 
 To use procedure parameters, pass the values in array format.
 
 ```php
-public function get()
-{
-    $res = $this->instance()->call('procedure_name' , ['param_1, param_2, param_3']);
-    return $res;
-}
+(new User)->call('procedure_name' , ['param_1, param_2, param_3']);
 ```
 
 ## Pagination
@@ -527,23 +519,23 @@ public function get()
 The `pagination()` method creates a system for paging results. To initialize, the first parameter must be the table you want to use to start paging. The second parameter will list the amount of values that will be returned from the table as shown in the example below.
 
 ```php
-public function get()
-{
-    $res = $this->instance()->pagination('your_table', 3);
-    return $res;
-}
+$values = (new User)->pagination('your_table', 3);
 ```
 
-The above method will return an array containing `rows` indexes that will return values, and `arrows` that will return commands for pagination. 
+To retrieve the table values from the database, you can use the `getRows()` method. And to use pagination, use the `getArrows()` method.
+
+```php
+/** Returns table data */
+$values->getRows();
+
+/** Returns commands to advance or return */
+$values->getArrows()
+```
 
 To use pagination with relationship in another table, in the third parameter pass an array containing the name of the table that has a relationship with the current table, the column name of the current table that has the foreign key and the column name of the primary key of the another table.
 
 ```php
-public function get()
-{
-    $res = $this->instance()->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key']);
-    return $res;
-}
+$values = (new User)->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key']);
 ```
 
 **INNER JOIN**
@@ -553,11 +545,7 @@ If you want to use pagination with a table that has a foreign key, pass an array
 In the first index, insert the name of the table that is linked to the current table, in the second index the name of the column that contains the foreign key and in the third index the column name of the primary key of the table that references the current table
 
 ```php
-public function get()
-{
-    $res = $this->instance()->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key'], "status=true");
-    return $res;
-}
+$values = (new User)->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key'], "status=true");
 ```
 
 **WHERE clause**
@@ -565,27 +553,22 @@ public function get()
 To use the WHERE clause, use the fourth parameter as shown below.
 
 ```php
-public function get()
-{
-    $res = $this->instance()->pagination('your_table', 3, null, "status=true");
-    return $res;
-}
+$values = (new User)->pagination('your_table', 3, null, "status=true");
 ```
 
-**Wolf Templte**
+**Wolf Template**
 
-To use in the Wolf template, use it this way.
+Data pagination is widely used in project templates. You can integrate pagination into Wolf Template as follows:
 
 ```php
-$html = $this->instance()->pagination('your_table', 3);
+$values = (new User)->pagination('your_table', 3);
 
-Wolf::loadView('home', [
-    'rows' => $html['rows'],
-    'arrows' => $html['arrows']
+return view('home', [
+    'values' => $values
 ]);
 ```
 
-And in your view, return the results that way.
+In your template, retrieve the data like this:
 
 ```html
 <table>
@@ -598,63 +581,54 @@ And in your view, return the results that way.
     </thead>
 
     <tbody>
-        <?php foreach ($rows as $r): ?>
+        {% foreach ($values->getRows() as $result): %}
             <tr>
-                <td><?= $r['name'] ?></td>
-                <td><?= $r['age'] ?></td>
-                <td><?= $r['gender'] ?></td>
+                <td>{{ $result['name'] }}</td>
+                <td>{{ $result['age'] }}</td>
+                <td>{{ $result['gender'] }}</td>
             </tr>
-        <?php endforeach; ?>
+        {% endforeach; %}
     </tbody>
 </table>
 
-<?php
-echo $arrows;
+{{ $values->getArrows(); }}
 ```
 
 The result will be as follows:
 
+```html
 | Name  | Age | Gender |
 |-------|-----|--------|
 | Sam   | 47  | Male   |
 | Dean  | 49  | Male   |
 | Marry | 52  | Female |
 
-```html
 << 1 2 3 >>
 ```
 
-To change the arrows (`<<` and `>>`), use the last two parameters of the `pagination()` method. The result will be:
+To change the arrows (`<<` and `>>`), use the parameters of the `getArrows()` method. The result will be:
 
-```php
-public function get()
-{
-    $res = $this->instance()->pagination('your_table', 3, null, null, "First", "Last");
-    return $res;
-}
+```html
+{{ $values->getArrows('First', 'Last'); }}
 ```
 
+```html
 | Name  | Age | Gender |
 |-------|-----|--------|
 | Sam   | 47  | Male   |
 | Dean  | 49  | Male   |
 | Marry | 52  | Female |
 
-```html
 First 1 2 3 Last
 ```
 
 ## Custom Pagination
 
-If you have a very complex SELECT statement, you can use the `customPagination` method. This method already has a `LIMIT` by default, in addition to being able to change the name of the arrows.
+The `pagination()` method uses a basic SELECT statement. If you need to use a much more complex SELECT, consider using the `customPagination()` method.
 
 ```php
-public function get()
-{
-    $res = $this->instance()->customPagination("SELECT created_at, order_status, idSession, SUM(idOrder) AS idOrder FROM `tb_order` GROUP BY created_at, order_status, idSession", 3, "First", "Last");
-    
-    return $res;
-}
+$values = (new User)->customPagination("SELECT created_at, order_status, idSession, SUM(idOrder) AS idOrder FROM `tb_order` 
+GROUP BY created_at, order_status, idSession", 3);
 ```
 
 **Customizing arrows CSS**
@@ -681,6 +655,7 @@ Below is a customization to serve as an example:
     border-radius: 5px;
     margin-top: 30px;
     transition: 0.2s;
+    text-decoration: none;
 }
 
 .pagination_first_item:hover, .pagination_others_itens:hover, .pagination_last_item:hover {

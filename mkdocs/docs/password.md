@@ -4,7 +4,7 @@
 
 Since there is no pepper parameter for password_hash (even though Argon2 has a "secret" parameter, PHP does not allow to set it), the correct way to mix in a pepper is to use hash_hmac().” [php.net](https://www.php.net/manual/pt_BR/function.password-hash.php#124138)
 
-Solital uses the [SecurePassword](https://github.com/brenno-duarte/php-secure-password) package to validate passwords and prevent attacks. That is, even if someone manages to access the hash created with this package, using only the native `password_verify` function WILL NOT return true.
+Solital uses the [SecurePassword](https://github.com/brenno-duarte/php-secure-password) package to validate passwords and prevent attacks. That is, even if someone manages to access the hash created with this package, using only the native `password_verify` function WILL NOT return `true`.
 
 ## Customizing the password
 
@@ -22,8 +22,8 @@ password:
 
 In the `algorithm` key, you can add the following values: `default `, `argon2` and `argon2d`. For more information about other PHP constants, see [this link](https://www.php.net/manual/pt_BR/password.constants.php).
 
-## Changing the value of "pepper"
+## Changing the value of “pepper”
 
-As mentioned in the introduction, the `SecurePassword` package uses a `pepper`. To change the value of this `pepper`, you can edit the value of the `peeper` key in the `auth.yaml` file.
+As mentioned in the introduction, the `SecurePassword` package uses a “pepper” value. To change the value of this pepper, you can edit the value of the `peeper` key in the `auth.yaml` file.
 
-**NOTE: Do not change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting.**
+**NOTE: Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting.**
