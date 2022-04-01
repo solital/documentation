@@ -10,28 +10,24 @@ $message = new Message();
 
 ## How to use
 
-It is possible to create a new message like this: 
+You can create a message using the `new()` method in controller, or using the `messages()` helper:
 
 ```php
-/**
- * @return void
- */
-public function generate(): void
-{
-    $this->message->new('msg.test', 'Just a test message displayed in the view!');
-}
+/** With method */
+$this->message->new('msg.test', 'Just a test message displayed in the view!');
+
+/** With helper */
+message('msg.test', 'Just a test message displayed in the view!');
 ```
 
-To retrieve this message, use the `get` method inside your controller. 
+To retrieve this message, use the `get` method. 
 
 ```php
-/**
- * @return void
- */
-public function home(): void
-{
-    echo $this->message->get('msg.test');
-}
+/** With method */
+echo $this->message->get('msg.test');
+
+/** With helper */
+echo message('msg.test');
 ```
 
 ## Using in Wolf Template
@@ -61,7 +57,7 @@ class UserController extends Controller
     public function home(): void
     {
         return view('home', [
-            'msg' => $this->message->get('msg.test')
+            'msg' => $this->message->get('msg.test') // message('msg.test');
         ]);
     }
 
@@ -71,6 +67,8 @@ class UserController extends Controller
     public function generate(): void
     {
         $this->message->new('msg.test', 'Just a test message displayed in the view!');
+
+        // message('msg.test', 'Just a test message displayed in the view!');
     }
     
 ```

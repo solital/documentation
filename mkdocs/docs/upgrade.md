@@ -65,10 +65,26 @@ Finally, remove the `extra` from your `composer.json` file:
 
 ### config.php
 
-In the `config.php` file that is at the root of Solital, you will remove just one line:
+In the `config.php` file that is at the root of Solital, you will replace the existing code with this one:
 
 ```php
-require_once 'app/Helpers/helpers-custom.php';
+<?php
+
+require_once __DIR__ .'/vendor/autoload.php';
+
+use Solital\Core\Kernel\Application;
+
+Application::sessionInit();
+
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
+
+if (!empty(getenv('ERRORS_DISPLAY'))) {
+    if (getenv('ERRORS_DISPLAY') == 'true') {
+        ini_set('display_errors', 1);
+        error_reporting(E_ALL);
+    }
+}
 ```
 
 ### index.php
