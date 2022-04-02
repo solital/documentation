@@ -43,10 +43,12 @@ By this code:
         "composer dump-autoload -o"
     ],
     "post-install-cmd": [
-        "composer dump-autoload -o"
+        "composer dump-autoload -o",
+        "php vinci generate:files"
     ],
     "post-update-cmd": [
-        "composer dump-autoload -o"
+        "composer dump-autoload -o",
+        "php vinci generate:files"
     ]
 }
 ```
@@ -61,6 +63,33 @@ Finally, remove the `extra` from your `composer.json` file:
       "vendor/solital/core/vinci": "vinci"
     }
 }
+```
+
+### .env
+
+The variables below will no longer be used in version `3.x`, so they should be removed.
+
+```bash
+# NATIVEMAIL CONFIG
+MAIL_SENDER=""
+MAIL_RECIPIENT=""
+
+# WINDOWS ONLY
+MYSQL_DUMP=""
+PG_DUMP=""
+SQLITE3=""
+```
+
+The `NativeMail` class has been removed from version `3.x` and `PHPMailer` will be Solital's default mailing package. The email variables have been replaced by these:
+
+```bash
+# EMAIL CONFIG
+MAIL_DEBUG="0"
+MAIL_HOST=""
+MAIL_USER=""
+MAIL_PASS=""
+MAIL_SECURITY=""
+MAIL_PORT=""
 ```
 
 ### config.php
@@ -103,13 +132,14 @@ require_once dirname(__DIR__). '/vendor/autoload.php';
 
 use Solital\Core\Course\Course;
 use Solital\Core\Kernel\Application;
+use Solital\Core\Http\Middleware\BaseCsrfVerifier;
 
 define('SITE_ROOT', dirname(__DIR__));
 
 Application::autoload("../vendor/solital/core/src/Resource/Helpers/");
 
 Course::setDefaultNamespace('\Solital\Components\Controller');
-Course::csrfVerifier(new \Solital\Core\Http\Middleware\BaseCsrfVerifier());
+Course::csrfVerifier(new BaseCsrfVerifier());
 
 Application::autoload("../routers/");
 Application::init();
