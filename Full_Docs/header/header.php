@@ -3,62 +3,58 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Solital is a fast PHP framework for creating projects, containing a template system, login structure, Console and more." />
-    <meta name="robots" content="<?= $meta_index ?>, follow" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
     <title><?= $title ?></title>
-    <link rel="stylesheet" href="<?= fullUrl() ?>/assets/css/reset.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= fullUrl() ?>/assets/css/custom.css" />
-    <link rel="stylesheet" href="<?= fullUrl() ?>/assets/css/animate.css">
-    <link rel="stylesheet" href="<?= fullUrl() ?>/assets/css/style.css">
-    <!-- Font awesome 5.13 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <!-- favicon -->
-    <link rel="icon" href="<?= fullUrl() ?>/assets/img/favicon.ico">
-    <style>
-        .main {
-            margin-top: 50px;
-        }
+    <meta content="Solital is a fast PHP framework for creating projects, containing a template system, login structure, Console and more." name="description">
+    <meta content="php framework, solital" name="keywords">
+    <meta name="robots" content="<?= $meta_index ?>, follow" />
 
-        @media (max-width: 540px) {
-            h1, h2 {
-                font-size: 40px !important;
-            }
+    <!-- Favicons -->
+    <link href="<?= fullUrl() ?>assets/img/favicon.ico" rel="icon">
+    <link href="<?= fullUrl() ?>assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-            .logo {
-                text-align: center !important;
-            }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
-            .main {
-                margin-top: 20px;
-            }
-        }
-    </style>
+    <!-- Vendor CSS Files -->
+    <link href="<?= fullUrl() ?>assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="<?= fullUrl() ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= fullUrl() ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="<?= fullUrl() ?>assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="<?= fullUrl() ?>assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="<?= fullUrl() ?>assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="<?= fullUrl() ?>assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+  * Template Name: FlexStart - v1.9.0
+  * Template URL: https://bootstrapmade.com/flexstart-bootstrap-startup-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white shadow p-2">
-        <button class="navbar-toggler btn btn-2" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbar-menu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
 
-        <div class="collapse navbar-collapse" id="navbar-menu">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item li-main-menu">
-                    <a class="nav-link itens-main-menu font-weight-bold txt-5" href="<?= fullUrl() ?>">Home</a>
-                </li>
-                <li class="nav-item li-main-menu">
-                    <a class="nav-link itens-main-menu font-weight-bold txt-5" href="<?= fullUrl() ?>/docs/2.x">Documentation</a>
-                </li>
-                <li class="nav-item li-main-menu">
-                    <a class="nav-link itens-main-menu font-weight-bold txt-5" href="https://github.com/solital/core/blob/master/CHANGELOG.md">News</a>
-                </li>
-                <li class="nav-item li-main-menu">
-                    <a class="nav-link itens-main-menu font-weight-bold txt-5" href="<?= fullUrl() ?>/contribute">Contribute</a>
-                </li>
-            </ul>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="<?= fullUrl() ?>" class="logo d-flex align-items-center">
+                <img src="<?= fullUrl() ?>assets/img/solital-logo-2-trans.png" alt="">
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#what-is">What Is</a></li>
+                    <li><a class="nav-link scrollto" href="#features">Features</a></li>
+                    <li><a class="nav-link scrollto" href="<?= fullUrl() ?>contribute">Contribute</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
         </div>
-    </nav>
-
-    <main class="main">
+    </header><!-- End Header -->

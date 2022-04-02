@@ -1,4 +1,4 @@
 <?php
 
-header("Location: http://solitalframework.com/docs/2.x/");
+header("Location: http://solitalframework.com/docs/3.x/");
 die();

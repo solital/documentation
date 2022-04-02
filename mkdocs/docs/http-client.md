@@ -1,6 +1,4 @@
-Solital has a component to manipulate the HTTP client, useful for consuming API and making HTTP requests.
-
-Before, you will need to install the component using the command below:
+Solital has a component to manipulate the HTTP client, useful for consuming API and making HTTP requests. Before, you will need to install the component using the command below:
 
 ```
 composer require solital/http-client
@@ -8,7 +6,7 @@ composer require solital/http-client
 
 ## Requirements
 
-- PHP 7.4 or PHP ^8.0
+- PHP >= 8.0
 - CURL extension enabled
 
 ## Basic use
@@ -102,46 +100,68 @@ $client->enableSSL();
 
 ### Basic Auth
 
-To perform authentication on an API that requires basic authentication, you can use the second parameter to inform the user and password. It is necessary to inform an array containing the indexes `user` and` pass`.
+If you are handling an API with authentication in basic, you can use the `basicAuth()` method to do the authentication. The first parameter will be the username, while the second parameter will be the password.
 
 ```php
-$client = new HttpClient(null, [
-    'user' => 'username',
-    'pass' => '123'
-]);
-
+$client = new HttpClient();
+$client->basicAuth('user', 'pass');
 $client->request("GET", "http://api.url.com");
 $res = $client->toJson();
 
 pre($res);
 ```
 
-## Securing routes
+### Bearer authentication
 
-### With Basic Auth
-
-Basic authentication requires the username and password in the class constructor. If an index other than `user` and` pass` is informed, an exception will be thrown.
-
-You can protect your routes through basic authentication as shown below.
+For authentications using the bearer token, you can use the `bearerToken()` method to provide the authentication token.
 
 ```php
-use Solital\Http\Auth\HttpAuth;
+$client = new HttpClient();
+$http_client->bearerToken("2edac0d91305c9207d36eda3cbf2c0d7");
+$client->request("GET", "http://api.url.com");
+$res = $client->toJson();
 
-$auth = new HttpAuth([
-    'user' => 'username',
-    'pass' => '123'
-]);
-$auth->basic();
+pre($res);
 ```
 
-### With Digest Auth
+## Securing your API
 
-In digest authentication, it is not necessary to inform anything in the constructor, just pass the allowed users with their respective passwords as a parameter in the `digest` method.
+You can secure your API URL using `basic` or `digest` authentication. First, instantiate the `HttpAuth` class:
 
 ```php
 use Solital\Http\Auth\HttpAuth;
 
 $auth = new HttpAuth();
-# 'username' => 'password'
-$auth->digest(['admin' => 'pass1', 'admin2' => 'pass2', ...]);
+```
+
+### With Basic Auth
+
+To secure your API using `basic` authentication, use the `basic()` method providing the username and password to authenticate.
+
+```php
+$auth = new HttpAuth();
+$auth->basic('username', '123');
+```
+
+If you want, you can change the value of `realm` in the second parameter.
+
+```php
+$auth = new HttpAuth();
+$auth->basic('username', '123', 'my_realm');
+```
+
+### With Digest Auth
+
+To use `digest` to protect your API, use the `digest()` method. In this method, you must use an array to inform the username and password. You can define multiple users for this authentication type.
+
+```php
+$auth = new HttpAuth();
+$auth->digest(['username_1' => 'password_1', 'username_2' => 'password_2', ...]);
+```
+
+If you want, you can change the value of `realm` in the second parameter.
+
+```php
+$auth = new HttpAuth();
+$auth->digest(['username_1' => 'password_1'], 'my_second_realm');
 ```

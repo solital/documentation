@@ -6,7 +6,8 @@
 function fullUrl(): string
 {
     $url = "";
-    $localhost = "http://localhost/Solital/documentation";
+    $localhost = "http://localhost/Solital/documentation/Full_Docs/";
+    #$localhost = "http://localhost" . $_SERVER['REQUEST_URI'];
     $online = $_SERVER['SERVER_NAME'];
 
     if ($online == 'localhost') {
@@ -14,6 +15,6 @@ function fullUrl(): string
     } else {
         $url = 'http://' . $online;
     }
-    
+
     return $url;
 }
