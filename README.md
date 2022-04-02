@@ -4,16 +4,10 @@ Solit Framework documentation and website source code
 
 ## Core
 
-**Current**
-3.x
-
-**Others**
-2.x
+**Current:** 3.x
+**Others:** 2.x
 
 ## Katrina ORM
 
-**Current**
-2.x
-
-**Others**
-1.x
+**Current:** 2.x
+**Others:** 1.x
