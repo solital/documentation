@@ -1,17 +1,19 @@
 {% if not nav_item.children %}
-  <a href="{{ nav_item.url|url }}" class="list-group-item list-group-item-action no-border bg-menu {% if nav_item.active %}active-list {% endif %}">
+  <a href="{{ nav_item.url|url }}" class="dashboard-nav-item {% if nav_item.active %}active {% endif %}">
     {{ nav_item.title }}
   </a>
 {% else %}
-<a class="list-group-item list-group-item-action no-border bg-menu {% if nav_item.active %}active-list {% endif %}" href="#{{ nav_item.title }}"
-data-toggle="collapse" aria-expanded="false">
-  {{ nav_item.title }}
-</a>
-<ul class="collapse list-unstyled" id="{{ nav_item.title }}">
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle {% if nav_item.active %}active {% endif %}">
+    {{ nav_item.title }}
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
     {% for nav_item in nav_item.children %}
-    <a href="{{ nav_item.url|url }}" class="subitem">
-      <li>{{ nav_item.title }}</li>
-    </a>
+      <a href="{{ nav_item.url|url }}" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> {{ nav_item.title }}
+      </a>
     {% endfor %}
-</ul>
+  </div>
+</div>
 {% endif %}

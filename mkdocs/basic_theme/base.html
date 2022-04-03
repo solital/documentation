@@ -7,14 +7,12 @@
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ config.site_name }}</title>
   <link rel="shortcut icon" href="{{ "img/favicon.ico"|url }}">
 
-  <!-- <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"> -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link rel="stylesheet" href="{{ "css/reset.css"|url }}">
-  <link rel="stylesheet" href="{{ "css/bootstrap.css"|url }}">
+  <link rel="stylesheet" href="{{ "css/bootstrap.min.css"|url }}">
   <link rel="stylesheet" href="{{ "css/sidebar.css"|url }}">
   <link rel="stylesheet" href="{{ "css/style.css"|url }}">
-  <link rel="stylesheet" href="{{ "css/theme-2.css"|url }}">
   <link rel="stylesheet" href="{{ "css/styles/default.css"|url }}">
-  <link rel="stylesheet" href="{{ "css/custom.css"|url }}">
   <link rel="stylesheet" href="{{ "css/code-1.css"|url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
@@ -23,11 +21,9 @@
   {% endfor %}
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="{{ "js/bootstrap.js"|url }}"></script>
-  <script src="{{ "js/bootstrap.bundle.js"|url }}"></script>
+  <script src="{{ "js/bootstrap.min.js"|url }}"></script>
+  <script src="{{ "js/bootstrap.bundle.min.js"|url }}"></script>
   <script src="{{ "js/highlight.pack.js"|url }}"></script>
-  <script src="{{ "js/nav.js"|url }}"></script>
-  <script src="{{ "js/popper.min.js"|url }}"></script>
   <script src="{{ "js/scripts.js"|url }}"></script>
   <script>hljs.highlightAll();</script>
 
@@ -35,54 +31,121 @@
   {% endblock %}
 
   {% for path in config.extra_javascript %}
-  <script src="{{ path|url }}"></script>
+    <script src="{{ path|url }}"></script>
   {% endfor %}
 
   {% if config.google_analytics %}
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-      }, i[r].l = 1 * new Date(); a = s.createElement(o),
-        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-    ga('create', '{{ config.google_analytics[0] }}', '{{ config.google_analytics[1] }}');
-    ga('send', 'pageview');
-  </script>
+      ga('create', '{{ config.google_analytics[0] }}', '{{ config.google_analytics[1] }}');
+      ga('send', 'pageview');
+    </script>
   {% endif %}
 
 </head>
 
 <body>
-  <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="border-right bg-menu" id="sidebar-wrapper">
-      <div class="sidebar-heading">
-        <a class="navbar-brand">
-          <img class="d-inline-block align-top img-fluid logo-menu" src="{{ "img/solital-logo-2-sm-trans-2.png"|url }}">
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
         </a>
-      </div>
-      <div class="scroll">
-        <ul class="list-group list-group-flush bg-menu">
-          {% for nav_item in nav %}
-          {% include "nav.html" %}
-          {% endfor %}
-        </ul>
-      </div>
-      <!-- <hr>
-      <button class="btn btn-1 dropdown-toggle ml-2" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        Versão do Solital
-      </button>
-      <div class="dropdown-menu bg-1" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item text-white" href="#">1.0</a>
-      </div> -->
-    </div>
-    <!-- /#sidebar-wrapper -->
 
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
+        <a href="#" class="brand-logo">
+          <img src="{{ "img/solital-logo-2-sm-trans-2.png"|url }}" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        {% for nav_item in nav %}
+        {% include "nav.html" %}
+        {% endfor %}
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">{{ page.title }}</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                {% if page and page.edit_url %}
+                  <a href="{{ page.edit_url }}">Edit on {{ config.repo_name }}</a>
+                {% elif config.repo_url %}
+                  <a href="{{ config.repo_url }}">{{ config.repo_name }}</a>
+                {% endif %}
+
+                <ul class="ml-5 mb-5">
+                  {% for toc_item in page.toc %}
+                    <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+                  {% for toc_item in toc_item.children %}
+                    <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+                  {% endfor %}
+                  {% endfor %}
+                </ul>
+
+                {% block content %}
+                {{ page.content }}
+                {% endblock %}
+
+                <hr />
+
+                {% if page.next_page or page.previous_page %}
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    {% if page.previous_page %}
+                      <li class="breadcrumb-item"><a href="{{ page.previous_page.url|url }}">&#8592; {{ page.previous_page.title }}</a></li>
+                    {% endif %}
+                    {% if page.next_page %}
+                      <li class="breadcrumb-item"><a href="{{ page.next_page.url|url }}">{{ page.next_page.title }} &#8594;</a></li>
+                    {% endif %}
+                  </ol>
+                </section>
+                {% endif %}
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : {{ mkdocs_version }}
+              Docs Build Date UTC : {{ build_date_utc }}
+              -->
+
+          </section>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  <div id="page-content-wrapper">
       <nav class="navbar navbar-expand-lg navbar-light w-100" style="margin-left: -1px;">
         <button class="btn btn-1" id="menu-toggle">
           <i class="fas fa-arrows-alt-h p-1"></i>
@@ -100,7 +163,8 @@
               <a class="nav-link" href="http://solitalframework.com">Home</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 Doc Version
               </a>
               <div class="dropdown-menu bg-1" aria-labelledby="navbarDropdown" style="width: 10% !important;">
@@ -109,7 +173,7 @@
             </li>
             <li class="nav-item">
               <div role="search">
-                <form action="{{ "search.html"|url }}" method="get">
+                <form action="{{ " search.html"|url }}" method="get">
                   <input type="search" name="q" placeholder="&#xf002; Search..." class="input-search"
                     autocomplete="off" />
                 </form>
@@ -119,79 +183,10 @@
         </div>
       </nav>
 
-      <section class="container-fluid section">
-        <div class="row">
-          <div class="col-md-12 w-100">
-            <h1 class="mt-4 font-weight-normal">{{ page.title }}</h1>
-          </div>
-  
-          <div class="col-md-12 mt-3">
-            {% if page and page.edit_url %}
-            <a href="{{ page.edit_url }}">Edit on {{ config.repo_name }}</a>
-            {% elif config.repo_url %}
-            <a href="{{ config.repo_url }}">{{ config.repo_name }}</a>
-            {% endif %}
-  
-            <ul class="ml-5 mb-5">
-              {% for toc_item in page.toc %}
-              <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
-              {% for toc_item in toc_item.children %}
-              <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
-              {% endfor %}
-              {% endfor %}
-            </ul>
-  
-            {% block content %}
-            {{ page.content }}
-            {% endblock %}
-  
-            <hr />
-  
-            <h3>What to see next?</h3>
-  
-            <section class="container">
-              {% if page.next_page or page.previous_page %}
-            
-              <div class="row mt-3">
-                <nav class="col-md-6 col-sm-12">
-                  <ul class="form-inline next">
-                    {% if page.previous_page %}
-                    <li class="next-li"><a href="{{ page.previous_page.url|url }}"
-                        title="{{ page.previous_page.title }}">&#8592; {{ page.previous_page.title }}</a></li>
-                    {% endif %}
-                    
-                    {% if page.next_page %}
-                    <li class="next-li"><a href="{{ page.next_page.url|url }}" title="{{ page.next_page.title }}" />{{ page.next_page.title }}
-                      &#8594;</a></li>
-                    {% endif %}
-                  </ul>
-                </nav>
-              </div>
-              
-              {% endif %}
-            </section>
-          </div>
-  
-          <hr>
-  
-          <div class="row text-center mt-3">
-            <div class="col-md-12 ml-2">
-              Built with <a href="https://www.mkdocs.org">MkDocs</a>.
-            </div>
-          </div>
-        </div>
-
-        <!--
-          MkDocs version      : {{ mkdocs_version }}
-          Docs Build Date UTC : {{ build_date_utc }}
-          -->
-
-      </section>
+      
     </div>
-    <!-- /#page-content-wrapper -->
+  </div> -->
 
-  </div>
-  <!-- /#wrapper -->
 
 </body>
 
