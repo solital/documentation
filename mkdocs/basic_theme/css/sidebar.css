@@ -171,7 +171,6 @@ h1, .h1 {
   -webkit-flex-grow: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
-  /* padding: 25px; */
 }
 
 .dashboard-nav {
@@ -266,7 +265,7 @@ h1, .h1 {
 
 .dashboard-nav-item {
   min-height: 50px;
-  padding: 8px 30px 8px 30px;
+  padding: 8px 20px 8px 30px;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

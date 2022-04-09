@@ -45,7 +45,7 @@ Course::form('foo', function() {
 
 ### Default Base Path
 
-This will allows users to set a default basepath for all url requests, which will be prepended to all url parameters. (Credits to [MasterPuffin](https://github.com/MasterPuffin))
+This will allows users to set a default basepath for all url requests, which will be prepended to all url parameters.
 
 ```php
 Course::setDefaultBasepath('/forum')
@@ -326,11 +326,11 @@ class CustomRouterRules implements RouterBootManagerInterface
             '/horses-are-great'   => '/article/view/2',
         ];
 
-        foreach($rewriteRules as $url => $rule) {
+        foreach ($rewriteRules as $url => $rule) {
 
             // If the current url matches the rewrite url, we use our custom route
 
-            if($request->getUri()->getPath() === $url) {
+            if ($request->getUri()->getPath() === $url) {
                 $request->setRewriteUrl($rule);
             }
         }
@@ -411,7 +411,7 @@ class Router extends Course {
 
 ## Form Method Spoofing
 
-HTML forms do not support `PUT`,` PATCH` or `DELETE` actions. Therefore, when defining the `PUT`,` PATCH` or `DELETE` routes that are called from an HTML form, you will need to use the` spoofing` helper to add a hidden `_method` field to the form. The value sent with the `_method` field will be used as the HTTP request method:
+HTML forms do not support `PUT`,` PATCH` or `DELETE` actions. Therefore, when defining the `PUT`,` PATCH` or `DELETE` routes that are called from an HTML form, you will need to use the `spoofing` helper to add a hidden `_method` field to the form. The value sent with the `_method` field will be used as the HTTP request method:
 
 ```php
 <form method="post" action="{{ url() }}">

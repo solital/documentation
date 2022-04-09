@@ -2,30 +2,26 @@
 
 **Main news**
 
-- Solital requires PHP version 8.0.0
-- Queues, migrations and Seeders support
-- Markers in views when using the Wolf Template
-- Added Katrina ORM 2
-- Added YAML files for settings
+- Added PHP 8.0 support
 - Added `SecurePassword` component
+- Added PSR-6
+- Added YAML support
+- Added `BaseController` class
 - Added `mapped_implode`, `middleware`, `cache` and `view` helpers
-- Added `makeCache` method in WolfCache class
+- Added Kernel component
+- Added Migrations and Seeds
+- Added logging on Wolf and routes
+- Added Katrina ORM 2
+- Added Queue and QueueMail
+- Added support for creating custom commands
+- Added `Request::limit` and `Request::repeat`
+- Added pure HTML template support in Wolf Template
+- Added new `Session`, `Cookie`, `Console`, `Container` and `Logger` components
 
 **Other news**
 
-- Added PSR-6
-- Added `getenv` function
-- Added `BaseController` class
-- Added `middleware`, `cache` and `view` helpers
-- Added Kernel component
-- Added log files
+- Added `makeCache` method in WolfCache class
 - Added autoload in helpers and routers files
-- Added QueueMail
-- Added support for creating custom commands
-- Added `Request::limit` and `Request::repeat`
+- Added `getenv` function
 - Added WolfException class
-- Fixed `htmlspecialchars` in Wolf
-- Fixed filter FILTER_SANITIZE_STRING to FILTER_SANITIZE_FULL_SPECIAL_CHARS
-- Fixed verify `$_GET` and `$_POST` variables
-- Removed `NativeMail` class
-- Removed debug methods
+- Added command to copy configuration files

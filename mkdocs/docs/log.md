@@ -1,147 +1,258 @@
-Logger is a powerful PSR-3 logger for PHP that is simple to use.
+First, every Logger has a `channel`, which is a name that will be associated with each entry of the logger log, and each part of the application can have a logger with a different channel to better differentiate them, facilitating the filtering of information,
 
-Simplicity is achieved by providing great defaults. No options to configure! Yet flexible enough to meet most logging needs.
-And if your application's logging needs expand beyond what Logger provides, since it implements PSR-3, you can drop in
-another great PSR-3 logger like [MonoLog](https://github.com/Seldaek/monolog) in its place when the time comes with minimal changes.
+To the Logger must be added one or more `handlers` that are components that record the logs in certain ways, like the classic files or sockets and databases for example.
 
-Made by [markrogoyski](https://github.com/markrogoyski/simplelog-php)
+Another important concept in the use of logs is the level of the log record, not all information has the same “importance” in the log, or the same urgency to be dealt with, so entries in a log are categorized by levels:
 
-### Simple 20-Second Getting-Started Tutorial
+- **DEBUG:** Debug information.
+- **INFO:** Interesting events. For example: a user performed SQL login or logs.
+- **NOTICE:** Normal but significant events.
+- **WARNING:** Exceptional occurrences, but not errors. For example: Use of deprecated APIs, inappropriate use of an API. In general things that are not wrong but need attention.
+- **ERROR:** Runtime errors that do not require immediate action, but must be logged and monitored.
+- **CRITICAL:** Critical conditions. For example: An application component is not available, an unexpected exception has occurred.
+- **ALERT:** Immediate action must be taken. Example: System crashed, database is unavailable, etc. It should trigger an alert for the person in charge to take action as soon as possible.
+- **EMERGENCY:** Emergency: The system is unusable.
 
-```php
-use Solital\Core\Resource\Logger;
+## Usage
 
-$channel = 'events';
-$logger  = new Logger($channel);
-
-$logger->info('Logger really is simple.');
-```
-
-That's it! Your application is logging!
-
-### Extended Example
+Create the logger instance with a channel id,
 
 ```php
-use Solital\Core\Resource\Logger;
-
-$channel = 'billing';
-$logger  = new Logger($channel);
-
-$logger->info('Begin process that usually fails.', ['process' => 'invoicing', 'user' => $user]);
-
-try {
-    invoiceUser($user); // This usually fails
-} catch (\Exception $e) {
-    $logger->error('Billing failure.', ['process' => 'invoicing', 'user' => $user, 'exception' => $e]);
-}
-```
-
-Logger output
-```
-2017-02-13 00:35:55.426630  [info]  [billing] [pid:17415] Begin process that usually fails. {"process":"invoicing","user":"bob"}  {}
-2017-02-13 00:35:55.430071  [error] [billing] [pid:17415] Billing failure.  {"process":"invoicing","user":"bob"}  {"message":"Could not process invoice.","code":0,"file":"/path/to/app.php","line":20,"trace":[{"file":"/path/to/app.php","line":13,"function":"invoiceUser","args":["mark"]}]}
-```
-
-### Log Output
-
-Log lines have the following format:
-```
-YYYY-mm-dd HH:ii:ss.uuuuuu  [loglevel]  [channel]  [pid:##]  Log message content  {"Optional":"JSON Contextual Support Data"}  {"Optional":"Exception Data"}
-```
-
-Log lines are easily readable and parsable. Log lines are always on a single line. Fields are tab separated.
-
-### Log Levels
-
-Logger has eight log level severities based on [PSR Log Levels](http://www.php-fig.org/psr/psr-3/#psrlogloglevel).
-
-```php
-$logger->debug('Detailed information about the application run.');
-$logger->info('Informational messages about the application run.');
-$logger->notice('Normal but significant events.');
-$logger->warning('Information that something potentially bad has occured.');
-$logger->error('Runtime error that should be monitored.');
-$logger->critical('A service is unavailable or unresponsive.');
-$logger->alert('The entire site is down.');
-$logger->emergency('The Web site is on fire.');
-```
-
-By default all log levels are logged. The minimum log level can be changed in two ways:
- * Optional constructor parameter
- * Setter method at any time
-
-```php
-use Solital\Core\Resource\Logger;
 use Psr\Log\LogLevel;
+use Solital\Core\Logger\Logger;
+use Solital\Core\Logger\Entry\MemoryInfo;
+use Solital\Core\Logger\Handler\SyslogHandler;
+use Solital\Core\Logger\Handler\TerminalHandler;
 
-// Optional constructor Parameter (Only error and above are logged [error, critical, alert, emergency])
-$logger = new Logger($logfile, $channel, LogLevel::ERROR);
+// with channel id
+$logger = new Logger('MyApp');
 
-// Setter method (Only warning and above are logged)
-$logger->setLogLevel(LogLevel::WARNING);
+// log every warning to syslog
+$logger->addHandler(
+    LogLevel::WARNING,
+    new SyslogHandler()
+);
+
+// log to terminal for MemoryInfo entry
+$logger->addHandler(
+    LogLevel::INFO,
+    new TerminalHandler(),
+    MemoryInfo::class // handle this log object only
+);
+
+// log a text message
+$logger->warning('a warning message');
+
+// log memory usage
+$logger->info(new MemoryInfo());
 ```
 
-### Contextual Data
+## Concepts
 
-Logger enables logging best practices to have general-use log messages with contextual support data to give context to the message.
+- **Log entry**
 
-The second argument to a log message is an associative array of key-value pairs that will log as a JSON string, serving as the contextual support data to the log message.
+*A log entry* is a message in the form of an object. It solves the problem
+of **'WHAT TO BE SENT OUT'**. It has a message template, and some processors
+to process its context.
+
+For example, `Entry\MemoryInfo` is a predefined log entry with a message
+template of `{memory_used}M memory used , peak usage is {memory_peak}M`
+and one `Processor\MemoryProcessor` processor.
 
 ```php
-// Add context to a Web request.
-$log->info('Web request initiated', ['method' => 'GET', 'endpoint' => 'user/account', 'queryParameters' => 'id=1234']);
+// with predefined template and processor
+$logger->warning(new MemoryInfo());
 
-// Add context to a disk space warning.
-$log->warning('Free space is below safe threshold.', ['volume' => '/var/log', 'availablePercent' => 4]);
+// use new template
+$logger->warning(new MemoryInfo('Peak memory usage is {memory_peak}M'));
 ```
 
-### Logging Exceptions
-Exceptions are logged with the contextual data using the key *exception* and the value the exception variable.
+`Entry\LogEntry` is the log entry prototype used whenever text message is
+to be logged
 
 ```php
-catch (\Exception $e) {
-    $logger->error('Something exceptional has happened', ['exception' => $e]);
+// using LogEntry
+$logger->info('test only');
+```
+
+To define your own log entry,
+
+```php
+use Solital\Core\Logger\Entry\LogEntry;
+
+class MyMessage extends LogEntry
+{
+    // message template
+    protected $message = 'your {template}';
+}
+
+// add handler
+$logger->addHandler(
+    'warning', // level
+    function(LogEntry $entry) { // a handler
+        echo (string) $entry;
+    },
+    MyMessage::class // handle this type of message only
+);
+
+// output: 'your wow'
+$logger->error(new MyMessage(), ['template' => 'wow']);
+```
+
+- **Processor**
+
+*Processors* are associated with log entry classes. They solve the problem of
+**'WHAT EXTRA INFO TO SENT OUT'**. They will inject information into entries'
+context. Processors are `callable(LogEntryInterface $entry)`,
+
+```php
+use Solital\Core\Logger\Processor\ProcessorAbstract;
+
+// closure
+$processor1 = function(LogEntry $entry) {
+};
+
+// invokable object
+$processor2 = new class() {
+    public function __invoke(LogEntry $entry)
+    {
+    }
+}
+
+// extends
+class Processor3 extends ProcessorAbstract
+{
+    protected function updateContext(array $context): array
+    {
+        $context['bingo'] = 'wow';
+        return $context;
+    }
+} 
+```
+
+Processors are attached to log entries either in the entry class definition
+as follows,
+
+```php
+class MyMessage extends LogEntry
+{
+    // message template
+    protected $message = 'your {template}';
+    
+    // define processors for this class
+    protected static function classProcessors(): array
+    {
+        return [
+            function(LogEntry $entry) {
+                $context = $entry->getContext();
+                $context['template'] = 'wow';
+                $entry->setContext($context);
+            },
+            new myProcessor(),
+        ];
+    }
 }
 ```
 
-### Log Channels
-
-Think of channels as namespaces for log lines. If you want to have multiple loggers or applications logging to a single log file, channels are your friend.
-
-Channels can be set in two ways:
- * Constructor parameter
- * Setter method at any time
+or during the handler attachment
 
 ```php
-use Solital\Core\Resource\Logger;
+use Solital\Core\Logger\Handler\SyslogHandler;
 
-// Constructor Parameter
-$channel = 'router';
-$logger  = new Logger($logfile, $channel);
-
-// Setter method
-$logger->setChannel('database');
+// will also add 'Processor1' and 'Processor2' to 'MyMessage' class
+$logger->addHandler(
+    'info',
+    new SyslogHandler(),
+    MyMessage::addProcessor(
+        new Processor1(),
+        new Processor2(),
+        ...
+    )
+);
 ```
 
-### Debug Features
+- **Handler**
 
-#### Logging to STDOUT
+*Handlers* solve the problem of **'WHERE TO SEND MESSAGE'**. They take a
+log entry object and send it to somewhere.
 
-When developing, you can turn on log output to the screen (STDOUT) as a convenience.
+Handlers takes the form of `callable(LogEntryInterface $entry)` as follows,
 
 ```php
-$logger->setOutput(true);
-$logger->debug('This will get logged to STDOUT as well as the log file.');
+use Solital\Core\Logger\Handler\HandlerAbstract;
+
+$handler1 = function(LogEntry $entry) {
+    echo (string) $entry;
+}
+
+$handler2 = new class() {
+    public function __invoke(LogEntry $entry)
+    {
+    }
+}
+
+class Handler3 extends HandlerAbstract
+{
+    protected function write(LogEntryInterface $entry)
+    {
+        echo $this->>getFormatter()->format($entry);
+    }
+}
 ```
 
-#### Dummy Logger
-
-Suppose you need a logger to meet an injected dependency during a unit test, and you don't want it to actually log anything.
-You can set the log level to ```Logger::LOG_LEVEL_NONE``` which won't log at any level.
+Handlers are added to the `$logger` with specific log level and type of
+log message they are going to handle (default is `LogEntryInterface`).
 
 ```php
-use Solital\Core\Resource\Logger;
-
-$logger->setLogLevel(Logger::LOG_LEVEL_NONE);
-$logger->info('This will not log to a file.');
+$logger->addHandler(
+    LogLevel::WARNING,
+    new TerminalHandler(),
+    LogEntryInterface::class // this is the default anyway
+);
 ```
+
+- **Formatter**
+
+*Formatters* solve the problem of **'HOW MESSAGE WILL BE PRESENTED''**.
+Each handler of the type `Handler\HandlerAbstract` may have formatter
+specified during its initiation.
+
+```php
+use Solital\Core\Logger\Handler\TerminalHandler;
+use Solital\Core\Logger\Formatter\AnsiFormatter;
+
+// use ANSI Color formatter
+$handler = new TerminalHandler(new AnsiFormatter());
+
+// add handler handles 'ConsoleMessage' ONLY
+$logger->addHandler('debug', $handler, ConsoleMessage::class);
+
+// log to console
+$logger->info(new ConsoleMessage('exited with error.'));
+
+// this will goes handlers handling 'LogEntry'
+$logger->info('exited with error');
+```
+
+APIs
+---
+
+- `LoggerInterface` related
+
+See [PSR-3][PSR-3] for standard related APIs.
+
+- `Solital\Core\Logger\Logger` related
+
+- `__construct(string $channel)`
+
+Create the logger with a channel id.
+
+- `addHandler(string $level, callable $handler, string $entryClass, int $priority = 50): $this`
+
+Add one handler to specified channel with the priority.
+
+- `Solital\Core\Logger\Entry\LogEntry` related
+
+- `static function addProcessor(callable ...$callables): string`
+
+This method will returns called class name.

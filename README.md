@@ -1,15 +1,15 @@
 # Complete documentation of Solital Framework
 
-Solit Framework documentation and website source code
+Solital Framework documentation and website source code
 
 ## Core
 
-**Current:** 3.x
-
-**Others:** 2.x
+| Current | Others |
+| :-----: | :-----:|
+| `3.x`   | 2.x    |
 
 ## Katrina ORM
 
-**Current:** 2.x
-
-**Others:** 1.x
+| Current | Others |
+| :-----: | :-----:|
+| `2.x`   | 1.x    |

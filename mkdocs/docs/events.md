@@ -9,26 +9,97 @@ This section contains all available events that can be registered using the `Eve
 
 All event callbacks will retrieve a `EventArgument` object as parameter. This object contains easy access to event-name, router- and request instance and any special event-arguments related to the given event. You can see what special event arguments each event returns in the list below.  
 
-| Name                        | Special arguments | Description               | 
-| -------------               |-----------      | ----                      | 
-| `EVENT_ALL`                 | - | Fires when a event is triggered. |
-| `EVENT_INIT`                | - | Fires when router is initializing and before routes are loaded. |
-| `EVENT_LOAD`                | `loadedRoutes` | Fires when all routes has been loaded and rendered, just before the output is returned. |
-| `EVENT_ADD_ROUTE`           | `route` | Fires when route is added to the router. |
-| `EVENT_REWRITE`             | `rewriteUrl`<br>`rewriteRoute` | Fires when a url-rewrite is and just before the routes are re-initialized. |
-| `EVENT_BOOT`                | `bootmanagers` | Fires when the router is booting. This happens just before boot-managers are rendered and before any routes has been loaded. |
-| `EVENT_RENDER_BOOTMANAGER`  | `bootmanagers`<br>`bootmanager` | Fires before a boot-manager is rendered. |
-| `EVENT_LOAD_ROUTES`         | `routes` | Fires when the router is about to load all routes. |
-| `EVENT_FIND_ROUTE`          | `name` | Fires whenever the `findRoute` method is called within the `Router`. This usually happens when the router tries to find routes that contains a certain url, usually after the `EventHandler::EVENT_GET_URL` event. |
-| `EVENT_GET_URL`             | `name`<br>`parameters`<br>`getParams` | Fires whenever the `Router::getUrl` method or `url`-helper function is called and the router tries to find the route. |
-| `EVENT_MATCH_ROUTE`         | `route` | Fires when a route is matched and valid (correct request-type etc). and before the route is rendered. |
-| `EVENT_RENDER_ROUTE`        | `route` | Fires before a route is rendered. |
-| `EVENT_LOAD_EXCEPTIONS`     | `exception`<br>`exceptionHandlers` | Fires when the router is loading exception-handlers. |
-| `EVENT_RENDER_EXCEPTION`    | `exception`<br>`exceptionHandler`<br>`exceptionHandlers` | Fires before the router is rendering a exception-handler. |
-| `EVENT_RENDER_MIDDLEWARES`  | `route`<br>`middlewares` | Fires before middlewares for a route is rendered. |
-| `EVENT_RENDER_CSRF`         | `csrfVerifier` | Fires before the CSRF-verifier is rendered. |
-
--
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Special arguments</th>
+        <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_ALL</span></td>
+            <td>-</td>
+            <td>Fires when a event is triggered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_INIT</span></td>
+            <td>loadedRoutes</td>
+            <td>Fires when router is initializing and before routes are loaded</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_LOAD</span></td>
+            <td>loadedRoutes</td>
+            <td>Fires when all routes has been loaded and rendered, just before the output is returned</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_ADD_ROUTE</span></td>
+            <td>route</td>
+            <td>Fires when route is added to the router</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_REWRITE</span></td>
+            <td>rewriteUrl<br>rewriteRoute</td>
+            <td>Fires when a url-rewrite is and just before the routes are re-initialized</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_BOOT</span></td>
+            <td>bootmanagers</td>
+            <td>Fires when the router is booting. This happens just before boot-managers are rendered and before any routes has been loaded</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_BOOTMANAGER</span></td>
+            <td>bootmanagers<br>bootmanager</td>
+            <td>Fires before a boot-manager is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_LOAD_ROUTES</span></td>
+            <td>routes</td>
+            <td>Fires when the router is about to load all routes</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_FIND_ROUTE</span></td>
+            <td>name</td>
+            <td>Fires whenever the `findRoute` method is called within the `Router`. This usually happens when the router tries to find routes that contains a certain url, usually after the `EventHandler::EVENT_GET_URL` event</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_GET_URL</span></td>
+            <td>name<br>parameters<br>getParams</td>
+            <td>Fires whenever the `Router::getUrl` method or `url`-helper function is called and the router tries to find the route</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_MATCH_ROUTE</span></td>
+            <td>route</td>
+            <td>Fires when a route is matched and valid (correct request-type etc). and before the route is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_ROUTE</span></td>
+            <td>route</td>
+            <td>Fires before a route is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_LOAD_EXCEPTIONS</span></td>
+            <td>exception<br>exceptionHandlers</td>
+            <td>Fires when the router is loading exception-handlers</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_EXCEPTION</span></td>
+            <td>exception<br>exceptionHandler<br>exceptionHandlers</td>
+            <td>Fires before the router is rendering a exception-handler</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_MIDDLEWARES</span></td>
+            <td>route<br>middlewares</td>
+            <td>Fires before middlewares for a route is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_CSRF</span></td>
+            <td>csrfVerifier</td>
+            <td>Fires before the CSRF-verifier is rendered</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Registering new event
 

@@ -281,35 +281,57 @@ User::select(null, "name, " . Functions::count('*', 'qtd'))->group("name")->get(
 
 Below is a list of all the functions present in Katrina ORM:
 
-**Aggregate Functions**
-
-|                              |
-|-------------------------------------|
-| `avg($value)`                       |
-| `count($expression = "*", $as = "")`|
-| `max($value)`                       |
-| `min($value)`                       |
-
-**Date Functions**
-
-|                              |
-|---------------------------------------|
-| `now()`                               |
-| `curdate()`                           |
-| `date($value)`                        |
-| `hour($value)`                        |
-| `month($value)`                       |
-| `datediff($first_date, $second_date)` |
-| `day($date = null)`                   |
-| `currentTimestamp()`                  |
-
-**Math Functions**
-
-|                              |
-|--------------------------------------|
-| `abs($value)`                        |
-| `sum($value)`                        |
-| `truncate($number, $decimal_places)` |
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Aggregate Functions</th>
+      <th scope="col">Date Functions</th>
+      <th scope="col">Math Functions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="cmd-vinci">avg($value)</span></td>
+      <td><span class="cmd-vinci">now()</span></td>
+      <td><span class="cmd-vinci">abs($value)</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">count($expression = "*", $as = "")</span></td>
+      <td><span class="cmd-vinci">curdate()</span></td>
+      <td><span class="cmd-vinci">sum($value)</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">max($value)</span></td>
+      <td><span class="cmd-vinci">date($value)</span></td>
+      <td><span class="cmd-vinci">truncate($number, $decimal_places)</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">hour($value)</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">month($value)</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">datediff($first_date, $second_date)</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">day($date = null)</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">currentTimestamp()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+  </tbody>
+</table>
 
 ### Insert
  
@@ -381,20 +403,10 @@ User::update([
 
 ### Delete
 
-To delete a record from the table, use the `delete()` method together with the `find()` method.
+To delete a record from the table, use the `delete()` method.
 
 ```php
-$user = User::find(2);
-$user->delete();
-```
-
-You can also list all records using the `all()` method:
-
-```php
-foreach(User::all() as $user)
-{
-    $user->delete();	
-}
+User::delete("id = 2");
 ```
 
 ## Manipulating tables
@@ -596,15 +608,35 @@ In your template, retrieve the data like this:
 
 The result will be as follows:
 
-```html
-| Name  | Age | Gender |
-|-------|-----|--------|
-| Sam   | 47  | Male   |
-| Dean  | 49  | Male   |
-| Marry | 52  | Female |
+<table style="margin-bottom: 20px;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sam</td>
+      <td>47</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <td>Dean</td>
+      <td>49</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <td>Marry</td>
+      <td>52</td>
+      <td>Female</td>
+    </tr>
+  </tbody>
+</table>
 
-<< 1 2 3 >>
-```
+<span class="katrina-pag"><< 1</span> 2 <span class="katrina-pag">3 >></span>
+
 
 To change the arrows (`<<` and `>>`), use the parameters of the `getArrows()` method. The result will be:
 
@@ -612,15 +644,34 @@ To change the arrows (`<<` and `>>`), use the parameters of the `getArrows()` me
 {{ $values->getArrows('First', 'Last'); }}
 ```
 
-```html
-| Name  | Age | Gender |
-|-------|-----|--------|
-| Sam   | 47  | Male   |
-| Dean  | 49  | Male   |
-| Marry | 52  | Female |
+<table style="margin-bottom: 20px;">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sam</td>
+      <td>47</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <td>Dean</td>
+      <td>49</td>
+      <td>Male</td>
+    </tr>
+    <tr>
+      <td>Marry</td>
+      <td>52</td>
+      <td>Female</td>
+    </tr>
+  </tbody>
+</table>
 
-First 1 2 3 Last
-```
+<span class="katrina-pag">First</span> 2 <span class="katrina-pag">3 Last</span>
 
 ## Custom Pagination
 
@@ -669,54 +720,91 @@ Below is a customization to serve as an example:
 
 Below is listed the attributes and data supported by Katrina ORM:
 
-**String data**
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">String data</th>
+      <th scope="col">Numerical data</th>
+      <th scope="col">Date and time</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="cmd-vinci">varchar("column_name", size)</span></td>
+      <td><span class="cmd-vinci">tinyint("column_name", size)</span></td>
+      <td><span class="cmd-vinci">date("column_name")</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">char("column_name", size)</span></td>
+      <td><span class="cmd-vinci">smallint("column_name", size)</span></td>
+      <td><span class="cmd-vinci">year("column_name")</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">tinytext("column_name", size)</span></td>
+      <td><span class="cmd-vinci">mediumint("column_name", size)</span></td>
+      <td><span class="cmd-vinci">time("column_name")</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">mediumtext("column_name", size)</span></td>
+      <td><span class="cmd-vinci">bigint("column_name", size)</span></td>
+      <td><span class="cmd-vinci">datetime("column_name")</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">longtext("column_name", size)</span></td>
+      <td><span class="cmd-vinci">int("column_name", size)</span></td>
+      <td><span class="cmd-vinci">timestamp("column_name")</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">text("column_name")</span></td>
+      <td><span class="cmd-vinci">decimal("column_name", value1, value2)</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+  </tbody>
+</table>
 
-|                              |
-|-----------------------------------|
-| `varchar("column_name", size)`    |
-| `char("column_name", size)`       |
-| `tinytext("column_name", size)`   |
-| `mediumtext("column_name", size)` |
-| `longtext("column_name", size)`   |
-| `text("column_name")`             |
-
-**Numerical data**
-
-|                                     |
-|------------------------------------------|
-| `tinyint("column_name", size)`           |
-| `smallint("column_name", size)`          |
-| `mediumint("column_name", size)`         |
-| `bigint("column_name", size)`            |
-| `int("column_name", size)`               |
-| `decimal("column_name", value1, value2)` |
-
-**Date and time**
-
-|                        |
-|-----------------------------|
-| `date("column_name")`       |
-| `year("column_name")`       |
-| `time("column_name")`       |
-| `datetime("column_name")`   |
-| `timestamp("column_name")`  |
-
-**Boolean**
-
-|                        |
-|-----------------------------|
-| `boolean("column_name")`    |
-
-**Attributes**
-
-|                       |
-|----------------------------|
-| `default("default_value")` |
-| `unique()`                 |
-| `unsigned()`               |
-| `incremet()` (MYSQL)       |
-| `notNull()`                |
-| `primary()`                |
-| `after("column_name")`     |
-| `first()`                  |
-| `serial("id_table")` (POSTGRESQL)       |
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Attributes</th>
+      <th scope="col">Boolean</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="cmd-vinci">boolean("column_name")</span></td>
+      <td><span class="cmd-vinci">default("default_value")</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">unique()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">unsigned()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">incremet() (MYSQL)</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">notNull()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">primary()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">after("column_name")</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">first()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">serial("id_table") (POSTGRESQL)</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+  </tbody>
+</table>

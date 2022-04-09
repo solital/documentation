@@ -18,27 +18,132 @@ The Vinci Console is a very simple to use helper. When you run the `php vinci li
 php vinci [command] [argument] [--option1] [--option2]
 ```
 
-| Command      | Description                             | Arguments           | Options   |
-|--------------|-----------------------------------------|---------------------|-----------|
-| `auth:skeleton` | Create Login and 'Forgot Password' structures | | --login / --forgot / --remove |
-| `cache:clear` | Clear the Solital cache |  | --cache / --session |
-| `create:cmd` | Create a command | name | --remove |
-| `create:controller` | Create a Controller class | name | --remove |
-| `create:middleware` | Create a Middleware class | name | --remove |
-| `create:migration` | Create a migration | name (optional) | |
-| `create:model`| Create a Model class | name | --remove |
-| `create:queue`| Create a Queue class | name | --remove |
-| `create:seeder` | Create a Seed class | name | |
-| `db:dump` | Dump the connected database | name | |
-| `generate:files` | Imports Solital Framework's default configuration files | | |
-| `migrate` | Run a migration | | --rollback (=value) / --status |
-| `queue` | Run a queue | | --class (=name) |
-| `router:list` | Show all routes | | |
-| `seeder`| Run a user-created Seeder | | --class (=name) |
-| `version`| Check the Solital Framework version | | |
-| `help`| Describes a command | cmd_name | |
-| `about`| Displays the Vinci Console version | | |
-| `list`| Displays a list of all Solital commands | | |
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Command</th>
+      <th scope="col">Description</th>
+      <th scope="col">Arguments</th>
+      <th scope="col">Options</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="cmd-vinci">auth:skeleton</span></td>
+      <td>Create Login and 'Forgot Password' structures</td>
+      <td>-</td>
+      <td>--login / --forgot / --remove</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">cache:clear</span></td>
+      <td>Clear the Solital cache</td>
+      <td>-</td>
+      <td>--cache / --session</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">create:cmd</span></td>
+      <td>Create a command</td>
+      <td>name</td>
+      <td>--remove</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">create:controller</span></td>
+      <td>Create a Controller class</td>
+      <td>name</td>
+      <td>--remove</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">create:middleware</span></td>
+      <td>Create a Middleware class</td>
+      <td>name</td>
+      <td>--remove</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">create:migration</span></td>
+      <td>Create a migration</td>
+      <td>name (optional)</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">create:model</span></td>
+      <td>Create a Model class</td>
+      <td>name</td>
+      <td>--remove</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">create:queue</span></td>
+      <td>Create a Queue class</td>
+      <td>name</td>
+      <td>--remove</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">create:seeder</span></td>
+      <td>Create a Seeder class</td>
+      <td>name</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">db:dump</span></td>
+      <td>Dump the connected database</td>
+      <td>name</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">generate:files</span></td>
+      <td>Imports Solital Framework's default configuration files</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">migrate</span></td>
+      <td>Run a migration</td>
+      <td>-</td>
+      <td>--rollback (=value) / --status</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">queue</span></td>
+      <td>Run a queue</td>
+      <td>-</td>
+      <td>--class (=name)</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">router:list</span></td>
+      <td>Show all routes</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">seeder</span></td>
+      <td>Run a user-created Seeder</td>
+      <td>-</td>
+      <td>--class (=name)</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">version</span></td>
+      <td>Describes a command</td>
+      <td>cmd_name</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">help</span></td>
+      <td>Run a migration</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">about</span></td>
+      <td>Displays the Vinci Console version</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">list</span></td>
+      <td>Displays a list of all Solital commands</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Custom Command
 

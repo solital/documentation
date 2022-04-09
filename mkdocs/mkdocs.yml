@@ -29,7 +29,7 @@ nav:
     - Mailer: mail.md
     - Session and Cookie: session-cookie.md
     - Validation: validate.md
-    - View Alerts: messages.md
+    - Messages: messages.md
     - Queue: queue.md
   - Security:
     - Authenticate: auth.md
