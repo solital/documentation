@@ -256,3 +256,14 @@ Add one handler to specified channel with the priority.
 - `static function addProcessor(callable ...$callables): string`
 
 This method will returns called class name.
+
+## Auto log
+
+Solital generates a log file whenever a critical system error occurs. Log files are stored in `app/Storage/log/`.
+
+To disable the creation of these files, open the `bootstrap.yaml` file and change the `enabled_log_files` key to `false`:
+
+```yaml
+logs:
+  enabled_log_files: false
+```
