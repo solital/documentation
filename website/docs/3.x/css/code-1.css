@@ -1,0 +1,43 @@
+.hljs {
+    letter-spacing: 0.1vh !important;
+    font-size: 15px !important;
+    background: #1C1C1C !important;
+    color: #FFF !important;
+    font-weight: 200 !important;
+}
+
+.language-bash .hljs .hljs-string {
+    color: #FFD700 !important;
+}
+
+.hljs-title, .hljs-variable {
+    color: #FFF !important;
+}
+
+.hljs-built_in {
+    color: #FFD700 !important;
+}
+
+.hljs-punctuation, .hljs-meta {
+    color: #1E90FF !important;
+}
+
+.hljs-attribute, .hljs-function, .hljs-code, .hljs-keyword {
+    color: #FF8C00 !important;
+}
+
+.hljs-doctag, .hljs-params, .hljs-operator {
+    color: #FF4040 !important;
+}
+
+.hljs-string {
+    color: #00FF7F !important;
+}
+
+.hljs-number, .hljs-literal, .hljs-template-variable, .hljs-class {
+    color: #E066FF !important;
+}
+
+.hljs-comment, .hljs-quote, .hljs-name, .hljs-attr, .hljs-tag {
+    color: #9c92aa !important;
+}

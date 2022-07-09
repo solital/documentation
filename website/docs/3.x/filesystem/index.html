@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File System - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../release-notes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../env/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../log/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mail/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../auth/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../crypt/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../forgot/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina2/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">File System</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#list-files-within-a-folder">List files within a folder</a></li>
+                  
+                  
+                    <li><a href="#check-if-a-file-exists">Check if a file exists</a></li>
+                  
+                  
+                    <li><a href="#create-folder">Create folder</a></li>
+                  
+                  
+                    <li><a href="#remove-folder">Remove folder</a></li>
+                  
+                  
+                    <li><a href="#get-and-put-contents">Get and Put Contents</a></li>
+                  
+                  
+                    <li><a href="#copy">Copy</a></li>
+                  
+                  
+                    <li><a href="#handling-permissions">Handling permissions</a></li>
+                  
+                    <li><a href="#list-permissions">List permissions</a></li>
+                  
+                    <li><a href="#list-full-permissions">List full permissions</a></li>
+                  
+                    <li><a href="#change-permissions">Change permissions</a></li>
+                  
+                  
+                    <li><a href="#modify-owner-of-the-file">Modify owner of the file</a></li>
+                  
+                  
+                </ul>
+
+                
+                <p>You can manipulate folders and files within Solital through the <code>HandleFiles</code> class, such as creating folders, removing folders, listing files and deleting files.</p>
+<pre><code class="language-php">use Solital\Core\FileSystem\HandleFiles;
+
+$handle = new HandleFiles();
+</code></pre>
+<h2 id="list-files-within-a-folder">List files within a folder</h2>
+<p><strong>list multiple files</strong></p>
+<p>Use the <code>folder()</code> method to define the folder containing the files in Solital to be listed. To list all files within that folder, chain the <code>files()</code> method.</p>
+<pre><code class="language-php">/** Array return */
+$res = $handle-&gt;folder(&quot;folder_name&quot;)-&gt;files();
+
+pre($res);
+</code></pre>
+<p><strong>list single file</strong></p>
+<pre><code class="language-php">/** String return */
+$res = $handle-&gt;folder(&quot;folder_name&quot;)-&gt;file('README.md');
+
+pre($res);
+</code></pre>
+<p>To list only a single file within the folder, use the <code>file()</code> method passing as a parameter the file you want to search for</p>
+<h2 id="check-if-a-file-exists">Check if a file exists</h2>
+<p>To check if there is a file inside the folder, use <code>fileExists()</code>.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;folder(&quot;folder_name&quot;)-&gt;fileExists(&quot;README.md&quot;);
+
+pre($res);
+</code></pre>
+<p>You can delete the file if it exists, to do so enter <code>true</code> in the second parameter.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;folder(&quot;folder_name&quot;)-&gt;fileExists(&quot;README.md&quot;, true);
+
+pre($res);
+</code></pre>
+<h2 id="create-folder">Create folder</h2>
+<p>To create a folder inside Solital, use only the <code>create()</code> method.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;create(&quot;folder_name&quot;);
+
+pre($res);
+</code></pre>
+<p>You can define the type of permission the folder will have. The default is 0777.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;create(&quot;folder_name&quot;, 0755);
+
+pre($res);
+</code></pre>
+<h2 id="remove-folder">Remove folder</h2>
+<p>To delete a folder inside Solital, use only the <code>remove()</code> method. This method will delete a folder if it is empty.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;remove(&quot;folder_name&quot;);
+
+pre($res);
+</code></pre>
+<p>The <code>remove()</code> method checks for files inside the folder. If you want to delete the files inside the folder, pass <code>false</code> in the second parameter.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;remove(&quot;folder_name&quot;, false);
+
+pre($res);
+</code></pre>
+<h2 id="get-and-put-contents">Get and Put Contents</h2>
+<p>It is possible to use the native PHP functions <code>file_get_contents</code> and <code>file_put_contents</code> at the same time. The <code>getAndPutContents</code> method performs this process.</p>
+<pre><code class="language-php">$res = $handle-&gt;getAndPutContents('file.txt', 'file_bkp.txt');
+
+pre($res);
+</code></pre>
+<h2 id="copy">Copy</h2>
+<p>Make a copy of a file using the <code>copy</code> method.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;copy('file.txt', 'file_bkp.txt');
+
+pre($res);
+</code></pre>
+<p>If you want to delete the original photo after copying, use <code>true</code>.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;copy('file.txt', 'file_bkp.txt', true);
+
+pre($res);
+</code></pre>
+<h2 id="handling-permissions">Handling permissions</h2>
+<p>You can change and view file and folder permissions. </p>
+<h3 id="list-permissions">List permissions</h3>
+<p>The <code>getPermission</code> method lists the permissions that the file or folder has.</p>
+<pre><code class="language-php">/** Null|string return */
+$res = $handle-&gt;getPermission('file.txt');
+
+pre($res);
+</code></pre>
+<h3 id="list-full-permissions">List full permissions</h3>
+<p>To return full permissions, use the <code>getFullPermission</code> method.</p>
+<pre><code class="language-php">/** String return */
+$res = $handle-&gt;getFullPermission('file.txt');
+
+pre($res);
+</code></pre>
+<h3 id="change-permissions">Change permissions</h3>
+<p>The <code>setPermission</code> method changes the permissions that the file or folder will have. </p>
+<pre><code class="language-php">/** Boolean return */
+$handle-&gt;setPermission('file.txt', 0777);
+</code></pre>
+<h2 id="modify-owner-of-the-file">Modify owner of the file</h2>
+<p>Use the <code>setOwner</code> method to modify the owner of the file.</p>
+<pre><code class="language-php">/** Boolean return */
+$res = $handle-&gt;setOwner('file.txt', 'root');
+
+pre($res);
+</code></pre>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../date/">&#8592; Date and time</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../json/">JSON &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.1.2
+              Docs Build Date UTC : 2022-05-10 12:26:19.045097+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

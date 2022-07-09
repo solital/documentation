@@ -3,10 +3,10 @@ nav:
   - Starting: index.md
   - Upgrade: 
     - Release Notes: release-notes.md
-    - Upgrade Guide: upgrade.md
+    - Upgrade Guide: upgrade-guide.md
   - Settings:
     - Installing: installation.md
-    - Environment variables: env.md
+    - Environment Variables: environment-variables.md
     - YAML Files: yaml-files.md
     - Helpers: helpers.md
   - Routers:
@@ -14,35 +14,35 @@ nav:
     - Middleware: middleware.md
     - URL: url.md
     - Events: events.md
-    - Input and params: input.md
+    - Input and params: input-and-params.md
   - Components:
-    - Vinci Console: vinci.md
+    - Vinci Console: vinci-console.md
     - Cache: cache.md
-    - Dependency Container : container.md
+    - Dependency Container : dependency-container.md
     - HTTP Client: http-client.md
-    - Wolf Template: wolf.md
+    - Wolf Template: wolf-template.md
   - Resources:
-    - Date and time: date.md
-    - File System: filesystem.md
+    - Date and time: date-and-time.md
+    - File System: file-system.md
     - JSON: json.md
-    - Logger: log.md
-    - Mailer: mail.md
-    - Session and Cookie: session-cookie.md
-    - Validation: validate.md
+    - Logger: logger.md
+    - Mailer: mailer-component.md
+    - Session and Cookie: session-and-cookie.md
+    - Validation: validation-component.md
     - Messages: messages.md
     - Queue: queue.md
   - Security:
-    - Authenticate: auth.md
-    - Cryptography: crypt.md
-    - CSRF Protection: csrf.md
-    - Secure Password: password.md
+    - Authenticate: authenticate.md
+    - Cryptography: cryptography.md
+    - CSRF Protection: csrf-protection.md
+    - Secure Password: secure-password.md
     - Verify Domain: verify-domain.md
-    - Recovery Password: forgot.md
+    - Recovery Password: recovery-password.md
   - Database:
     - Migrations: migrations.md
     - Seeders: seeders.md
     - Dump: dump.md
-    - Katrina ORM: katrina2.md
+    - Katrina ORM: katrina-orm.md
   - Deploy: deploy.md
 theme:
     name: null

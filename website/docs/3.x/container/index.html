@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dependency Container - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../release-notes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../env/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../filesystem/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../log/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mail/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../auth/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../crypt/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../forgot/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina2/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Dependency Container</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#introduction">Introduction</a></li>
+                  
+                    <li><a href="#usage">Usage</a></li>
+                  
+                  
+                </ul>
+
+                
+                <h2 id="introduction">Introduction</h2>
+<p>Injecting dependencies can become a tedious task when many classes are involved. Before injecting a dependency it needs to be instantiated. So, we don't just take care of the "injection", we also need to have the knowledge of what objects it needs to work.</p>
+<p>A dependency injection container (DI Container) manages and automates instantiations. We tell him how an object should be created (this is the part that touches us, our knowledge about it) and then whenever we need it, we just need to use the container to obtain it. </p>
+<p>Solital implements the PSR-11, meaning you can easily create dependency containers.</p>
+<p>Consider this example:</p>
+<pre><code class="language-php">&lt;?php
+
+class UserManager
+{
+    private $mailer;
+
+    public function __construct()
+    {
+        $this-&gt;mailer = new Mailer();
+        $this-&gt;mailer-&gt;setTransport('sendmail');
+    }
+
+    public function setMailerTransport($transport)
+    {
+        $this-&gt;mailer-&gt;setTransport($transport);
+    }
+}
+</code></pre>
+<p>Here we have our <code>UserManager</code> service that is responsible for creating its <code>Mailer</code> dependency via setter injection. If we decide to later change the type of mailer that is used, and that mailer uses constructor injection rather than setter injection, we must alter our <code>UserManager</code> code, potentially breaking other methods that may use the <code>setTransport</code> method.</p>
+<p>Instead, the <code>UserManager</code> service should simply ask for a Mailer object, and get one. It should not care how it is created or what methods the mailer uses to configure itself, it just asks for one and receives one:</p>
+<pre><code class="language-php">class UserManager
+{
+    private $mailer;
+
+    public function __construct(Mailer $mailer)
+    {
+        $this-&gt;mailer = $mailer;
+    }
+}
+</code></pre>
+<p>The configuration of the mailer is now setup outside of the <code>UserManager</code>, and will not break anything if it is changed. So that leaves us with a question: Where should we write this "wiring" or configuration of the dependencies?</p>
+<p>That's where the container concept comes in. An IoC, or dependency injection container is the place where you would write up how your services should be created. Going back to the above example:</p>
+<pre><code class="language-php">&lt;?php
+use Solital\Core\Container\Container;
+
+$container = new Container();
+
+$container-&gt;add('userManager', function($container) {
+    $mailer = $container-&gt;get('mailer');
+
+    return new UserManager($mailer);
+});
+
+$container-&gt;add('mailer', function() {
+    $transport = 'gmail';
+    $mailer = new Mailer($transport);
+});
+</code></pre>
+<p>Now all we have to do is ask for the <code>UserManager</code>, and its <code>Mailer</code> dependency will be created for us. If we decide to change the transport methodback to sendmail at any point, all we have to do is change it in one place in the service configuration area.</p>
+<h3 id="usage">Usage</h3>
+<h5 id="instantiation">Instantiation</h5>
+<p>To use the container, simply create a new instance of the <code>Container</code> class:</p>
+<pre><code class="language-php">$container = new Container();
+</code></pre>
+<p>You may also optionally pass an array of service and parameter entries directly into the constructor:</p>
+<pre><code class="language-php">$entries = ['foo' =&gt; 'bar'];
+$container = new Container($entries);
+</code></pre>
+<h5 id="adding-definitions">Adding Definitions</h5>
+<p><strong>Services</strong> are defined by invokable callback functions. Most commonly, this is a closure (anonymous function) that explains how to create a service:</p>
+<pre><code class="language-php">$myServiceDefinition = function() {
+    $obj = new Service();
+
+    return $obj;
+};
+</code></pre>
+<p><strong>Parameters</strong> are simple primitive values that should be accessed throughout your application. It is assumed that your entry is a parameter if it is not an invokable function.</p>
+<p>To add a service or parameter to the container, use the <code>Container::add</code> method.</p>
+<pre><code class="language-php">$container = new Container();
+
+$container-&gt;add('myParameter', 'value');
+$container-&gt;add('myService', function() {
+    return new MyService();
+});
+</code></pre>
+<p>The container can also be accessed like an array. So adding entries is as easy as using array notation:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container['myParameter'] = 'value';
+$container['myService'] = function() {
+    return new MyService();
+};
+</code></pre>
+<p>When defining services, note that an instance of the container is always passed as an argument to the invokable callback. This allows you to resolve nested dependencies. In our synopsis, we used the example of a <code>UserManager</code> service who needed a <code>Mailer</code> object. We can define how to create the mailer in one entry, and how to create the user manager in a separate entry like this:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container['userManager'] = function($container) {
+    // The user manager needs a mailer, so get that from the container first
+    $mailer = $container-&gt;get('mailer');
+
+    // Now pass that to the UserManager
+    return new UserManager($mailer);
+};
+
+$container['mailer'] = function() {
+    return new Mailer();
+};
+
+$userManager = $container-&gt;get('userManager');
+</code></pre>
+<p>This is known as manually wiring your dependencies.</p>
+<h5 id="entry-management">Entry Management</h5>
+<p>Just as entries can be added to the container, they may be removed via <code>Container::remove</code> as well:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container['myParameter'] = 'value';
+$container-&gt;remove('myParameter');
+// or: unset($container['myParameter']);
+</code></pre>
+<p>We can also check if the container contains as entry with <code>Container::has</code>:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container['myParameter'] = 'value';
+$has = $container-&gt;has('myParameter');
+// or: isset($container['myParameter']);
+
+var_dump($has); // outputs: true
+</code></pre>
+<p>Lastly, we can get an array of all of the <strong>entry names</strong> in our container with <code>Container::keys</code>:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container['myParameter'] = 'value';
+$entries = $container-&gt;keys();
+
+var_dump($entries); // outputs: ['myParameter']
+</code></pre>
+<h5 id="retrieving-services-and-parameters">Retrieving Services and Parameters</h5>
+<p>Once an entry is added to the container, we can resolve that entry by using the <code>Container::get</code> method, or via array access:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container['myParameter'] = 'value';
+$myParameter = $container-&gt;get('myParameter');
+var_dump($myParameter); // outputs: 'value'
+
+$container['myService'] = function() {
+    return new MyService();
+};
+$myService = $container['myService'];
+var_dump($myService instanceof MyService::class); // outputs: true
+</code></pre>
+<p>Note that the service definition is executed and the result of the callback is what is assigned to <code>$myService</code>, rather than the literal callback function. If you would like a callback function to be interpreted as a literal value, you can use the <code>Container::protect</code> method:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container-&gt;add('myService', $container-&gt;protect(function() {
+    return new MyService();
+}));
+$myServiceFactory = $container-&gt;get('myService');
+var_dump($myServiceFactory instanceof \Closure); // outputs: true
+</code></pre>
+<p>By default, when the container resolves a service entry, that service will be "shared" across the life of the container. This means that when the container is asked for the service a second time, the <strong>same</strong> instance will be returned as the first. This is often times the desired behavior when dealing with database connections, mailers, and logger objects.</p>
+<p>It would be a waste of memory to create these types of objects multiple times. You would not want 20 different database connections open at the same time if you really only need one:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container-&gt;add('db', function() {
+    ... // database configuration
+    return new PDO();
+});
+
+$db = $container-&gt;get('db');
+$db2 = $container-&gt;get('db');
+
+var_dump($db === $db2); // outputs: true
+</code></pre>
+<p>However, sometimes you do need to get a new instance of a service each time it is accessed. For those cases, simply define the service as a <strong>factory</strong> with <code>Container::factory</code>:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container-&gt;add('myService', $container-&gt;factory(function() {
+    return new MyService();
+}));
+
+$myService = $container-&gt;get('myService');
+$myService2 = $container-&gt;get('myService');
+
+var_dump($myService === $myService2); // outputs: false
+</code></pre>
+<h5 id="extending-definitions">Extending Definitions</h5>
+<p>Often times you need to modify a service after it has been created. This is often times called "setter injection" or "decorating". This can be achieved by using the <code>Container::extend</code> method. The extend method is passed the instance of the object and an instance of the container in that order. </p>
+<p>An extend will fail if:</p>
+<ul>
+<li>The entry does not exist</li>
+<li>The entry is a parameter</li>
+<li>The entry is currently being resolved</li>
+<li>The entry is protected</li>
+<li>The extend callback is not invokable</li>
+</ul>
+<p>Therefore, extending is meant to be done on existing service definitions only:</p>
+<pre><code class="language-php">$container = new Container();
+
+$container['mailer'] = function() {
+    return new Mailer();
+};
+
+$container-&gt;extend('mailer', function($mailer, $container) {
+    $mailer-&gt;setTransport('sendmail');
+    $mailer-&gt;setUsername($container-&gt;get(...));
+});
+</code></pre>
+<p>If, however, you leave the second argument empty and only assign an invokable callback, like so:</p>
+<pre><code class="language-php">$container-&gt;extend(function() {});
+</code></pre>
+<p>This will be treated as a global callback function that should be run on every resolve. This is also a cool way to see how inversion of control works. We can assign a callback to run whenever the container resolves any type of entry, and get some feedback about what it is creating.</p>
+<p>A great example of dependency injection comes from the <a href="https://github.com/rdlowrey/auryn#recursive-dependency-instantiation">Auryn</a> container docs:</p>
+<pre><code class="language-php">class Car
+{
+    private $engine;
+
+    public function __construct(Engine $engine)
+    {
+        $this-&gt;engine = $engine;
+    }
+}
+
+class Engine
+{
+    private $sparkPlug;
+    private $piston;
+
+    public function __construct(SparkPlug $sparkPlug, Piston $piston)
+    {
+        $this-&gt;sparkPlug = $sparkPlug;
+        $this-&gt;piston = $piston;
+    }
+}
+</code></pre>
+<p>As you can see we have a <code>Car</code> object that depends on an <code>Engine</code> object, and the <code>Engine</code> object depends on its own service objects <code>SparkPlug</code> and <code>Piston</code>. Using a normal object creation workflow, the wiring of these objects would look something like this:</p>
+<ul>
+<li>Application needs Car</li>
+<li>Car needs Engine so:<ul>
+<li>Engine needs SparkPlug and Piston so:<ul>
+<li>Engine creates SparkPlug</li>
+<li>Engine creates Piston</li>
+</ul>
+</li>
+<li>Car creates engine</li>
+</ul>
+</li>
+<li>Application creates Car</li>
+</ul>
+<p>However the wiring of objects using inversion of control looks like this:</p>
+<ul>
+<li>Application needs Car, which needs Engine, which needs SparkPlug and Piston so:</li>
+<li>Application creates SparkPlug and Piston</li>
+<li>Application creates Engine and gives it SparkPlug and Piston</li>
+<li>Application creates Car and gives it Engine</li>
+</ul>
+<p>You can see that the difference with inversion of control is that application (container) creates the dependencies in an inverted fashion, creating the lowest level dependencies first, and passing them up through the chain of services. This ensures that none of the services know how their dependencies are created, and that they are loosely coupled.</p>
+<p>We can have a look at this in action with something like this:</p>
+<pre><code class="language-php">$container = new Container();
+
+// Create something to run on every resolve
+$container-&gt;extend(function($resolved, $container) {
+    echo is_object($resolved) ? get_class($resolved) . ' created.&lt;br /&gt;' : '';
+});
+
+// Define our services
+$container['sparkPlug'] = function() { 
+    return new SparkPlug(); 
+};
+$container['piston'] = function() { 
+    return new Piston(); 
+};
+$container['engine'] = function($c) {
+    return new Engine($c['sparkPlug'], $c['piston']);
+};
+$container['car'] = function($c) { 
+    return new Car($c['engine']); 
+};
+
+// Get our service
+$container-&gt;get('car');
+</code></pre>
+<p>This would then output the following:</p>
+<pre><code>SparkPlug created.
+Piston created.
+Engine created.
+Car created.
+</code></pre>
+<p>This is proof that the container uses the inversion of control principle since the global callback function gets called after each resolve.</p>
+<h5 id="service-providers">Service Providers</h5>
+<p>Service providers are a way to organize your container entries. Service providers are nothing more than classes that implement the <code>ServiceProvider</code> interface that exposes a <code>register</code> method. The <code>register</code> method is always passed an instance of the container.</p>
+<p>For example, lets say that you have a suite of services that deal with user management. You could organize them into a single service provider class/file called <code>UserServiceProvider</code>. This class would then be responsible for adding all container entries related to user management. This simply provides a more organized and collected way of registering data in the container:</p>
+<pre><code class="language-php">class UserServiceProvider implements ServiceProvider
+{
+    public function register(ContainerInterface $container)
+    {
+        $container-&gt;add('userManager', function() {
+            ...
+        });
+        $container-&gt;add('foo' ...);
+        ...
+    }
+}
+</code></pre>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../cache/">&#8592; Cache</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../http-client/">HTTP Client &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.1.2
+              Docs Build Date UTC : 2022-05-10 12:26:18.995070+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

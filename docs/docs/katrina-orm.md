@@ -2,7 +2,7 @@
 
 Katrina ORM is currently at version **2.x**. To read documentation for previous versions choose one of the links below.
 
-[1.x](http://solitalframework/katrina/1.x/)
+[1.x](https://solitalframework.rf.gd/docs/3.x/katrina1/)
 
 ## Getting Started
 

@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../release-notes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../env/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../filesystem/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../log/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mail/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../auth/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../crypt/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../forgot/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina2/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Events</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#events">Events</a></li>
+                  
+                    <li><a href="#available-events">Available events</a></li>
+                  
+                    <li><a href="#registering-new-event">Registering new event</a></li>
+                  
+                    <li><a href="#custom-eventhandlers">Custom EventHandlers</a></li>
+                  
+                    <li><a href="#using-the-psr-14">Using the PSR-14</a></li>
+                  
+                  
+                </ul>
+
+                
+                <h1 id="events">Events</h1>
+<p>This section will help you understand how to register your own callbacks to events in the router.
+It will also cover the basics of event-handlers; how to use the handlers provided with the router and how to create your own custom event-handlers.</p>
+<h2 id="available-events">Available events</h2>
+<p>This section contains all available events that can be registered using the <code>EventHandler</code>.</p>
+<p>All event callbacks will retrieve a <code>EventArgument</code> object as parameter. This object contains easy access to event-name, router- and request instance and any special event-arguments related to the given event. You can see what special event arguments each event returns in the list below.  </p>
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Special arguments</th>
+        <th scope="col">Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_ALL</span></td>
+            <td>-</td>
+            <td>Fires when a event is triggered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_INIT</span></td>
+            <td>loadedRoutes</td>
+            <td>Fires when router is initializing and before routes are loaded</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_LOAD</span></td>
+            <td>loadedRoutes</td>
+            <td>Fires when all routes has been loaded and rendered, just before the output is returned</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_ADD_ROUTE</span></td>
+            <td>route</td>
+            <td>Fires when route is added to the router</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_REWRITE</span></td>
+            <td>rewriteUrl<br>rewriteRoute</td>
+            <td>Fires when a url-rewrite is and just before the routes are re-initialized</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_BOOT</span></td>
+            <td>bootmanagers</td>
+            <td>Fires when the router is booting. This happens just before boot-managers are rendered and before any routes has been loaded</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_BOOTMANAGER</span></td>
+            <td>bootmanagers<br>bootmanager</td>
+            <td>Fires before a boot-manager is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_LOAD_ROUTES</span></td>
+            <td>routes</td>
+            <td>Fires when the router is about to load all routes</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_FIND_ROUTE</span></td>
+            <td>name</td>
+            <td>Fires whenever the `findRoute` method is called within the `Router`. This usually happens when the router tries to find routes that contains a certain url, usually after the `EventHandler::EVENT_GET_URL` event</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_GET_URL</span></td>
+            <td>name<br>parameters<br>getParams</td>
+            <td>Fires whenever the `Router::getUrl` method or `url`-helper function is called and the router tries to find the route</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_MATCH_ROUTE</span></td>
+            <td>route</td>
+            <td>Fires when a route is matched and valid (correct request-type etc). and before the route is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_ROUTE</span></td>
+            <td>route</td>
+            <td>Fires before a route is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_LOAD_EXCEPTIONS</span></td>
+            <td>exception<br>exceptionHandlers</td>
+            <td>Fires when the router is loading exception-handlers</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_EXCEPTION</span></td>
+            <td>exception<br>exceptionHandler<br>exceptionHandlers</td>
+            <td>Fires before the router is rendering a exception-handler</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_MIDDLEWARES</span></td>
+            <td>route<br>middlewares</td>
+            <td>Fires before middlewares for a route is rendered</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">EVENT_RENDER_CSRF</span></td>
+            <td>csrfVerifier</td>
+            <td>Fires before the CSRF-verifier is rendered</td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="registering-new-event">Registering new event</h2>
+<p>To register a new event you need to create a new instance of the <code>EventHandler</code> object. On this object you can add as many callbacks as you like by calling the <code>registerEvent</code> method.</p>
+<p>When you've registered events, make sure to add it to the router by calling 
+<code>Course::addEventHandler()</code>. We recommend that you add your event-handlers within your <code>routes.php</code>.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-php">use Solital\Core\Course\Handlers\EventHandler;
+use Solital\Core\Course\Event\EventArgument;
+
+// --- your routes goes here ---
+
+$eventHandler = new EventHandler();
+
+// Add event that fires when a route is rendered
+$eventHandler-&gt;register(EventHandler::EVENT_RENDER_ROUTE, function(EventArgument $argument) {
+
+   // Get the route by using the special argument for this event.
+   $route = $argument-&gt;route;
+
+   // DO STUFF...
+
+});
+
+Course::addEventHandler($eventHandler);
+
+</code></pre>
+<h2 id="custom-eventhandlers">Custom EventHandlers</h2>
+<p><code>EventHandler</code> is the class that manages events and must inherit from the <code>EventHandlerInterface</code> interface. The handler knows how to handle events for the given handler-type. </p>
+<p>Most of the time the basic <code>\Solital\Core\Course\Handler\EventHandler</code> class will be more than enough for most people as you simply register an event which fires when triggered.</p>
+<p>Let's go over how to create your very own event-handler class.</p>
+<p>Below is a basic example of a custom event-handler called <code>DatabaseDebugHandler</code>. The idea of the sample below is to logs all events to the database when triggered. Hopefully it will be enough to give you an idea on how the event-handlers work.</p>
+<pre><code class="language-php">namespace Demo\Handlers;
+
+use Solital\Core\Course\Event\EventArgument;
+use Solital\Core\Course\Router;
+
+class DatabaseDebugHandler implements EventHandlerInterface
+{
+
+    /**
+     * Debug callback
+     * @var \Closure
+     */
+    protected $callback;
+
+    public function __construct()
+    {
+        $this-&gt;callback = function (EventArgument $argument) {
+            // todo: store log in database
+        };
+    }
+
+    /**
+     * Get events.
+     *
+     * @param string|null $name Filter events by name.
+     * @return array
+     */
+    public function getEvents(?string $name): array
+    {
+        return [
+            $name =&gt; [
+                $this-&gt;callback,
+            ],
+        ];
+    }
+
+    /**
+     * Fires any events registered with given event-name
+     *
+     * @param Router $router Router instance
+     * @param string $name Event name
+     * @param array ...$eventArgs Event arguments
+     */
+    public function fireEvents(Router $router, string $name, ...$eventArgs): void
+    {
+        $callback = $this-&gt;callback;
+        $callback(new EventArgument($router, $eventArgs));
+    }
+
+    /**
+     * Set debug callback
+     *
+     * @param \Closure $event
+     */
+    public function setCallback(\Closure $event): void
+    {
+        $this-&gt;callback = $event;
+    }
+
+}
+</code></pre>
+<h2 id="using-the-psr-14">Using the PSR-14</h2>
+<p>It is possible to use the PSR-14 through the <code>EventDispatcher</code> class. You can create the test class below:</p>
+<pre><code class="language-php">class UserTest
+{
+    public function testLow()
+    {
+        echo &quot;Running Low ...&quot;;
+    }
+
+    public function testNormal()
+    {
+        echo &quot;Running Normal ...&quot;;
+    }
+
+    public function testHigh()
+    {
+        echo &quot;Running High ...&quot;;
+    }
+}
+</code></pre>
+<p>Then, use the <code>addListener</code> method to add the event referring to the <code>UserTest</code> class. You can define the priority of each method and the order in which it will be executed. To do this, use a number in the last parameter of <code>addListener</code>.</p>
+<pre><code class="language-php">$provider = new ListenerProvider();
+$event = new EventDispatcher($provider);
+
+$user = new UserTest();
+
+$provider-&gt;addListener(function (UserTest $user) {
+    $user-&gt;testLow();
+}, 1);
+
+$provider-&gt;addListener(function (UserTest $user) {
+    $user-&gt;testNormal();
+}, 2);
+
+$provider-&gt;addListener(function (UserTest $user) {
+    $user-&gt;testHigh();
+}, 3);
+
+$event-&gt;dispatch($user);
+</code></pre>
+<p>As defined in the priority, the result will be <code>Running High...</code>, <code>Running Normal...</code> and <code>Running Low...</code>.</p>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../url/">&#8592; URL</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../input/">Input and params &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.1.2
+              Docs Build Date UTC : 2022-05-10 12:26:19.040093+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Session and Cookie - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../release-notes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../env/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../filesystem/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../log/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mail/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../auth/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../crypt/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../forgot/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina2/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Session and Cookie</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#managing-cookies">Managing Cookies</a></li>
+                  
+                    <li><a href="#static-method">Static method</a></li>
+                  
+                    <li><a href="#builder-pattern">Builder pattern</a></li>
+                  
+                    <li><a href="#reading-cookies">Reading cookies</a></li>
+                  
+                  
+                    <li><a href="#managing-sessions">Managing Sessions</a></li>
+                  
+                  
+                    <li><a href="#reading-and-writing-session-data">Reading and writing session data</a></li>
+                  
+                    <li><a href="#parsing-cookies">Parsing cookies</a></li>
+                  
+                  
+                </ul>
+
+                
+                <h2 id="managing-cookies">Managing Cookies</h2>
+<h3 id="static-method">Static method</h3>
+<p>This library provides a static method that is compatible to PHP’s built-in <code>setcookie(...)</code> function but includes support for more recent features such as the <code>SameSite</code> attribute:</p>
+<pre><code class="language-php">use Solital\Core\Resource\Cookie;
+
+Cookie::setcookie('SID', '31d4d96e407aad42');
+// or
+Cookie::setcookie('SID', '31d4d96e407aad42', time() + 3600, '/~rasmus/', 'example.com', true, true, 'Lax');
+</code></pre>
+<h3 id="builder-pattern">Builder pattern</h3>
+<p>Instances of the <code>Cookie</code> class let you build a cookie conveniently by setting individual properties. This class uses reasonable defaults that may differ from defaults of the <code>setcookie</code> function.</p>
+<pre><code class="language-php">$cookie = new Cookie('SID');
+$cookie-&gt;setValue('31d4d96e407aad42');
+$cookie-&gt;setMaxAge(60 * 60 * 24);
+// $cookie-&gt;setExpiryTime(time() + 60 * 60 * 24);
+$cookie-&gt;setPath('/~rasmus/');
+$cookie-&gt;setDomain('example.com');
+$cookie-&gt;setHttpOnly(true);
+$cookie-&gt;setSecureOnly(true);
+$cookie-&gt;setSameSiteRestriction('Strict');
+
+// echo $cookie;
+// or
+$cookie-&gt;save();
+// or
+// $cookie-&gt;saveAndSet();
+</code></pre>
+<p>The method calls can also be chained:</p>
+<pre><code class="language-php">(new Cookie('SID'))-&gt;setValue('31d4d96e407aad42')-&gt;setMaxAge(60 * 60 * 24)-&gt;setSameSiteRestriction('None')-&gt;save();
+</code></pre>
+<p>A cookie can later be deleted simply like this:</p>
+<pre><code class="language-php">$cookie-&gt;delete();
+// or
+$cookie-&gt;deleteAndUnset();
+</code></pre>
+<p><strong>Note:</strong> For the deletion to work, the cookie must have the same settings as the cookie that was originally saved – except for its value, which doesn’t need to be set. So you should remember to pass appropriate values to <code>setPath(...)</code>, <code>setDomain(...)</code>, <code>setHttpOnly(...)</code> and <code>setSecureOnly(...)</code> again.</p>
+<h3 id="reading-cookies">Reading cookies</h3>
+<ul>
+<li>Checking whether a cookie exists:</li>
+</ul>
+<pre><code class="language-php">Cookie::exists('first_visit');
+</code></pre>
+<ul>
+<li>Reading a cookie’s value (with optional default value):</li>
+</ul>
+<pre><code class="language-php">Cookie::get('first_visit');
+// or
+Cookie::get('first_visit', \time());
+</code></pre>
+<h2 id="managing-sessions">Managing Sessions</h2>
+<p>Using the <code>Session</code> class, you can start and resume sessions in a way that is compatible to PHP’s built-in <code>session_start()</code> function, while having access to the improved cookie handling from this library as well:</p>
+<pre><code class="language-php">use Solital\Core\Resource\Session;
+
+// start session and have session cookie with 'lax' same-site restriction
+Session::start();
+// or
+Session::start('Lax');
+
+// start session and have session cookie with 'strict' same-site restriction
+Session::start('Strict');
+
+// start session and have session cookie without any same-site restriction
+Session::start(null);
+// or
+Session::start('None'); // Chrome 80+
+</code></pre>
+<p>All three calls respect the settings from PHP’s <code>session_set_cookie_params(...)</code> function and the configuration options <code>session.name</code>, <code>session.cookie_lifetime</code>, <code>session.cookie_path</code>, <code>session.cookie_domain</code>, <code>session.cookie_secure</code>, <code>session.cookie_httponly</code> and <code>session.use_cookies</code>.</p>
+<p>Likewise, replacements for</p>
+<pre><code class="language-php">session_regenerate_id();
+// and
+session_regenerate_id(true);
+</code></pre>
+<p>are available via</p>
+<pre><code class="language-php">Session::regenerate();
+// and
+Session::regenerate(true);
+</code></pre>
+<p>if you want protection against session fixation attacks that comes with improved cookie handling.</p>
+<p>Additionally, access to the current internal session ID is provided via</p>
+<pre><code class="language-php">Session::id();
+</code></pre>
+<p>as a replacement for</p>
+<pre><code class="language-php">session_id();
+</code></pre>
+<h2 id="reading-and-writing-session-data">Reading and writing session data</h2>
+<ul>
+<li>Read a value from the session (with optional default value):</li>
+</ul>
+<pre><code class="language-php">$value = Session::get($key);
+// or
+$value = Session::get($key, $defaultValue);
+</code></pre>
+<ul>
+<li>Write a value to the session:</li>
+</ul>
+<pre><code class="language-php">Session::set($key, $value);
+</code></pre>
+<ul>
+<li>Check whether a value exists in the session:</li>
+</ul>
+<pre><code class="language-php">if (Session::has($key)) {
+    // ...
+}
+</code></pre>
+<ul>
+<li>Remove a value from the session:</li>
+</ul>
+<pre><code class="language-php">Session::delete($key);
+</code></pre>
+<ul>
+<li>Read <em>and then</em> immediately remove a value from the session:</li>
+</ul>
+<pre><code class="language-php">$value = Session::take($key);
+$value = Session::take($key, $defaultValue);
+</code></pre>
+<p>This is often useful for flash messages, e.g. in combination with the <code>has(...)</code> method.</p>
+<h3 id="parsing-cookies">Parsing cookies</h3>
+<pre><code class="language-php">$cookieHeader = 'Set-Cookie: test=php.net; expires=Thu, 09-Jun-2016 16:30:32 GMT; Max-Age=3600; path=/~rasmus/; secure';
+$cookieInstance = Cookie::parse($cookieHeader);
+</code></pre>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../mail/">&#8592; Mailer</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../validate/">Validation &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.1.2
+              Docs Build Date UTC : 2022-05-10 12:26:19.145176+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

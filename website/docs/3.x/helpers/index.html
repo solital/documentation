@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Helpers - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../release-notes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../env/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../filesystem/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../log/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mail/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../auth/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../crypt/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../forgot/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina2/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Helpers</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#http">HTTP</a></li>
+                  
+                  
+                    <li><a href="#security">Security</a></li>
+                  
+                  
+                    <li><a href="#wolf-template">Wolf Template</a></li>
+                  
+                  
+                    <li><a href="#output">Output</a></li>
+                  
+                  
+                    <li><a href="#others">Others</a></li>
+                  
+                  
+                </ul>
+
+                
+                <h2 id="http">HTTP</h2>
+<ul>
+<li>Handles the URI class. See more in <a href="../routes/">routes</a>.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $name
+ * @param mixed $parameters
+ * @param null|array $getParams
+*/
+url(?string $name = null, $parameters = null, ?array $getParams)
+</code></pre>
+<ul>
+<li>Handles the Response class.</li>
+</ul>
+<pre><code class="language-php">response()
+</code></pre>
+<ul>
+<li>Handles the Request class.</li>
+</ul>
+<pre><code class="language-php">request()
+</code></pre>
+<ul>
+<li>Get input class. See more in <a href="../input/">Input and params</a>.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string|null $index: Parameter index name
+ * @param string|null $defaultValue: Default return value
+ * @param array ...$methods: Default methods
+ * 
+ * @return mixed
+ */
+input(string $index = null, string $defaultValue = null, ...$methods)
+</code></pre>
+<ul>
+<li>Redirect to another route.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $url: the route to which you will be redirected
+ * @param int|null $code: HTTP code
+ */
+redirect(string $url, ?int $code = null)
+</code></pre>
+<ul>
+<li>Defines a limit on requests that can be made at a certain time </li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $key: key to identify the requisition 
+ * @param int $limit: number of times the request can be made
+ * @param int $seconds: waiting time until it is possible to make the request again. 
+ * 
+ * @return bool
+*/
+request_limit(string $key, int $limit = 5, int $seconds = 60)
+</code></pre>
+<ul>
+<li>Checks if a value was previously sent in the requisition.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $key: key to identify the requisition 
+ * @param string $value: value that will be added
+ * 
+ * @return bool
+ */
+request_repeat(string $key, string $value)
+</code></pre>
+<h2 id="security">Security</h2>
+<ul>
+<li>Get current csrf-token. See more in <a href="../csrf/">CSRF Protection</a>.</li>
+</ul>
+<pre><code class="language-php">csrf_token()
+</code></pre>
+<ul>
+<li>Form method spoofing.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $method: GET, POST, PUT or DELETE
+*/
+spoofing(string $method)
+</code></pre>
+<ul>
+<li>Similar to <code>password_hash</code>.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $value: the user's password. 
+ * @param int $cost: which denotes the algorithmic cost that should be used.
+*/
+pass_hash($value, int $cost = 10)
+</code></pre>
+<ul>
+<li>Similar to <code>password_verify</code>.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $value: the user's password. 
+ * @param string $hash: a hash created by `pass_hash()`.
+*/
+pass_verify($value, string $hash)
+</code></pre>
+<h2 id="wolf-template">Wolf Template</h2>
+<ul>
+<li>
+<p>See <a href="../wolf/">Wolf Template</a> to use Wolf helpers.</p>
+</li>
+<li>
+<p>Load a CSS file into the <code>public/assets/_css/</code> folder.</p>
+</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $asset: CSS file name
+*/
+loadCss(string $asset)
+</code></pre>
+<ul>
+<li>Loads the minified CSS file created by the <code>minify()-&gt;style()</code> method.</li>
+</ul>
+<pre><code class="language-php">loadMinCss()
+</code></pre>
+<ul>
+<li>Load a Javascript file into the <code>public/assets/_js/</code> folder.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $asset: javascript file name
+*/
+loadJs(string $asset)
+</code></pre>
+<ul>
+<li>Loads the minified Javascript file created by the <code>minify()-&gt;script()</code> method.</li>
+</ul>
+<pre><code class="language-php">loadMinJs()
+</code></pre>
+<ul>
+<li>Load a image file into the <code>public/assets/_img/</code> folder.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $asset: image file name
+*/
+loadImg(string $asset)
+</code></pre>
+<ul>
+<li>Load a file into the <code>public/assets/</code> folder.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $asset: external file name
+*/
+loadFile(string $asset)
+</code></pre>
+<h2 id="output">Output</h2>
+<ul>
+<li>Formatted <code>var_dump</code>.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $value: to format
+*/
+pre($value)
+</code></pre>
+<ul>
+<li><code>cloner</code> uses Symfony <code>VarCloner</code> function. <a href="https://symfony.com/doc/current/components/var_dumper/advanced.html">See more</a>.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $var
+ */
+cloner($var)
+</code></pre>
+<ul>
+<li>Displays the variable formatted in string. <code>true</code> to return as an array.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $var
+ * @param bool $length
+ */
+dumper($var, bool $length = false)
+</code></pre>
+<ul>
+<li>It is possible to make use of Symfony <code>dump</code> function.</li>
+</ul>
+<pre><code class="language-php">dump($var)
+</code></pre>
+<ul>
+<li><code>export</code> uses the Symfony <code>VarExport</code> function. <a href="https://symfony.com/doc/current/components/var_exporter.html">See more</a>.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $value
+ */
+export($value)
+</code></pre>
+<ul>
+<li>Convert an array to JSON and display an error message in case of failure.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $value: to JSON
+*/
+encodeJSON($value)
+</code></pre>
+<ul>
+<li>Convert a JSON to an object and display an error message in case of failure. <code>true</code> to convert JSON to an array.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $value: to JSON
+ * @param bool $toArray: convert JSON object in array
+*/
+decodeJSON($value, bool $toArray = false)
+</code></pre>
+<ul>
+<li>Write any message in the browser LOG, which can be viewed at any time.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed ...$messages
+ * 
+ * @return void
+ */
+console_log(...$messages)
+</code></pre>
+<h2 id="others">Others</h2>
+<ul>
+<li>Removes GET parameters in the URL and reloads the page without those parameters.</li>
+</ul>
+<pre><code class="language-php">remove_param()
+</code></pre>
+<ul>
+<li>Check if variable is JSON.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param mixed $string: verify if value is JSON
+*/
+is_json($string)
+</code></pre>
+<ul>
+<li>Get the current full URL.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $uri
+ */
+get_url(string $uri = null)
+</code></pre>
+<ul>
+<li>Handles PHP sessions. To get a value from an existing session, leave the <code>$value</code> parameter empty. To create a new session, inform the session index in the first parameter, and the session value in the second parameter.</li>
+</ul>
+<pre><code class="language-php">/**
+ * @param string $index: index that will identify the session
+ * @param mixed $value: session value
+ * @param null|string $key: array of values (see Session class documentation)
+ * @param bool $delete: if the value is `true`, the session will be deleted.
+ * 
+ * @return mixed
+ */
+session(string $index, $value = null, ?string $key = null, bool $delete = false)
+</code></pre>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../yaml-files/">&#8592; YAML Files</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../routes/">Routes &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.1.2
+              Docs Build Date UTC : 2022-05-10 12:26:19.055102+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

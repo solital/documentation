@@ -6,13 +6,13 @@ The `.env` file has all the variables that Solital uses. Some are filled in by d
 ERRORS_DISPLAY="true"
 ```
 
-- Standard index that Solital uses to store session login. To learn more, see [Authenticate](auth.md)
+- Standard index that Solital uses to store session login. To learn more, see [Authenticate](authenticate.md)
 
 ```bash
 INDEX_LOGIN="solital_index_login"
 ```
 
-- Database connection variables. To find out more, see [Katrina ORM](katrina2.md)
+- Database connection variables. To find out more, see [Katrina ORM](katrina-orm.md)
 
 ```bash
 DB_DRIVE=""

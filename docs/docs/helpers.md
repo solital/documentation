@@ -23,7 +23,7 @@ response()
 request()
 ```
 
-- Get input class. See more in [Input and params](input.md).
+- Get input class. See more in [Input and params](input-and-params.md).
 
 ```php
 /**
@@ -73,7 +73,7 @@ request_repeat(string $key, string $value)
 
 ## Security
 
-- Get current csrf-token. See more in [CSRF Protection](csrf.md).
+- Get current csrf-token. See more in [CSRF Protection](csrf-protection.md).
 
 ```php
 csrf_token()
@@ -110,7 +110,7 @@ pass_verify($value, string $hash)
 
 ## Wolf Template
 
-- See [Wolf Template](wolf.md) to use Wolf helpers.
+- See [Wolf Template](wolf-template.md) to use Wolf helpers.
 
 - Load a CSS file into the `public/assets/_css/` folder.
 
