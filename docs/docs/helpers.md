@@ -118,13 +118,13 @@ pass_verify($value, string $hash)
 /**
  * @param string $asset: CSS file name
 */
-loadCss(string $asset)
+load_css(string $asset)
 ```
 
 - Loads the minified CSS file created by the `minify()->style()` method.
 
 ```php
-loadMinCss()
+load_min_css()
 ```
 
 - Load a Javascript file into the `public/assets/_js/` folder.
@@ -133,13 +133,13 @@ loadMinCss()
 /**
  * @param string $asset: javascript file name
 */
-loadJs(string $asset)
+load_js(string $asset)
 ```
 
 - Loads the minified Javascript file created by the `minify()->script()` method.
 
 ```php
-loadMinJs()
+load_min_js()
 ```
 
 - Load a image file into the `public/assets/_img/` folder.
@@ -148,7 +148,7 @@ loadMinJs()
 /**
  * @param string $asset: image file name
 */
-loadImg(string $asset)
+load_img(string $asset)
 ```
 
 - Load a file into the `public/assets/` folder.
@@ -157,7 +157,7 @@ loadImg(string $asset)
 /**
  * @param string $asset: external file name
 */
-loadFile(string $asset)
+load_file(string $asset)
 ```
 
 ## Output

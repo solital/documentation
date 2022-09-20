@@ -6,11 +6,19 @@ use Solital\Core\Validation\Convertime;
 $convertime = new Convertime();
 ```
 
+## Changing the timezone
+
 In the class constructor, you can define the timezone. By default, the default 
 timezone is set to `America/Sao_Paulo`.
 
 ```php
 $convertime = new Convertime("America/Fortaleza");
+```
+
+You can change the timezone also in the `bootstrap.yaml` file:
+
+```yaml
+default_timezone: America/Fortaleza
 ```
 
 ## Format date

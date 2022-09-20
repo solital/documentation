@@ -4,6 +4,18 @@ At first, you have the option to change the index where Solital will store the l
 INDEX_LOGIN='solital_index_login'
 ```
 
+## Defining the routes
+
+You can define dashboard and login routes. The dashboard route will be for when the user authenticates, and the login route will be for when the user logs off and will be redirected to it.
+
+To do this, open the `auth.yaml` file and edit the `auth_dashboard_url` and `auth_login_url` variables.
+
+```yaml
+auth:
+  auth_dashboard_url: /dashboard
+  auth_login_url: /auth
+```
+
 ## Setting
 
 For this, it is necessary to first define the name of the table in the `login` method. In the `columns` method, the database username and password. Then, in the `values` method, the input values of the form. Finally, the `register` method will perform the login as shown below.
@@ -19,7 +31,7 @@ The `$res` variable will return `true` if authentication is true. But if it is `
 
 ```php
 if ($res == false) {
-    $this->message->new('login', 'Invalid username and/or password!');
+    message('login', 'Invalid username and/or password!');
     response()->redirect('your_login_url');
 }
 ```
@@ -47,12 +59,36 @@ class UserController extends Controller
             ->register();
 
         if ($res == false) {
-            $this->message->new('login', 'Invalid username and/or password!');
+            message('login', 'Invalid username and/or password!');
             response()->redirect(url('auth'));
         }
     }
 
 }
+```
+
+## Changing default routes
+
+If you need more routes for dashboards and logins, you can change the parameter in the `register()` function:
+
+```php
+# In routers.php
+
+Course::get('/my-second-dashboard', 'SiteController@SecondDashboard')->name('second.dashboard');
+
+# In Controller
+
+$res = Auth::login('auth_users')
+    ->columns('username', 'password')
+    ->values('inputEmail', 'inputPassword')
+    ->register(url('second.dashboard'));
+
+# Or
+
+$res = Auth::login('auth_users')
+    ->columns('username', 'password')
+    ->values('inputEmail', 'inputPassword')
+    ->register('/my-second-dashboard');
 ```
 
 ## Check login

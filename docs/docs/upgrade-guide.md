@@ -161,7 +161,11 @@ The Vinci Console has had a big change compared to the `2.x` version. For that, 
 
 require_once 'vendor/autoload.php';
 
+use Solital\Core\Kernel\Application;
+
 define('SITE_ROOT', __DIR__);
+
+Application::autoload("vendor/solital/core/src/Resource/Helpers/");
 
 $class_commands = [
     \Solital\Core\Kernel\Console\SolitalCommands::class,

@@ -225,8 +225,8 @@ The first parameter represents the table containing the foreign key. The second 
 
 ```php
 User::select()
-    ->innerJoin("sobrenome", "id_nome")
-    ->innerJoin("cpf", "idUsu")
+    ->innerJoin("table1", "id1")
+    ->innerJoin("table2", "id2")
     ->get();
 ```
 
@@ -234,9 +234,19 @@ If you need to use the `WHERE` clause, use the `where()` method.
 
 ```php
 User::select()
-    ->innerJoin("sobrenome", "id_nome")
-    ->innerJoin("cpf", "idUsu")
-    ->where("cpf_number", 123123123)
+    ->innerJoin("table1", "id1")
+    ->innerJoin("table2", "id2")
+    ->where("phone", 123123123)
+    ->get();
+```
+
+NOTE: If you have two or more tables where the column names are the same, remember to specify the table names in the `where()` method:
+
+```php
+User::select()
+    ->innerJoin("table1", "id1")
+    ->innerJoin("table2", "id2")
+    ->where("table1.phone", 123123123)
     ->get();
 ```
 
@@ -379,10 +389,11 @@ var_dump($res);
 
 **With ActiveRecord**
 
-The process for updating a record in the table is very similar to inserting a record. For that you must use the `find()` method. The `find()` method is to indicate which record you want to update.
+The process for updating a record in the table is very similar to inserting a record. However, you need to specify the `id` of your table:
 
 ```php
-$user = User::find(2);
+$user = new User();
+$user->id = 1;
 $user->name = "Harvey Specter";
 $user->age = 42;
 $user->email = "harvey@specterlitt.com";
@@ -397,7 +408,7 @@ The process for updating a value in the database using the `update` method is si
 User::update([
     'name' => 'Harvey Specter',
     'age' => 42,
-    'email' => 'harvey@pearsonspecterlitt.com'
+    'email' => 'harvey@specterlitt.com'
 ])->where('id', 1)->saveUpdate();
 ```
 
