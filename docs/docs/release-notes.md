@@ -1,6 +1,21 @@
+## 3.1
+
+**New features**
+
+- Added command to create routes
+- Added restrict IP in Middleware
+- Added Collection for arrays
+- Added feature to manipulate strings
+
+**Other features**
+
+- Added annotations in templates
+- Added `IpRestrictAccessException` exception
+- Added Queue in Logger
+
 ## 3.0
 
-**Main news**
+**New features**
 
 - Added PHP 8.0 support
 - Added `SecurePassword` component
@@ -18,7 +33,7 @@
 - Added pure HTML template support in Wolf Template
 - Added new `Session`, `Cookie`, `Console`, `Container` and `Logger` components
 
-**Other news**
+**Other features**
 
 - Added `makeCache` method in WolfCache class
 - Added autoload in helpers and routers files

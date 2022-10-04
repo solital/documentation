@@ -66,6 +66,13 @@ Cookie::get('first_visit');
 Cookie::get('first_visit', \time());
 ```
 
+### Parsing cookies
+
+```php
+$cookieHeader = 'Set-Cookie: test=php.net; expires=Thu, 09-Jun-2016 16:30:32 GMT; Max-Age=3600; path=/~rasmus/; secure';
+$cookieInstance = Cookie::parse($cookieHeader);
+```
+
 ## Managing Sessions
 
 Using the `Session` class, you can start and resume sessions in a way that is compatible to PHP’s built-in `session_start()` function, while having access to the improved cookie handling from this library as well:
@@ -125,14 +132,24 @@ session_id();
 
 ```php
 $value = Session::get($key);
+
+# With helper
+$value = session($key);
+
 // or
 $value = Session::get($key, $defaultValue);
+
+# With helper
+$value = session($key, defaultValue: 'default_value');
 ```
 
 * Write a value to the session:
 
 ```php
 Session::set($key, $value);
+
+# With helper
+session($key, $value);
 ```
 
 * Check whether a value exists in the session:
@@ -147,6 +164,9 @@ if (Session::has($key)) {
 
 ```php
 Session::delete($key);
+
+# With helper
+session($key, delete: true);
 ```
 
 * Read *and then* immediately remove a value from the session:
@@ -154,13 +174,9 @@ Session::delete($key);
 ```php
 $value = Session::take($key);
 $value = Session::take($key, $defaultValue);
+
+# With helper
+$value = session($key, take: true);
 ```
 
 This is often useful for flash messages, e.g. in combination with the `has(...)` method.
-
-### Parsing cookies
-
-```php
-$cookieHeader = 'Set-Cookie: test=php.net; expires=Thu, 09-Jun-2016 16:30:32 GMT; Max-Age=3600; path=/~rasmus/; secure';
-$cookieInstance = Cookie::parse($cookieHeader);
-```

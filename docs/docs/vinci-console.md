@@ -83,6 +83,12 @@ php vinci [command] [argument] [--option1] [--option2]
       <td>-</td>
     </tr>
     <tr>
+      <td><span class="cmd-vinci">create:router</span></td>
+      <td>Create a new router</td>
+      <td>name</td>
+      <td>--comment</td>
+    </tr>
+    <tr>
       <td><span class="cmd-vinci">db:dump</span></td>
       <td>Dump the connected database</td>
       <td>name</td>

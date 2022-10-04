@@ -57,7 +57,7 @@ class UserController extends Controller
     public function home(): void
     {
         return view('home', [
-            'msg' => $this->message->get('msg.test') // message('msg.test');
+            'msg' => $this->message->get('msg.test') // or use "message('msg.test')"
         ]);
     }
 

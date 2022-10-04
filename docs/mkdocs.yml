@@ -31,6 +31,9 @@ nav:
     - Validation: validation-component.md
     - Messages: messages.md
     - Queue: queue.md
+    - Collection: collection.md
+    - Strings: string-manipulate.md
+    - Mask: mask.md
   - Security:
     - Authenticate: authenticate.md
     - Cryptography: cryptography.md

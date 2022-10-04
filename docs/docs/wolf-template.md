@@ -171,6 +171,8 @@ The `extend` method includes any template that is inside the `resource/view` fol
 
 It is not necessary to inform the file extension, just use the file home without the extension.
 
+### View inside a folder
+
 If you want to extend a view inside a folder, use a (.) separator.
 
 ```html
