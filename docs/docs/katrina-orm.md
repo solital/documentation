@@ -121,7 +121,7 @@ class User extends Katrina
 }
 ```
 
-## List
+## SELECT
 
 To list all fields in the table, use `all()` as shown in the previous example.
 
@@ -146,12 +146,12 @@ User::select()->get();
 /** 
  * Fetch only
  */
-User::select(2)->get();
+User::select()->where('id', 2)->getUnique();
 
 /** 
  * Fetch all with column name
  */
-User::select(null, "name")->get();
+User::select("name")->get();
 ```
 
 **WHERE**
@@ -173,6 +173,22 @@ User::select()->where("age", 10, ">")->get();
  * Katrina will look for a record that is under the age of 10.
 */
 User::select()->where("age", 10, "<")->get();
+```
+
+**AND/OR**
+
+If there are more conditions for the `where` method, you can make use of the `and/or` methods:
+
+```php
+/** 
+ * With AND clause
+*/
+User::select()->where("brand", 'visa')->and("cvv", '502')->get();
+
+/**
+ * With OR clause
+ */
+User::select()->where("brand", 'visa')->or("cvv", '502')->get();
 ```
 
 **LIKE and BETWEEN**
@@ -343,7 +359,7 @@ Below is a list of all the functions present in Katrina ORM:
   </tbody>
 </table>
 
-### Insert
+### INSERT
  
 Katrina uses the ActiveRecord standard to insert and update database data. However, if you don't want to use the ActiveRecord pattern, you can use the `insert()` and `update()` methods.
 
@@ -385,7 +401,7 @@ $res = User::insert([
 var_dump($res);
 ```
 
-### Update
+### UPDATE
 
 **With ActiveRecord**
 
@@ -417,7 +433,13 @@ User::update([
 To delete a record from the table, use the `delete()` method.
 
 ```php
-User::delete("id = 2");
+User::delete('id', 2);
+```
+
+If you want to delete a row that has a foreign key in another table, the `$safe_mode` parameter must be changed to `false`:
+
+```php
+User::delete('id', 2, false);
 ```
 
 ## Manipulating tables
@@ -537,6 +559,26 @@ To use procedure parameters, pass the values in array format.
 (new User)->call('procedure_name' , ['param_1, param_2, param_3']);
 ```
 
+## Transactions
+
+Transactions are typically implemented by "saving-up" your batch of changes to be applied all at once; this has the nice side effect of drastically improving the efficiency of those updates. In other words, transactions can make your scripts faster and potentially more robust (you still need to use them correctly to reap that benefit).
+
+```php
+try {
+  $pdo = Connection::getInstance();
+  $pdo->beginTransaction();
+
+  // code...
+
+  $pdo->commit();
+
+} catch (\PDOException $e) {
+  $pdo->rollback();
+  
+  echo $e->getMessage();
+}
+```
+
 ## Pagination
 
 The `pagination()` method creates a system for paging results. To initialize, the first parameter must be the table you want to use to start paging. The second parameter will list the amount of values that will be returned from the table as shown in the example below.
@@ -578,6 +620,8 @@ To use the WHERE clause, use the fourth parameter as shown below.
 ```php
 $values = (new User)->pagination('your_table', 3, null, "status=true");
 ```
+
+**Transactions**
 
 **Wolf Template**
 
