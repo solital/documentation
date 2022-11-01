@@ -4,9 +4,16 @@ You can use the `InputHandler` class to easily access and manage parameters from
 
 ## Get single parameter value
 
-```input($index, $defaultValue, ...$methods);```
 
-To quickly get a value from a parameter, you can use the `input` helper function.
+```php
+# With Helper
+input($index, $defaultValue, ...$methods);
+
+# With method
+$this->getRequestParams($index, $defaultValue, ...$methods);
+```
+
+To quickly get a value from a parameter, you can use the `input` helper function or the `getRequestParams` method. The `getRequestParams` method can only be used inside a Controller.
 
 This will automatically trim the value and ensure that it's not empty. If it's empty the `$defaultValue` will be returned instead.
 
@@ -18,7 +25,11 @@ This function returns a `string` unless the parameters are grouped together, in 
 This example matches both POST and GET request-methods and if name is empty the default-value "Guest" will be returned. 
 
 ```php
+#With helper
 $name = input('name', 'Guest', 'post', 'get');
+
+# With method
+$name = $this->getRequestParams('name', 'Guest', 'post', 'get');
 ```
 
 ## Get parameter object
@@ -30,7 +41,11 @@ When dealing with file-uploads it can be useful to retrieve the raw parameter ob
 The example below will return an `InputItem` object if the parameter was found or return the `$defaultValue`. If parameters are grouped, it will return an array of `InputItem` objects.
 
 ```php
+#With Helper
 $object = input()->find($index, $defaultValue = null, ...$methods);
+
+# With method
+$object = $this->getRequestParams()->find($index, $defaultValue = null, ...$methods);
 ```
 
 **Getting specific `$_GET` parameter as `InputItem` object:**
@@ -38,7 +53,11 @@ $object = input()->find($index, $defaultValue = null, ...$methods);
 The example below will return an `InputItem` object if the parameter was found or return the `$defaultValue`. If parameters are grouped, it will return an array of `InputItem` objects.
 
 ```php
+# With Helper
 $object = input()->get($index, $defaultValue = null);
+
+# With method
+$object = $this->getRequestParams()->get($index, $defaultValue = null);
 ```
 
 **Getting specific `$_POST` parameter as `InputItem` object:**
@@ -46,7 +65,11 @@ $object = input()->get($index, $defaultValue = null);
 The example below will return an `InputItem` object if the parameter was found or return the `$defaultValue`. If parameters are grouped, it will return an array of `InputItem` objects.
 
 ```php
+# With Helper
 $object = input()->post($index, $defaultValue = null);
+
+# With method
+$object = $this->getRequestParams()->post($index, $defaultValue = null);
 ```
 
 **Getting specific `$_FILE` parameter as `InputFile` object:**
@@ -54,7 +77,11 @@ $object = input()->post($index, $defaultValue = null);
 The example below will return an `InputFile` object if the parameter was found or return the `$defaultValue`. If parameters are grouped, it will return an array of `InputFile` objects.
 
 ```php
+# With Helper
 $object = input()->file($index, $defaultValue = null);
+
+# With method
+$object = $this->getRequestParams()->file($index, $defaultValue = null);
 ```
 
 ## Managing files
@@ -83,7 +110,26 @@ foreach ($photo as $photo) {
     $img = 'IMG-'.uniqid().".".$ext;
     $photo->move(dirname(__DIR__).'/photos/'.$img);
 }
+```
 
+Or, if you use the `getRequestParams` method:
+
+```php
+/**
+ * Only file
+ */
+$ext = $this->getRequestParams()->file('image')->getExtension();
+$imgMain = 'IMG-'.uniqid().".".$ext;
+$this->getRequestParams()->file('image')->move(dirname(__DIR__).'/photos/'.$imgMain);
+
+/**
+ * Multiple files
+ */
+foreach ($photo as $photo) {
+    $ext = $photo->getExtension();
+    $img = 'IMG-'.uniqid().".".$ext;
+    $photo->move(dirname(__DIR__).'/photos/'.$img);
+}
 ```
 
 ## Get all parameters

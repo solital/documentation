@@ -2,6 +2,8 @@ Helpers are functions that help the developer manipulate classes, without having
 
 Here you will find the helpers that exist in Solital Framework. Some specific helpers are not listed on this page, but you can find them on the next pages of the documentation.
 
+Some helpers can be replaced by methods, as long as you use them inside a Controller.
+
 ## HTTP
 
 * Handles the URI class. See more in [routes](routes.md).
@@ -38,6 +40,9 @@ request()
  * @return mixed
  */
 input(string $index = null, string $defaultValue = null, ...$methods)
+
+# With method
+$this->getRequestParams(string $index = null, string $defaultValue = null, ...$methods)
 ```
 
 * Redirect to another route.
@@ -48,6 +53,9 @@ input(string $index = null, string $defaultValue = null, ...$methods)
  * @param int|null $code: HTTP code
  */
 redirect(string $url, ?int $code = null)
+
+# Or, use a method
+$this->redirect(string $url, ?int $code = null)
 ```
 
 * Defines a limit on requests that can be made at a certain time 
@@ -61,6 +69,9 @@ redirect(string $url, ?int $code = null)
  * @return bool
 */
 request_limit(string $key, int $limit = 5, int $seconds = 60)
+
+# With method
+$this->requestLimit(string $key, int $limit = 5, int $seconds = 60)
 ```
 
 * Checks if a value was previously sent in the requisition.
@@ -73,6 +84,9 @@ request_limit(string $key, int $limit = 5, int $seconds = 60)
  * @return bool
  */
 request_repeat(string $key, string $value)
+
+# With method
+$this->requestRepeat(string $key, string $value)
 ```
 
 ## Security
@@ -264,6 +278,9 @@ session(string $key, mixed $value = null, mixed $defaultValue = null, bool $dele
 
 ```php
 remove_param()
+
+# With method
+$this->removeParamsUrl()
 ```
 
 * Check if variable is JSON.

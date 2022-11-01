@@ -95,6 +95,12 @@ php vinci [command] [argument] [--option1] [--option2]
       <td>-</td>
     </tr>
     <tr>
+      <td><span class="cmd-vinci">db:list</span></td>
+      <td>List data from a database table</td>
+      <td>-</td>
+      <td>--limit=10</td>
+    </tr>
+    <tr>
       <td><span class="cmd-vinci">generate:files</span></td>
       <td>Imports Solital Framework's default configuration files</td>
       <td>-</td>
