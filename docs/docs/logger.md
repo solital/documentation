@@ -47,6 +47,15 @@ $logger->warning('a warning message');
 $logger->info(new MemoryInfo());
 ```
 
+If you are using a Controller, you don't need to instantiate the `Logger` class. Just use `$this->logger()` method:
+
+```php
+$this->logger('MyApp')->addHandler(
+        LogLevel::WARNING,
+        new SyslogHandler()
+    )->warning('a warning message');
+```
+
 ## Concepts
 
 - **Log entry**

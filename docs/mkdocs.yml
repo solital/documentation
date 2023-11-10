@@ -2,7 +2,7 @@ site_name: Solital Framework
 nav:
   - Starting: index.md
   - Upgrade: 
-    - Release Notes: release-notes.md
+    - Release Notes: https://github.com/solital/core/releases
     - Upgrade Guide: upgrade-guide.md
   - Settings:
     - Installing: installation.md
@@ -19,6 +19,7 @@ nav:
     - Vinci Console: vinci-console.md
     - Cache: cache.md
     - Dependency Container : dependency-container.md
+    - Event Loop: event-loop.md
     - HTTP Client: http-client.md
     - Wolf Template: wolf-template.md
   - Resources:

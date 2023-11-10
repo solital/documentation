@@ -1,17 +1,30 @@
 Cache is a layer of high-speed physical data storage that holds a subset of data, usually temporary in nature, so that future requests for that data are answered more quickly than is possible when accessing the primary storage location of data. Caching allows you to efficiently reuse previously recovered or computed data.
 
-## How to use - PSR-16
+## How to use - PSR6/PSR-16
 
-**Single cache**
+**PSR-6**
+
+To use the PSR-6, you can follow the step by step guide [here](http://www.php-fig.org/psr/psr-6/)
+
+```php
+use Solital\Core\Cache\Psr6\CachePool;
+
+$pool = new CachePool();
+$item = $pool->getItem('aaa');
+$item->set(123);
+$pool->commit();
+```
+
+**PSR-16**
 
 You can cache through PSR-16. To do this, perform the instance of the Cache class as follows:
 
 ```php
-use Solital\Cache\Cache;
+use Solital\Cache\SimpleCache;
 
-$cache = new Cache();
+$cache = new SimpleCache();
 
-$list = $this->instance()->select()->build("all");
+$list = User::select()->get();
 
 // The 'has' method checks whether the index exists
 if ($cache->has('list') == true) {
@@ -37,14 +50,12 @@ $cache->delete('list');
 
 The `has` method checks whether the item key exists. If it exists, use the `get` method to retrieve the generated cache by passing the key value as a parameter. If it does not exist, the `set` method creates the cached file, passing in the first parameter the name of the key, the value that will be stored and the time (in `int`) that this cached file will be valid.
 
-**Mutiple cache**
-
 The syntax is similar to the single cache. But the `getMultiple` method needs an array containing the key values as a parameter. The `setMultiple` method generates the cache if it does not exist, but pass as an parameter an array in which the keys will be the indexes of the array, and in the last parameter spend the time that the cache will be valid.
 
 ```php
-use Solital\Cache\Cache;
+use Solital\Cache\SimpleCache;
 
-$cache = new Cache();
+$cache = new SimpleCache();
 
 $list = [
     'nome' => 'Harvey Specter',

@@ -1,15 +1,15 @@
-You can manipulate JSON using the `InputJson` class or using the helpers `encodeJSON` and `decodeJSON`.
+You can manipulate JSON using the `JSON` class or using the helpers `encodeJSON` and `decodeJSON`.
 
 The difference of this class for `json_encode` and `json_decode` is that you can automatically view errors when encoding/decoding a JSON, in addition to looking for a value within a JSON and reading external files.
 
-There are two ways to use this class, using the helpers mentioned above, or by instantiating the `InputJson` class. 
+There are two ways to use this class, using the helpers mentioned above, or by instantiating the `JSON` class. 
 
 ```php
-# Instantiating the InputJson class
+# Instantiating the JSON class
 
-use Solital\Core\Http\Input\InputJson;
+use Solital\Core\Resource\JSON;
 
-$json = new InputJson();
+$json = new JSON();
 
 # Using the helpers encodeJSON and decodeJSON 
 
@@ -19,11 +19,11 @@ decodeJSON($json);
 
 ## Predefined Constants
 
-By default, the `JSON_UNESCAPED_UNICODE` constant is defined in the constructor of the `InputJson` class or the helper `encodeJSON`. It is possible to add more than one constant following the model below: 
+By default, the `JSON_UNESCAPED_UNICODE` constant is defined in the constructor of the `JSON` class or the helper `encodeJSON`. It is possible to add more than one constant following the model below: 
 
 ```php
 # Class
-$json = new InputJson(JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
+$json = new JSON(JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
 
 # Helper
 encodeJSON($json, JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE);
@@ -37,7 +37,7 @@ The `encode` method creates a JSON from an array, or use the `encodeJSON` helper
 $array = ["name" => "Adithýa", "age" => 20];
 
 # Class
-$json = new Json();
+$json = new JSON();
 $res = $json->encode($array);
 
 # Helper
@@ -55,7 +55,7 @@ The `decode` method decodes JSON into an object or array.
 $json_file = '{"Organization": "PHP Documentation Team"}';
 
 # Class
-$json = new InputJson();
+$json = new JSON();
 $res = $json->decode($json_file);
 
 # Helper
@@ -71,7 +71,7 @@ To return an associative array, use `true` in the second parameter.
 $json_file = '{"Organization": "PHP Documentation Team"}';
 
 # Class
-$json = new InputJson();
+$json = new JSON();
 $res = $json->decode($json_file, true);
 
 # Helper
@@ -88,7 +88,7 @@ If you need to read a value from the JSON file, use the `inJson` method. Inform 
 ```php
 $json_file = '{"Organization": "PHP Documentation Team"}';
 
-$json = new InputJson();
+$json = new JSON();
 $res = $json->inJson($json , 'Organization');
 
 /* Return string */
@@ -102,7 +102,7 @@ If you want to read an external file, use `readFile`. This method works in a sim
 ```php
 $json_file = '{"Organization": "PHP Documentation Team"}';
 
-$json = new InputJson();
+$json = new JSON();
 $res = $json->readFile('data.json');
 
 /* Return object */
@@ -114,7 +114,7 @@ pre($res);
 ```php
 $json_file = '{"Organization": "PHP Documentation Team"}';
 
-$json = new InputJson();
+$json = new JSON();
 $res = $json->readFile('data.json', true);
 
 /* Return array */
@@ -128,6 +128,14 @@ decode a JSON. Below is an example of how it is returned:
 
 ```json
 {
-    "json_error": "Syntax error"
+    "json_error": "Syntax error, malformed JSON"
 }
+```
+
+## Enabling Exceptions
+
+To enable exceptions in case there is a Json reading error, change the value of the `json_exception` key to `true`. You can find this key in the `bootstrap.yaml` configuration file.
+
+```yaml
+json_exception: true
 ```

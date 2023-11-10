@@ -9,7 +9,9 @@ The queues will be stored inside the `app/Queue` folder. The structure that will
 ```php
 <?php
 
-class UserQueue
+use Solital\Core\Queue\Queue;
+
+class UserQueue extends Queue
 {
     public function dispatch()
     {

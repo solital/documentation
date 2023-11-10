@@ -138,7 +138,7 @@ php vinci [command] [argument] [--option1] [--option2]
     </tr>
     <tr>
       <td><span class="cmd-vinci">help</span></td>
-      <td>Run a migration</td>
+      <td>Displays details about some command</td>
       <td>-</td>
       <td>-</td>
     </tr>
@@ -226,15 +226,11 @@ php vinci user:cmd myArgument
 ```
 
 ```php
-/**
- * @param object $arguments
- * @param object $options
- * 
- * @return mixed
- */
+protected array $arguments = ['name'];
+
 public function handle(object $arguments, object $options): mixed
 {
-    var_dump($arguments->myArgument);
+    var_dump($arguments->foo);
 
     return $this;
 }
@@ -245,16 +241,10 @@ public function handle(object $arguments, object $options): mixed
 Options are not defined in the created class, but you can check inside the `handle` method if an option exists. For example:
 
 ```bash
-php vinci user:cmd myArgument --myOption
+php vinci user:cmd name --myOption
 ```
 
 ```php
-/**
- * @param object $arguments
- * @param object $options
- * 
- * @return mixed
- */
 public function handle(object $arguments, object $options): mixed
 {
     if (isset($options->myOption)) {
@@ -284,8 +274,6 @@ The `dialog()` method will display a message to the user, while the `action()` m
 You can also use a "yes/no" confirmation, or any other value.
 
 ```php
-use Solital\Core\Console\InputOutput;
-
 (new InputOutput())->confirmDialog('What you want?', 'Y', 'N', false)->confirm(function () {
     echo "accepted" . PHP_EOL;
 })->refuse(function () {
@@ -294,6 +282,16 @@ use Solital\Core\Console\InputOutput;
 ```
 
 In the first parameter of the `confirmDialog` method, you will define the question. The second parameter will be the value of the answer if it is positive, if not, the third parameter will receive the value of the answer if it is negative. The fourth parameter will define if the answer is know sensitive, if not, set it to `false`.
+
+**Customizing colors**
+
+To customize the colors of the message that is displayed from the CLI, you can pass the color name in the constructor of the `InputOutput` class.
+
+The available colors are: `green`, `yellow` and `blue`.
+
+```php
+(new InputOutput('green')) // green - yellow - blue
+```
 
 ## Displaying messages
 
@@ -325,11 +323,75 @@ $this->success("My message")->print()->break()->exit();
 $this->success("My message")->print()->break(true)->exit();
 ```
 
+## Progress Bar
+
+Progressbar has customizable names, colors, datatypes, error handling, and more.
+
+### Usage
+
+Initializing the ADVProgressbar object
+
+```php
+use Solital\Core\Console\ProgressBar\ProgressBar;
+use Solital\Core\Console\ProgressBar\ProgressBarStyle;
+
+//Lets create a style object first.
+//Style object has 4 parameters {$name, $color, $datatype, $length}.
+
+$progressbar_style = new ProgressBarStyle("Downloading", "white", "Kb", 16);
+
+//Now lets create the progressbar object.
+//Progressbar object has 2 parameters {$styleobject, $initialmax}
+
+$progressbar = new ProgressBar($progressbar_style, 1000);
+```
+Using the ADVProgressbar
+
+```php
+//Loop until the progressbar is complete
+
+for ($i = 0; $i < $progressbar->GetInitialMax(); $i++) {
+    $progressbar->step();
+    usleep(1000);
+}
+```
+
+### Methods:
+
+```php
+//Increases the progressbar value by 1.
+$progressbar->step();
+
+//Increases the progressbar value by x.
+$progressbar->stepBy(x);
+
+//Changes the progressbar value to x.
+$progressbar->stepTo(x);
+
+//Gets the progressbar value.
+$progressbar->getValue();
+
+//Gets the max initial value.
+$progressbar->getInitialMax();
+
+//Forces a redraw on the progressbar.
+$progressbar->update();
+
+//Enables the pause mode, it can be removed by using any of the step methods or forcing a redraw.
+$progressbar->pauseProgressbar();
+
+//Resets the progressbar object.
+$progressbar->resetProgressbar();
+
+//Terminates the progressbar and resets the object.
+$progressbar->terminateProgressbar();
+```
+
 ## Registering a custom command
 
 When creating your custom command, it will not yet be ready to run. First, you need to configure the `Config.php` file. You can find this file in `app/Console`.
 
-In the `$command_class` variable, you will define your class name like this:
+In the `$command_class` variable, you will define the name of the classes that have the commands, and in the `$type_commands` variable, you will define the purpose of these commands:
 
 ```php
 use Solital\Console\Command\UserCommand;
@@ -340,8 +402,13 @@ use Solital\Console\Command\UserCommand;
 protected array $command_class = [
     UserCommand::class
 ];
+
+/**
+ * @var string
+ */
+protected string $type_commands = "My Commands";
 ```
 
-You can register more than one command, and then add your new commands to this variable.
+You can register more than one command, and then add your new commands to the `$command_class` variable.
 
 After that, you can run the created command using `php vinci user:cmd` or any other command you have defined.
