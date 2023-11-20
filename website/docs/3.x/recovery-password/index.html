@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recovery Password - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="https://github.com/solital/core/releases" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade-guide/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../environment-variables/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment Variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input-and-params/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci-console/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../dependency-container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../event-loop/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Event Loop
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf-template/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date-and-time/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../file-system/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../logger/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mailer-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-and-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validation-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+      <a href="../collection/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Collection
+      </a>
+    
+      <a href="../string-manipulate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Strings
+      </a>
+    
+      <a href="../mask/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mask
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../authenticate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../cryptography/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf-protection/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../secure-password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina-orm/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Recovery Password</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#setting">Setting</a></li>
+                  
+                    <li><a href="#setting-expiration-time">Setting expiration time</a></li>
+                  
+                    <li><a href="#changing-email-fields">Changing email fields</a></li>
+                  
+                    <li><a href="#changing-default-email">Changing default email</a></li>
+                  
+                  
+                    <li><a href="#validade-link">Validade link</a></li>
+                  
+                  
+                    <li><a href="#changing-the-password">Changing the password</a></li>
+                  
+                  
+                    <li><a href="#password-recovery-structure">Password recovery structure</a></li>
+                  
+                  
+                </ul>
+
+                
+                <h2 id="setting">Setting</h2>
+<p>This procedure uses the <code>forgot</code> method to define the database table. The <code>columns</code> method the form's email field. In the <code>values</code> method, the e-mail that will be sent the recovery link is informed in the first parameter, and in the second parameter the URL that will be contained in the e-mail to change the password. The <code>register</code> method will check and send the email.</p>
+<pre><code class="language-php">/**
+ * @return void
+ */
+public function forgotPost(): void
+{
+    $email = input()-&gt;post('email')-&gt;getValue();
+
+    $res = Auth::forgot('auth_users')
+            -&gt;columns('username')
+            -&gt;values($email, url('change'))
+            -&gt;register();
+
+    if ($res == true) {
+        $this-&gt;message-&gt;new('forgot', 'Link sent to your email!');
+        response()-&gt;redirect(url('forgot'));
+    }
+}
+</code></pre>
+<h3 id="setting-expiration-time">Setting expiration time</h3>
+<p>By default, the link sent is valid for 1 hour. You can change this behavior using the <code>timeHash()</code> method.</p>
+<pre><code class="language-php">Auth::forgot('auth_users')
+    -&gt;columns('username')
+    -&gt;values($email, url('change'))
+    # Here the code
+    -&gt;timeHash('+2 hours')
+    -&gt;register();
+</code></pre>
+<h3 id="changing-email-fields">Changing email fields</h3>
+<p>By default, "User" is sent as the name of the sender and recipient. "Forgot Password" as the title of the email.</p>
+<p>To change these fields, use the <code>fields()</code> function.</p>
+<pre><code class="language-php">Auth::forgot('auth_users')
+    -&gt;columns('username')
+    -&gt;values($email, url('change'))
+    # Here the code
+    -&gt;fields('name_sender', 'name_recipient', 'subject')
+    -&gt;register();
+</code></pre>
+<h3 id="changing-default-email">Changing default email</h3>
+<p>If you need to change the default password recovery email, you must first use the <code>generateLink()</code> function. This function generates a new link in which the user will be redirected when changing the password.</p>
+<p>First, it is necessary to inform the user's email, the route he will access to change the password, and the length of time that this link will be valid.</p>
+<p>The code below shows an example of this use:</p>
+<pre><code class="language-php">$msg = &quot;&lt;h1&gt;Retrieve your password&lt;/h1&gt;&quot;;
+$msg .= &quot;&lt;p&gt;Click the link below to change your password&lt;/p&gt;&quot;;
+$msg .= &quot;&lt;a href='&quot;.generateLink($email, url('change'), '+2 hours').&quot;'&gt;Change Here!!&lt;/a&gt;&quot;;
+
+Auth::forgot('auth_users')
+    -&gt;columns('username')
+    -&gt;values($email, url('change'))
+    # Here the code
+    -&gt;fields('name_sender', 'name_recipient', 'subject', $msg)
+    -&gt;register();
+</code></pre>
+<h2 id="validade-link">Validade link</h2>
+<p>To validate the information by clicking on the email link, you can use the structure below:</p>
+<pre><code class="language-php">/**
+ * @param string $hash
+ * 
+ * @return void
+ */
+public function change($hash): void
+{
+    $res = Hash::decrypt($hash)-&gt;isValid();
+
+    if ($res == true) {
+        $email = Hash::decrypt($hash)-&gt;value();
+
+        return view('auth.change-pass-form', [
+            'title' =&gt; 'Change Password',
+            'email' =&gt; $email,
+            'hash' =&gt; $hash
+        ]);
+    } else {
+        $this-&gt;message-&gt;new('login', 'The informed link has already expired!');
+        response()-&gt;redirect(url('auth'));
+    }
+}
+</code></pre>
+<h2 id="changing-the-password">Changing the password</h2>
+<p>This procedure uses the <code>change</code> method to define the database table. The <code>columns</code> method defines the database user and password fields. The <code>values</code> method defines the user's email in the first parameter, and the new password in the second parameter. The <code>register</code> method will check and change the email.</p>
+<pre><code class="language-php">Auth::change('auth_users')
+    -&gt;columns('username', 'password')
+    -&gt;values($email, $pass)
+    -&gt;register();
+</code></pre>
+<h2 id="password-recovery-structure">Password recovery structure</h2>
+<p>You can create a predefined password recovery framework. To do so, use the <code>php vinci auth:skeleton --forgot</code> command.</p>
+<p>This command creates a controller with the name <code>ForgotController</code>. With it you will have all the basis to create a password recovery system.</p>
+<p>If you want to remove this structure, use <code>php vinci auth:skeleton --forgot --remove</code>.</p>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../verify-domain/">&#8592; Verify Domain</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../migrations/">Migrations &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.5.3
+              Docs Build Date UTC : 2023-11-10 11:10:40.152525+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

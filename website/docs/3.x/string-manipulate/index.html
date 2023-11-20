@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strings - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="https://github.com/solital/core/releases" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade-guide/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../environment-variables/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment Variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input-and-params/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci-console/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../dependency-container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../event-loop/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Event Loop
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf-template/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date-and-time/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../file-system/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../logger/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mailer-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-and-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validation-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+      <a href="../collection/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Collection
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Strings
+      </a>
+    
+      <a href="../mask/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mask
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../authenticate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../cryptography/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf-protection/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../secure-password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../recovery-password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina-orm/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Strings</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#value">value()</a></li>
+                  
+                  
+                    <li><a href="#addcslashes">addCslashes()</a></li>
+                  
+                  
+                    <li><a href="#addslashes">addSlashes()</a></li>
+                  
+                  
+                    <li><a href="#chunksplit">chunkSplit()</a></li>
+                  
+                  
+                    <li><a href="#compare">compare()</a></li>
+                  
+                  
+                    <li><a href="#compareinsensitive">compareInsensitive()</a></li>
+                  
+                  
+                    <li><a href="#concat">concat()</a></li>
+                  
+                  
+                    <li><a href="#contains">contains()</a></li>
+                  
+                  
+                    <li><a href="#countchars">countChars()</a></li>
+                  
+                  
+                    <li><a href="#explode">explode()</a></li>
+                  
+                  
+                    <li><a href="#implode">implode()</a></li>
+                  
+                  
+                    <li><a href="#ireplace">ireplace()</a></li>
+                  
+                  
+                    <li><a href="#ltrim">ltrim()</a></li>
+                  
+                  
+                    <li><a href="#nl2br">nl2br()</a></li>
+                  
+                  
+                    <li><a href="#pad">pad()</a></li>
+                  
+                  
+                    <li><a href="#position">position()</a></li>
+                  
+                  
+                    <li><a href="#repeat">repeat()</a></li>
+                  
+                  
+                    <li><a href="#replace">replace()</a></li>
+                  
+                  
+                    <li><a href="#reverse">reverse()</a></li>
+                  
+                  
+                    <li><a href="#rot13">rot13()</a></li>
+                  
+                  
+                    <li><a href="#rtrim">rtrim()</a></li>
+                  
+                  
+                    <li><a href="#shuffle">shuffle()</a></li>
+                  
+                  
+                    <li><a href="#specialchars">specialchars()</a></li>
+                  
+                  
+                    <li><a href="#striptags">stripTags()</a></li>
+                  
+                  
+                    <li><a href="#translate">translate()</a></li>
+                  
+                  
+                    <li><a href="#trim">trim()</a></li>
+                  
+                  
+                    <li><a href="#undo">undo()</a></li>
+                  
+                  
+                    <li><a href="#uniquechars">uniqueChars()</a></li>
+                  
+                  
+                    <li><a href="#wordcount">wordCount()</a></li>
+                  
+                  
+                    <li><a href="#word">word()</a></li>
+                  
+                  
+                </ul>
+
+                
+                <p>This will make living with PHP strings easier by;
+- providing a simple chained API to string operations
+- not mixing up the needle haystack stuff
+- allowing you to extend and add your own methods in seconds</p>
+<pre><code class="language-php">$text = 'Something to translate';
+$text = strtr($text, $translation);
+$text = htmlspecialchars($text);
+$text = nl2br($text);
+echo $text;
+</code></pre>
+<p>Str objects allow you this;</p>
+<pre><code class="language-php">use Solital\Core\Resource\Str\Str;
+
+echo (new Str('Something to translate'))
+    -&gt;translate($translation)
+    -&gt;chars()
+    -&gt;nl2br();
+
+// Or use a helper `str()`
+
+echo str('Something to translate')
+    -&gt;translate($translation)
+    -&gt;chars()
+    -&gt;nl2br();
+</code></pre>
+<h2 id="value"><code>value()</code></h2>
+<p>Returns the current value of this string</p>
+<pre><code class="language-php">$str = new Str('foo');
+echo $str-&gt;value();
+</code></pre>
+<h2 id="addcslashes"><code>addCslashes()</code></h2>
+<p>Quote string with slashes in a C style</p>
+<pre><code class="language-php">$str = new Str('testescape');
+$str-&gt;addCslashes('acep');
+echo $str-&gt;value();
+</code></pre>
+<h2 id="addslashes"><code>addSlashes()</code></h2>
+<p>Quote string with slashes</p>
+<pre><code class="language-php">$str = new Str(&quot;aa'bb&quot;);
+$str-&gt;addSlashes();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="chunksplit"><code>chunkSplit()</code></h2>
+<p>Splits the string into smaller chunks</p>
+<pre><code class="language-php">$str = new Str('foobar');
+$str-&gt;chunkSplit(2, ':');
+echo $str-&gt;value();
+</code></pre>
+<h2 id="compare"><code>compare()</code></h2>
+<p>Binary safe string comparison. </p>
+<ul>
+<li><code>&lt;</code> 0 if this string is less than target string</li>
+<li><code>&gt;</code> 0 if this string is greater than target string</li>
+<li><code>==</code> 0 if both strings are equal</li>
+</ul>
+<pre><code class="language-php">$str = new Str('my_string');
+echo $str-&gt;compare('mystring');
+</code></pre>
+<h2 id="compareinsensitive"><code>compareInsensitive()</code></h2>
+<p>Binary safe case-insensitive string comparison.</p>
+<ul>
+<li><code>&lt;</code> 0 if this string is less than target string</li>
+<li><code>&gt;</code> 0 if this string is greater than target string</li>
+<li><code>==</code> 0 if both strings are equal</li>
+</ul>
+<pre><code class="language-php">$str = new Str('my_string');
+echo $str-&gt;compareInsensitive('mystring');
+</code></pre>
+<h2 id="concat"><code>concat()</code></h2>
+<p>Appends another string to this string.</p>
+<pre><code class="language-php">$str = new Str('foo');
+$str-&gt;concat('bar');
+echo $str-&gt;value();
+</code></pre>
+<h2 id="contains"><code>contains()</code></h2>
+<p>Does current string contain a subtring?</p>
+<pre><code class="language-php">$str = new Str('my_string');
+echo $str-&gt;contains('string');
+</code></pre>
+<h2 id="countchars"><code>countChars()</code></h2>
+<p>Return information about characters used in a string.</p>
+<pre><code class="language-php">$str = new Str('abababcabc');
+$res = $str-&gt;countChars(true);
+
+pre($res);
+</code></pre>
+<h2 id="explode"><code>explode()</code></h2>
+<p>Splits current string by string.</p>
+<pre><code class="language-php">$str = new Str('but_Bar_is_never_Foo');
+$res = $str-&gt;explode('_');
+
+pre($res);
+</code></pre>
+<h2 id="implode"><code>implode()</code></h2>
+<p>Join array elements with this string.</p>
+<pre><code class="language-php">$str = new Str('!');
+$res = $str-&gt;implode(['foo', 'is', 'bar', 'sometimes']);
+
+pre($res);
+</code></pre>
+<h2 id="ireplace"><code>ireplace()</code></h2>
+<p>Case-insensitive version of Str::replace().</p>
+<pre><code class="language-php">$str = new Str('foo=bar');
+$str-&gt;ireplace(['FOO' =&gt; 'bar']);
+echo $str-&gt;value();
+</code></pre>
+<h2 id="ltrim"><code>ltrim()</code></h2>
+<p>Strip whitespace (or other characters) from the beginning of a string.</p>
+<pre><code class="language-php">$str = new Str('_-_foo');
+$str-&gt;ltrim('_-');
+echo $str-&gt;value();
+</code></pre>
+<h2 id="nl2br"><code>nl2br()</code></h2>
+<p>Converts new lines to <code>&lt;br /&gt;</code> elements.</p>
+<pre><code class="language-php">$str = new Str([&quot;foo\nbar&quot; . PHP_EOL, &quot;foo&lt;br /&gt;\nbar&lt;br /&gt;&quot; . PHP_EOL]);
+$str-&gt;nl2br();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="pad"><code>pad()</code></h2>
+<p>Pad the string to a certain length with another string.</p>
+<ul>
+<li><code>$pad_length</code>: If the value of pad_length is negative, less than, or equal to the length of current string, no padding takes place</li>
+<li><code>$pad_string</code>: String to pad the current string with</li>
+<li><code>$pad_type</code>: Optional, can be <code>STR_PAD_RIGHT</code>, <code>STR_PAD_LEFT</code>, or <code>STR_PAD_BOTH</code>. If <code>$pad_type</code> is not specified it is assumed to be <code>STR_PAD_RIGHT</code></li>
+</ul>
+<pre><code class="language-php">$str = new Str('foo');
+$str-&gt;pad(16, '-.-;', STR_PAD_RIGHT);
+echo $str-&gt;value();
+</code></pre>
+<h2 id="position"><code>position()</code></h2>
+<p>Find the position of the first occurrence of a substring in a string.</p>
+<pre><code class="language-php">$str = new Str('foo is bar sometimes');
+$str-&gt;position(' is ', 0);
+echo $str-&gt;value();
+</code></pre>
+<h2 id="repeat"><code>repeat()</code></h2>
+<p>Repeats the string.</p>
+<pre><code class="language-php">$str = new Str('foo');
+$str-&gt;repeat(5);
+echo $str-&gt;value();
+</code></pre>
+<h2 id="replace"><code>replace()</code></h2>
+<p>Replaces the occurences of keys with their values.</p>
+<pre><code class="language-php">$str = new Str('foo can be bar but foo does not have to');
+$str-&gt;replace(['foo' =&gt; 'fOo', 'DoEs Not' =&gt; 'fail', 'to' =&gt; '2']);
+echo $str-&gt;value();
+</code></pre>
+<h2 id="reverse"><code>reverse()</code></h2>
+<p>Reverses current string.</p>
+<pre><code class="language-php">$str = new Str('knitS raW pupilS regaL');
+$str-&gt;reverse();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="rot13"><code>rot13()</code></h2>
+<p>Perform the ROT13 transform on current string.</p>
+<p>The ROT13 encoding simply shifts every letter by 13 places in the alphabet while leaving non-alpha characters untouched. Encoding and decoding are done by the same function, passing an encoded string as argument will return the original version.</p>
+<pre><code class="language-php">$str = new Str('foobar');
+$str-&gt;rot13();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="rtrim"><code>rtrim()</code></h2>
+<p>Strip whitespace (or other characters) from the end.</p>
+<pre><code class="language-php">$str = new Str('ofoooooo');
+$str-&gt;rtrim('o');
+echo $str-&gt;value();
+</code></pre>
+<h2 id="shuffle"><code>shuffle()</code></h2>
+<p>Randomly shuffles the string.</p>
+<pre><code class="language-php">$str = new Str('foo bar foobar pebkac fubar');
+$original = $str-&gt;value();
+$str-&gt;shuffle();
+echo $str-&gt;value();
+echo $original;
+</code></pre>
+<h2 id="specialchars"><code>specialchars()</code></h2>
+<p>Convert special characters to HTML entities.</p>
+<ul>
+<li><code>$decode</code>: If <code>true</code>, convert special HTML entities back to characters.</li>
+</ul>
+<pre><code class="language-php">$str = new Str('&lt;p&gt;This should &lt;br&gt;not be wrapped&lt;/p&gt;');
+$str-&gt;specialchars();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="striptags"><code>stripTags()</code></h2>
+<p>Strip HTML and PHP tags.</p>
+<ul>
+<li><code>$allowable_tags</code>: List of allowed tags.</li>
+</ul>
+<pre><code class="language-php">$str = new Str('&lt;html&gt;&lt;div&gt;&lt;p&gt;&lt;br/&gt;&lt;br&gt;&lt;/p&gt;&lt;/div&gt;&lt;/html&gt;');
+$str-&gt;stripTags();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="translate"><code>translate()</code></h2>
+<p>Translate characters or replace substrings.</p>
+<pre><code class="language-php">$str = new Str(':foo :bar');
+$str-&gt;translate([':foo' =&gt; ':bar', ':bar' =&gt; ':newbar']);
+echo $str-&gt;value();
+</code></pre>
+<h2 id="trim"><code>trim()</code></h2>
+<p>Strips whitespace (or other characters) from the beginning and end of the string.</p>
+<pre><code class="language-php">$str = new Str('offsoooooo');
+$str-&gt;trim('o');
+echo $str-&gt;value();
+</code></pre>
+<h2 id="undo"><code>undo()</code></h2>
+<p>Undoes the last <code>$steps</code> operations.</p>
+<pre><code class="language-php">$str = new Str(' foo is bar ');
+$str-&gt;rtrim();
+$str-&gt;ltrim();
+$str-&gt;replace(array(' is ' =&gt; '_is_'));
+$str-&gt;undo(1);
+echo $str-&gt;value();
+</code></pre>
+<h2 id="uniquechars"><code>uniqueChars()</code></h2>
+<p>Returns a string containing all unique characters (in current string).</p>
+<pre><code class="language-php">$str = new Str('abcabdabcd');
+$str-&gt;uniqueChars();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="wordcount"><code>wordCount()</code></h2>
+<p>Counts the number of words inside string.</p>
+<ul>
+<li><code>$charlist</code>: Optional list of additional characters which will be considered as 'word'.</li>
+</ul>
+<pre><code class="language-php">$str = new Str('foo is here 3 times foo foo');
+$str-&gt;wordCount();
+echo $str-&gt;value();
+</code></pre>
+<h2 id="word"><code>word()</code></h2>
+<p>Returns the list of words inside string.</p>
+<ul>
+<li><code>$charlist</code>: Optional list of additional characters which will be considered as 'word'.</li>
+</ul>
+<pre><code class="language-php">$str = new Str('foo foo bar foo');
+$str-&gt;word();
+echo $str-&gt;value();
+</code></pre>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../collection/">&#8592; Collection</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../mask/">Mask &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.5.3
+              Docs Build Date UTC : 2023-11-10 11:10:40.168148+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

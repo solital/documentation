@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mask - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="https://github.com/solital/core/releases" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade-guide/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../environment-variables/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment Variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input-and-params/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci-console/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../dependency-container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../event-loop/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Event Loop
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf-template/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date-and-time/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../file-system/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../logger/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mailer-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-and-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validation-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+      <a href="../collection/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Collection
+      </a>
+    
+      <a href="../string-manipulate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Strings
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mask
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../authenticate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../cryptography/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf-protection/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../secure-password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../recovery-password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina-orm/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Mask</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#arguments">Arguments</a></li>
+                  
+                    <li><a href="#patterns">Patterns</a></li>
+                  
+                    <li><a href="#special-chars">Special chars</a></li>
+                  
+                    <li><a href="#thousand-separator">Thousand separator</a></li>
+                  
+                    <li><a href="#time-validation">Time validation</a></li>
+                  
+                    <li><a href="#percent-validation">Percent validation</a></li>
+                  
+                    <li><a href="#prefix-and-suffix">Prefix and suffix</a></li>
+                  
+                  
+                </ul>
+
+                
+                <p><code>StrMask</code> is a Solital class to make masks for a string</p>
+<p>In your PHP application, use the static method <code>apply</code> of Mask:</p>
+<pre><code class="language-php">use Solital\Core\Resource\Str\StrMask;
+
+$output = StrMask::apply($inputValue, $maskExpression, $config);
+</code></pre>
+<h2 id="arguments">Arguments</h2>
+<ul>
+<li><code>$inputValue</code>: string - The input value to apply mask.</li>
+<li><code>$maskExpression</code>: string - The mask expression for $output.</li>
+<li><code>$config</code>: array - The configuration for operation</li>
+</ul>
+<h3 id="patterns">Patterns</h3>
+<p>The patterns are used to filter $inputValue:</p>
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Code</th>
+        <th scope="col">Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="cmd-vinci">**0**</span></td>
+            <td>digits (like 0 to 9 numbers)</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">**9**</span></td>
+            <td>digits (like 0 to 9 numbers), but optional</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">**A**</span></td>
+            <td>letters (uppercase or lowercase) and digits</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">**S**</span></td>
+            <td>only letters (uppercase or lowercase)</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="special-chars">Special chars</h3>
+<p>Special chars are used in mask expressions to format output:</p>
+<ul>
+<li>/</li>
+<li>(</li>
+<li>)</li>
+<li>.</li>
+<li>:</li>
+<li>-</li>
+<li><strong>space</strong></li>
+<li>+</li>
+<li>,</li>
+<li>@</li>
+</ul>
+<h3 id="thousand-separator">Thousand separator</h3>
+<p>You can format a number in thousand separator and control precision.</p>
+<p>The mask keys are:</p>
+<ul>
+<li><code>separator</code>: Input <code>1234.56</code> is ouputed as <code>1 234.56</code></li>
+<li><code>dot_separator</code>: Input <code>1234,56</code> is ouputed as <code>1.234,56</code></li>
+<li><code>comma_separator</code>: Input <code>1234.56</code> is ouputed as <code>1,234.56</code></li>
+</ul>
+<p>To manage precision, keys shall be suffixed by <code>.{Number}</code>.</p>
+<p>Example:</p>
+<ul>
+<li><code>separator.1</code>: Input <code>1234.56743</code> is ouputed as <code>1 234.5</code></li>
+<li><code>dot_separator.4</code>: Input <code>1234,56743</code> is ouputed as <code>1.234,5674</code></li>
+<li><code>comma_separator.2</code>: Input <code>1234.56743</code> is ouputed as <code>1,234.56</code></li>
+</ul>
+<h3 id="time-validation">Time validation</h3>
+<p>You can format a time according limit:</p>
+<table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Mask</th>
+        <th scope="col">Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><span class="cmd-vinci">**H**</span></td>
+            <td>Input value shall be inside 0 and 2.</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">**h**</span></td>
+            <td>Input value shall be inside 0 and 3.</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">**m**</span></td>
+            <td>Input value shall be inside 0 and 4.</td>
+        </tr>
+        <tr>
+            <td><span class="cmd-vinci">**s**</span></td>
+            <td>Input value shall be inside 0 and 5.</td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 id="percent-validation">Percent validation</h3>
+<p>You can format a value from <code>$inputValue</code> as a percent and manage the precision. Use the key <code>percent</code> to have a extract value from <code>$inputValue</code> within 0 to 100. Suffix the key with <code>.{Number}</code> to manage precision (<code>percent.2</code>).</p>
+<p>Example:</p>
+<pre><code class="language-php">$output = StrMask::apply(&quot;99.4125&quot;, &quot;percent.2&quot;);
+
+// $output contains: 99.41
+</code></pre>
+<h3 id="prefix-and-suffix">Prefix and suffix</h3>
+<p>You have possibility to set suffix and prefix in output:</p>
+<pre><code class="language-php">$output = StrMask::apply(&quot;0102030405&quot;, &quot;00 00 00 00 00&quot;, [
+  &quot;prefix&quot; =&gt; &quot;My phone is &quot;,
+  &quot;suffix&quot; =&gt; &quot;!&quot;
+]);
+
+// $output contains: My phone is 01 02 03 04 05!
+</code></pre>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../string-manipulate/">&#8592; Strings</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../authenticate/">Authenticate &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.5.3
+              Docs Build Date UTC : 2023-11-10 11:10:40.136908+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,1731 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection - Solital Framework</title>
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/sidebar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/styles/default.css">
+  <link rel="stylesheet" href="../css/styles/atom-one-dark.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/highlight.pack.js"></script>
+  <script src="../js/scripts.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  
+  
+
+  
+    <script src="../search/main.js"></script>
+  
+
+  
+
+</head>
+
+<body>
+  <div class="dashboard">
+    <div class="dashboard-nav">
+      <header class="mb-4">
+        <a href="#!" class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </a>
+
+        <a href="#" class="brand-logo">
+          <img src="../img/solital-logo-2-sm-trans-2.png" alt="Solital Framework">
+        </a>
+      </header>
+
+      <nav class="dashboard-nav-list">
+        
+        
+  <a href=".." class="dashboard-nav-item ">
+    Starting
+  </a>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Upgrade
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="https://github.com/solital/core/releases" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Release Notes
+      </a>
+    
+      <a href="../upgrade-guide/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Upgrade Guide
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Settings
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../installation/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Installing
+      </a>
+    
+      <a href="../environment-variables/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Environment Variables
+      </a>
+    
+      <a href="../yaml-files/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> YAML Files
+      </a>
+    
+      <a href="../helpers/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Helpers
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Routers
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../routes/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Routes
+      </a>
+    
+      <a href="../middleware/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Middleware
+      </a>
+    
+      <a href="../url/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> URL
+      </a>
+    
+      <a href="../events/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Events
+      </a>
+    
+      <a href="../input-and-params/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Input and params
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Components
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../vinci-console/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Vinci Console
+      </a>
+    
+      <a href="../cache/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cache
+      </a>
+    
+      <a href="../dependency-container/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dependency Container
+      </a>
+    
+      <a href="../event-loop/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Event Loop
+      </a>
+    
+      <a href="../http-client/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> HTTP Client
+      </a>
+    
+      <a href="../wolf-template/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Wolf Template
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle active ">
+    Resources
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../date-and-time/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Date and time
+      </a>
+    
+      <a href="../file-system/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> File System
+      </a>
+    
+      <a href="../json/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> JSON
+      </a>
+    
+      <a href="../logger/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Logger
+      </a>
+    
+      <a href="../mailer-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mailer
+      </a>
+    
+      <a href="../session-and-cookie/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Session and Cookie
+      </a>
+    
+      <a href="../validation-component/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Validation
+      </a>
+    
+      <a href="../messages/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Messages
+      </a>
+    
+      <a href="../queue/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Queue
+      </a>
+    
+      <a href="./" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Collection
+      </a>
+    
+      <a href="../string-manipulate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Strings
+      </a>
+    
+      <a href="../mask/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Mask
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Security
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../authenticate/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Authenticate
+      </a>
+    
+      <a href="../cryptography/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Cryptography
+      </a>
+    
+      <a href="../csrf-protection/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> CSRF Protection
+      </a>
+    
+      <a href="../secure-password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Secure Password
+      </a>
+    
+      <a href="../verify-domain/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Verify Domain
+      </a>
+    
+      <a href="../recovery-password/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Recovery Password
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+<div class="dashboard-nav-dropdown">
+  <a href="#!" class="dashboard-nav-item dashboard-nav-dropdown-toggle ">
+    Database
+  </a>
+
+  <div class="dashboard-nav-dropdown-menu">
+    
+      <a href="../migrations/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Migrations
+      </a>
+    
+      <a href="../seeders/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Seeders
+      </a>
+    
+      <a href="../dump/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Dump
+      </a>
+    
+      <a href="../katrina-orm/" class="dashboard-nav-dropdown-item text-black">
+        <span class="text-danger" style="margin-right: 10px;">&#10140;</span> Katrina ORM
+      </a>
+    
+  </div>
+</div>
+
+        
+        
+  <a href="../deploy/" class="dashboard-nav-item ">
+    Deploy
+  </a>
+
+        
+      </nav>
+    </div>
+
+    <div class="dashboard-app">
+      <header class="dashboard-toolbar">
+        <a href="#!" class="menu-toggle btn-menu"><i class="fas fa-bars"></i></a>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="container">
+
+          <section class="container-fluid section">
+            <div class="row">
+              <div class="col-md-12 w-100">
+                <h1 class="mt-4 font-weight-normal title-page">Collection</h1>
+              </div>
+
+              <div class="col-md-12 mt-3">
+                
+
+                <ul class="ml-5 mb-5">
+                  
+                    <li><a href="#all">all()</a></li>
+                  
+                  
+                    <li><a href="#avg">avg()</a></li>
+                  
+                  
+                    <li><a href="#chunk">chunk()</a></li>
+                  
+                  
+                    <li><a href="#collapse">collapse()</a></li>
+                  
+                  
+                    <li><a href="#combine">combine()</a></li>
+                  
+                  
+                    <li><a href="#concat">concat()</a></li>
+                  
+                  
+                    <li><a href="#contains">contains()</a></li>
+                  
+                  
+                    <li><a href="#count">count()</a></li>
+                  
+                  
+                    <li><a href="#countby">countBy()</a></li>
+                  
+                  
+                    <li><a href="#diff">diff()</a></li>
+                  
+                  
+                    <li><a href="#diffassoc">diffAssoc()</a></li>
+                  
+                  
+                    <li><a href="#diffkeys">diffKeys()</a></li>
+                  
+                  
+                    <li><a href="#except">except()</a></li>
+                  
+                  
+                    <li><a href="#except_multiple">except_multiple()</a></li>
+                  
+                  
+                    <li><a href="#filter">filter()</a></li>
+                  
+                  
+                    <li><a href="#first">first()</a></li>
+                  
+                  
+                    <li><a href="#firstwhere">firstWhere()</a></li>
+                  
+                  
+                    <li><a href="#flatmap">flatMap()</a></li>
+                  
+                  
+                    <li><a href="#flatten">flatten()</a></li>
+                  
+                  
+                    <li><a href="#flip">flip()</a></li>
+                  
+                  
+                    <li><a href="#forget">forget()</a></li>
+                  
+                  
+                    <li><a href="#get">get()</a></li>
+                  
+                  
+                    <li><a href="#groupby">groupBy()</a></li>
+                  
+                  
+                    <li><a href="#has">has()</a></li>
+                  
+                  
+                    <li><a href="#implode">implode()</a></li>
+                  
+                  
+                    <li><a href="#intersect">intersect()</a></li>
+                  
+                  
+                    <li><a href="#intersectbykeys">intersectByKeys()</a></li>
+                  
+                  
+                    <li><a href="#isempty">isEmpty()</a></li>
+                  
+                  
+                    <li><a href="#isnotempty">isNotEmpty()</a></li>
+                  
+                  
+                    <li><a href="#keyby">keyBy()</a></li>
+                  
+                  
+                    <li><a href="#keys">keys()</a></li>
+                  
+                  
+                    <li><a href="#last">last()</a></li>
+                  
+                  
+                    <li><a href="#map">map()</a></li>
+                  
+                  
+                    <li><a href="#mapwithkeys">mapWithKeys()</a></li>
+                  
+                  
+                    <li><a href="#max">max()</a></li>
+                  
+                  
+                    <li><a href="#median">median()</a></li>
+                  
+                  
+                    <li><a href="#merge">merge()</a></li>
+                  
+                  
+                    <li><a href="#min">min()</a></li>
+                  
+                  
+                    <li><a href="#mode">mode()</a></li>
+                  
+                  
+                    <li><a href="#only">only()</a></li>
+                  
+                  
+                    <li><a href="#pad">pad()</a></li>
+                  
+                  
+                    <li><a href="#partition">partition()</a></li>
+                  
+                  
+                    <li><a href="#pipe">pipe()</a></li>
+                  
+                  
+                    <li><a href="#pluck">pluck()</a></li>
+                  
+                  
+                    <li><a href="#pop">pop()</a></li>
+                  
+                  
+                    <li><a href="#prepend">prepend()</a></li>
+                  
+                  
+                    <li><a href="#pull">pull()</a></li>
+                  
+                  
+                    <li><a href="#push">push()</a></li>
+                  
+                  
+                    <li><a href="#put">put()</a></li>
+                  
+                  
+                    <li><a href="#random">random()</a></li>
+                  
+                  
+                    <li><a href="#reduce">reduce()</a></li>
+                  
+                  
+                    <li><a href="#reject">reject()</a></li>
+                  
+                  
+                    <li><a href="#reverse">reverse()</a></li>
+                  
+                  
+                    <li><a href="#search">search()</a></li>
+                  
+                  
+                    <li><a href="#shift">shift()</a></li>
+                  
+                  
+                    <li><a href="#shuffle">shuffle()</a></li>
+                  
+                  
+                    <li><a href="#slice">slice()</a></li>
+                  
+                  
+                    <li><a href="#sort">sort()</a></li>
+                  
+                  
+                    <li><a href="#sortby">sortBy()</a></li>
+                  
+                  
+                    <li><a href="#sortbydesc">sortByDesc()</a></li>
+                  
+                  
+                    <li><a href="#sortkeys">sortKeys()</a></li>
+                  
+                  
+                    <li><a href="#splice">splice()</a></li>
+                  
+                  
+                    <li><a href="#split">split()</a></li>
+                  
+                  
+                    <li><a href="#sum">sum()</a></li>
+                  
+                  
+                    <li><a href="#take">take()</a></li>
+                  
+                  
+                    <li><a href="#tap">tap()</a></li>
+                  
+                  
+                    <li><a href="#times">times()</a></li>
+                  
+                  
+                    <li><a href="#tojson">toJson()</a></li>
+                  
+                  
+                    <li><a href="#transform">transform()</a></li>
+                  
+                  
+                    <li><a href="#union">union()</a></li>
+                  
+                  
+                    <li><a href="#unique">unique()</a></li>
+                  
+                  
+                    <li><a href="#unless">unless()</a></li>
+                  
+                  
+                    <li><a href="#values">values()</a></li>
+                  
+                  
+                    <li><a href="#when">when()</a></li>
+                  
+                  
+                    <li><a href="#whenempty">whenEmpty()</a></li>
+                  
+                  
+                    <li><a href="#whennotempty">whenNotEmpty()</a></li>
+                  
+                  
+                    <li><a href="#where">where()</a></li>
+                  
+                  
+                    <li><a href="#wherebetween">whereBetween()</a></li>
+                  
+                  
+                    <li><a href="#wherein">whereIn()</a></li>
+                  
+                  
+                    <li><a href="#wherenotbetween">whereNotBetween()</a></li>
+                  
+                  
+                    <li><a href="#wherenotin">whereNotIn()</a></li>
+                  
+                  
+                    <li><a href="#wrap">wrap()</a></li>
+                  
+                  
+                    <li><a href="#zip">zip()</a></li>
+                  
+                  
+                </ul>
+
+                
+                <p>Collection is a feature of Solital for creating custom data. It will make your life easier by providing personalized data without complexity in your data.</p>
+<p>Let's see a quick example:</p>
+<pre><code class="language-php">use Solital\Core\Resource\Collection\ArrayCollection;
+
+$values = [
+    ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Chair'],
+    ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Bookcase'],
+    ['account_id' =&gt; 'account-x11', 'product' =&gt; 'Desk'],
+];
+
+$collection = new ArrayCollection($values);
+
+// Or use helper
+$collection = collection($values);
+
+$grouped = $collection-&gt;groupBy('account_id')-&gt;toArray();
+
+pre($grouped);
+</code></pre>
+<p>OUTPUT</p>
+<pre><code class="language-php">Array
+(
+    [account-x10] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [account_id] =&gt; account-x10
+                    [product] =&gt; Chair
+                )
+
+            [1] =&gt; Array
+                (
+                    [account_id] =&gt; account-x10
+                    [product] =&gt; Bookcase
+                )
+
+        )
+
+    [account-x11] =&gt; Array
+        (
+            [0] =&gt; Array
+                (
+                    [account_id] =&gt; account-x11
+                    [product] =&gt; Desk
+                )
+
+        )
+
+)
+
+</code></pre>
+<h2 id="all"><code>all()</code></h2>
+<p>The all method returns the underlying array represented by the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3])-&gt;all();
+</code></pre>
+<h2 id="avg"><code>avg()</code></h2>
+<p>The avg method returns the average value of a given key:</p>
+<pre><code class="language-php">collection([['foo' =&gt; 10], ['foo' =&gt; 10], ['foo' =&gt; 20], ['foo' =&gt; 40]])-&gt;avg('foo');
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">20
+</code></pre>
+<pre><code class="language-php">collection([1, 1, 2, 4])-&gt;avg();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">2
+</code></pre>
+<h2 id="chunk"><code>chunk()</code></h2>
+<p>The chunk method breaks  into multiple</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5, 6, 7]);
+$chunks = $make_data-&gt;chunk(4);
+$chunks-&gt;toArray();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [[1, 2, 3, 4], [5, 6, 7]]
+</code></pre>
+<h2 id="collapse"><code>collapse()</code></h2>
+<p>The collapse method collapses a data array of arrays into a single, flat data array:</p>
+<pre><code class="language-php">collection([[1, 2, 3], [4, 5, 6], [7, 8, 9]]);
+$collapsed = $make_data-&gt;collapse();
+$collapsed-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">[1, 2, 3, 4, 5, 6, 7, 8, 9]
+</code></pre>
+<h2 id="combine"><code>combine()</code></h2>
+<p>The combine method combines the values of the data array, as keys, with the values of another array or data array:</p>
+<pre><code class="language-php">collection(['name', 'age']);
+$combined = $make_data-&gt;combine(['George', 29]);
+$combined-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['name' =&gt; 'George', 'age' =&gt; 29]
+</code></pre>
+<h2 id="concat"><code>concat()</code></h2>
+<p>The concat method appends the given array or data array values onto the end of the data array:</p>
+<pre><code class="language-php">collection(['John Doe']);
+$concatenated = $make_data-&gt;concat(['Jane Doe'])-&gt;concat(['name' =&gt; 'Johnny Doe']);
+$concatenated-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['John Doe', 'Jane Doe', 'Johnny Doe']
+</code></pre>
+<h2 id="contains"><code>contains()</code></h2>
+<p>The contains method determines whether the make_data contains a given item:</p>
+<pre><code class="language-php">collection(['name' =&gt; 'Desk', 'price' =&gt; 100]);
+$make_data-&gt;contains('Desk');
+$make_data-&gt;contains('New York');
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> true 
+ false
+</code></pre>
+<h2 id="count"><code>count()</code></h2>
+<p>The count method returns the total number of items in the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4]);
+$make_data-&gt;count();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 4
+</code></pre>
+<h2 id="countby"><code>countBy()</code></h2>
+<p>The countBy method counts the occurences of values in the make_data. By default, the method counts the occurrences of every element:</p>
+<pre><code class="language-php">collection([1, 2, 2, 2, 3]);
+$counted = $make_data-&gt;countBy();
+$counted-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1 =&gt; 1, 2 =&gt; 3, 3 =&gt; 1]
+</code></pre>
+<h2 id="diff"><code>diff()</code></h2>
+<p>The diff method compares the data array against another data array or a plain PHP array based on its values. This method will return the values in the original data that are not present in the given data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+$diff = $make_data-&gt;diff([2, 4, 6, 8]);
+$diff-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1, 3, 5]
+</code></pre>
+<h2 id="diffassoc"><code>diffAssoc()</code></h2>
+<p>The diffAssoc method compares the data array against another data array or a plain PHP array based on its keys and values. This method will return the key / value pairs in the original data array that are not present in the given data array:</p>
+<pre><code class="language-php">collection([
+    'color' =&gt; 'orange',
+    'type' =&gt; 'fruit',
+    'remain' =&gt; 6
+]);
+
+$diff = $make_data-&gt;diffAssoc([
+    'color' =&gt; 'yellow',
+    'type' =&gt; 'fruit',
+    'remain' =&gt; 3,
+    'used' =&gt; 6
+]);
+
+$diff-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['color' =&gt; 'orange', 'remain' =&gt; 6]
+</code></pre>
+<h2 id="diffkeys"><code>diffKeys()</code></h2>
+<p>The diffKeys method compares the data array against another data array or a plain PHP array based on its keys. This method will return the key / value pairs in the original data array that are not present in the given data array</p>
+<pre><code class="language-php">collection([
+    'one' =&gt; 10,
+    'two' =&gt; 20,
+    'three' =&gt; 30,
+    'four' =&gt; 40,
+    'five' =&gt; 50,
+]);
+
+$diff = $diff-&gt;diffKeys([
+    'two' =&gt; 2,
+    'four' =&gt; 4,
+    'six' =&gt; 6,
+    'eight' =&gt; 8,
+]);
+$diff-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['one' =&gt; 10, 'three' =&gt; 30, 'five' =&gt; 50]
+</code></pre>
+<h2 id="except"><code>except()</code></h2>
+<p>The except method returns all items in the data array except for those with the specified keys:</p>
+<pre><code class="language-php">collection(['product_id' =&gt; 1, 'price' =&gt; 100, 'discount' =&gt; false]);
+$filtered = $make_data-&gt;except(['price', 'discount']);
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['product_id' =&gt; 1]
+</code></pre>
+<h2 id="except_multiple"><code>except_multiple()</code></h2>
+<p>The except_multiple method returns all items in the data array except for those with the specified keys:</p>
+<pre><code class="language-php">collection([['product_id' =&gt; 1, 'price' =&gt; 100, 'discount' =&gt; false],['product_id' =&gt; 2, 'price' =&gt; 500, 'discount' =&gt; true]]);
+$filtered = $make_data-&gt;except_multiple(['price', 'discount']);
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> Array
+ (
+     [0] =&gt; Array
+         (
+             [product_id] =&gt; 1
+         )
+
+     [1] =&gt; Array
+         (
+             [product_id] =&gt; 2
+         )
+
+ )
+</code></pre>
+<h2 id="filter"><code>filter()</code></h2>
+<p>The filter method filters the data array using the given callback, keeping only those items that pass a given truth test:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4]);
+
+$filtered = $make_data-&gt;filter(function ($value, $key) {
+    return $value &gt; 2;
+});
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [3, 4]
+</code></pre>
+<h2 id="first"><code>first()</code></h2>
+<p>The first method returns the first element in the data array that passes a given truth test:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4])-&gt;first(function ($value, $key) {
+    return $value &gt; 2;
+});
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 3
+</code></pre>
+<h2 id="firstwhere"><code>firstWhere()</code></h2>
+<p>The firstWhere method returns the first element in the data array with the given key / value pair:</p>
+<pre><code class="language-php">collection([
+    ['name' =&gt; 'Regena', 'age' =&gt; null],
+    ['name' =&gt; 'Linda', 'age' =&gt; 14],
+    ['name' =&gt; 'Diego', 'age' =&gt; 23],
+    ['name' =&gt; 'Linda', 'age' =&gt; 84],
+]);
+$make_data-&gt;firstWhere('name', 'Linda');
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['name' =&gt; 'Linda', 'age' =&gt; 14]
+</code></pre>
+<h2 id="flatmap"><code>flatMap()</code></h2>
+<p>The flatMap method iterates through the data array and passes each value to the given callback. The callback is free to modify the item and return it, thus forming a new data array of modified items. Then, the array is flattened by a level:</p>
+<pre><code class="language-php">collection([
+    ['name' =&gt; 'Sally'],
+    ['school' =&gt; 'Arkansas'],
+    ['age' =&gt; 28]
+]);
+
+$flattened = $make_data-&gt;flatMap(function ($values) {
+    return array_map('strtoupper', $values);
+});
+$flattened-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['name' =&gt; 'SALLY', 'school' =&gt; 'ARKANSAS', 'age' =&gt; '28'];
+</code></pre>
+<h2 id="flatten"><code>flatten()</code></h2>
+<p>The flatten method flattens a multi-dimensional data array into a single dimension:</p>
+<pre><code class="language-php">collection(['name' =&gt; 'jony', 'languages' =&gt; ['php', 'javascript']]);
+$flattened = $make_data-&gt;flatten();
+$flattened-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['jony', 'php', 'javascript'];
+</code></pre>
+<h2 id="flip"><code>flip()</code></h2>
+<p>The flip method swaps the data arrays's keys with their corresponding values:</p>
+<pre><code class="language-php">collection(['name' =&gt; 'Jony', 'library' =&gt; 'array_master']);
+$flipped = $make_data-&gt;flip();
+$flipped-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['jony' =&gt; 'name', 'array_master' =&gt; 'library']
+</code></pre>
+<h2 id="forget"><code>forget()</code></h2>
+<p>The forget method removes an item from the data array by its key:</p>
+<pre><code class="language-php">collection(['name' =&gt; 'Jony', 'library' =&gt; 'array_master']);
+$make_data-&gt;forget('name');
+$make_data-&gt;all();
+
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">  ['library' =&gt; 'array_master']
+</code></pre>
+<h2 id="get"><code>get()</code></h2>
+<p>The get method returns the item at a given key. If the key does not exist, null is returned:</p>
+<pre><code class="language-php">collection(['name' =&gt; 'Jony', 'library' =&gt; 'array_master']);
+$value = $make_data-&gt;get('name');
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> Jony
+</code></pre>
+<h2 id="groupby"><code>groupBy()</code></h2>
+<p>The groupBy method groups the data arrays's items by a given key:</p>
+<pre><code class="language-php">collection([
+    ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Chair'],
+    ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Bookcase'],
+    ['account_id' =&gt; 'account-x11', 'product' =&gt; 'Desk'],
+]);
+$grouped = $make_data-&gt;groupBy('account_id');
+$grouped-&gt;toArray();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">  [
+         'account-x10' =&gt; [
+             ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Chair'],
+             ['account_id' =&gt; 'account-x10', 'product' =&gt; 'Bookcase'],
+         ],
+         'account-x11' =&gt; [
+             ['account_id' =&gt; 'account-x11', 'product' =&gt; 'Desk'],
+         ],
+     ]
+</code></pre>
+<h2 id="has"><code>has()</code></h2>
+<p>The has method determines if a given key exists in the data array:</p>
+<pre><code class="language-php">collection(['account_id' =&gt; 1, 'product' =&gt; 'Desk', 'amount' =&gt; 5]);
+$make_data-&gt;has('product');
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> true
+</code></pre>
+<h2 id="implode"><code>implode()</code></h2>
+<p>The implode method joins the items in a dara array. Its arguments depend on the type of items in the dara array. If the data array contains arrays or objects, you should pass the key of the attributes you wish to join, and the "glue" string you wish to place between the values:</p>
+<pre><code class="language-php">collection([
+    ['account_id' =&gt; 1, 'product' =&gt; 'Desk'],
+    ['account_id' =&gt; 2, 'product' =&gt; 'Chair'],
+]);
+$make_data-&gt;implode('product', ', ');
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">Desk, Chair
+
+</code></pre>
+<h2 id="intersect"><code>intersect()</code></h2>
+<p>The intersect method removes any values from the original data array that are not present in the given array or dara array. The resulting data array will preserve the original dara array's keys:</p>
+<pre><code class="language-php">collection(['Desk', 'Sofa', 'Chair']);
+$intersect = $make_data-&gt;intersect(['Desk', 'Chair', 'Bookcase']);
+$intersect-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [0 =&gt; 'Desk', 2 =&gt; 'Chair']
+</code></pre>
+<h2 id="intersectbykeys"><code>intersectByKeys()</code></h2>
+<p>The intersectByKeys method removes any keys from the original data array that are not present in the given array or dara array:</p>
+<pre><code class="language-php">collection([
+    'serial' =&gt; 'UX301', 'type' =&gt; 'screen', 'year' =&gt; 2009
+]);
+$intersect = $make_data-&gt;intersectByKeys([
+    'reference' =&gt; 'UX404', 'type' =&gt; 'tab', 'year' =&gt; 2011
+]);
+
+$intersect-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['type' =&gt; 'screen', 'year' =&gt; 2009]
+</code></pre>
+<h2 id="isempty"><code>isEmpty()</code></h2>
+<p>The isEmpty method returns true if the data array is empty; otherwise, false is returned:</p>
+<pre><code class="language-php">collection([])-&gt;isEmpty();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> true
+</code></pre>
+<h2 id="isnotempty"><code>isNotEmpty()</code></h2>
+<p>The isNotEmpty method returns true if the data array is not empty; otherwise, false is returned:</p>
+<pre><code class="language-php">collection([])-&gt;isNotEmpty();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> false
+</code></pre>
+<h2 id="keyby"><code>keyBy()</code></h2>
+<p>The keyBy method keys the data array by the given key. If multiple items have the same key, only the last one will appear in the new dara array:</p>
+<pre><code class="language-php">collection([
+    ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+    ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+]);
+$keyed = $make_data-&gt;keyBy('product_id');
+$keyed-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         'prod-100' =&gt; ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+         'prod-200' =&gt; ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+     ]
+</code></pre>
+<h2 id="keys"><code>keys()</code></h2>
+<p>The keys method returns all of the data array's keys:</p>
+<pre><code class="language-php">collection([
+    'prod-100' =&gt; ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+    'prod-200' =&gt; ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+]);
+$keys = $make_data-&gt;keys();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['prod-100', 'prod-200']
+</code></pre>
+<h2 id="last"><code>last()</code></h2>
+<p>The last method returns the last element in the data array that passes a given truth test:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4])-&gt;last();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">4
+</code></pre>
+<h2 id="map"><code>map()</code></h2>
+<p>The map method iterates through the data array and passes each value to the given callback. The callback is free to modify the item and return it, thus forming a new data array of modified items:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+
+$multiplied = $make_data-&gt;map(function ($item, $key) {
+    return $item * 2;
+});
+$multiplied-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">  [2, 4, 6, 8, 10]
+</code></pre>
+<h2 id="mapwithkeys"><code>mapWithKeys()</code></h2>
+<pre><code class="language-php">collection([
+    [
+        'name' =&gt; 'John',
+        'department' =&gt; 'Sales',
+        'email' =&gt; 'john@example.com'
+    ],
+    [
+        'name' =&gt; 'Jane',
+        'department' =&gt; 'Marketing',
+        'email' =&gt; 'jane@example.com'
+    ]
+]);
+
+$keyed = $make_data-&gt;mapWithKeys(function ($item) {
+    return [$item['email'] =&gt; $item['name']];
+});
+
+$keyed-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         'john@example.com' =&gt; 'John',
+         'jane@example.com' =&gt; 'Jane',
+     ]
+</code></pre>
+<h2 id="max"><code>max()</code></h2>
+<p>The max method returns the maximum value of a given key:</p>
+<pre><code class="language-php">collection([['foo' =&gt; 10], ['foo' =&gt; 20]])-&gt;max('foo');
+collection([['foo' =&gt; 10], ['foo' =&gt; 30]])-&gt;max('foo');
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 20
+ 30
+</code></pre>
+<h2 id="median"><code>median()</code></h2>
+<p>The median method returns the median value of a given key:</p>
+<pre><code class="language-php">collection([['foo' =&gt; 10], ['foo' =&gt; 10], ['foo' =&gt; 20], ['foo' =&gt; 40]])-&gt;median('foo');
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 15
+</code></pre>
+<h2 id="merge"><code>merge()</code></h2>
+<pre><code class="language-php">collection(['product_id' =&gt; 1, 'price' =&gt; 100]);
+$merged = $make_data-&gt;merge(['price' =&gt; 200, 'discount' =&gt; false]);
+$merged-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['product_id' =&gt; 1, 'price' =&gt; 200, 'discount' =&gt; false]
+</code></pre>
+<h2 id="min"><code>min()</code></h2>
+<p>The min method returns the minimum value of a given key:</p>
+<pre><code class="language-php">collection([['foo' =&gt; 10], ['foo' =&gt; 20]])-&gt;min('foo');
+collection([1, 2, 3, 4, 5])-&gt;min();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 10
+ 1
+</code></pre>
+<h2 id="mode"><code>mode()</code></h2>
+<p>The mode method returns the mode value of a given key:</p>
+<pre><code class="language-php">collection([['foo' =&gt; 10], ['foo' =&gt; 10], ['foo' =&gt; 20], ['foo' =&gt; 40]])-&gt;mode('foo');
+collection([1, 1, 2, 4])-&gt;mode();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [10]
+ [1]
+</code></pre>
+<h2 id="only"><code>only()</code></h2>
+<p>The only method returns the items in the data array with the specified keys:</p>
+<pre><code class="language-php">collection(['product_id' =&gt; 1, 'name' =&gt; 'Desk', 'price' =&gt; 100, 'discount' =&gt; false]);
+
+$filtered = $make_data-&gt;only(['product_id', 'name']);
+
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['product_id' =&gt; 1, 'name' =&gt; 'Desk']
+</code></pre>
+<h2 id="pad"><code>pad()</code></h2>
+<pre><code class="language-php">collection(['A', 'B', 'C']);
+
+$filtered = $make_data-&gt;pad(5, 0);
+
+$filtered-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['A', 'B', 'C', 0, 0]
+</code></pre>
+<h2 id="partition"><code>partition()</code></h2>
+<p>The partition method may be combined with the list PHP function to separate elements that pass a given truth test from those that do not:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5, 6]);
+
+list($underThree, $equalOrAboveThree) = $make_data-&gt;partition(function ($i) {
+    return $i &lt; 3;
+});
+
+$underThree-&gt;all();
+$equalOrAboveThree-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1, 2]
+ [3, 4, 5, 6]
+
+</code></pre>
+<h2 id="pipe"><code>pipe()</code></h2>
+<p>The pipe method passes the data array to the given callback and returns the result:</p>
+<pre><code class="language-php">collection([1, 2, 3]);
+
+$piped = $make_data-&gt;pipe(function ($make_data) {
+    return $make_data-&gt;sum();
+});
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 6
+</code></pre>
+<h2 id="pluck"><code>pluck()</code></h2>
+<p>The pluck method retrieves all of the values for a given key:</p>
+<pre><code class="language-php">collection([
+    ['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk'],
+    ['product_id' =&gt; 'prod-200', 'name' =&gt; 'Chair'],
+]);
+
+$plucked = $make_data-&gt;pluck('name');
+
+$plucked-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['Desk', 'Chair']
+</code></pre>
+<h2 id="pop"><code>pop()</code></h2>
+<p>The pop method removes and returns the last item from the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+$make_data-&gt;pop();
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 5
+ [1, 2, 3, 4]
+</code></pre>
+<h2 id="prepend"><code>prepend()</code></h2>
+<p>The prepend method adds an item to the beginning of the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+
+$make_data-&gt;prepend(0);
+
+$make_data-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [0, 1, 2, 3, 4, 5]
+</code></pre>
+<h2 id="pull"><code>pull()</code></h2>
+<p>The pull method removes and returns an item from the data array by its key:</p>
+<pre><code class="language-php">collection(['product_id' =&gt; 'prod-100', 'name' =&gt; 'Desk']);
+$make_data-&gt;pull('name');
+$make_data-&gt;all();
+
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 'Desk'
+ ['product_id' =&gt; 'prod-100']
+</code></pre>
+<h2 id="push"><code>push()</code></h2>
+<p>The push method appends an item to the end of the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4]);
+$make_data-&gt;push(5);
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1, 2, 3, 4, 5]
+</code></pre>
+<h2 id="put"><code>put()</code></h2>
+<p>The put method sets the given key and value in the data array:</p>
+<pre><code class="language-php">collection(['product_id' =&gt; 1, 'name' =&gt; 'Desk']);
+$make_data-&gt;put('price', 100);
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['product_id' =&gt; 1, 'name' =&gt; 'Desk', 'price' =&gt; 100]
+</code></pre>
+<h2 id="random"><code>random()</code></h2>
+<p>The random method returns a random item from the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+$make_data-&gt;random();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 4 - (retrieved randomly)
+</code></pre>
+<h2 id="reduce"><code>reduce()</code></h2>
+<p>The reduce method reduces the data array to a single value, passing the result of each iteration into the subsequent iteration:</p>
+<pre><code class="language-php">collection([1, 2, 3]);
+
+$total = $make_data-&gt;reduce(function ($carry, $item) {
+    return $carry + $item;
+});
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 6
+</code></pre>
+<h2 id="reject"><code>reject()</code></h2>
+<p>The reject method filters the data array using the given callback. The callback should return true if the item should be removed from the resulting data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4]);
+
+$filtered = $make_data-&gt;reject(function ($value, $key) {
+    return $value &gt; 2;
+});
+
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1, 2]
+</code></pre>
+<h2 id="reverse"><code>reverse()</code></h2>
+<p>The reverse method reverses the order of the data array's items, preserving the original keys:</p>
+<pre><code class="language-php">collection(['a', 'b', 'c', 'd', 'e']);
+
+$reversed = $make_data-&gt;reverse();
+
+$reversed-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         4 =&gt; 'e',
+         3 =&gt; 'd',
+         2 =&gt; 'c',
+         1 =&gt; 'b',
+         0 =&gt; 'a',
+     ]
+</code></pre>
+<h2 id="search"><code>search()</code></h2>
+<p>The search method searches the data array for the given value and returns its key if found. If the item is not found, false is returned.</p>
+<pre><code class="language-php">collection([2, 4, 6, 8]);
+
+$make_data-&gt;search(4);
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 1
+</code></pre>
+<h2 id="shift"><code>shift()</code></h2>
+<p>The shift method removes and returns the first item from the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+$make_data-&gt;shift();
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">1
+ [2, 3, 4, 5]
+</code></pre>
+<h2 id="shuffle"><code>shuffle()</code></h2>
+<p>The shuffle method randomly shuffles the items in the data array:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+
+$shuffled = $make_data-&gt;shuffle();
+
+$shuffled-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [3, 2, 5, 1, 4] - (generated randomly)
+</code></pre>
+<h2 id="slice"><code>slice()</code></h2>
+<p>The slice method returns a slice of the data array starting at the given index:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+$slice = $make_data-&gt;slice(4);
+
+$slice-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [5, 6, 7, 8, 9, 10]
+</code></pre>
+<h2 id="sort"><code>sort()</code></h2>
+<p>The sort method sorts the data array. The sorted data array keeps the original array keys, so in this example we'll use the values method to reset the keys to consecutively numbered indexes:</p>
+<pre><code class="language-php">collection([5, 3, 1, 2, 4]);
+
+$sorted = $make_data-&gt;sort();
+
+$sorted-&gt;values()-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1, 2, 3, 4, 5]
+</code></pre>
+<h2 id="sortby"><code>sortBy()</code></h2>
+<pre><code class="language-php">collection([
+    ['name' =&gt; 'Desk', 'price' =&gt; 200],
+    ['name' =&gt; 'Chair', 'price' =&gt; 100],
+    ['name' =&gt; 'Bookcase', 'price' =&gt; 150],
+]);
+
+$sorted = $make_data-&gt;sortBy('price');
+
+$sorted-&gt;values()-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         ['name' =&gt; 'Chair', 'price' =&gt; 100],
+         ['name' =&gt; 'Bookcase', 'price' =&gt; 150],
+         ['name' =&gt; 'Desk', 'price' =&gt; 200],
+     ]
+</code></pre>
+<h2 id="sortbydesc"><code>sortByDesc()</code></h2>
+<pre><code>This method has the same signature as the sortBy method, but will sort the collection in the opposite order.
+</code></pre>
+<h2 id="sortkeys"><code>sortKeys()</code></h2>
+<p>The sortKeys method sorts the data array by the keys of the underlying associative array:</p>
+<pre><code class="language-php">collection([
+    'id' =&gt; 22345,
+    'first' =&gt; 'John',
+    'last' =&gt; 'Doe',
+]);
+
+$sorted = $make_data-&gt;sortKeys();
+
+$sorted-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">  [
+         'first' =&gt; 'John',
+         'id' =&gt; 22345,
+         'last' =&gt; 'Doe',
+     ]
+</code></pre>
+<h2 id="splice"><code>splice()</code></h2>
+<p>The splice method removes and returns a slice of items starting at the specified index:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+
+$chunk = $make_data-&gt;splice(2);
+
+$chunk-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [3, 4, 5]
+</code></pre>
+<h2 id="split"><code>split()</code></h2>
+<p>The split method breaks a data array into the given number of groups:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+
+$groups = $make_data-&gt;split(3);
+
+$groups-&gt;toArray();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [[1, 2], [3, 4], [5]]
+</code></pre>
+<h2 id="sum"><code>sum()</code></h2>
+<p>The sum method returns the sum of all items in the data array:</p>
+<pre><code class="language-php">.............................
+collection([1, 2, 3, 4, 5])-&gt;sum();
+.............................
+collection([
+    ['name' =&gt; 'JavaScript: The Good Parts', 'pages' =&gt; 176],
+    ['name' =&gt; 'JavaScript: The Definitive Guide', 'pages' =&gt; 1096],
+]);
+
+$make_data-&gt;sum('pages');
+.............................
+
+collection([
+    ['name' =&gt; 'Chair', 'colors' =&gt; ['Black']],
+    ['name' =&gt; 'Desk', 'colors' =&gt; ['Black', 'Mahogany']],
+    ['name' =&gt; 'Bookcase', 'colors' =&gt; ['Red', 'Beige', 'Brown']],
+]);
+
+$make_data-&gt;sum(function ($product) {
+    return count($product['colors']);
+});
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 15
+ 1272
+ 6
+</code></pre>
+<h2 id="take"><code>take()</code></h2>
+<p>The take method returns a new data array with the specified number of items:</p>
+<pre><code class="language-php">collection([0, 1, 2, 3, 4, 5]);
+
+$chunk = $make_data-&gt;take(3);
+
+$chunk-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [0, 1, 2]
+</code></pre>
+<h2 id="tap"><code>tap()</code></h2>
+<p>The tap method passes the data array to the given callback, allowing you to "tap" into the data array at a specific point and do something with the items while not affecting the data array itself:</p>
+<pre><code class="language-php">collection([2, 4, 3, 1, 5])
+    -&gt;sort()
+    -&gt;tap(function ($make_data) {
+        Log::debug('Values after sorting', $make_data-&gt;values()-&gt;toArray());
+    })
+    -&gt;shift();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> 1
+</code></pre>
+<h2 id="times"><code>times()</code></h2>
+<p>The static times method creates a new data array by invoking the callback a given amount of times:</p>
+<pre><code class="language-php">$make_data = Collection::times(10, function ($number) {
+    return $number * 9;
+});
+
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [9, 18, 27, 36, 45, 54, 63, 72, 81, 90]
+</code></pre>
+<h2 id="tojson"><code>toJson()</code></h2>
+<p>The toJson method converts the data array into a JSON serialized string:</p>
+<pre><code class="language-php">collection(['name' =&gt; 'Desk', 'price' =&gt; 200]);
+
+$make_data-&gt;toJson();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> '{&quot;name&quot;:&quot;Desk&quot;, &quot;price&quot;:200}'
+</code></pre>
+<h2 id="transform"><code>transform()</code></h2>
+<p>The transform method iterates over the data array and calls the given callback with each item in the data array. The items in the data array will be replaced by the values returned by the callback:</p>
+<pre><code class="language-php">collection([1, 2, 3, 4, 5]);
+
+$make_data-&gt;transform(function ($item, $key) {
+    return $item * 2;
+});
+
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [2, 4, 6, 8, 10]
+</code></pre>
+<h2 id="union"><code>union()</code></h2>
+<p>union()</p>
+<p>The union method adds the given array to the data array. If the given array contains keys that are already in the original data array, the original data array's values will be preferred:</p>
+<pre><code class="language-php">collection([1 =&gt; ['a'], 2 =&gt; ['b']]);
+
+$union = $make_data-&gt;union([3 =&gt; ['c'], 1 =&gt; ['b']]);
+
+$union-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1 =&gt; ['a'], 2 =&gt; ['b'], 3 =&gt; ['c']]
+</code></pre>
+<h2 id="unique"><code>unique()</code></h2>
+<p>The only method returns the items in the data array with the specified keys:</p>
+<pre><code class="language-php">collection([1, 1, 2, 2, 3, 4, 2]);
+
+$unique = $make_data-&gt;unique();
+
+$unique-&gt;values()-&gt;all();
+
+collection([
+    ['name' =&gt; 'iPhone 6', 'brand' =&gt; 'Apple', 'type' =&gt; 'phone'],
+    ['name' =&gt; 'iPhone 5', 'brand' =&gt; 'Apple', 'type' =&gt; 'phone'],
+    ['name' =&gt; 'Apple Watch', 'brand' =&gt; 'Apple', 'type' =&gt; 'watch'],
+    ['name' =&gt; 'Galaxy S6', 'brand' =&gt; 'Samsung', 'type' =&gt; 'phone'],
+    ['name' =&gt; 'Galaxy Gear', 'brand' =&gt; 'Samsung', 'type' =&gt; 'watch'],
+]);
+
+$unique = $make_data-&gt;unique('brand');
+
+$unique-&gt;values()-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1, 2, 3, 4]
+  [
+         ['name' =&gt; 'iPhone 6', 'brand' =&gt; 'Apple', 'type' =&gt; 'phone'],
+         ['name' =&gt; 'Galaxy S6', 'brand' =&gt; 'Samsung', 'type' =&gt; 'phone'],
+     ]
+</code></pre>
+<h2 id="unless"><code>unless()</code></h2>
+<p>The unless method will execute the given callback unless the first argument given to the method evaluates to true:</p>
+<pre><code class="language-php">collection([1, 2, 3]);
+
+$make_data-&gt;unless(true, function ($make_data) {
+    return $make_data-&gt;push(4);
+});
+
+$make_data-&gt;unless(false, function ($make_data) {
+    return $make_data-&gt;push(5);
+});
+
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [1, 2, 3, 5]
+</code></pre>
+<h2 id="values"><code>values()</code></h2>
+<p>The values method returns a new data array with the keys reset to consecutive integers:</p>
+<pre><code class="language-php">collection([
+    10 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    11 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200]
+]);
+
+$values = $make_data-&gt;values();
+
+$values-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         0 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200],
+         1 =&gt; ['product' =&gt; 'Desk', 'price' =&gt; 200],
+     ]
+</code></pre>
+<h2 id="when"><code>when()</code></h2>
+<p>The when method will execute the given callback when the first argument given to the method evaluates to true:</p>
+<pre><code class="language-php">collection([1, 2, 3]);
+
+$make_data-&gt;when(true, function ($make_data) {
+    return $make_data-&gt;push(4);
+});
+
+$make_data-&gt;when(false, function ($make_data) {
+    return $make_data-&gt;push(5);
+});
+
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">  [1, 2, 3, 4]
+</code></pre>
+<h2 id="whenempty"><code>whenEmpty()</code></h2>
+<p>The whenEmpty method will execute the given callback when the data array is empty:</p>
+<pre><code class="language-php">collection(['michael', 'tom']);
+
+$make_data-&gt;whenEmpty(function ($make_data) {
+    return $make_data-&gt;push('adam');
+});
+
+$make_data-&gt;all();
+
+// ['michael', 'tom']
+
+$make_data = make_data);
+
+$make_data-&gt;whenEmpty(function ($make_data) {
+    return $make_data-&gt;push('adam');
+});
+
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['adam']
+</code></pre>
+<h2 id="whennotempty"><code>whenNotEmpty()</code></h2>
+<p>The whenNotEmpty method will execute the given callback when the data array is not empty:</p>
+<pre><code class="language-php">collection(['michael', 'tom']);
+
+$make_data-&gt;whenNotEmpty(function ($make_data) {
+    return $make_data-&gt;push('adam');
+});
+
+$make_data-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['michael', 'tom', 'adam']
+</code></pre>
+<h2 id="where"><code>where()</code></h2>
+<p>The where method filters the data array by a given key / value pair:</p>
+<pre><code class="language-php">collection([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 100],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $make_data-&gt;where('price', 100);
+
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         ['product' =&gt; 'Chair', 'price' =&gt; 100],
+         ['product' =&gt; 'Door', 'price' =&gt; 100],
+     ]
+</code></pre>
+<h2 id="wherebetween"><code>whereBetween()</code></h2>
+<p>The whereBetween method filters the data array within a given range:</p>
+<pre><code class="language-php">collection([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 80],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Pencil', 'price' =&gt; 30],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $make_data-&gt;whereBetween('price', [100, 200]);
+
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         ['product' =&gt; 'Desk', 'price' =&gt; 200],
+         ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+         ['product' =&gt; 'Door', 'price' =&gt; 100],
+     ]
+</code></pre>
+<h2 id="wherein"><code>whereIn()</code></h2>
+<p>The whereIn method filters the data array by a given key / value contained within the given array:</p>
+<pre><code class="language-php">collection([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 100],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $make_data-&gt;whereIn('price', [150, 200]);
+
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+         ['product' =&gt; 'Desk', 'price' =&gt; 200],
+     ]
+</code></pre>
+<h2 id="wherenotbetween"><code>whereNotBetween()</code></h2>
+<p>The whereNotBetween method filters the data array within a given range:</p>
+<pre><code class="language-php">collection([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 80],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Pencil', 'price' =&gt; 30],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $make_data-&gt;whereNotBetween('price', [100, 200]);
+
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [
+         ['product' =&gt; 'Chair', 'price' =&gt; 80],
+         ['product' =&gt; 'Pencil', 'price' =&gt; 30],
+     ]
+</code></pre>
+<h2 id="wherenotin"><code>whereNotIn()</code></h2>
+<p>The whereNotIn method filters the data array by a given key / value not contained within the given array:</p>
+<pre><code class="language-php">collection([
+    ['product' =&gt; 'Desk', 'price' =&gt; 200],
+    ['product' =&gt; 'Chair', 'price' =&gt; 100],
+    ['product' =&gt; 'Bookcase', 'price' =&gt; 150],
+    ['product' =&gt; 'Door', 'price' =&gt; 100],
+]);
+
+$filtered = $make_data-&gt;whereNotIn('price', [150, 200]);
+
+$filtered-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> ['product_id' =&gt; 1, 'name' =&gt; 'Desk']
+</code></pre>
+<h2 id="wrap"><code>wrap()</code></h2>
+<p>The static wrap method wraps the given value in a data array when applicable:</p>
+<pre><code class="language-php">$make_data = Collection::wrap('John Doe');
+$make_data-&gt;all();
+
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php">  ['John Doe']
+</code></pre>
+<h2 id="zip"><code>zip()</code></h2>
+<p>The zip method merges together the values of the given array with the values of the original data array at the corresponding index:</p>
+<pre><code class="language-php">collection(['Chair', 'Desk']);
+
+$zipped = $make_data-&gt;zip([100, 200]);
+
+$zipped-&gt;all();
+</code></pre>
+<p>Output</p>
+<pre><code class="language-php"> [['Chair', 100], ['Desk', 200]]
+</code></pre>
+                
+
+                <hr />
+
+                
+                <h3>What to see next?</h3>
+
+                <section aria-label="breadcrumb" class="mt-4">
+                  <ol class="breadcrumb">
+                    
+                      <li class="breadcrumb-item"><a href="../queue/">&#8592; Queue</a></li>
+                    
+                    
+                      <li class="breadcrumb-item"><a href="../string-manipulate/">Strings &#8594;</a></li>
+                    
+                  </ol>
+                </section>
+                
+
+              </div>
+
+              <hr>
+
+              <div class="row text-center mt-3">
+                <div class="col-md-12 ml-2">
+                  Built with <a href="https://www.mkdocs.org">MkDocs</a>.
+                </div>
+              </div>
+            </div>
+
+            <!--
+              MkDocs version      : 1.5.3
+              Docs Build Date UTC : 2023-11-10 11:10:40.043177+00:00
+              -->
+
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
