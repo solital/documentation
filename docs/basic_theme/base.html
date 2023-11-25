@@ -61,7 +61,7 @@
           <i class="fas fa-bars"></i>
         </a>
 
-        <a href="#" class="brand-logo">
+        <a href="https://solital.github.io/site/" class="brand-logo">
           <img src="{{ "img/solital-logo-2-sm-trans-2.png"|url }}" alt="Solital Framework">
         </a>
       </header>
@@ -81,13 +81,13 @@
       <div class="dashboard-content">
         <div class="container">
 
-          <section class="container-fluid section">
+          <section class="container section">
             <div class="row">
-              <div class="col-md-12 w-100">
+              <div class="col-md-12 col-sm-12 w-100">
                 <h1 class="mt-4 font-weight-normal title-page">{{ page.title }}</h1>
               </div>
 
-              <div class="col-md-12 mt-3">
+              <div class="col-md-12 col-sm-12 mt-3">
                 {% if page and page.edit_url %}
                   <a href="{{ page.edit_url }}">Edit on {{ config.repo_name }}</a>
                 {% elif config.repo_url %}
@@ -129,7 +129,7 @@
               <hr>
 
               <div class="row text-center mt-3">
-                <div class="col-md-12 ml-2">
+                <div class="col-md-12 col-sm-12 ml-2">
                   Built with <a href="https://www.mkdocs.org">MkDocs</a>.
                 </div>
               </div>

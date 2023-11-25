@@ -10,7 +10,7 @@ You are reading the version documentation: **3.x**
 
 ## Requirements
 
-- PHP >=8.0
+- PHP >=8.2
 - PHP JSON extension enabled
 - PHP PDO extension enabled
 

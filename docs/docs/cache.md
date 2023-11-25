@@ -94,6 +94,21 @@ To clear the entire cache created with the `Cache` class, use the `clear` functi
 $cache->clear();
 ```
 
+## Cache drive
+
+**Memcache**
+
+To use the Memcache drive, first make sure you have this drive installed on your machine. To change the Solital cache drive, change the `cache.yaml` file in the `app/config/` folder.
+
+```yaml
+# Set cache type
+cache_drive: memcache
+
+# (If memcache is used) Set host and port
+cache_host: 127.0.0.1
+cache_port: 11211
+```
+
 ## HTTP Cache
 
 Font by [heroku]("https://devcenter.heroku.com/articles/increasing-application-performance-with-http-cache-headers")

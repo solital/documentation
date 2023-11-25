@@ -52,7 +52,7 @@ $this->getRequestParams(string $index = null, string $defaultValue = null, ...$m
  * @param string $url: the route to which you will be redirected
  * @param int|null $code: HTTP code
  */
-redirect(string $url, ?int $code = null)
+to_route(string $url, ?int $code = null)
 
 # Or, use a method
 $this->redirect(string $url, ?int $code = null)

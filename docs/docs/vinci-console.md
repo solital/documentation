@@ -327,7 +327,7 @@ $this->success("My message")->print()->break(true)->exit();
 
 Progressbar has customizable names, colors, datatypes, error handling, and more.
 
-### Usage
+**Usage**
 
 Initializing the ADVProgressbar object
 
@@ -356,7 +356,7 @@ for ($i = 0; $i < $progressbar->GetInitialMax(); $i++) {
 }
 ```
 
-### Methods:
+**Methods**
 
 ```php
 //Increases the progressbar value by 1.

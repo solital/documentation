@@ -3,7 +3,9 @@
   padding: 0;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -52,7 +54,12 @@ body {
   border: 3px solid rgb(221, 221, 221);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
@@ -73,14 +80,26 @@ a:hover {
   text-decoration: underline;
 }
 
-h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-family: "Nunito", sans-serif;
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   font-size: 2.5rem;
   font-weight: normal;
 }
@@ -97,12 +116,12 @@ h1, .h1 {
 .btn-menu {
   margin-top: 30px;
   line-height: 0;
-  padding: 15px 40px;
+  padding: 15px 30px;
   border-radius: 4px;
   transition: 0.5s;
-  color: #fff !important;
-  background: #1034E6;
-  box-shadow: 0px 5px 30px rgba(108, 171, 253, 0.4);
+  color: #1034E6 !important;
+  background: #FFF;
+  box-shadow: 0px 5px 30px rgba(108, 171, 253, 0.1);
 }
 
 .card {
@@ -150,6 +169,7 @@ h1, .h1 {
 }
 
 .dashboard-app {
+  max-width: 100% !important;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -171,6 +191,7 @@ h1, .h1 {
   -webkit-flex-grow: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
+  max-width: 100%;
 }
 
 .dashboard-nav {
@@ -240,7 +261,9 @@ h1, .h1 {
   align-items: center;
 }
 
-.brand-logo:focus, .brand-logo:active, .brand-logo:hover {
+.brand-logo:focus,
+.brand-logo:active,
+.brand-logo:hover {
   color: #dbdbdb;
   text-decoration: none;
 }
@@ -395,7 +418,9 @@ h1, .h1 {
   justify-content: center;
 }
 
-.menu-toggle:hover, .menu-toggle:active, .menu-toggle:focus {
+.menu-toggle:hover,
+.menu-toggle:active,
+.menu-toggle:focus {
   text-decoration: none;
 }
 
@@ -404,6 +429,7 @@ h1, .h1 {
 }
 
 .dashboard-toolbar {
+  max-width: 100%;
   min-height: 54px;
   background-color: transparent;
   display: -webkit-box;
@@ -441,6 +467,10 @@ h1, .h1 {
 
 
 @media (max-width: 768px) {
+  .menu-toggle {
+    left: 80%;
+  }
+
   .dashboard-content {
     padding: 15px 0px;
   }

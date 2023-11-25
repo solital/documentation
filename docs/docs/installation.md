@@ -16,8 +16,14 @@ Course::get('/', function() {
 ```
         
 ## Running
-To execute the project, use the built-in PHP server or create a virtual host:
+To execute the project, run the command:
 
 ```php
-php -S localhost:8000 -t public/
+php vinci server
+```
+
+You can change your project IP if you want
+
+```php
+php vinci server localhost:8001
 ```
