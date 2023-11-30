@@ -154,6 +154,18 @@ User::select()->where('id', 2)->getUnique();
 User::select("name")->get();
 ```
 
+You can return the latest values from the database in descending order using the `latest` method:
+
+```php
+User::latest()->get();
+```
+
+By default, the `latest` method will sort using the `created_at` column. If this column does not exist in your table, you can pass the noe of another column as a parameter.
+
+```php
+User::latest('users')->get();
+```
+
 **WHERE**
 
 If you need the `WHERE` clause, use `where()` method.
@@ -189,6 +201,17 @@ User::select()->where("brand", 'visa')->and("cvv", '502')->get();
  * With OR clause
  */
 User::select()->where("brand", 'visa')->or("cvv", '502')->get();
+```
+
+**Multiple WHERE**
+
+To save time and avoid using the `and` method, you can pass an array as a parameter in the `where` method with multiple conditions.
+
+```php
+User::select()->where([
+  'brand', 'visa',
+  'cvv', '502'
+])->get();
 ```
 
 **LIKE and BETWEEN**
