@@ -1,9 +1,3 @@
-At first, you have the option to change the index where Solital will store the login in the `.env` file. 
-
-```bash
-INDEX_LOGIN='solital_index_login'
-```
-
 ## Defining the routes
 
 You can define dashboard and login routes. The dashboard route will be for when the user authenticates, and the login route will be for when the user logs off and will be redirected to it.
@@ -27,7 +21,7 @@ $res = Auth::login('auth_users')
             ->register();
 ```
 
-The `$res` variable will return `true` if authentication is true. But if it is `false`, you can add a reply message after the above code if authentication fails.
+The `$res` variable will return `true` if authentication is true and will redirect the user to the route defined in the `auth_dashboard_url` variable. But if it is `false`, you can add a reply message after the above code if authentication fails.
 
 ```php
 if ($res == false) {
@@ -36,9 +30,30 @@ if ($res == false) {
 }
 ```
 
+## Remembering authentication
+
+In some cases the user wants to remain logged into the system after closing the browser. When registering a user, you can first use the `remember` method, passing the name of the form input as a parameter.
+
+In the `value` of the form input, use `true`.
+
+```php
+<input type="checkbox" name="inputRemember" value="true">
+
+$res = Auth::login('auth_users')
+            ->columns('username', 'password')
+            ->values('inputEmail', 'inputPassword')
+            ->remember('inputRemember')
+            ->register();
+```
+
+
 Below is an example method of authentication.
 
 ```php
+<input type="email" name="inputEmail">
+<input type="password" name="inputPassword">
+<input type="checkbox" name="inputRemember" value="true">
+
 <?php
 
 namespace Solital\Components\Controller;
@@ -56,6 +71,7 @@ class UserController extends Controller
         $res = Auth::login('auth_users')
             ->columns('username', 'password')
             ->values('inputEmail', 'inputPassword')
+            ->remember('inputRemember')
             ->register();
 
         if ($res == false) {
@@ -76,14 +92,14 @@ If you need more routes for dashboards and logins, you can change the parameter 
 
 Course::get('/my-second-dashboard', 'SiteController@SecondDashboard')->name('second.dashboard');
 
-# In Controller
+# In Controller with `url()` helper
 
 $res = Auth::login('auth_users')
     ->columns('username', 'password')
     ->values('inputEmail', 'inputPassword')
     ->register(url('second.dashboard'));
 
-# Or
+# Or without `url()` helper
 
 $res = Auth::login('auth_users')
     ->columns('username', 'password')
@@ -93,32 +109,27 @@ $res = Auth::login('auth_users')
 
 ## Check login
 
-To ensure that the user is authenticated, use the Auth::isNotLogged() method. If the login has not been validated, the user will be redirected to the route defined in the `auth.yaml` file or to the `/login` route.
+To check if the user exists, you can create a middleware and add the `Auth::check()` method.
 
 ```php
-/**
- * @return mixed
- */
-public function dashboard(): mixed
+class AuthMiddleware implements BaseMiddlewareInterface
 {
-    Auth::isNotLogged();
-
-    return view('dashboard');
+	public function handle(): void
+	{
+        Auth::check();
+	}
 }
 ```
 
-To ensure that the user doesn't fall into the login route when it has already been validated, insert the `Auth::isLogged()` method in your login route. This method will redirect the user to your system's dashboard.
+The `Auth::check` method checks whether there is a user authenticating, but if you want to specify a user, you can pass the username in the first parameter.
+
+If the user is not authenticated, he will be redirected to the route defined in the `auth_login_url` variable. If you want to redirect to another route, you can define it using the second parameter.
 
 ```php
-/**
- * @return mixed
- */
-public function auth(): mixed
-{
-    Auth::isLogged();
+Auth::check('solital@egmail.com');
 
-    return view('login');
-}
+// Redirect to another router
+Auth::check('solital@egmail.com', '/redirect-to-another-router');
 ```
 
 ## Logoff
@@ -126,20 +137,20 @@ public function auth(): mixed
 To logoff, use the `Auth::logoff()` method.
 
 ```php
-/**
- * @return void
- */
-public function exit(): void
-{
-    Auth::logoff();
-}
+Auth::logoff();
+
+// Logoff an user
+Auth::logoff('solital@egmail.com');
+
+// Redirect to another router
+Auth::logoff('solital@egmail.com', '/redirect-to-another-router');
 ```
 
 ## Standard login structure 
 
 To create a predefined login structure, use `php vinci auth:skeleton --login`
 
-This command will create a `LoginController` class, templates for authentication, dashboard and predefined routes. Plus a standard user in the database.
+This command will create a `LoginController` class, `AuthMiddleware` middleware, templates for authentication, dashboard and predefined routes. Plus a standard user in the database.
 
 If you want to remove this structure, use `php vinci auth:skeleton --login --remove`.
 
@@ -147,7 +158,7 @@ If you want to remove this structure, use `php vinci auth:skeleton --login --rem
 
 You can create an authentication using Sodium encryption.
 
-### Generating a sodium key
+**Generating a sodium key**
 
 First, you need to generate a sodium key. This key is automatically renewed with each new request, so it can be stored in a database, in the session or in another type of storage.
 
@@ -157,7 +168,7 @@ use Solital\Core\Security\Hash;
 $key = Hash::getSodiumKey();
 ```
 
-### Encrypting the password
+**Encrypting the password**
 
 Use `Auth::sodium()` to encrypt your password. Remember to use it in conjunction with the generated key.
 
@@ -171,7 +182,7 @@ $encoded = Auth::sodium('password', $key);
 pre($encoded);
 ```
 
-### Verifying the password with Sodium
+**Verifying the password with Sodium**
 
 To verify the password generated using the `Auth::sodium()` method, use `Auth::sodiumVerify()` together with the generated key, password and hash.
 

@@ -20,8 +20,8 @@ The process to perform the dump on Windows is a little different, you first need
 
 ```yaml
 dump_windows:
-  mysql: C:\xampp\mysql\bin\mysqldump.exe
-  pgsql: C:\Program Files\PostgreSQL\14\bin\pg_dump.exe
+  mysql: C:\wamp64\bin\mysql\mysql8.2.0\bin
+  pgsql: C:\Program Files\PostgreSQL\14\bin
   sqlite: 
 ```
 

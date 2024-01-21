@@ -57,3 +57,25 @@ $mailer->sendQueue();
 // Delay 10 seconds
 $mailer->sendQueue(10);
 ```
+
+## Test email
+
+If you want to perform tests using another email, you can change the settings using the `mail.yaml` file. When enabling this option, Solital will use the settings from the `mail.yaml` file instead of the settings from the `.env` file.
+
+Enable email testing by changing the `mail_test_enable` variable to `true` and changing the settings in this file. To enable exceptions when there is an error when sending the email, change the `mail_exceptions` variable to `true`.
+
+```yaml
+# Enable exception in Mailer class
+# Values: true, false
+mail_exceptions: true
+
+# Enable mail test in localhost
+mail_test:
+  mail_test_enable: false
+  mail_debug: 0
+  mail_host: 
+  mail_user: 
+  mail_pass: 
+  mail_security: tls
+  mail_port: 587
+```

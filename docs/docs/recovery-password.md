@@ -37,37 +37,52 @@ Auth::forgot('auth_users')
 
 ### Changing email fields
 
-By default, "User" is sent as the name of the sender and recipient. "Forgot Password" as the title of the email.
+By default, "User" is sent as the name of the sender and recipient. "Reset Password" as the title of the email.
 
-To change these fields, use the `fields()` function.
+To change these fields, use the `customMailSender()` and/or `customMailFields()` method.
+
+```php
+// Custom mail sender
+->customMailSender('mail_sender@gmail.com');
+
+// Custom sender, recipient and subject
+->customMailFields('name_sender', 'name_recipient', 'subject');
+```
+
+The full code is:
 
 ```php
 Auth::forgot('auth_users')
     ->columns('username')
     ->values($email, url('change'))
-    # Here the code
-    ->fields('name_sender', 'name_recipient', 'subject')
+    ->customMailSender('mail_sender@gmail.com')
+    ->customMailFields('name_sender', 'name_recipient', 'subject')
     ->register();
 ```
 
-### Changing default email
+### Changing recovery template email
 
-If you need to change the default password recovery email, you must first use the `generateLink()` function. This function generates a new link in which the user will be redirected when changing the password.
+To change the default email template, you can use Wolf to generate a new template.
 
-First, it is necessary to inform the user's email, the route he will access to change the password, and the length of time that this link will be valid.
-
-The code below shows an example of this use:
+You will need to generate a link that will be used to validate the user's password change. To do this, use the `$this->generateRecoveryLink` method, informing as parameters the user's email, the url in which they will change their password and the time that this link will be valid.
 
 ```php
-$msg = "<h1>Retrieve your password</h1>";
-$msg .= "<p>Click the link below to change your password</p>";
-$msg .= "<a href='".generateLink($email, url('change'), '+2 hours')."'>Change Here!!</a>";
+$wolf = new Wolf;
+$wolf->setArgs([
+    'link' => $this->generateRecoveryLink('user_email@gmail.com', url('change'), '+2 hours')
+]);
+$wolf->setView('auth.template-recovery-password');
+$template = $wolf->render();
+```
 
+Then add this template to the last parameter of the `customMailFields` method.
+
+```php
 Auth::forgot('auth_users')
     ->columns('username')
     ->values($email, url('change'))
     # Here the code
-    ->fields('name_sender', 'name_recipient', 'subject', $msg)
+    ->customMailFields('name_sender', 'name_recipient', 'subject', $template)
     ->register();
 ```
 
@@ -93,10 +108,10 @@ public function change($hash): void
             'email' => $email,
             'hash' => $hash
         ]);
-    } else {
-        $this->message->new('login', 'The informed link has already expired!');
-        response()->redirect(url('auth'));
     }
+
+    $this->message->new('login', 'The informed link has already expired!');
+    response()->redirect(url('auth'));
 }
 ```
 

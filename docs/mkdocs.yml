@@ -9,6 +9,7 @@ nav:
     - Environment Variables: environment-variables.md
     - YAML Files: yaml-files.md
     - Helpers: helpers.md
+    - Exceptions: exceptions.md
   - Routers:
     - Routes: routes.md
     - Middleware: middleware.md
@@ -18,11 +19,14 @@ nav:
   - Components:
     - Vinci Console: vinci-console.md
     - Cache: cache.md
+    - Controllers and Models: controller-model.md
     - Dependency Container : dependency-container.md
     - Event Loop: event-loop.md
     - HTTP Client: http-client.md
+    - Task Schedule: schedule.md
     - Wolf Template: wolf-template.md
   - Resources:
+    - Browser Storage: browser-storage.md
     - Date and time: date-and-time.md
     - File System: file-system.md
     - JSON: json.md
@@ -42,6 +46,7 @@ nav:
     - Secure Password: secure-password.md
     - Verify Domain: verify-domain.md
     - Recovery Password: recovery-password.md
+    - Malware Scanner: scanner.md
   - Database:
     - Migrations: migrations.md
     - Seeders: seeders.md

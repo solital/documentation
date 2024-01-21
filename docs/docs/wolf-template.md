@@ -14,7 +14,10 @@ Course::get('/', function () {
 
 // With instance
 Course::get('/', function () {
-    echo (new Wolf)->loadView('welcome');
+    $wolf = new Wolf();
+    $wolf->setView('welcome');
+
+    return $wolf->render();
 });
 ```
 
@@ -38,9 +41,13 @@ Course::get('/', function () {
 
 // With instance
 Course::get('/', function () {
-    echo (new Wolf)->loadView('welcome', [
+    $wolf = new Wolf();
+    $wolf->setArgs([
         'title' => 'My Title'
     ]);
+    $wolf->setView('welcome');
+
+    return $wolf->render();
 });
 ```
         
@@ -98,34 +105,13 @@ In `time`, you can define if you want to cache your views for 1 minute, 1 hour, 
 
 **Cache on a single page**
 
-If you don't want to create a cache file for all templates, consider using the `WolfCache` class to generate a cache file for each template. This class will create a cache file just for a single view (or for several if you add this class in the Controller's constructor).
+If you don't want to create a cache file for all templates, consider using the `setCacheTime` method before `setView` method to generate a cache file for each template. This class will create a cache file just for a single view (or for several if you add this class in the Controller's constructor).
 
 The syntax below shows how long the template can be cached.
 
 ```php
-use Solital\Core\Wolf\WolfCache;
-
-# The template is cached for one minute
-WolfCache::cache()->forOneMinute();
-
-# The template is cached for an hour
-WolfCache::cache()->forOneHour();
-
-# The template is cached for a day
-WolfCache::cache()->forOneDay();
-
-# The template is cached for a week
-WolfCache::cache()->forOneWeek();
-```
-
-The code above shows how long the view will be cached. To actually generate the view cache, use the `makeCache()` method passing the template name as a parameter.
-
-```php
-Course::get('/', function () {
-    WolfCache::cache()->forOneMinute()->makeCache('welcome');
-
-    return view('welcome');
-});
+// minute - hour - day - week
+$wolf->setCacheTime('week');
 ```
 
 ## Minify Assets
@@ -139,6 +125,7 @@ If you want to generate a minified file for your assets, first add your CSS and 
 ```yaml
 wolf_minify: false
 ```
+
 
 |   |
 |-----|
@@ -177,4 +164,32 @@ If you want to extend a view inside a folder, use a (.) separator.
 
 ```html
 {% extend('auth.header') %}
+```
+
+## Conditionals
+
+### Production and development mode
+
+If you want a code to be displayed only in production mode or only in development mode, you can use the `production` and `development` methods.
+
+```html
+{% production %}
+<!-- This code will only be displayed in production mode -->
+{% endproduction %}
+
+{% development %}
+<!-- This code will only be displayed in development mode -->
+{% enddevelopment %}
+```
+
+### Conditional if true
+
+If there is a variable or element that you want to display if another element is true, use the `conditional` helper.
+
+```html
+{% $is_error = true; %}
+
+<span class="{{ conditional('text-danger', $is_error) }}">DANGER!!!</span>
+
+<!-- <span class="text-danger">DANGER!!!</span> -->
 ```

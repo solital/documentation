@@ -1,5 +1,3 @@
-# Events
-
 This section will help you understand how to register your own callbacks to events in the router.
 It will also cover the basics of event-handlers; how to use the handlers provided with the router and how to create your own custom event-handlers.
 

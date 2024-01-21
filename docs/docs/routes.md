@@ -8,6 +8,15 @@ Course::get('/', function() {
 });
 ```
 
+You can also create a route using the vinci console:
+
+```bash
+php vinci create:router my-router
+
+# With comment
+php vinci create:router my-router --comment="This is a comment"
+```
+
 ### Available methods
 
 Here you can see a list over all available routes:

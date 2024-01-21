@@ -49,11 +49,6 @@ The configuration of the mailer is now setup outside of the ``UserManager``, and
 That's where the container concept comes in. An IoC, or dependency injection container is the place where you would write up how your services should be created. Going back to the above example:
 
 ```php
-<?php
-use Solital\Core\Container\Container;
-
-$container = new Container();
-
 $container->add('userManager', function($container) {
     $mailer = $container->get('mailer');
     
@@ -70,19 +65,44 @@ Now all we have to do is ask for the ``UserManager``, and its ``Mailer`` depende
 
 ### Usage
 
-##### Instantiation
+Service container are a way to organize your container entries. Service container are nothing more than classes that implement the ``ServiceProvider`` interface that exposes a ``register`` method. The ``register`` method is always passed an instance of the container.
 
-To use the container, simply create a new instance of the ``Container`` class:
+For example, lets say that you have a suite of services that deal with user management. You could organize them into a single service provider class/file called ``UserServiceProvider``. This class would then be responsible for adding all container entries related to user management.
+
+To use dependency injection, you must register your containers within the `register` method located in the `ServiceContainer` class located in the `app/` folder.
 
 ```php
-$container = new Container();
+<?php
+
+namespace Solital;
+
+use Solital\Core\Container\Interface\ContainerInterface;
+use Solital\Core\Container\Interface\ServiceProviderInterface;
+
+class ServiceContainer implements ServiceProviderInterface
+{
+    public function register(ContainerInterface $container)
+    {
+        $container->add('userManager', function($container) {
+            $mailer = $container->get('mailer');
+            
+            return new UserManager($mailer);
+        });
+
+        $container->add('mailer', function() {
+            $transport = 'gmail';
+            $mailer = new Mailer($transport);
+        });
+    }
+}
 ```
 
-You may also optionally pass an array of service and parameter entries directly into the constructor:
+To use the container, use ``Application::provider()`` or ``$container->get()`` method:
 
 ```php
-$entries = ['foo' => 'bar'];
-$container = new Container($entries);
+$provider = Application::provider('mailer'); // $container->get('mailer')
+
+var_dump($provider);
 ```
 
 ##### Adding Definitions
@@ -113,8 +133,6 @@ $container->add('myService', function() {
 The container can also be accessed like an array. So adding entries is as easy as using array notation:
 
 ```php
-$container = new Container();
-
 $container['myParameter'] = 'value';
 $container['myService'] = function() {
     return new MyService();
@@ -124,8 +142,6 @@ $container['myService'] = function() {
 When defining services, note that an instance of the container is always passed as an argument to the invokable callback. This allows you to resolve nested dependencies. In our synopsis, we used the example of a ``UserManager`` service who needed a ``Mailer`` object. We can define how to create the mailer in one entry, and how to create the user manager in a separate entry like this:
 
 ```php
-$container = new Container();
-
 $container['userManager'] = function($container) {
     // The user manager needs a mailer, so get that from the container first
     $mailer = $container->get('mailer');
@@ -138,60 +154,25 @@ $container['mailer'] = function() {
     return new Mailer();
 };
 
-$userManager = $container->get('userManager');
+$userManager = Application::provider('userManager');
 ```
 
 This is known as manually wiring your dependencies.
-
-##### Entry Management
-
-Just as entries can be added to the container, they may be removed via `Container::remove` as well:
-
-```php
-$container = new Container();
-
-$container['myParameter'] = 'value';
-$container->remove('myParameter');
-// or: unset($container['myParameter']);
-```
-
-We can also check if the container contains as entry with ``Container::has``:
-
-```php
-$container = new Container();
-
-$container['myParameter'] = 'value';
-$has = $container->has('myParameter');
-// or: isset($container['myParameter']);
-
-var_dump($has); // outputs: true
-```
-
-Lastly, we can get an array of all of the **entry names** in our container with ``Container::keys``:
-
-```php
-$container = new Container();
-
-$container['myParameter'] = 'value';
-$entries = $container->keys();
-
-var_dump($entries); // outputs: ['myParameter']
-```
 
 ##### Retrieving Services and Parameters
 
 Once an entry is added to the container, we can resolve that entry by using the ``Container::get`` method, or via array access:
 
 ```php
-$container = new Container();
-
 $container['myParameter'] = 'value';
-$myParameter = $container->get('myParameter');
+$myParameter = Application::provider('myParameter');
+
 var_dump($myParameter); // outputs: 'value'
 
 $container['myService'] = function() {
     return new MyService();
 };
+
 $myService = $container['myService'];
 var_dump($myService instanceof MyService::class); // outputs: true
 ```
@@ -199,12 +180,11 @@ var_dump($myService instanceof MyService::class); // outputs: true
 Note that the service definition is executed and the result of the callback is what is assigned to ``$myService``, rather than the literal callback function. If you would like a callback function to be interpreted as a literal value, you can use the ``Container::protect`` method:
 
 ```php
-$container = new Container();
-
 $container->add('myService', $container->protect(function() {
     return new MyService();
 }));
-$myServiceFactory = $container->get('myService');
+$myServiceFactory = Application::provider('myService');
+
 var_dump($myServiceFactory instanceof \Closure); // outputs: true
 ```
 
@@ -213,15 +193,13 @@ By default, when the container resolves a service entry, that service will be "s
 It would be a waste of memory to create these types of objects multiple times. You would not want 20 different database connections open at the same time if you really only need one:
 
 ```php
-$container = new Container();
-
 $container->add('db', function() {
     ... // database configuration
     return new PDO();
 });
     
-$db = $container->get('db');
-$db2 = $container->get('db');
+$db = Application::provider('db');
+$db2 = Application::provider('db');
 
 var_dump($db === $db2); // outputs: true
 ```
@@ -229,14 +207,12 @@ var_dump($db === $db2); // outputs: true
 However, sometimes you do need to get a new instance of a service each time it is accessed. For those cases, simply define the service as a **factory** with ``Container::factory``:
 
 ```php
-$container = new Container();
-
 $container->add('myService', $container->factory(function() {
     return new MyService();
 }));
 
-$myService = $container->get('myService');
-$myService2 = $container->get('myService');
+$myService = Application::provider('myService');
+$myService2 = Application::provider('myService');
 
 var_dump($myService === $myService2); // outputs: false
 ```
@@ -256,8 +232,6 @@ An extend will fail if:
 Therefore, extending is meant to be done on existing service definitions only:
 
 ```php
-$container = new Container();
-
 $container['mailer'] = function() {
     return new Mailer();
 };
@@ -324,8 +298,6 @@ You can see that the difference with inversion of control is that application (c
 We can have a look at this in action with something like this:
 
 ```php
-$container = new Container();
-
 // Create something to run on every resolve
 $container->extend(function($resolved, $container) {
     echo is_object($resolved) ? get_class($resolved) . ' created.<br />' : '';
@@ -359,23 +331,3 @@ Car created.
 ```
 
 This is proof that the container uses the inversion of control principle since the global callback function gets called after each resolve.
-
-##### Service Providers
-
-Service providers are a way to organize your container entries. Service providers are nothing more than classes that implement the ``ServiceProvider`` interface that exposes a ``register`` method. The ``register`` method is always passed an instance of the container.
-
-For example, lets say that you have a suite of services that deal with user management. You could organize them into a single service provider class/file called ``UserServiceProvider``. This class would then be responsible for adding all container entries related to user management. This simply provides a more organized and collected way of registering data in the container:
-
-```php
-class UserServiceProvider implements ServiceProvider
-{
-    public function register(ContainerInterface $container)
-    {
-        $container->add('userManager', function() {
-            ...
-        });
-        $container->add('foo' ...);
-        ...
-    }
-}
-```

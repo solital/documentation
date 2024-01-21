@@ -1,18 +1,26 @@
-The `.env` file has all the variables that Solital uses. Some are filled in by default, but others you need to edit as needed. Below we will see what each variable does:
+## Introduction
 
-- Displays all errors that Solital or PHP raises. Activate only in development mode
+The `.env` file has all the variables that Solital uses. The idea here is that by placing some information in the environment, you are protecting your application (example: access credentials that are not in a text file, protected from accidental copies), and having other less sensitive information in conventional files to facilitate copying and migration.
+
+## Usage
+
+Solital uses the `Dotenv` class to handle all environment variables. All Solital variables are loaded using the `env` method. This method is already configured in the `config.php` file.
+
+But, if you want to check if a variable exists, you can use the `isset()` method.
+
+```php
+Dotenv::isset('MY_ENVIRONMENT_VARIABLE');
+```
+
+## Solital Variables
+
+* Displays all errors that Solital or PHP raises. Activate only in development mode
 
 ```bash
 ERRORS_DISPLAY="true"
 ```
 
-- Standard index that Solital uses to store session login. To learn more, see [Authenticate](authenticate.md)
-
-```bash
-INDEX_LOGIN="solital_index_login"
-```
-
-- Database connection variables. To find out more, see [Katrina ORM](katrina-orm.md)
+* Database connection variables. To find out more, see [Katrina ORM](katrina-orm.md)
 
 ```bash
 DB_DRIVE=""
@@ -23,7 +31,7 @@ DB_PASS=""
 SQLITE_DIR=""
 ```
 
-- Variables of the Mailer class
+* Variables of the Mailer class
 
 ```bash
 MAIL_DEBUG=""
@@ -34,9 +42,17 @@ MAIL_SECURITY=""
 MAIL_PORT=""
 ```
 
-- Variables used in encryption. It is recommended that you add new values to these variables.
+* Variables used in encryption. It is recommended that you add new values to these variables.
 
 ```bash
 FIRST_SECRET="first_secret"
 SECOND_SECRET="second_secret"
 ```
+
+## Checking project status
+
+To check the status of Solita, you can run the `php vinci status` command. This command checks whether there are variables that have not been configured correctly.
+
+## Using other components
+
+If you don't want to use the `Dotenv` class, you can use other libraries like [vlucas/phpdotenv](https://packagist.org/packages/vlucas/phpdotenv).

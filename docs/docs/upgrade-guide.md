@@ -1,112 +1,53 @@
-## Upgrading from version 2.x to 3.x
+## Upgrading from version 3.x to 4.x
 
 ### composer.json
 
 Update the Core package in your `composer.json` file:
 
 ```bash
-"solital/core": "3.*"
-```
-
-You should also remove the `slowprog/composer-copy-file` package. To do this, manually delete it in `composer.json` or run the command:
-
-```bash
-composer remove slowprog/composer-copy-file
-```
-
-After that, you need to remove any references to the previous package.
-
-Replace this:
-
-```json
-"scripts": {
-    "post-create-project-cmd": [
-      "SlowProg\\CopyFile\\ScriptHandler::copy",
-      "composer dump-autoload -o"
-    ],
-    "post-install-cmd": [
-      "SlowProg\\CopyFile\\ScriptHandler::copy",
-      "composer dump-autoload -o"
-    ],
-    "post-update-cmd": [
-      "SlowProg\\CopyFile\\ScriptHandler::copy",
-      "composer dump-autoload -o"
-    ]
-}
-```
-
-By this code:
-
-```json
-"scripts": {
-    "post-create-project-cmd": [
-        "composer dump-autoload -o"
-    ],
-    "post-install-cmd": [
-        "composer dump-autoload -o",
-        "php vinci generate:files"
-    ],
-    "post-update-cmd": [
-        "composer dump-autoload -o",
-        "php vinci generate:files"
-    ]
-}
-```
-
-Finally, remove the `extra` from your `composer.json` file:
-
-```json
-"extra": {
-    "copy-file": {
-      "vendor/solital/core/src/Resource/Helpers/": "app/Helpers/System",
-      "vendor/solital/core/src/Console/Components/Templates/Controller.php": "app/Components/Controller/",
-      "vendor/solital/core/vinci": "vinci"
-    }
-}
+"solital/core": "4.*"
 ```
 
 ### .env
 
-The variables below will no longer be used in version `3.x`, so they should be removed.
+These variables below will no longer be used in version `4.x`, so they should be removed.
 
 ```bash
-# NATIVEMAIL CONFIG
-MAIL_SENDER=""
-MAIL_RECIPIENT=""
-
-# WINDOWS ONLY
-MYSQL_DUMP=""
-PG_DUMP=""
-SQLITE3=""
-```
-
-The `NativeMail` class has been removed from version `3.x` and `PHPMailer` will be Solital's default mailing package. The email variables have been replaced by these:
-
-```bash
-# EMAIL CONFIG
-MAIL_DEBUG="0"
-MAIL_HOST=""
-MAIL_USER=""
-MAIL_PASS=""
-MAIL_SECURITY=""
-MAIL_PORT=""
+INDEX_LOGIN="solital_index_login"
+PRODUCTION_MODE="false"
 ```
 
 ### config.php
 
-In the `config.php` file that is at the root of Solital, you will replace the existing code with this one:
+In the `config.php` file, add the constant `SITE_ROOT` at the beginning of the file, and replace the line below:
+
+```php
+$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotenv->load();
+```
+
+For this:
+
+```php
+use Solital\Core\Kernel\Dotenv;
+
+Dotenv::env(__DIR__);
+```
+
+The `config.php` file should be as follows:
 
 ```php
 <?php
 
-require_once __DIR__ .'/vendor/autoload.php';
+define('SITE_ROOT', __DIR__);
+
+require_once 'vendor/autoload.php';
 
 use Solital\Core\Kernel\Application;
+use Solital\Core\Kernel\Dotenv;
 
 Application::sessionInit();
-
-$dotenv = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
-$dotenv->load();
+Dotenv::env(__DIR__);
 
 if (!empty(getenv('ERRORS_DISPLAY'))) {
     if (getenv('ERRORS_DISPLAY') == 'true') {
@@ -116,89 +57,51 @@ if (!empty(getenv('ERRORS_DISPLAY'))) {
 }
 ```
 
+### User command
+
+Find the `Config` class inside the `app/Console/` folder and change the `getCommandClass()` method:
+
+```php
+public function getCommandClass(): array
+{
+    $this->command_class = Application::getUserCommands();
+    return $this->command_class;
+}
+```
+
 ### index.php
 
-The `index.php` file has been completely changed. First, locate the file inside the `public/` folder. Then erase all the code present in that file and replace it with this one:
+First, locate the file inside the `public/` folder.
+
+The `index.php` file has few changes. The only things you need to do are: remove the constant `SITE_ROOT` as it will already exist in the `config.php` file, and replace the line below:
+
+```php
+Course::csrfVerifier(new BaseCsrfVerifier());
+```
+
+For this:
+
+```php
+Application::loadCsrfVerifier();
+```
+
+The `index.php` file should be as follows:
 
 ```php
 <?php
-
-/**
- * WARNING: DO NOT MAKE ANY KIND OF CHANGE IN THIS FILE. 
- * ANY KIND OF MODIFICATION WILL BREAK YOUR PROJECT. 
- */
 
 require_once dirname(__DIR__). '/vendor/autoload.php';
 
 use Solital\Core\Course\Course;
 use Solital\Core\Kernel\Application;
-use Solital\Core\Http\Middleware\BaseCsrfVerifier;
-
-define('SITE_ROOT', dirname(__DIR__));
 
 Application::autoload("../vendor/solital/core/src/Resource/Helpers/");
 
 Course::setDefaultNamespace('\Solital\Components\Controller');
-Course::csrfVerifier(new BaseCsrfVerifier());
+Application::loadCsrfVerifier();
 
 Application::autoload("../routers/");
 Application::init();
-```
-
-## Classes and folders
-
-Some classes and folders will no longer be used by version `3.x`. The following classes should be deleted: **SQL.php** (`app/Database/`) and **CustomConsole.php** (`app/`).
-
-The following folders must be deleted along with all content: **Helpers** (`app/Helpers`).
-
-## Vinci File
-
-The Vinci Console has had a big change compared to the `2.x` version. For that, you'll have to replace all the code in the `vinci` file with this one:
-
-```php
-#!/usr/bin/env php
-<?php
-
-require_once 'vendor/autoload.php';
-
-use Solital\Core\Kernel\Application;
-
-define('SITE_ROOT', __DIR__);
-
-Application::autoload("vendor/solital/core/src/Resource/Helpers/");
-
-$class_commands = [
-    \Solital\Core\Kernel\Console\SolitalCommands::class,
-    \Solital\Console\Config::class
-];
-
-(new \Solital\Core\Console\Command($class_commands))->read($argv[1], $argv);
-```
-
-If necessary, manually create the `Config.php` file inside the `app/Console/` folder.
-
-```php
-<?php
-
-namespace Solital\Console;
-
-use Solital\Core\Console\Interface\ExtendCommandsInterface;
-
-class Config implements ExtendCommandsInterface
-{
-    /**
-     * @var array
-     */
-    protected array $command_class = [];
-
-    /**
-     * @return array
-     */
-    public function getCommandClass(): array
-    {
-        return $this->command_class;
-    }
-}
 ```
 
 ### Copying new files
@@ -213,4 +116,4 @@ This command will copy configuration files into the `app/config` folder. This co
 
 ### Checking Solital Version
 
-To verify that the update was successful, run `php vinci version` to see the Core version. Also, run `php -S localhost:8000 -t public/` to check on the splash screen that everything is working.
+To verify that the update was successful, run `php vinci version` to see the Core version. Also, run `php vinci server` to check on the splash screen that everything is working.

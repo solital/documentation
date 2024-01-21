@@ -6,27 +6,23 @@ You can still use several other components present in Solital Framework.
         
 ## Current version
 
-You are reading the version documentation: **3.x**
+You are reading the version documentation: **4.x**
+
+For older versions of the solital, see the links below:
+<p><a class="btn btn-outline-primary" target="_blank" href="https://solital.github.io/site/docs/3.x/">3.x</a></p>
+<p><a class="btn btn-outline-primary" target="_blank" href="https://solital.github.io/site/docs/2.x/">2.x</a></p>
+<p><a class="btn btn-outline-primary" target="_blank" href="https://solital.github.io/docs-v1/">1.x</a></p>
 
 ## Requirements
 
-- PHP >=8.2
+- PHP >=8.3
 - PHP JSON extension enabled
 - PHP PDO extension enabled
 
-## Features
+## Why Solital?
 
-- Basic routing (GET, POST, PUT, PATCH, UPDATE, DELETE) with support for custom multiple verbs.
-- Regular Expression Constraints for parameters.
-- Wolf template system.
-- HTTP client manipulation.
-- Vinci Console.
-- Middleware (classes that intercepts before the route is rendered).
-- ORM for database persistence.
-- CSRF protection.
-- Sub-domain routing
-- Custom boot managers to rewrite urls to "nicer" ones.
-- Input manager; easily manage GET, POST and FILE values.
-- PSR-3, PSR-6, PSR-11, PSR-14 and PSR-16.
-- Migrations and Seeders
-- And more...
+PHP has several well-known frameworks such as Laravel, Symfony, CakePHP, among others. All of these projects contribute to the PHP community.
+
+The Solital Framework contributed to this huge community, offering an easier way to create PHP projects, while also offering several important features.
+
+You can read the documentation to get an understanding of Solital Framework.

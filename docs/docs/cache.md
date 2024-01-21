@@ -198,20 +198,14 @@ When using your project several times, it is common for several stored session f
 
 If you need to, you can use the Vinci Console to clear the general cache, just the session cache, or just the Wolf cache.
 
-To clear the general cache, use:
-
-```bash
-php vinci cache:clear
-```
-
-If you only want to clear the session cache, use the `--session` option:
+To clear the session cache, use:
 
 ```
-php vinci cache:clear --session
+php vinci storage:clear --session
 ```
 
-And to clear the cache of the `app/Storage/cache/*` folder, use the `--cache` option:
+And to clear the cache of the `app/Storage/cache` folder, use the `--cache` option:
 
 ```
-php vinci cache:clear --cache
+php vinci storage:clear --cache
 ```

@@ -35,12 +35,6 @@ php vinci [command] [argument] [--option1] [--option2]
       <td>--login / --forgot / --remove</td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">cache:clear</span></td>
-      <td>Clear the Solital cache</td>
-      <td>-</td>
-      <td>--cache / --session</td>
-    </tr>
-    <tr>
       <td><span class="cmd-vinci">create:cmd</span></td>
       <td>Create a command</td>
       <td>name</td>
@@ -125,10 +119,40 @@ php vinci [command] [argument] [--option1] [--option2]
       <td>-</td>
     </tr>
     <tr>
+      <td><span class="cmd-vinci">scanner</span></td>
+      <td>Find infected files</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">schedule</span></td>
+      <td>Create a schedule class</td>
+      <td>name</td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td><span class="cmd-vinci">seeder</span></td>
       <td>Run a user-created Seeder</td>
       <td>-</td>
       <td>--class (=name)</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">server</span></td>
+      <td>Start built-in PHP server</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">status</span></td>
+      <td>Check app status</td>
+      <td>-</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">storage:clear</span></td>
+      <td>Clear the Solital cache</td>
+      <td>-</td>
+      <td>--cache / --session / --schedules / --log</td>
     </tr>
     <tr>
       <td><span class="cmd-vinci">version</span></td>
@@ -230,7 +254,7 @@ protected array $arguments = ['name'];
 
 public function handle(object $arguments, object $options): mixed
 {
-    var_dump($arguments->foo);
+    var_dump($arguments->name);
 
     return $this;
 }
@@ -329,8 +353,6 @@ Progressbar has customizable names, colors, datatypes, error handling, and more.
 
 **Usage**
 
-Initializing the ADVProgressbar object
-
 ```php
 use Solital\Core\Console\ProgressBar\ProgressBar;
 use Solital\Core\Console\ProgressBar\ProgressBarStyle;
@@ -345,7 +367,7 @@ $progressbar_style = new ProgressBarStyle("Downloading", "white", "Kb", 16);
 
 $progressbar = new ProgressBar($progressbar_style, 1000);
 ```
-Using the ADVProgressbar
+Using the Progressbar
 
 ```php
 //Loop until the progressbar is complete
@@ -386,29 +408,3 @@ $progressbar->resetProgressbar();
 //Terminates the progressbar and resets the object.
 $progressbar->terminateProgressbar();
 ```
-
-## Registering a custom command
-
-When creating your custom command, it will not yet be ready to run. First, you need to configure the `Config.php` file. You can find this file in `app/Console`.
-
-In the `$command_class` variable, you will define the name of the classes that have the commands, and in the `$type_commands` variable, you will define the purpose of these commands:
-
-```php
-use Solital\Console\Command\UserCommand;
-
-/**
- * @var array
- */
-protected array $command_class = [
-    UserCommand::class
-];
-
-/**
- * @var string
- */
-protected string $type_commands = "My Commands";
-```
-
-You can register more than one command, and then add your new commands to the `$command_class` variable.
-
-After that, you can run the created command using `php vinci user:cmd` or any other command you have defined.
