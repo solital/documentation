@@ -4,9 +4,9 @@ Solital Framework documentation and website source code
 
 ## Core
 
-| Current | Others |
-| :-----: | :-----:|
-| `3.x`   | 2.x    |
+| Current | Others       |
+| :-----: | :-----------:|
+| `4.x`   | 3.x - 2.x    |
 
 ## Katrina ORM
 
