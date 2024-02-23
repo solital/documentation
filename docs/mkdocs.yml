@@ -5,11 +5,11 @@ nav:
     - Release Notes: https://github.com/solital/core/releases
     - Upgrade Guide: upgrade-guide.md
   - Settings:
-    - Installing: installation.md
     - Environment Variables: environment-variables.md
     - YAML Files: yaml-files.md
     - Helpers: helpers.md
     - Exceptions: exceptions.md
+    - API Application: application-api.md
   - Routers:
     - Routes: routes.md
     - Middleware: middleware.md
@@ -55,6 +55,6 @@ nav:
   - Deploy: deploy.md
 theme:
     name: null
-    custom_dir: basic_theme/
+    custom_dir: solital_docs_theme/
 plugins:
     - search

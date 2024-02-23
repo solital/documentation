@@ -31,7 +31,7 @@ The name after the `@` will be the name of the method to be called. For example,
 Solital has a command to generate model and controller with just one command:
 
 ```bash
-php vinci generate:files User --component
+php vinci generate:files --component=User
 ```
 
 Remember to use the `--component` option. This command will create a Model class, a Controller class, a migration and a Seeder class.

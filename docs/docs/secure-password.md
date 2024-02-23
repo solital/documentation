@@ -18,6 +18,7 @@ password:
   memory_cost: ''
   time_cost: ''
   threads: ''
+  crypt_type: openssl
 ```
 
 In the `algorithm` key, you can add the following values: `default `, `argon2` and `argon2d`. For more information about other PHP constants, see [this link](https://www.php.net/manual/pt_BR/password.constants.php).
@@ -27,3 +28,11 @@ In the `algorithm` key, you can add the following values: `default `, `argon2` a
 As mentioned in the introduction, the `SecurePassword` package uses a “pepper” value. To change the value of this pepper, you can edit the value of the `peeper` key in the `auth.yaml` file.
 
 **NOTE: Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting.**
+
+## Changing Peeper encryption
+
+By default, peeper is encrypted using OpenSSL. You can switch to Sodium encryption by changing the value of the `crypt_type` variable in the `auth.yaml` file.
+
+```yaml
+crypt_type: sodium
+```

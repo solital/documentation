@@ -50,7 +50,7 @@ If you don't want to type the entire middleware namespace, you can configure it 
 
 ```yaml
 middleware:
-  login: \Solital\Middleware\UserMiddleware
+  login: UserMiddleware # Or: \Solital\Middleware\UserMiddleware
 ```
 
 **routes.php**
@@ -69,4 +69,35 @@ If you only have one route that needs to add middleware, use the `addMiddleware`
 
 ```php
 Course::match(['get', 'post'], '/user/login', 'UserMiddleware@login')->addMiddleware('\Solital\Middleware\UserMiddleware:guest');
+```
+
+## Restrict access to IP
+
+You can white and/or blacklist access to IP's using the build in `IpRestrictAccess` middleware.
+
+Create your own custom Middleware and extend the `IpRestrictAccess` class.
+
+The `IpRestrictAccess` class contains two properties `ip_blocklist` and `ip_passlist` that can be added to your middleware to change which IP's that have access to your routes.
+
+You can use `*` to restrict access to a range of ips.
+
+```php
+use Solital\Core\Http\Middleware\IpRestrictAccess;
+
+class IpRestrictMiddleware extends IpRestrictAccess implements BaseMiddlewareInterface
+{
+	protected $ip_blocklist = [
+        '5.5.5.5',
+        '8.8.*',
+    ];
+
+    protected $ip_passlist = [
+        '8.8.2.2',
+    ];
+
+	public function handle(): void
+	{
+		// ...
+	}
+}
 ```

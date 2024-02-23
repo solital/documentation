@@ -2,7 +2,7 @@
 
 Katrina ORM is currently at version **2.x**. To read documentation for previous versions choose one of the links below.
 
-[1.x](https://solitalframework.rf.gd/docs/3.x/katrina1/)
+[1.x](katrina1.md)
 
 ## Getting Started
 
@@ -12,7 +12,7 @@ Katrina ORM uses the Active Record standard to manipulate the data in the databa
 
 ### Requirements
 
-- PHP >= 8.0
+- PHP >= 8.3
 - PDO extension enabled
 
 ### Installation
@@ -29,11 +29,11 @@ In Solital:
 
 ```bash
 # DATABASE CONFIG
-DB_DRIVE="your_drive"
-DB_HOST="your_host"
-DB_NAME="your_database_name"
-DB_USER="your_user"
-DB_PASS="your_password"
+DB_DRIVE=your_drive
+DB_HOST=your_host
+DB_NAME=your_database_name
+DB_USER=your_user
+DB_PASS=your_password
 ```
 
 In another project:
@@ -66,12 +66,12 @@ In Solital:
 
 ```bash
 # DATABASE CONFIG
-DB_DRIVE="your_drive"
-DB_HOST="your_host"
-DB_NAME="your_database_name"
-DB_USER="your_user"
-DB_PASS="your_password"
-SQLITE_DIR="/path/to/file/"
+DB_DRIVE=your_drive
+DB_HOST=your_host
+DB_NAME=your_database_name
+DB_USER=your_user
+DB_PASS=your_password
+SQLITE_DIR=/path/to/file/
 ```
 
 ## Initial structure
@@ -160,7 +160,7 @@ You can return the latest values from the database in descending order using the
 User::latest()->get();
 ```
 
-By default, the `latest` method will sort using the `created_at` column. If this column does not exist in your table, you can pass the noe of another column as a parameter.
+By default, the `latest` method will sort using the `created_at` column. If this column does not exist in your table, you can pass the name of another column as a parameter.
 
 ```php
 User::latest('users')->get();
@@ -256,6 +256,24 @@ The `group by` SQL command requires the use of a function. Use the `group()` met
 User::select(null, "name, " . Functions::count('*', 'qtd'))->group("name")->get();
 ```
 
+**COUNT**
+
+The `count` method returns the total number of values in a table.
+
+```php
+User::count();
+```
+
+If you want to specify the name of a column, use the first parameter. And to use the WHERE clause, use the second parameter.
+
+```php
+// `Email` column
+User::count("email");
+
+// `Email` column with WHERE clause
+User::count("email", "email='solital@gmail.com'");
+```
+
 ### Using INNER JOIN
 
 The `innerJoin()` method returns the values of two tables that have a foreign key.
@@ -310,8 +328,8 @@ User::customQuery("SELECT * FROM users", true);
 Some SQL queries need to have multiple SELECTs, and sometimes those SELECTs are inside other SELECTs. If you need such a query, follow the example:
 
 ```php
-$sql = ORMTest::select(null, "nome")->where("nome", "brenno")->rawQuery();
-$result =  ORMTest::select(null, "nome, idade")->where("nome", Functions::subquery($sql))->get();
+$sql = User::select(null, "nome")->where("nome", "brenno")->rawQuery();
+$result =  User::select(null, "nome, idade")->where("nome", Functions::subquery($sql))->get();
 
 var_dump($result);
 ```
@@ -480,6 +498,7 @@ User::createTable("your_table_name")
     ->varchar("email", 30)->default("harvey.specter@gmail.com")->notNull()
     ->varchar("profession", 40)
     ->constraint("dev_cons_fk")->foreign("type")->references("dev", "iddev")
+    ->createdUpdatedAt()
     /* Close the command to create the table */
     ->closeTable();
 ```
@@ -492,6 +511,33 @@ Postgresql doesn't natively support the `AUTO_INCREMENT` command. An alternative
 User::createTable("your_table_name")
     ->serial('id_user')->primary()
     # ...
+```
+
+### Timestamps
+
+If you want to change the name of the `created_at` and `updated_at` columns, use the properties below:
+
+```php
+<?php
+
+namespace Solital\Components\Model;
+use Katrina\Katrina;
+
+class User extends Katrina
+{
+    protected string $created_at = 'created_date';
+    protected string $updated_at = 'updated_date';
+}
+```
+
+You can also rename columns when creating a table in the database using the `createdUpdatedAt` method.
+
+```php
+// ...
+
+->createdUpdatedAt('created_date', 'updated_date')
+
+// ...
 ```
 
 ### List tables
@@ -792,6 +838,87 @@ Below is a customization to serve as an example:
     color: #FFF !important;
     transition: 0.2s;
 }
+```
+
+## Cache
+
+To enable Katrina ORM caching in Solital, you must change the `cache_database` variable to `true` in the `cache.yaml` file.
+
+```yaml
+# Enable cache on Katrina ORM
+cache_database: true
+```
+
+To configure caching in Solital, see the documentation [here](https://solital.github.io/site/docs/4.x/cache/#cache-drive).
+
+If you are NOT using Katrina ORM together with Solital, you must configure the constants manually:
+
+```php
+define('DB_CACHE', [
+    'CACHE_TYPE' => 'memcached',
+    'CACHE_HOST' => '127.0.0.1',
+    'CACHE_PORT' => 11211,
+    'CACHE_TTL' => 600
+]);
+```
+
+Katrina ORM supports the following drivers
+
+- Memcached
+- Memcache
+- APCu
+
+In your Model, you will need to enable caching. To do this, add the following property:
+
+```php
+<?php
+
+namespace Solital\Components\Model;
+use Katrina\Katrina;
+
+class User extends Katrina
+{
+    /**
+     * @var bool|null
+     */
+    protected ?bool $cache = true;
+}
+```
+
+## Multiple connections
+
+In specific cases it is necessary to use two different databases. Katrina ORM supports you to use a second database.
+
+To do this, you must add the following variables to your `.env` file:
+
+```bash
+DB_HOST_SECONDARY=localhost
+DB_NAME_SECONDARY=second_database
+DB_USER_SECONDARY=root
+DB_PASS_SECONDARY=""
+SQLITE_DIR_SECONDARY=""
+```
+
+If you are NOT using Solital, you must create the following constants:
+
+```php
+define('DB_CONFIG_SECONDARY', [
+    'HOST' => 'localhost',
+    'DBNAME' => 'second_database',
+    'USER' => 'root',
+    'PASS' => '',
+    'SQLITE_DIR' => ''
+]);
+```
+
+So, to use the second connection to the other database, use the `connection` method:
+
+```php
+# Main database
+User::select()->get();
+
+# Second database
+User::connection('pgsql')::select()->get();
 ```
 
 ## Types of data

@@ -26,3 +26,33 @@ PHP has several well-known frameworks such as Laravel, Symfony, CakePHP, among o
 The Solital Framework contributed to this huge community, offering an easier way to create PHP projects, while also offering several important features.
 
 You can read the documentation to get an understanding of Solital Framework.
+
+## Installing via Composer 
+
+To download Solital, use the command below:
+
+
+```php
+composer create-project solital/solital project
+```
+        
+It only takes a few lines of code to get started:
+
+```php
+Course::get('/', function() {
+    return 'Hello world';
+});
+```
+        
+## Running
+To execute the project, run the command:
+
+```php
+php vinci server
+```
+
+You can change your project IP if you want
+
+```php
+php vinci server --host=localhost:8001
+```

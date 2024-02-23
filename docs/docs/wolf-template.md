@@ -29,7 +29,7 @@ That way, you can use native PHP code inside your views using the bookmarks.
         
 ## Parameters
 
-To display data for your view, use the second parameter of the `view` helper or `loadView` method.
+To display data for your view, use the second parameter of the `view` helper or `setArgs` method.
 
 ```php
 // With helper
@@ -55,6 +55,20 @@ And in your `home.php`, retrieve the value informed in this way:
 
 ```html
 <title>{{ title }}</title>
+```
+
+Wolf automatically escapes special characters. If you want to disable this function, use `false` in the second parameter.
+
+```php
+// In helper
+view('welcome', [
+    'xss' => '<script>alert("hello")</script>'
+], false);
+
+// In method
+$wolf->setArgs([
+    'xss' => '<script>alert("hello")</script>'
+], false);
 ```
         
 ## Loading CSS, JS and images

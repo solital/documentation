@@ -218,6 +218,11 @@ class UserCommand extends Command implements CommandInterface
     protected array $arguments = [];
 
     /**
+	 * @var array
+	 */
+	protected array $options = [];
+
+    /**
      * @var string
      */
     protected string $description = "";
@@ -235,9 +240,7 @@ class UserCommand extends Command implements CommandInterface
 }
 ```
 
-In the `$command` variable, you will define the custom command that will be executed. The `$arguments` variable will have an array of values containing all arguments (if your custom command has no arguments, leave this variable empty). Lastly, the `$description` variable will have a short description of what the custom command does.
-
-**Handle method**
+In the `$command` variable, you will define the custom command that will be executed. The `$arguments` variable will have an array of values containing all arguments (if your custom command has no arguments, leave this variable empty). The variable `$options` must contain mandatory options for your command, otherwise use the options dynamically. Lastly, the `$description` variable will have a short description of what the custom command does.
 
 The handle method will contain all the code that will be executed when executing the custom command and should always return a `$this` or, if necessary, another value.
 
@@ -251,18 +254,13 @@ php vinci user:cmd myArgument
 
 ```php
 protected array $arguments = ['name'];
-
-public function handle(object $arguments, object $options): mixed
-{
-    var_dump($arguments->name);
-
-    return $this;
-}
 ```
+
+If you pass more arguments than are specified in your command's class, a warning will be displayed.
 
 **Using Options**
 
-Options are not defined in the created class, but you can check inside the `handle` method if an option exists. For example:
+Options can be returned dynamically, but you must check in the `handle` method whether an option exists.
 
 ```bash
 php vinci user:cmd name --myOption
@@ -279,6 +277,16 @@ public function handle(object $arguments, object $options): mixed
 }
 ```
 
+If you have any mandatory options that must be entered when executing the command, you can define these options using the variable `$options`.
+
+```php
+protected array $options = ['--myoption', '--withArg='];
+```
+
+In the example above, the command must contain one of the options. If an option requires entering a value, use `=` next to the option (see the example above: `--withArg=`).
+
+This will mean that when using this option, the user will enter a value (for example: `--withArg=accept`).
+
 ## Input and output commands
 
 It is very common to enter an input value on the command line when needed. Using the `InputOutput` class, you can perform this action.
@@ -286,7 +294,8 @@ It is very common to enter an input value on the command line when needed. Using
 ```php
 use Solital\Core\Console\InputOutput;
 
-(new InputOutput())->dialog('Enter a string: ')->action(function ($message) {
+$input_output = new InputOutput();
+$input_output->dialog('Enter a string: ')->action(function ($message) {
     echo $message . PHP_EOL;
 });
 ```
@@ -298,7 +307,10 @@ The `dialog()` method will display a message to the user, while the `action()` m
 You can also use a "yes/no" confirmation, or any other value.
 
 ```php
-(new InputOutput())->confirmDialog('What you want?', 'Y', 'N', false)->confirm(function () {
+use Solital\Core\Console\InputOutput;
+
+$input_output = new InputOutput();
+$input_output->confirmDialog('What you want?', 'Y', 'N', false)->confirm(function () {
     echo "accepted" . PHP_EOL;
 })->refuse(function () {
     echo "denied" . PHP_EOL;
@@ -314,7 +326,7 @@ To customize the colors of the message that is displayed from the CLI, you can p
 The available colors are: `green`, `yellow` and `blue`.
 
 ```php
-(new InputOutput('green')) // green - yellow - blue
+$input_output = new InputOutput('green'); // green - yellow - blue
 ```
 
 ## Displaying messages
@@ -407,4 +419,137 @@ $progressbar->resetProgressbar();
 
 //Terminates the progressbar and resets the object.
 $progressbar->terminateProgressbar();
+```
+
+## Table
+
+You can create tables in the console. To do this, use the `Table` class. 
+
+```php
+use Solital\Core\Console\Table;
+
+$table = new Table();
+
+$table->row([
+    'id'        => 1,
+    'name'      => 'Matthew S.',
+    'surname'   => 'Kramer',
+    'email'     => 'matthew@example.com',
+    'status'    => true,
+]);
+
+$table->row([
+    'id'        => 2,
+    'name'      => 'Millie J.',
+    'surname'   => 'Koenig',
+    'email'     => 'millie@example.com',
+    'status'    => false,
+]);
+
+$table->row([
+    'id'        => 3,
+    'name'      => 'Regina G.',
+    'surname'   => 'Hart',
+    'email'     => 'regina@example.com',
+    'status'    => true,
+]);
+
+echo $table;
+```
+
+Output : 
+
+<img src="https://user-images.githubusercontent.com/104234499/186993361-3917979a-0a40-4e7b-84e8-4dd5f51c1bd1.jpg" width="600">
+
+### Styled
+
+```php
+use Solital\Core\Console\Table;
+
+$table = new Table();
+$table->setBorderStyle(Table::COLOR_BLUE);
+$table->setCellStyle(Table::COLOR_GREEN);
+$table->setHeaderStyle(Table::COLOR_RED, Table::BOLD);
+
+$table->setColumnCellStyle('id', Table::ITALIC, Table::COLOR_LIGHT_YELLOW);
+$table->setColumnCellStyle('email', Table::BOLD, Table::ITALIC);
+
+$table->row([
+    'id'        => 1,
+    'name'      => 'Matthew S.',
+    'surname'   => 'Kramer',
+    'email'     => 'matthew@example.com',
+    'status'    => true,
+]);
+
+$table->row([
+    'id'        => 2,
+    'name'      => 'Millie J.',
+    'surname'   => 'Koenig',
+    'email'     => 'millie@example.com',
+    'status'    => false,
+]);
+
+$table->row([
+    'id'        => 3,
+    'name'      => 'Regina G.',
+    'surname'   => 'Hart',
+    'email'     => 'regina@example.com',
+    'status'    => true,
+]);
+
+echo $table;
+```
+
+Output : 
+
+<img src="https://user-images.githubusercontent.com/104234499/186993365-82c0e55d-d572-45d2-a89a-5cf60c5c9fbe.jpg" width="600">
+
+Credits - [Muhammet ŞAFAK](https://github.com/muhammetsafak)
+
+**Dynamic Rows**
+
+If you need a standard header and just add the values, use the `dynamicRows` method.
+
+```php
+use Solital\Core\Console\Table;
+
+$header = ['name', 'email', 'age'];
+
+$values = [
+  ['Foo', 'foo@email.com', 20],
+  ['Bar', 'bar@email.com', 30]
+];
+
+$table = new Table();
+$table->setHeaderStyle(Table::COLOR_LIGHT_GREEN);
+$table->dynamicRows($header, $values);
+```
+
+**Formatted Row**
+
+Formatted lines are a way of organizing data that contains some additional information. You can see an example of this method in use by running the `php vinci list` command.
+
+```php
+use Solital\Core\Console\Table;
+
+$values = [
+  'user' => 'Admin',
+  'email' => 'admin@gmail.com'
+];
+
+Table::formattedRowData($values);
+```
+
+The second parameter you can define the spacing between the information. In the third parameter you can create a margin on the left side.
+
+```php
+use Solital\Core\Console\Table;
+
+$values = [
+  'user' => 'Admin',
+  'email' => 'admin@gmail.com'
+];
+
+Table::formattedRowData($values, 50, true);
 ```

@@ -17,7 +17,7 @@ Dotenv::isset('MY_ENVIRONMENT_VARIABLE');
 * Displays all errors that Solital or PHP raises. Activate only in development mode
 
 ```bash
-ERRORS_DISPLAY="true"
+ERRORS_DISPLAY=true
 ```
 
 * Database connection variables. To find out more, see [Katrina ORM](katrina-orm.md)
@@ -45,8 +45,8 @@ MAIL_PORT=""
 * Variables used in encryption. It is recommended that you add new values to these variables.
 
 ```bash
-FIRST_SECRET="first_secret"
-SECOND_SECRET="second_secret"
+FIRST_SECRET=first_secret
+SECOND_SECRET=second_secret
 ```
 
 ## Checking project status

@@ -8,11 +8,11 @@ This makes life a lot easier for any development team, as it makes it possible t
 
 All migrations are stored in `app/Database/Migrations`. To create a migration, you must use the Vinci Console.
 
-```bash
+<!-- ``bash
 php vinci create:migration
-```
+``
 
-If you want, you can give the migration a name.
+If you want, you can give the migration a name. -->
 
 ```bash
 php vinci create:migration user

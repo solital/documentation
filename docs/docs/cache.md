@@ -22,7 +22,7 @@ You can cache through PSR-16. To do this, perform the instance of the Cache clas
 ```php
 use Solital\Cache\SimpleCache;
 
-$cache = new SimpleCache();
+$cache = new SimpleCache(); // Or use `cache()` helper
 
 $list = User::select()->get();
 
@@ -96,17 +96,45 @@ $cache->clear();
 
 ## Cache drive
 
-**Memcache**
+To use the cache in Solital you will need to install a caching extension using PECL.
 
-To use the Memcache drive, first make sure you have this drive installed on your machine. To change the Solital cache drive, change the `cache.yaml` file in the `app/config/` folder.
+To make life easier for developers, you can use the [brenno-duarte/php-pecl-extensions](https://github.com/brenno-duarte/php-pecl-extensions) package to install PECL extensions.
+
+```
+composer require brenno-duarte/php-pecl-extensions
+```
+
+To change the Solital cache drive, change the `cache.yaml` file in the `app/config/` folder.
+
+**Memcached/Memcache**
 
 ```yaml
 # Set cache type
-cache_drive: memcache
+cache_drive: memcached # or `memcache`
 
-# (If memcache is used) Set host and port
+# Set host and port
 cache_host: 127.0.0.1
 cache_port: 11211
+```
+
+**APCu**
+
+```yaml
+# Set cache type
+cache_drive: apcu
+
+# Set ttl
+cache_ttl: 600
+```
+
+Or, you can choose the drive using the constructor of the `CachePool`, `SimpleCache` classes and the `cache` helper.
+
+```php
+$pool = new CachePool('memcached');
+
+$cache = new SimpleCache('memcached');
+
+cache('memcached'); // Return a `SimpleCache` instance
 ```
 
 ## HTTP Cache
