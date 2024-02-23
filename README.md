@@ -1,15 +1,13 @@
 # Complete documentation of Solital Framework
 
-Solital Framework documentation and website source code
+Solital Framework documentation and website source code. See online documentation [here](https://solital.github.io/site/docs/)
 
-## Core
+## Core and Skeleton
 
-| Current | Others       |
-| :-----: | :-----------:|
-| `4.x`   | 3.x - 2.x    |
+**Current:** 4.x
+**Others:** 3.x - 2.x
 
 ## Katrina ORM
 
-| Current | Others |
-| :-----: | :-----:|
-| `2.x`   | 1.x    |
+**Current:** 2.x
+**Others:** 1.x
