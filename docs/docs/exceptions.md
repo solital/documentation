@@ -1,6 +1,6 @@
 ## Introduction
 
-Solital uses the Modern PHP Exception component to handle all exceptions and display them to the user in an intuitive and modern way.
+Solital uses the [Modern PHP Exception](https://github.com/brenno-duarte/modern-php-exception) component to handle all exceptions and display them to the user in an intuitive and modern way.
 
 You can check the complete documentation for this component to better understand its use, but here you will see how this component works in Solital.
 
@@ -40,6 +40,25 @@ error_message: Something wrong!
 ```yaml
 # Use `false` only if you have no internet connection
 enable_cdn_assets: false
+```
+
+**Enable occurrences**
+
+If you want to have a history of all exceptions and errors that your application displays, you can enable the occurrences using the `enable_occurrences` option on `exceptions.yaml`.
+
+```yaml
+enable_occurrences: true
+```
+
+Don't forget to configure the database.
+
+```yaml
+# Database for Modern PHP Exceptions
+db_drive: mysql
+db_host: localhost
+db_name: database_name
+db_user: root
+db_pass: pass
 ```
 
 ## Creating a solution for an exception
