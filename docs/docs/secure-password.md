@@ -19,17 +19,20 @@ password:
   time_cost: ''
   threads: ''
   crypt_type: openssl
+  wait_microseconds: 25000
 ```
 
 In the `algorithm` key, you can add the following values: `default `, `argon2` and `argon2d`. For more information about other PHP constants, see [this link](https://www.php.net/manual/pt_BR/password.constants.php).
 
-## Changing the value of “pepper”
+### Changing the value of “pepper”
 
-As mentioned in the introduction, the `SecurePassword` package uses a “pepper” value. To change the value of this pepper, you can edit the value of the `peeper` key in the `auth.yaml` file.
+As mentioned in the introduction, the `SecurePassword` package uses a “pepper” value. To change the value of this pepper, you can edit the value of the `peeper` key in the `auth.yaml` file. However, it is recommended to use the `APP_HASH` variable. If this variable does not exist in your project, run the command `php vinci generate:hash`.
 
-**NOTE: Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting.**
+If this variable is present in the `.env` file, then you can delete the `peeper` in the `auth.yaml` file.
 
-## Changing Peeper encryption
+**NOTE: Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting. If you are using Solital Core >= 4.2, the `pepper` variable will not be present in the `auth.yaml` file. Instead, Solital will use the value of the `APP_HASH` variable.**
+
+### Changing Peeper encryption
 
 By default, peeper is encrypted using OpenSSL. You can switch to Sodium encryption by changing the value of the `crypt_type` variable in the `auth.yaml` file.
 

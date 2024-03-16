@@ -97,15 +97,17 @@ class ServiceContainer implements ServiceProviderInterface
 }
 ```
 
-To use the container, use ``Application::provider()`` or ``$container->get()`` method:
+To use the container, use `container()` helper, `Application::provider()` or `$container->get()` method:
 
 ```php
-$provider = Application::provider('mailer'); // $container->get('mailer')
+$provider = container('mailer');
+$provider = $container->get('mailer');
+$provider = Application::provider('mailer');
 
 var_dump($provider);
 ```
 
-##### Adding Definitions
+### Adding Definitions
 
 **Services** are defined by invokable callback functions. Most commonly, this is a closure (anonymous function) that explains how to create a service:
 
@@ -154,18 +156,18 @@ $container['mailer'] = function() {
     return new Mailer();
 };
 
-$userManager = Application::provider('userManager');
+$userManager = container('userManager');
 ```
 
 This is known as manually wiring your dependencies.
 
-##### Retrieving Services and Parameters
+### Retrieving Services and Parameters
 
 Once an entry is added to the container, we can resolve that entry by using the ``Container::get`` method, or via array access:
 
 ```php
 $container['myParameter'] = 'value';
-$myParameter = Application::provider('myParameter');
+$myParameter = container('myParameter');
 
 var_dump($myParameter); // outputs: 'value'
 
@@ -183,7 +185,7 @@ Note that the service definition is executed and the result of the callback is w
 $container->add('myService', $container->protect(function() {
     return new MyService();
 }));
-$myServiceFactory = Application::provider('myService');
+$myServiceFactory = container('myService');
 
 var_dump($myServiceFactory instanceof \Closure); // outputs: true
 ```
@@ -198,8 +200,8 @@ $container->add('db', function() {
     return new PDO();
 });
     
-$db = Application::provider('db');
-$db2 = Application::provider('db');
+$db = container('db');
+$db2 = container('db');
 
 var_dump($db === $db2); // outputs: true
 ```
@@ -211,13 +213,13 @@ $container->add('myService', $container->factory(function() {
     return new MyService();
 }));
 
-$myService = Application::provider('myService');
-$myService2 = Application::provider('myService');
+$myService = container('myService');
+$myService2 = container('myService');
 
 var_dump($myService === $myService2); // outputs: false
 ```
 
-##### Extending Definitions
+## Extending Definitions
 
 Often times you need to modify a service after it has been created. This is often times called "setter injection" or "decorating". This can be achieved by using the ``Container::extend`` method. The extend method is passed the instance of the object and an instance of the container in that order. 
 

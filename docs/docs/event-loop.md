@@ -3,9 +3,9 @@ PHP's new feature Fibers allows for easier creation of asynchronous applications
 Below is an example of how to use EventLoop in your project:
 
 ```php
-use Solital\Core\Queue\EventLoop;
+$loop = container('solital-eventloop');
 
-$loop = new EventLoop();
+// Or: new Solital\Core\Queue\EventLoop();
 
 $loop->defer(function() use ($loop){
     $loop->sleep(0.2);
@@ -15,7 +15,15 @@ $loop->defer(function() use ($loop){
         $loop->next();
     }
 });
+
 $loop->defer(function() use ($loop){
+    foreach (range(1, 10) as $value) {
+        echo $value;
+        $loop->next();
+    }
+});
+
+$loop->deferWithTimer(0.5, function() use ($loop){
     foreach (range(1, 10) as $value) {
         echo $value;
         $loop->next();

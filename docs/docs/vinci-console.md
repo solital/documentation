@@ -233,12 +233,15 @@ class UserCommand extends Command implements CommandInterface
      * 
      * @return mixed
      */
+    #[\Override]
     public function handle(object $arguments, object $options): mixed
     {
         return $this;
     }
 }
 ```
+
+**ATTENTION: Don't forget to use the `Override` attribute in the `handle`** method
 
 In the `$command` variable, you will define the custom command that will be executed. The `$arguments` variable will have an array of values containing all arguments (if your custom command has no arguments, leave this variable empty). The variable `$options` must contain mandatory options for your command, otherwise use the options dynamically. Lastly, the `$description` variable will have a short description of what the custom command does.
 
@@ -267,6 +270,7 @@ php vinci user:cmd name --myOption
 ```
 
 ```php
+#[\Override]
 public function handle(object $arguments, object $options): mixed
 {
     if (isset($options->myOption)) {
@@ -507,7 +511,7 @@ Output :
 
 Credits - [Muhammet ŞAFAK](https://github.com/muhammetsafak)
 
-**Dynamic Rows**
+### Dynamic Rows
 
 If you need a standard header and just add the values, use the `dynamicRows` method.
 
@@ -526,7 +530,7 @@ $table->setHeaderStyle(Table::COLOR_LIGHT_GREEN);
 $table->dynamicRows($header, $values);
 ```
 
-**Formatted Row**
+### Formatted Row
 
 Formatted lines are a way of organizing data that contains some additional information. You can see an example of this method in use by running the `php vinci list` command.
 

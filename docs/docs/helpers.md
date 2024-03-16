@@ -140,20 +140,6 @@ load_file(string $asset)
 pre($value)
 ```
 
-* `cloner` uses Symfony `VarCloner` function. [See more](https://symfony.com/doc/current/components/var_dumper/advanced.html).
-
-```php
-cloner($var)
-```
-
-* It is possible to make use of Symfony `dump` or `dd` functions.
-
-```php
-dump($var)
-
-dd($var)
-```
-
 * Convert an array to JSON and display an error message in case of failure.
 
 ```php
@@ -187,6 +173,40 @@ To get a value from an existing session, leave the `$value` parameter empty. To 
  * $take: returns the requested value and removes it from the session.
  */
 session(string $key, mixed $value = null, mixed $defaultValue = null, bool $delete = false, bool $take = false)
+```
+
+## Debug
+
+Debug functions are present in the [Modern PHP Exception component](https://github.com/brenno-duarte/modern-php-exception).
+
+* An easy function to pull all details of the debug backtrace.
+
+```php
+get_debug_backtrace()
+```
+
+* Function to returns the value of var_dump() instead of outputting it.
+
+```php
+echo var_dump_buffer()
+```
+
+* PHP function to replace var_dump(), print_r() based on the XDebug style.
+
+```php
+var_dump_debug()
+```
+
+* Dump PHP value and die script.
+
+```php
+dump_die()
+```
+
+* View a PHP Closure's Source.
+
+```php
+closure_dump()
 ```
 
 ## Others
@@ -234,4 +254,16 @@ str(string $string)
 
 ```php
 cache(?string $drive)
+```
+
+* Memorize provides simple in-var cache for closures. It can be used to create lazy functions. Function takes closure and optional argument paramsHash. If the closure with the same arguments was run before memorize will return result from cache without the closure call. At the first call result will be calculated and stored in cache.
+
+```php
+memorize(Closure $lambda, $paramsHash = null)
+```
+
+* Returns the container defined in the `ServiceContainer` class.
+
+```php
+container(string $container_name)
 ```

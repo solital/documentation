@@ -14,6 +14,14 @@ Dotenv::isset('MY_ENVIRONMENT_VARIABLE');
 
 ## Solital Variables
 
+* Key used for encryption and passwords. Use the `php vinci generate:hash` command to generate a key.
+
+**WARNING: When creating a new project, an encrypted key is already generated. Changing the generated key can break your project**
+
+```bash
+APP_HASH=
+```
+
 * Displays all errors that Solital or PHP raises. Activate only in development mode
 
 ```bash
@@ -23,26 +31,28 @@ ERRORS_DISPLAY=true
 * Database connection variables. To find out more, see [Katrina ORM](katrina-orm.md)
 
 ```bash
-DB_DRIVE=""
-DB_HOST=""
-DB_NAME=""
-DB_USER=""
-DB_PASS=""
-SQLITE_DIR=""
+DB_DRIVE=
+DB_HOST=
+DB_NAME=
+DB_USER=
+DB_PASS=
+SQLITE_DIR=
 ```
 
 * Variables of the Mailer class
 
 ```bash
-MAIL_DEBUG=""
-MAIL_HOST=""
-MAIL_USER=""
-MAIL_PASS=""
-MAIL_SECURITY=""
-MAIL_PORT=""
+MAIL_DEBUG=
+MAIL_HOST=
+MAIL_USER=
+MAIL_PASS=
+MAIL_SECURITY=
+MAIL_PORT=
 ```
 
 * Variables used in encryption. It is recommended that you add new values to these variables.
+
+**NOTE: If you are using the `APP_HASH` variable, then it is not necessary to use the variables below**
 
 ```bash
 FIRST_SECRET=first_secret

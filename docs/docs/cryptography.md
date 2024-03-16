@@ -1,3 +1,9 @@
+## Introduction
+
+Solital makes use of OpenSSL and Sodium encryption. If you are using Core >= 4.2, you should find the following variables in your `.env` file: `APP_HASH`, `FIRST_SECRET` and `SECOND_SECRET`. The `APP_HASH` variable is the main variable used by Solital, but if this variable is not available, the other two can be used instead.
+
+**NOTE: For the variables `FIRST_SECRET` and `SECOND_SECRET`, use encrypted characters. If the variable `APP_HASH` is empty, run the command `php vinci generate:hash`**
+
 ## Encrypt
 
 To create an encrypted key, use the `Hash` class together with the static `encrypt` function as shown below:

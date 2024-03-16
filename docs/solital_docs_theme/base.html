@@ -98,9 +98,13 @@
 
                 <ul class="ml-5 mb-5">
                   {% for toc_item in page.toc %}
-                    <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+                    <li id="bullet-item">
+                      <a href="{{ toc_item.url }}" class="menu-main-item">{{ toc_item.title }}</a>
+                    </li>
                   {% for toc_item in toc_item.children %}
-                    <li><a href="{{ toc_item.url }}">{{ toc_item.title }}</a></li>
+                    <li id="bullet-childern-item">
+                      <a href="{{ toc_item.url }}" class="menu-children-item">{{ toc_item.title }}</a>
+                    </li>
                   {% endfor %}
                   {% endfor %}
                 </ul>

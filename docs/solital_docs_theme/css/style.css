@@ -116,3 +116,11 @@ code {
     text-align: left !important;
     padding: 10px;
 }
+
+.menu-main-item {
+    font-weight: 700 !important;
+}
+
+.menu-children-item {
+    margin-left: 20px !important;
+}

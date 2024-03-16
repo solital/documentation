@@ -35,3 +35,68 @@ php vinci generate:files --component=User
 ```
 
 Remember to use the `--component` option. This command will create a Model class, a Controller class, a migration and a Seeder class.
+
+## Creating a resource
+
+We often use a controller to do CRUD() operations. To create a controller in resource format, use the `--resource` option.
+
+```bash
+php vinci create:controller ResourceController --resource
+``` 
+
+When creating a resource type controller, the class will have the following structure:
+
+```php
+<?php
+
+class ResourceController
+{
+    public function index() : ?string
+    {
+        echo 'index';
+        return null;
+    }
+
+    public function show($id) : ?string
+    {
+        echo 'show ' . $id;
+        return null;
+    }
+
+    public function store() : ?string
+    {
+        echo 'store';
+        return null;
+    }
+
+    public function create() : ?string
+    {
+        echo 'create';
+        return null;
+    }
+
+    public function edit($id) : ?string
+    {
+        echo 'edit ' . $id;
+        return null;
+    }
+
+    public function update($id) : ?string
+    {
+        echo 'update ' . $id;
+        return null;
+    }
+
+    public function destroy($id) : ?string
+    {
+        echo 'destroy ' . $id;
+        return null;
+    }
+}
+```
+
+You can use this resource on a specific route with the `resource()` method.
+
+```php
+Course::resource('/resource', ResourceController::class);
+```

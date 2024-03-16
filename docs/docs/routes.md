@@ -272,19 +272,166 @@ Course::partialGroup('/admin/{applicationId}', function ($applicationId) {
 });
 ```
 
-## Exception
+## Custom class loader
+
+You can easily extend simple-router to support custom injection frameworks like php-di by taking advantage of the ability to add your custom class-loader.
+
+Class-loaders must inherit the `ClassLoaderInterface` interface.
+
+**Example:**
+
+```php
+class MyCustomClassLoader implements ClassLoaderInterface
+{
+    /**
+     * Load class
+     *
+     * @param string $class
+     * @return object
+     * @throws NotFoundHttpException
+     */
+    public function loadClass(string $class)
+    {
+        if (\class_exists($class) === false) {
+            throw new NotFoundHttpException(sprintf('Class "%s" does not exist', $class), 404);
+        }
+
+        return new $class();
+    }
+
+    /**
+     * Load closure
+     *
+     * @param Callable $closure
+     * @param array $parameters
+     * @return mixed
+     */
+    public function loadClosure(Callable $closure, array $parameters)
+    {
+        return \call_user_func_array($closure, array_values($parameters));
+    }
+
+}
+```
+
+Next, we need to configure our `routes.php` so the router uses our `MyCustomClassLoader` class for loading classes. This can be done by adding the following line to your `routes.php` file.
+
+```php
+Course::setCustomClassLoader(new MyCustomClassLoader());
+```
+
+## Exception Handlers
 
 ExceptionHandler are classes that handles all exceptions. ExceptionsHandlers must implement the `ExceptionHandlerInterface` interface.
 
-### Error route
+### Handling 404, 403 and other errors
 
-If a given route does not exist in your `routers.php` file, you can redirect to another route instead of displaying the route not found error using the `error()` method. If `true`, the redirection will be done. If `false`, you will not be redirected.
+If you simply want to catch a 404 (page not found) etc. you can use the `Course::error($callback)` static helper method.
+
+This will add a callback method which is fired whenever an error occurs on all routes.
+
+The basic example below simply redirect the page to `/not-found` if an `NotFoundHttpException` (404) occurred.
+The code should be placed in the file that contains your routes.
 
 ```php
-Course::error(true, '/error');
+Course::get('/not-found', 'PageController@notFound');
+Course::get('/forbidden', 'PageController@notFound');
 
-Course::get('/error', function () {
-    echo 'error 404';
+Course::error(function(Request $request, \Exception $exception) {
+    switch($exception->getCode()) {
+        // Page not found
+        case 404:
+            response()->redirect('/not-found');
+        // Forbidden
+        case 403:
+            response()->redirect('/forbidden');
+    }
+});
+```
+
+The example above will redirect all errors with http-code `404` (page not found) to `/not-found` and `403` (forbidden) to `/forbidden`.
+
+If you do not want a redirect, but want the error-page rendered on the current-url, you can tell the router to execute a rewrite callback like so:
+
+```php
+$request->setRewriteCallback('ErrorController@notFound');
+```
+
+If you will set the correct status for the browser error use:
+
+```php
+Course::response()->httpCode(404);
+```
+
+### Using custom exception handlers
+
+This is a basic example of an ExceptionHandler implementation.
+
+```php
+use Solital\Core\Http\Request;
+use Solital\Core\Http\Exception\NotFoundHttpException;
+use Solital\Core\Exceptions\ExceptionHandlerInterface;
+
+class CustomExceptionHandler implements ExceptionHandlerInterface
+{
+	public function handleError(Request $request, \Exception $error): void
+	{
+		/* You can use the exception handler to format errors depending on the request and type. */
+
+		if ($request->getUrl()->contains('/api')) {
+			response()->json([
+				'error' => $error->getMessage(),
+				'code'  => $error->getCode(),
+			]);
+
+		}
+
+		/* The router will throw the NotFoundHttpException on 404 */
+		if($error instanceof NotFoundHttpException) {
+			// Render custom 404-page
+			$request->setRewriteCallback('Demo\Controllers\PageController@notFound');
+			return;		
+		}
+		
+		/* Other error */
+		if($error instanceof MyCustomException) {
+			$request->setRewriteRoute(
+				// Add new route based on current url (minus query-string) and add custom parameters.
+				(new RouteUrl(url(null, null, []), 'PageController@error'))->setParameters(['exception' => $error])
+			);
+			return;	
+		}
+
+		throw $error;
+	}
+}
+```
+
+You can add your custom exception-handler class to your group by using the `exceptionHandler` settings-attribute.
+`exceptionHandler` can be either class-name or array of class-names.
+
+```php
+Course::group(['exceptionHandler' => CustomExceptionHandler::class], function() {
+    // Your routes here
+});
+```
+
+### Prevent merge of parent exception-handlers
+
+By default the router will merge exception-handlers to any handlers provided by parent groups, and will be executed in the order of newest to oldest.
+
+If you want your groups exception handler to be executed independently, you can add the `mergeExceptionHandlers` attribute and set it to `false`.
+
+```php
+Course::group(['prefix' => '/', 'exceptionHandler' => FirstExceptionHandler::class, 'mergeExceptionHandlers' => false], function() {
+
+	Course::group(['prefix' => '/admin', 'exceptionHandler' => SecondExceptionHandler::class], function() {
+		// Both SecondExceptionHandler and FirstExceptionHandler will trigger (in that order).
+	});
+	
+	Course::group(['prefix' => '/user', 'exceptionHandler' => SecondExceptionHandler::class, 'mergeExceptionHandlers' => false], function() {
+		// Only SecondExceptionHandler will trigger.
+	});
 });
 ```
 

@@ -1,4 +1,4 @@
-By default all controller and resource routes will use a simplified version of their url as name.
+By default, all controller and resource routes will use a simplified version of their url as name.
 
 You easily use the `url()` shortcut helper function to retrieve urls for your routes or manipulate the current url.
 

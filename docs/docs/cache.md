@@ -127,6 +127,16 @@ cache_drive: apcu
 cache_ttl: 600
 ```
 
+**Yac**
+
+```yaml
+# Set cache type
+cache_drive: yac
+
+# Set ttl
+cache_ttl: 600
+```
+
 Or, you can choose the drive using the constructor of the `CachePool`, `SimpleCache` classes and the `cache` helper.
 
 ```php

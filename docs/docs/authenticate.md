@@ -10,7 +10,7 @@ auth:
   auth_login_url: /auth
 ```
 
-## Setting
+### Setting
 
 For this, it is necessary to first define the name of the table in the `login` method. In the `columns` method, the database username and password. Then, in the `values` method, the input values of the form. Finally, the `register` method will perform the login as shown below.
 
@@ -30,7 +30,7 @@ if ($res == false) {
 }
 ```
 
-## Remembering authentication
+### Remembering authentication
 
 In some cases the user wants to remain logged into the system after closing the browser. When registering a user, you can first use the `remember` method, passing the name of the form input as a parameter.
 
@@ -83,7 +83,7 @@ class UserController extends Controller
 }
 ```
 
-## Changing default routes
+### Changing default routes
 
 If you need more routes for dashboards and logins, you can change the parameter in the `register()` function:
 
@@ -107,7 +107,7 @@ $res = Auth::login('auth_users')
     ->register('/my-second-dashboard');
 ```
 
-## Check login
+### Check login
 
 To check if the user exists, you can create a middleware and add the `Auth::check()` method.
 

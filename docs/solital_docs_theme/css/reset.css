@@ -11,3 +11,11 @@ a {
 a:hover {
     text-decoration: none;
 }
+
+#bullet-item {
+    list-style: circle !important;
+}
+
+#bullet-childern-item {
+    list-style: none !important;
+}
