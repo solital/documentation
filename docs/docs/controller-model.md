@@ -26,6 +26,21 @@ Course::get('/', 'UserController@home')->name('forgot');
 
 The name after the `@` will be the name of the method to be called. For example, you must have the `home` method inside your `UserController` controller.
 
+You can load the entire controller (where url matches method names - getIndex(), postIndex(), putIndex()).
+The url paths will determine which method to render. For example:
+
+| Router                  | Method     |
+|-------------------------|------------|
+| **GET  /animals**       | getIndex() |
+| **GET  /animals/view**  | getView()  |
+| **POST /animals/save**  | postSave() |
+
+To do this, use the `controller` method.
+
+```php
+Course::controller('/animals', ControllerAnimals::class);
+```
+
 ## Creating model and controller with one command
 
 Solital has a command to generate model and controller with just one command:

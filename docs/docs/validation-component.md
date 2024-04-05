@@ -1,4 +1,4 @@
-## Validation
+**This class is deprecated and will be removed soon.**
 
 You can validate email, string, array and others.
 

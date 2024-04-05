@@ -460,39 +460,46 @@ Sometimes it can be necessary to keep urls stored in the database, file or simil
 
 To interfere with the router, we create a class that implements the ```RouterBootManagerInterface``` interface. This class will be loaded before any other rules in ```routes.php``` and allow us to "change" the current route, if any of our criteria are fulfilled (like coming from the url ```/my-cat-is-beatiful```).
 
+To create a bootmanager, run the command:
+
+```bash
+php vinci create:boot CustomRouterRules
+```
+
+All bootmanagers you create will be stored in the `app/BootManager/` folder.
+
 ```php
+<?php
+
+namespace Solital\BootManager;
+
 use Solital\Core\Http\Request;
 use Solital\Core\Course\RouterBootManagerInterface;
 use Solital\Core\Course\Router;
 
 class CustomRouterRules implements RouterBootManagerInterface 
 {
-
     /**
      * Called when router is booting and before the routes is loaded.
      *
-     * @param \Solital\Core\Course\Router $router
-     * @param \Solital\Core\Http\Request $request
+     * @param Router $router
+     * @param Request $request
      */
-    public function boot(\Solital\Core\Course\Router $router, \Solital\Core\Http\Request $request): void
+    public function boot(Router $router, Request $request): void
     {
-
         $rewriteRules = [
             '/my-cat-is-beatiful' => '/article/view/1',
             '/horses-are-great'   => '/article/view/2',
         ];
 
         foreach ($rewriteRules as $url => $rule) {
-
             // If the current url matches the rewrite url, we use our custom route
 
             if ($request->getUri()->getPath() === $url) {
                 $request->setRewriteUrl($rule);
             }
         }
-
     }
-
 }
 ```
 
@@ -501,12 +508,6 @@ The above should be pretty self-explanatory and can easily be changed to loop th
 What happens is that if the current route matches the route defined in the index of our ```$rewriteRules``` array, we set the route to the array value instead.
 
 By doing this the route will now load the url ```/article/view/1``` instead of ```/my-cat-is-beatiful```.
-
-The last thing we need to do, is to add our custom boot-manager to the ```routes.php``` file. You can create as many bootmanagers as you like and easily add them in your ```routes.php``` file.
-
-```php
-Course::addBootManager(new CustomRouterRules());
-```
 
 ### Adding routes manually
 
@@ -559,10 +560,8 @@ class Router extends Course {
         parent::start();
 
     }
-
 }
 ```
-
 ---
 
 ## Form Method Spoofing
@@ -603,7 +602,6 @@ Course::group(['middleware' => \Demo\Middlewares\Site::class, 'exceptionHandler'
     /**
      * Restful resource (see IRestController interface for available methods)
      */
-
     Course::resource('/rest', ControllerRessource::class);
 
     /**
@@ -618,9 +616,7 @@ Course::group(['middleware' => \Demo\Middlewares\Site::class, 'exceptionHandler'
      *
      * etc.
      */
-
     Course::controller('/animals', ControllerAnimals::class);
-
 });
 
 Course::get('/page/404', 'ControllerPage@notFound', ['as' => 'page.notfound']);

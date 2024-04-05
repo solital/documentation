@@ -4,6 +4,9 @@ You can manipulate folders and files within Solital through the `HandleFiles` cl
 use Solital\Core\FileSystem\HandleFiles;
 
 $handle = new HandleFiles();
+
+// Or use container
+$handle = container('handler-file');
 ```
 
 ## List files within a folder

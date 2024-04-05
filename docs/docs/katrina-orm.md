@@ -2,7 +2,7 @@
 
 Katrina ORM is currently at version **2.x**. To read documentation for previous versions choose one of the links below.
 
-[1.x](katrina1.md)
+[1.x](katrina-1.0.md)
 
 ## Getting Started
 
@@ -86,7 +86,6 @@ use Katrina\Katrina;
 
 class User extends Katrina
 {
-    
 }
 ```
 
@@ -94,7 +93,7 @@ class User extends Katrina
 
 By default, your class table name is the class name itself, and the primary key name is `id`.
 
-You can change these settings using the `$table` and `$id` variables.
+You can change these settings using the `$table` and `$id` properties.
 
 ```php
 <?php
@@ -113,11 +112,6 @@ class User extends Katrina
      *  @var null|string 
      */
     protected ?string $id = "id_user";
-
-    /**
-     *  @var null|bool
-     */
-    protected bool $timestamp = false; 
 }
 ```
 
@@ -129,10 +123,14 @@ To list all fields in the table, use `all()` as shown in the previous example.
 User::all();
 ```
 
+**FIND**
+
 To list a single value, use `find()` method;
 
 ```php
 User::find(2);
+
+Users::findFirst(); // Returns the first value in the table
 ```
 
 Or, use the `select` method:
@@ -153,6 +151,14 @@ User::select()->where('id', 2)->getUnique();
  */
 User::select("name")->get();
 ```
+
+If you need to raise an exception if no value is returned, use the `findwithException` method.
+
+```php
+User::findwithException(2);
+```
+
+**LATEST**
 
 You can return the latest values from the database in descending order using the `latest` method:
 
@@ -329,7 +335,7 @@ Some SQL queries need to have multiple SELECTs, and sometimes those SELECTs are 
 
 ```php
 $sql = User::select(null, "nome")->where("nome", "brenno")->rawQuery();
-$result =  User::select(null, "nome, idade")->where("nome", Functions::subquery($sql))->get();
+$result = User::select(null, "nome, idade")->where("nome", Functions::subquery($sql))->get();
 
 var_dump($result);
 ```
@@ -513,6 +519,55 @@ User::createTable("your_table_name")
     # ...
 ```
 
+### UUIDs
+
+On certain occasions it is necessary to generate a unique identifier for each record. These identifiers are called UUID (universally unique identifiers).
+
+To create a field in a table that will receive a UUID, use the `uuid()` method. This method will generate a field of binary type.
+
+```php
+User::createTable("your_table_name")
+    ->uuid('id')->primary()
+    # ...
+```
+
+When creating a field in the table that will receive a UUID and be defined as the primary key, you must enable increment in the class.
+
+```php
+<?php
+
+namespace Solital\Components\Model;
+use Katrina\Katrina;
+
+class User extends Katrina
+{
+    protected ?bool $uuid_increment = true;
+}
+```
+
+If you use the `insert()` method instead of the standard Active Record to save the data in the table, you must pass the UUID manually. To do this, use the `uuidToBin()` method.
+
+```php
+use Katrina\Functions\Functions;
+
+User::insert([
+    'id' => Functions::uuidToBin(),
+    'name' => 'Harvey Specter',
+    'age' => 40,
+    'email' => 'harvey@pearsonspecterlitt.com'
+]);
+```
+
+When using the `uuidToBin` method, the UUID is converted to binary. When returning data and converting back to UUID, use the `binToUuid()` method.
+
+```php
+foreach(Users::all() as $user) {
+    echo Functions::binToUuid($user->id) . PHP_EOL;
+}
+```
+
+Remember that Katrina ORM uses [UUID in version 4](https://datatracker.ietf.org/doc/html/draft-ietf-uuidrev-rfc4122bis#name-uuid-version-4).
+
 ### Timestamps
 
 If you want to change the name of the `created_at` and `updated_at` columns, use the properties below:
@@ -534,9 +589,7 @@ You can also rename columns when creating a table in the database using the `cre
 
 ```php
 // ...
-
 ->createdUpdatedAt('created_date', 'updated_date')
-
 // ...
 ```
 
@@ -690,9 +743,7 @@ To use the WHERE clause, use the fourth parameter as shown below.
 $values = (new User)->pagination('your_table', 3, null, "status=true");
 ```
 
-**Transactions**
-
-**Wolf Template**
+### Wolf Template
 
 Data pagination is widely used in project templates. You can integrate pagination into Wolf Template as follows:
 
@@ -761,7 +812,6 @@ The result will be as follows:
 
 <span class="katrina-pag"><< 1</span> 2 <span class="katrina-pag">3 >></span>
 
-
 To change the arrows (`<<` and `>>`), use the parameters of the `getArrows()` method. The result will be:
 
 ```html
@@ -797,7 +847,7 @@ To change the arrows (`<<` and `>>`), use the parameters of the `getArrows()` me
 
 <span class="katrina-pag">First</span> 2 <span class="katrina-pag">3 Last</span>
 
-## Custom Pagination
+### Custom Pagination
 
 The `pagination()` method uses a basic SELECT statement. If you need to use a much more complex SELECT, consider using the `customPagination()` method.
 
@@ -806,7 +856,7 @@ $values = (new User)->customPagination("SELECT created_at, order_status, idSessi
 GROUP BY created_at, order_status, idSession", 3);
 ```
 
-**Customizing arrows CSS**
+### Customizing arrows CSS
 
 You can customize the look of the arrows through the classes `pagination_first_item`, `pagination_atual_item`, `pagination_others_itens` and `pagination_last_item`.
 

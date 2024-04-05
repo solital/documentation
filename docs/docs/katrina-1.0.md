@@ -261,7 +261,8 @@ You can inform which fields you want to return. "a" is your main table while "b"
 ```php
 public function get()
 {
-    return $this->instance()->innerJoin("address", ["idForeignAddress", "idAddress"], "order_status=true", "a.idPerson, a.name, b.street", "address", "idAddress")->build("ALL");
+    return $this->instance()->innerJoin("address", ["idForeignAddress", "idAddress"], "order_status=true", "a.idPerson, a.name, 
+    b.street", "address", "idAddress")->build("ALL");
 }
 ```
 
@@ -713,7 +714,8 @@ If you have a very complex SELECT statement, you can use the `customPagination` 
 ```php
 public function get()
 {
-    $res = $this->instance()->customPagination("SELECT created_at, order_status, idSession, SUM(idOrder) AS idOrder FROM `tb_order` GROUP BY created_at, order_status, idSession", 3, "First", "Last");
+    $res = $this->instance()->customPagination("SELECT created_at, order_status, idSession, SUM(idOrder) AS idOrder FROM `tb_order` 
+    GROUP BY created_at, order_status, idSession", 3, "First", "Last");
     
     return $res;
 }
