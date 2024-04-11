@@ -333,34 +333,146 @@ The available colors are: `green`, `yellow` and `blue`.
 $input_output = new InputOutput('green'); // green - yellow - blue
 ```
 
-## Displaying messages
+## Data output to the console
 
-To display a message on the command line, use the `MessageTrait` trait. First, you will define a message using one of the methods below:
+To display data in the console, use the `ConsoleOutput` class. Below are some of the main methods you can use to display messages in a personalized way.
 
 ```php
-use Solital\Core\Console\MessageTrait;
+use Solital\Core\Console\Output\ConsoleOutput;
 
-$this->success()    // Display a success message
-$this->info()       // Display an information message
-$this->warning()    // Displays a warning message
-$this->error()      // Displays an error message
-$this->line()       // Display a standard message
+ConsoleOutput::success($message, $space);    // Display a success message
+ConsoleOutput::info($message, $space);       // Display an information message
+ConsoleOutput::warning($message, $space);    // Displays a warning message
+ConsoleOutput::error($message, $space);      // Displays an error message
+ConsoleOutput::line($message, $space);       // Display a standard message
 ```
+
+- **$message**: in the first parameter, you will define the message that will be displayed in the console.
+- **$space (optional)**: if `true`, adds a margin to the left of the message.
 
 After that, to display the message on the command line, use the `print()` method:
 
 ```php
-$this->success("My message")->print();
+ConsoleOutput::success("My message")->print();
 ```
 
-There are still other methods to complement your message. The `break()` method skips a line, while the `exit()` method stops code execution.
+### Skip lines
+
+If you need to skip some lines in the console, you can use the `break()` method. This method accepts the value `true` and also `int` values.
 
 ```php
 // Skip a line
-$this->success("My message")->print()->break()->exit();
+ConsoleOutput::success("My message")->print()->break();
 
 // Skip two lines
-$this->success("My message")->print()->break(true)->exit();
+ConsoleOutput::success("My message")->print()->break(true);
+
+// Skip three lines. Use an INT value
+ConsoleOutput::success("My message")->print()->break(3);
+```
+
+### Stop script execution
+
+To stop script execution when displaying a message on the console, use the `exit()` method.
+
+```php
+ConsoleOutput::success("My message")->print()->exit();
+```
+
+This method uses the native PHP function `exit()`. You can also add a message to this function.
+
+```php
+ConsoleOutput::success("My message")->print()->exit("My exit message");
+```
+
+### Customize message color
+
+If you want to add a custom color to your message, you must use the `message` method. You must make use of the Enum `ColorsEnum`. This enum has forground and background colors.
+
+However, if you want to use any type of color, then you must use the color number instead of the Enum.
+
+```php
+use Solital\Core\Console\Output\ColorsEnum;
+
+// With ColorsEnum
+ConsoleOutput::message("My message", ColorsEnum::LIGHT_BLUE)->print();
+
+// With custom color
+ConsoleOutput::message("My message", 49)->print();
+```
+
+To display all foreground and background colors that do not exist in `ColorsEnum`, you can use the methods below.
+
+```php
+echo ConsoleOutput::getForegroundColors() . PHP_EOL;
+echo ConsoleOutput::getBackgroundColors();
+```
+
+### Displaying banners
+
+Banners are large messages intended to display important information. Use the `banner()` method.
+
+```php
+ConsoleOutput::banner("My message", ColorsEnum::BG_BLUE)->print();
+```
+
+If you need to increase or decrease the banner size, change the third parameter.
+
+```php
+ConsoleOutput::banner("My message", ColorsEnum::BG_BLUE, 40)->print();
+```
+
+**NOTE:** If you use `ColorsEnum`, use values that start with `BG_`.
+
+### Debug messages
+
+There is a different type of display message used for debugging using the `debugMessage()` method.
+
+```php
+ConsoleOutput::debugMessage("My message", $title, $color)->print();
+```
+
+- **$title (optional)**: The title that will be displayed indicating the debug value.
+- **$color (optional)**: color using `ColorsEnum` or an integer number.
+
+**NOTE:** If you use `ColorsEnum`, use values that start with `BG_`.
+
+### Clearing console messages
+
+To clear a message from the console, you can use the `clear()` method, informing, if necessary, the time it will take (in seconds) for the message to be cleared.
+
+```php
+ConsoleOutput::success("My message")->print();
+
+// Without time
+ConsoleOutput::clear(); 
+
+// With time
+ConsoleOutput::clear(2);
+```
+
+### Checking closure time
+
+If you want to display the execution time of a method or function in the console, you can use the `status()` method. This method displays whether a method or function was executed correctly or whether there was an error through a Boolean return. If the return is not Boolean, a simple message is displayed.
+
+You must add in the first parameter the name of the task that the method or function is doing. For example, if you are saving a user to the database, you can add `creating_user`. The second parameter will be the closure.
+
+To display the status, you must use the `printStatus()` method.
+
+```php
+ConsoleOutput::status('creating_user', function () {
+    return true;
+})->printStatus();
+```
+
+In the previous example, the return is `true`. Therefore, an `OK` will be displayed in the console. If the return is `false`, an `ERROR` will be displayed.
+
+To customize these messages, you must add values to the parameters of the `printStatus()` method. You can also disable the script time display.
+
+```php
+ConsoleOutput::status('creating_user', function () {
+    return true;
+})->printStatus('accept', 'not accept', false);
 ```
 
 ## Progress Bar
