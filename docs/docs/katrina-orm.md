@@ -23,7 +23,7 @@ Katrina ORM is already installed by default in Solital. But if you are going to 
 composer require solital/katrina
 ```
 
-### Settings
+## Settings
 
 In Solital:
 
@@ -115,7 +115,9 @@ class User extends Katrina
 }
 ```
 
-## SELECT
+## Listing values from a table
+
+### SELECT query
 
 To list all fields in the table, use `all()` as shown in the previous example.
 
@@ -174,7 +176,9 @@ User::latest('users')->get();
 
 **WHERE**
 
-If you need the `WHERE` clause, use `where()` method.
+The `WHERE` clause is used to filter records.
+
+It is used to extract only those records that fulfill a specified condition.
 
 ```php
 /** 
@@ -193,56 +197,58 @@ User::select()->where("age", 10, ">")->get();
 User::select()->where("age", 10, "<")->get();
 ```
 
-**AND/OR**
-
-If there are more conditions for the `where` method, you can make use of the `and/or` methods:
-
-```php
-/** 
- * With AND clause
-*/
-User::select()->where("brand", 'visa')->and("cvv", '502')->get();
-
-/**
- * With OR clause
- */
-User::select()->where("brand", 'visa')->or("cvv", '502')->get();
-```
-
-**Multiple WHERE**
-
 To save time and avoid using the `and` method, you can pass an array as a parameter in the `where` method with multiple conditions.
 
 ```php
 User::select()->where([
-  'brand', 'visa',
-  'cvv', '502'
+  'name', 'foo',
+  'age', 10
 ])->get();
 ```
 
-**LIKE and BETWEEN**
+**AND**
 
-You can combine the `where` method with other search methods such as `like` and `between`.
+The `AND` operator displays a record if all the conditions separated by `AND` are `TRUE`.
 
 ```php
-/** 
- * With LIKE clause
-*/
-User::select()->where("name")->like("%foo%")->get();
+User::select()->where("brand", 'visa')->and("cvv", '502')->get();
+```
 
-/** 
- * With BETWEEN clause
-*/
+**OR**
+
+The `OR` operator displays a record if any of the conditions separated by `OR` is `TRUE`.
+
+```php
+User::select()->where("brand", 'visa')->or("cvv", '502')->get();
+```
+
+**LIKE**
+
+Used in a `WHERE` clause to search for a specified pattern in a column.
+
+```php
+User::select()->where("name")->like("%foo%")->get();
+```
+
+**BETWEEN**
+
+Selects values within a given range. The values can be numbers, text, or dates.
+
+```php
 User::select()->where("age")->between(10, 22)->get();
 ```
 
 **LIMIT**
+
+Used to specify the number of records to return.
 
 ```php
 User::select()->limit(0, 3)->get();
 ```
 
 **ORDER BY**
+
+Used to sort the result-set in ascending or descending order.
 
 ```php
 User::select()->order("name")->get();
@@ -256,10 +262,12 @@ User::select()->order("name", false)->get();
 
 **GROUP BY**
 
+The `GROUP BY` statement groups rows that have the same values into summary rows, like "find the number of customers in each country".
+
 The `group by` SQL command requires the use of a function. Use the `group()` method together with the `Functions` class (see [here](#functions)).
 
 ```php
-User::select(null, "name, " . Functions::count('*', 'qtd'))->group("name")->get();
+User::select("name, " . Functions::count('*', 'qtd'))->group("name")->get();
 ```
 
 **COUNT**
@@ -280,7 +288,7 @@ User::count("email");
 User::count("email", "email='solital@gmail.com'");
 ```
 
-### Using INNER JOIN
+### INNER JOIN query
 
 The `innerJoin()` method returns the values of two tables that have a foreign key.
 
@@ -313,100 +321,22 @@ User::select()
     ->get();
 ```
 
-### Custom SELECT
-
-You can create a custom SELECT statement. To do this, use the function `customQuery`.
-
-```php
-/** 
- * Fetch Only
- */
-User::customQuery("SELECT * FROM users");
-
-/** 
- * Fetch All
- */
-User::customQuery("SELECT * FROM users", true);
-```
-
 ### SELECT inside SELECT
 
 Some SQL queries need to have multiple SELECTs, and sometimes those SELECTs are inside other SELECTs. If you need such a query, follow the example:
 
 ```php
-$sql = User::select(null, "nome")->where("nome", "brenno")->rawQuery();
-$result = User::select(null, "nome, idade")->where("nome", Functions::subquery($sql))->get();
+$sql = User::select("name")->where("name", "solital")->rawQuery();
+$result = User::select("name, age")->where("name", Functions::subquery($sql))->get();
 
 var_dump($result);
 ```
 
 The `rawQuery()` function will return an SQL string (you can use a `var_dump()` to parse the returned string). Then, to use that SQL string inside another query, use the `subquery()` function.
 
-## Functions
+## Creating and updating data
 
-Katrina 2 supports SQL functions. You can use a function in an SQL query using the `Function` Method:
-
-```php
-use Katrina\Functions\Functions;
-
-User::select(null, "name, " . Functions::count('*', 'qtd'))->group("name")->get();
-```
-
-Below is a list of all the functions present in Katrina ORM:
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Aggregate Functions</th>
-      <th scope="col">Date Functions</th>
-      <th scope="col">Math Functions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><span class="cmd-vinci">avg($value)</span></td>
-      <td><span class="cmd-vinci">now()</span></td>
-      <td><span class="cmd-vinci">abs($value)</span></td>
-    </tr>
-    <tr>
-      <td><span class="cmd-vinci">count($expression = "*", $as = "")</span></td>
-      <td><span class="cmd-vinci">curdate()</span></td>
-      <td><span class="cmd-vinci">sum($value)</span></td>
-    </tr>
-    <tr>
-      <td><span class="cmd-vinci">max($value)</span></td>
-      <td><span class="cmd-vinci">date($value)</span></td>
-      <td><span class="cmd-vinci">truncate($number, $decimal_places)</span></td>
-    </tr>
-    <tr>
-      <td><span class="cmd-vinci">-</span></td>
-      <td><span class="cmd-vinci">hour($value)</span></td>
-      <td><span class="cmd-vinci">-</span></td>
-    </tr>
-    <tr>
-      <td><span class="cmd-vinci">-</span></td>
-      <td><span class="cmd-vinci">month($value)</span></td>
-      <td><span class="cmd-vinci">-</span></td>
-    </tr>
-    <tr>
-      <td><span class="cmd-vinci">-</span></td>
-      <td><span class="cmd-vinci">datediff($first_date, $second_date)</span></td>
-      <td><span class="cmd-vinci">-</span></td>
-    </tr>
-    <tr>
-      <td><span class="cmd-vinci">-</span></td>
-      <td><span class="cmd-vinci">day($date = null)</span></td>
-      <td><span class="cmd-vinci">-</span></td>
-    </tr>
-    <tr>
-      <td><span class="cmd-vinci">-</span></td>
-      <td><span class="cmd-vinci">currentTimestamp()</span></td>
-      <td><span class="cmd-vinci">-</span></td>
-    </tr>
-  </tbody>
-</table>
-
-### INSERT
+### INSERT query
  
 Katrina uses the ActiveRecord standard to insert and update database data. However, if you don't want to use the ActiveRecord pattern, you can use the `insert()` and `update()` methods.
 
@@ -448,7 +378,7 @@ $res = User::insert([
 var_dump($res);
 ```
 
-### UPDATE
+### UPDATE query
 
 **With ActiveRecord**
 
@@ -475,7 +405,7 @@ User::update([
 ])->where('id', 1)->saveUpdate();
 ```
 
-### Delete
+## Deleting data
 
 To delete a record from the table, use the `delete()` method.
 
@@ -487,6 +417,105 @@ If you want to delete a row that has a foreign key in another table, the `$safe_
 
 ```php
 User::delete('id', 2, false);
+```
+
+## Functions
+
+Katrina 2 supports SQL functions. You can use a function in an SQL query using the `Function` Method:
+
+```php
+use Katrina\Functions\Functions;
+
+User::select("name, " . Functions::count('*', 'qtd'))->group("name")->get();
+```
+
+When using a function, you can rename the table name when viewing the data using the `$as` parameter.
+
+```php
+Functions::count(as: 'qtd');
+Functions::concat(as: 'result');
+Functions::trim(as: 'string');
+
+//...
+```
+
+Below is a list of all the functions present in Katrina ORM:
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Aggregate Functions</th>
+      <th scope="col">Date Functions</th>
+      <th scope="col">Math Functions</th>
+      <th scope="col">String Functions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="cmd-vinci">avg()</span></td>
+      <td><span class="cmd-vinci">now()</span></td>
+      <td><span class="cmd-vinci">abs()</span></td>
+      <td><span class="cmd-vinci">concat()</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">count()</span></td>
+      <td><span class="cmd-vinci">curdate()</span></td>
+      <td><span class="cmd-vinci">round()</span></td>
+      <td><span class="cmd-vinci">ltrim()</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">max()</span></td>
+      <td><span class="cmd-vinci">date()</span></td>
+      <td><span class="cmd-vinci">truncate()</span></td>
+      <td><span class="cmd-vinci">rtrim()</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">min()</span></td>
+      <td><span class="cmd-vinci">hour()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">trim()</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">sum()</span></td>
+      <td><span class="cmd-vinci">day()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">groupConcat()</span></td>
+      <td><span class="cmd-vinci">month()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">year()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">datediff()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">currentTimestamp()</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+      <td><span class="cmd-vinci">-</span></td>
+    </tr>
+  </tbody>
+</table>
+
+### Custom functions
+
+If the function you want does not exist or has not yet been implemented in the Katrina ORM, you can use the `custom()` method.
+
+In the first parameter, you must enter the name of the SQL function. In the second parameter, the value of this function. And in the third parameter, you can rename the table when returning the data.
+
+```php
+Functions::custom('sum', '*', 'result');
 ```
 
 ## Manipulating tables
@@ -603,10 +632,18 @@ User::listTables();
 
 ### List columns
 
-To list the columns of a table, use the `describeTable()` method passing as a parameter the name of your table.
+To list the columns of a table, use the `describeTable()` method.
 
 ```php
-User::describeTable('your_table');
+User::describeTable();
+```
+
+### Drop table
+
+If it is necessary to drop the table, use the `dropTable()` method.
+
+```php
+User::dropTable();
 ```
 
 ### Alter table
@@ -618,7 +655,7 @@ The `alter()` method performs the procedures of adding, changing and deleting a 
 Use `add()` method together with the data type to add a new field.
 
 ```php
-(new User)->alter("your_table")->varchar("username", 20)->add();
+User::alter()->varchar("username", 20)->add();
 ```
 
 **Drop column**
@@ -626,7 +663,7 @@ Use `add()` method together with the data type to add a new field.
 Use the `drop()` method to delete a column from the table.
 
 ```php
-(new User)->alter("your_table")->drop("username");
+User::alter()->drop("username");
 ```
 
 **Modify column**
@@ -634,7 +671,7 @@ Use the `drop()` method to delete a column from the table.
 Use the modify SQL with the `modify()` method.
 
 ```php
-(new User)->alter("your_table")->varchar("name", 100)->modify();
+User::alter()->varchar("name", 100)->modify();
 ```
 
 **Rename table**
@@ -642,7 +679,7 @@ Use the modify SQL with the `modify()` method.
 Use the `rename()` method to rename a database table.
 
 ```php
-(new User)->alter("your_table_name")->rename("new_table_name");
+User::alter()->rename("new_table_name");
 ```
 
 ### Adding foreign key
@@ -650,7 +687,7 @@ Use the `rename()` method to rename a database table.
 To add a foreign key to an already created table, use the `constraint()` method to add a constraint; `foreign()` to inform the column and `references()` to refer to the table.
 
 ```php
-(new User)->alter("your_table")->constraint("dev_cons_fk")->foreign("type")->references("dev", "iddev");
+User::alter()->constraint("dev_cons_fk")->foreign("type")->references("dev", "iddev");
 ```
 
 ### Truncate table
@@ -658,13 +695,13 @@ To add a foreign key to an already created table, use the `constraint()` method 
 To use the sql truncate command, use the `truncate()` method.
 
 ```php
-(new User)->truncate("your_table");
+User::truncate();
 ```
 
 By default, the database checks the table's foreign key and locks the truncate command. To disable foreign key verification, enter `true` as a parameter.
 
 ```php
-(new User)->truncate("your_table", true);
+User::truncate(true);
 ```
 
 ## Procedure
@@ -672,13 +709,13 @@ By default, the database checks the table's foreign key and locks the truncate c
 To call a database procedure, use the `call()` method.
 
 ```php
-(new User)->call('procedure_name');
+User::call('procedure_name');
 ```
 
 To use procedure parameters, pass the values in array format.
 
 ```php
-(new User)->call('procedure_name' , ['param_1, param_2, param_3']);
+User::call('procedure_name' , ['param_1, param_2, param_3']);
 ```
 
 ## Transactions
@@ -686,19 +723,24 @@ To use procedure parameters, pass the values in array format.
 Transactions are typically implemented by "saving-up" your batch of changes to be applied all at once; this has the nice side effect of drastically improving the efficiency of those updates. In other words, transactions can make your scripts faster and potentially more robust (you still need to use them correctly to reap that benefit).
 
 ```php
-try {
-  $pdo = Connection::getInstance();
-  $pdo->beginTransaction();
+public static function transaction()
+{
+  try {
+    $pdo = Connection::getInstance();
+    $pdo->beginTransaction();
 
-  // code...
+    // code...
 
-  $pdo->commit();
-
-} catch (\PDOException $e) {
-  $pdo->rollback();
-  
-  echo $e->getMessage();
+    $pdo->commit();
+  } catch (\PDOException $e) {
+    $pdo->rollback();
+    echo $e->getMessage();
+  }
 }
+
+// Using transactions
+
+User::transaction();
 ```
 
 ## Pagination
@@ -706,7 +748,8 @@ try {
 The `pagination()` method creates a system for paging results. To initialize, the first parameter must be the table you want to use to start paging. The second parameter will list the amount of values that will be returned from the table as shown in the example below.
 
 ```php
-$values = (new User)->pagination('your_table', 3);
+$users = new User();
+$values = $users->pagination('your_table', 3);
 ```
 
 To retrieve the table values from the database, you can use the `getRows()` method. And to use pagination, use the `getArrows()` method.
@@ -722,10 +765,11 @@ $values->getArrows()
 To use pagination with relationship in another table, in the third parameter pass an array containing the name of the table that has a relationship with the current table, the column name of the current table that has the foreign key and the column name of the primary key of the another table.
 
 ```php
-$values = (new User)->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key']);
+$users = new User();
+$values = $users->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key']);
 ```
 
-**INNER JOIN**
+### Pagination with other table (INNER JOIN)
 
 If you want to use pagination with a table that has a foreign key, pass an array in the third parameter.
 
@@ -735,7 +779,7 @@ In the first index, insert the name of the table that is linked to the current t
 $values = (new User)->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key'], "status=true");
 ```
 
-**WHERE clause**
+### WHERE clause
 
 To use the WHERE clause, use the fourth parameter as shown below.
 
@@ -917,6 +961,7 @@ Katrina ORM supports the following drivers
 - Memcached
 - Memcache
 - APCu
+- Yac
 
 In your Model, you will need to enable caching. To do this, add the following property:
 
@@ -985,33 +1030,33 @@ Below is listed the attributes and data supported by Katrina ORM:
   </thead>
   <tbody>
     <tr>
-      <td><span class="cmd-vinci">varchar("column_name", size)</span></td>
-      <td><span class="cmd-vinci">tinyint("column_name", size)</span></td>
-      <td><span class="cmd-vinci">date("column_name")</span></td>
+      <td><span class="cmd-vinci">varchar()</span></td>
+      <td><span class="cmd-vinci">tinyint()</span></td>
+      <td><span class="cmd-vinci">date()</span></td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">char("column_name", size)</span></td>
-      <td><span class="cmd-vinci">smallint("column_name", size)</span></td>
-      <td><span class="cmd-vinci">year("column_name")</span></td>
+      <td><span class="cmd-vinci">char()</span></td>
+      <td><span class="cmd-vinci">smallint()</span></td>
+      <td><span class="cmd-vinci">year()</span></td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">tinytext("column_name", size)</span></td>
-      <td><span class="cmd-vinci">mediumint("column_name", size)</span></td>
-      <td><span class="cmd-vinci">time("column_name")</span></td>
+      <td><span class="cmd-vinci">tinytext()</span></td>
+      <td><span class="cmd-vinci">mediumint()</span></td>
+      <td><span class="cmd-vinci">time()</span></td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">mediumtext("column_name", size)</span></td>
-      <td><span class="cmd-vinci">bigint("column_name", size)</span></td>
-      <td><span class="cmd-vinci">datetime("column_name")</span></td>
+      <td><span class="cmd-vinci">mediumtext()</span></td>
+      <td><span class="cmd-vinci">bigint()</span></td>
+      <td><span class="cmd-vinci">datetime()</span></td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">longtext("column_name", size)</span></td>
-      <td><span class="cmd-vinci">int("column_name", size)</span></td>
-      <td><span class="cmd-vinci">timestamp("column_name")</span></td>
+      <td><span class="cmd-vinci">longtext()</span></td>
+      <td><span class="cmd-vinci">int()</span></td>
+      <td><span class="cmd-vinci">timestamp()</span></td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">text("column_name")</span></td>
-      <td><span class="cmd-vinci">decimal("column_name", value1, value2)</span></td>
+      <td><span class="cmd-vinci">text()</span></td>
+      <td><span class="cmd-vinci">decimal()</span></td>
       <td><span class="cmd-vinci">-</span></td>
     </tr>
   </tbody>
@@ -1026,8 +1071,8 @@ Below is listed the attributes and data supported by Katrina ORM:
   </thead>
   <tbody>
     <tr>
-      <td><span class="cmd-vinci">boolean("column_name")</span></td>
-      <td><span class="cmd-vinci">default("default_value")</span></td>
+      <td><span class="cmd-vinci">boolean()</span></td>
+      <td><span class="cmd-vinci">default()</span></td>
     </tr>
     <tr>
       <td><span class="cmd-vinci">unique()</span></td>
@@ -1050,7 +1095,7 @@ Below is listed the attributes and data supported by Katrina ORM:
       <td><span class="cmd-vinci">-</span></td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">after("column_name")</span></td>
+      <td><span class="cmd-vinci">after()</span></td>
       <td><span class="cmd-vinci">-</span></td>
     </tr>
     <tr>
@@ -1058,7 +1103,7 @@ Below is listed the attributes and data supported by Katrina ORM:
       <td><span class="cmd-vinci">-</span></td>
     </tr>
     <tr>
-      <td><span class="cmd-vinci">serial("id_table") (POSTGRESQL)</span></td>
+      <td><span class="cmd-vinci">serial() (POSTGRESQL)</span></td>
       <td><span class="cmd-vinci">-</span></td>
     </tr>
   </tbody>

@@ -1,22 +1,23 @@
 ## Setting
 
-This procedure uses the `forgot` method to define the database table. The `columns` method the form's email field. In the `values` method, the e-mail that will be sent the recovery link is informed in the first parameter, and in the second parameter the URL that will be contained in the e-mail to change the password. The `register` method will check and send the email.
+This procedure uses the `forgot` method to define the database table (you can use a string with a table name or the Model name). The `columns` method the form's email field. In the `values` method, the e-mail that will be sent the recovery link is informed in the first parameter, and in the second parameter the URL that will be contained in the e-mail to change the password. The `register` method will check and send the email.
+
+Solital uses the default Model `AuthModel`. However, you can create a model and use it in the `forgot()` method.
 
 ```php
-/**
- * @return void
- */
+use Solital\Core\Kernel\Model\AuthModel;
+
 public function forgotPost(): void
 {
     $email = input()->post('email')->getValue();
 
-    $res = Auth::forgot('auth_users')
+    $res = Auth::forgot(AuthModel::class)
             ->columns('username')
             ->values($email, url('change'))
             ->register();
     
     if ($res == true) {
-        $this->message->new('forgot', 'Link sent to your email!');
+        message('forgot', 'Link sent to your email!');
         response()->redirect(url('forgot'));
     }
 }
@@ -27,7 +28,7 @@ public function forgotPost(): void
 By default, the link sent is valid for 1 hour. You can change this behavior using the `timeHash()` method.
 
 ```php
-Auth::forgot('auth_users')
+Auth::forgot(AuthModel::class)
     ->columns('username')
     ->values($email, url('change'))
     # Here the code
@@ -52,7 +53,7 @@ To change these fields, use the `customMailSender()` and/or `customMailFields()`
 The full code is:
 
 ```php
-Auth::forgot('auth_users')
+Auth::forgot(AuthModel::class)
     ->columns('username')
     ->values($email, url('change'))
     ->customMailSender('mail_sender@gmail.com')
@@ -78,7 +79,7 @@ $template = $wolf->render();
 Then add this template to the last parameter of the `customMailFields` method.
 
 ```php
-Auth::forgot('auth_users')
+Auth::forgot(AuthModel::class)
     ->columns('username')
     ->values($email, url('change'))
     # Here the code
@@ -110,7 +111,7 @@ public function change($hash): void
         ]);
     }
 
-    $this->message->new('login', 'The informed link has already expired!');
+    message('login', 'The informed link has already expired!');
     response()->redirect(url('auth'));
 }
 ```
@@ -120,7 +121,7 @@ public function change($hash): void
 This procedure uses the `change` method to define the database table. The `columns` method defines the database user and password fields. The `values` method defines the user's email in the first parameter, and the new password in the second parameter. The `register` method will check and change the email.
 
 ```php
-Auth::change('auth_users')
+Auth::change(AuthModel::class)
     ->columns('username', 'password')
     ->values($email, $pass)
     ->register();

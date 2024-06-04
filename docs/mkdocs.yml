@@ -42,6 +42,7 @@ nav:
     - Mask: mask.md
   - Security:
     - Authenticate: authenticate.md
+    - Authorization: authorization.md
     - Cryptography: cryptography.md
     - CSRF Protection: csrf-protection.md
     - Secure Password: secure-password.md

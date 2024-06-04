@@ -51,8 +51,14 @@ To execute the project, run the command:
 php vinci server
 ```
 
-You can change your project IP if you want
+You can change your project IP if you want:
 
 ```php
 php vinci server --host=localhost:8001
+```
+
+Or, if you want use HTTPS:
+
+```php
+php vinci server --https
 ```

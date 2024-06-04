@@ -16,9 +16,22 @@ For this, it is necessary to first define the name of the table in the `login` m
 
 ```php
 $res = Auth::login('auth_users')
-            ->columns('username', 'password')
-            ->values('inputEmail', 'inputPassword')
-            ->register();
+    ->columns('username', 'password')
+    ->values('inputEmail', 'inputPassword')
+    ->register();
+```
+
+You can also use the Model name in the `login()` method. This way, the `Auth` component will get the name of the table that is in the `$table` property.
+
+Solital uses the default Model `AuthModel`. However, you can create a model and use it in the `login()` method.
+
+```php
+use Solital\Core\Kernel\Model\AuthModel;
+
+$res = Auth::login(AuthModel::class)
+    ->columns('username', 'password')
+    ->values('inputEmail', 'inputPassword')
+    ->register();
 ```
 
 The `$res` variable will return `true` if authentication is true and will redirect the user to the route defined in the `auth_dashboard_url` variable. But if it is `false`, you can add a reply message after the above code if authentication fails.
@@ -39,11 +52,11 @@ In the `value` of the form input, use `true`.
 ```php
 <input type="checkbox" name="inputRemember" value="true">
 
-$res = Auth::login('auth_users')
-            ->columns('username', 'password')
-            ->values('inputEmail', 'inputPassword')
-            ->remember('inputRemember')
-            ->register();
+$res = Auth::login(AuthModel::class)
+    ->columns('username', 'password')
+    ->values('inputEmail', 'inputPassword')
+    ->remember('inputRemember')
+    ->register();
 ```
 
 
@@ -68,7 +81,7 @@ class UserController extends Controller
      */
     public function authPost(): void
     {
-        $res = Auth::login('auth_users')
+        $res = Auth::login(AuthModel::class)
             ->columns('username', 'password')
             ->values('inputEmail', 'inputPassword')
             ->remember('inputRemember')
@@ -94,14 +107,14 @@ Course::get('/my-second-dashboard', 'SiteController@SecondDashboard')->name('sec
 
 # In Controller with `url()` helper
 
-$res = Auth::login('auth_users')
+$res = Auth::login(AuthModel::class)
     ->columns('username', 'password')
     ->values('inputEmail', 'inputPassword')
     ->register(url('second.dashboard'));
 
 # Or without `url()` helper
 
-$res = Auth::login('auth_users')
+$res = Auth::login(AuthModel::class)
     ->columns('username', 'password')
     ->values('inputEmail', 'inputPassword')
     ->register('/my-second-dashboard');

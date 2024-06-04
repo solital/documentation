@@ -1,7 +1,6 @@
-This will make living with PHP strings easier by;
-- providing a simple chained API to string operations
-- not mixing up the needle haystack stuff
-- allowing you to extend and add your own methods in seconds
+## Introduction
+
+PHP has several functions to manipulate strings procedurally. However, this can be a hassle when it comes to using multiple functions to manipulate a single string. The situation gets worse when you have multibyte characters, as you will have to switch between functions.
 
 ```php
 $text = 'Something to translate';
@@ -11,25 +10,47 @@ $text = nl2br($text);
 echo $text;
 ```
 
-Str objects allow you this;
+The `Str` component allows you to perform these same functions using OOP. This will make living with PHP strings easier by:
+
+- providing a simple chained API to string operations
+- not mixing up the needle haystack stuff
+- allowing you to extend and add your own methods in seconds
+
+### How to use
+
+Below is an example of how to perform the functions in the previous example using the `Str` component:
 
 ```php
 use Solital\Core\Resource\Str\Str;
 
-echo (new Str('Something to translate'))
-	->translate($translation)
-	->chars()
-	->nl2br();
+$str = new Str('Something to translate');
+$str->translate(["translate" => "another language"])
+$str->specialchars()
+$str->nl2br();
 
-// Or use a helper `str()`
+echo $str->value();
 
+// Or use `__toString()`
+
+echo $str;
+```
+
+If you don't want to create a new instance, you can use the `str()` helper:
+
+```php
 echo str('Something to translate')
-	->translate($translation)
-	->chars()
+	->translate(["translate" => "another language"])
+	->specialchars()
 	->nl2br();
 ```
 
-## `value()`
+The `Str` class is fully compatible with multibyte characters.
+
+## Chained methods
+
+The methods below must be used by creating an instance of the `Str` class.
+
+### `value()`
 
 Returns the current value of this string
 
@@ -38,7 +59,27 @@ $str = new Str('foo');
 echo $str->value();
 ```
 
-## `addCslashes()`
+### `after()`
+
+Get the string after the first occurence of the substring.
+
+```php
+$str = new Str("This is a test");
+$str->after("This is");
+echo $str->value();
+```
+
+### `before()`
+
+Get the string before the first occurence of the substring.
+
+```php
+$str = new Str("This is a test");
+$str->before("a test");
+echo $str->value();
+```
+
+### `addCslashes()`
 
 Quote string with slashes in a C style
 
@@ -48,7 +89,7 @@ $str->addCslashes('acep');
 echo $str->value();
 ```
 
-## `addSlashes()`
+### `addSlashes()`
 
 Quote string with slashes
 
@@ -58,7 +99,7 @@ $str->addSlashes();
 echo $str->value();
 ```
 
-## `chunkSplit()`
+### `chunkSplit()`
 
 Splits the string into smaller chunks
 
@@ -68,33 +109,7 @@ $str->chunkSplit(2, ':');
 echo $str->value();
 ```
 
-## `compare()`
-
-Binary safe string comparison. 
-
-* `<` 0 if this string is less than target string
-* `>` 0 if this string is greater than target string
-* `==` 0 if both strings are equal
-
-```php
-$str = new Str('my_string');
-echo $str->compare('mystring');
-```
-
-## `compareInsensitive()`
-
-Binary safe case-insensitive string comparison.
-
-* `<` 0 if this string is less than target string
-* `>` 0 if this string is greater than target string
-* `==` 0 if both strings are equal
-
-```php
-$str = new Str('my_string');
-echo $str->compareInsensitive('mystring');
-```
-
-## `concat()`
+### `concat()`
 
 Appends another string to this string.
 
@@ -104,49 +119,7 @@ $str->concat('bar');
 echo $str->value();
 ```
 
-## `contains()`
-
-Does current string contain a subtring?
-
-```php
-$str = new Str('my_string');
-echo $str->contains('string');
-```
-
-## `countChars()`
-
-Return information about characters used in a string.
-
-```php
-$str = new Str('abababcabc');
-$res = $str->countChars(true);
-
-pre($res);
-```
-
-## `explode()`
-
-Splits current string by string.
-
-```php
-$str = new Str('but_Bar_is_never_Foo');
-$res = $str->explode('_');
-
-pre($res);
-```
-
-## `implode()`
-
-Join array elements with this string.
-
-```php
-$str = new Str('!');
-$res = $str->implode(['foo', 'is', 'bar', 'sometimes']);
-
-pre($res);
-```
-
-## `ireplace()`
+### `ireplace()`
 
 Case-insensitive version of Str::replace().
 
@@ -156,7 +129,7 @@ $str->ireplace(['FOO' => 'bar']);
 echo $str->value();
 ```
 
-## `ltrim()`
+### `ltrim()`
 
 Strip whitespace (or other characters) from the beginning of a string.
 
@@ -166,7 +139,7 @@ $str->ltrim('_-');
 echo $str->value();
 ```
 
-## `nl2br()`
+### `nl2br()`
 
 Converts new lines to `<br />` elements.
 
@@ -176,7 +149,7 @@ $str->nl2br();
 echo $str->value();
 ```
 
-## `pad()`
+### `pad()`
 
 Pad the string to a certain length with another string.
 
@@ -190,17 +163,17 @@ $str->pad(16, '-.-;', STR_PAD_RIGHT);
 echo $str->value();
 ```
 
-## `position()`
+### `removeAccents()`
 
-Find the position of the first occurrence of a substring in a string.
+Replace characters with accents with normal characters.
 
 ```php
-$str = new Str('foo is bar sometimes');
-$str->position(' is ', 0);
+$str = new Str("àèìÒ");
+$str->removeAccents();
 echo $str->value();
 ```
 
-## `repeat()`
+### `repeat()`
 
 Repeats the string.
 
@@ -210,7 +183,7 @@ $str->repeat(5);
 echo $str->value();
 ```
 
-## `replace()`
+### `replace()`
 
 Replaces the occurences of keys with their values.
 
@@ -220,7 +193,7 @@ $str->replace(['foo' => 'fOo', 'DoEs Not' => 'fail', 'to' => '2']);
 echo $str->value();
 ```
 
-## `reverse()`
+### `reverse()`
 
 Reverses current string.
 
@@ -230,7 +203,7 @@ $str->reverse();
 echo $str->value();
 ```
 
-## `rot13()`
+### `rot13()`
 
 Perform the ROT13 transform on current string.
     
@@ -242,7 +215,7 @@ $str->rot13();
 echo $str->value();
 ```
 
-## `rtrim()`
+### `rtrim()`
 
 Strip whitespace (or other characters) from the end.
 
@@ -252,7 +225,17 @@ $str->rtrim('o');
 echo $str->value();
 ```
 
-## `shuffle()`
+### `shorten()`
+
+Truncate String (shorten) with or without ellipsis.
+
+```php
+$str = new Str('foo bar foobar pebkac fubar');
+$str->shorten(10);
+echo $str->value();
+```
+
+### `shuffle()`
 
 Randomly shuffles the string.
 
@@ -264,7 +247,17 @@ echo $str->value();
 echo $original;
 ```
 
-## `specialchars()`
+### `slug()`
+
+Generate a URL friendly slug from the given string.
+
+```php
+$str = new Str('foo bar foobar pebkac fubar');
+$str->slug();
+echo $str->value();
+```
+
+### `specialchars()`
 
 Convert special characters to HTML entities.
 
@@ -276,7 +269,7 @@ $str->specialchars();
 echo $str->value();
 ```
 
-## `stripTags()`
+### `stripTags()`
 
 Strip HTML and PHP tags.
 
@@ -288,7 +281,7 @@ $str->stripTags();
 echo $str->value();
 ```
 
-## `translate()`
+### `translate()`
 
 Translate characters or replace substrings.
 
@@ -298,7 +291,7 @@ $str->translate([':foo' => ':bar', ':bar' => ':newbar']);
 echo $str->value();
 ```
 
-## `trim()`
+### `trim()`
 
 Strips whitespace (or other characters) from the beginning and end of the string.
 
@@ -308,7 +301,27 @@ $str->trim('o');
 echo $str->value();
 ```
 
-## `undo()`
+### `toUpper()`
+
+Make a string uppercase.
+
+```php
+$str = new Str('my string');
+$str->toUpper();
+echo $str->value();
+```
+
+### `toLower()`
+
+Make a string uppercase.
+
+```php
+$str = new Str('MY STRING');
+$str->toLower();
+echo $str->value();
+```
+
+### `undo()`
 
 Undoes the last `$steps` operations.
 
@@ -321,36 +334,99 @@ $str->undo(1);
 echo $str->value();
 ```
 
-## `uniqueChars()`
+## Not chainable methods
+
+The methods below must be used statically.
+
+### `compare()`
+
+Binary safe string comparison. 
+
+* `<` 0 if this string is less than target string
+* `>` 0 if this string is greater than target string
+* `==` 0 if both strings are equal
+
+```php
+echo Str::compare('my_string', 'mystring');
+```
+
+### `compareInsensitive()`
+
+Binary safe case-insensitive string comparison.
+
+* `<` 0 if this string is less than target string
+* `>` 0 if this string is greater than target string
+* `==` 0 if both strings are equal
+
+```php
+echo Str::compareInsensitive('my_string', 'mystring');
+```
+
+### `contains()`
+
+Does current string contain a subtring?
+
+```php
+echo Str::contains('my_string', 'string');
+```
+
+### `countChars()`
+
+Return information about characters used in a string.
+
+```php
+$res = Str::countChars('abababcabc');
+pre($res);
+```
+
+### `endsWith()`
+
+Checks if haystack ends with needle
+
+```php
+echo Str::endsWith('foo is bar sometimes', 'sometimes');
+```
+
+### `position()`
+
+Find the position of the first occurrence of a substring in a string.
+
+```php
+echo Str::position('foo is bar sometimes', ' is ', 0);
+```
+
+### `startsWith()`
+
+Checks if haystack begins with needle
+
+```php
+echo Str::startsWith('foo is bar sometimes', 'foo');
+```
+
+### `uniqueChars()`
 
 Returns a string containing all unique characters (in current string).
 
 ```php
-$str = new Str('abcabdabcd');
-$str->uniqueChars();
-echo $str->value();
+echo Str::uniqueChars('abcabdabcd');
 ```
 
-## `wordCount()`
+### `wordCount()`
 
 Counts the number of words inside string.
 
 * `$charlist`: Optional list of additional characters which will be considered as 'word'.
 
 ```php
-$str = new Str('foo is here 3 times foo foo');
-$str->wordCount();
-echo $str->value();
+echo Str::wordCount('foo is here 3 times foo foo');
 ```
 
-## `word()`
+### `word()`
 
 Returns the list of words inside string.
 
 * `$charlist`: Optional list of additional characters which will be considered as 'word'.
 
 ```php
-$str = new Str('foo foo bar foo');
-$str->word();
-echo $str->value();
+echo Str::word('foo foo bar foo');
 ```

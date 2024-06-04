@@ -35,6 +35,12 @@ php vinci [command] [argument] [--option1] [--option2]
       <td>--login / --forgot / --remove</td>
     </tr>
     <tr>
+      <td><span class="cmd-vinci">clear-history</span></td>
+      <td>Clear a command history</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
       <td><span class="cmd-vinci">create:cmd</span></td>
       <td>Create a command</td>
       <td>name</td>
@@ -97,6 +103,12 @@ php vinci [command] [argument] [--option1] [--option2]
     <tr>
       <td><span class="cmd-vinci">generate:files</span></td>
       <td>Imports Solital Framework's default configuration files</td>
+      <td>-</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td><span class="cmd-vinci">history</span></td>
+      <td>Get all command history</td>
       <td>-</td>
       <td>-</td>
     </tr>
@@ -304,9 +316,11 @@ $input_output->dialog('Enter a string: ')->action(function ($message) {
 });
 ```
 
-The `dialog()` method will display a message to the user, while the `action()` method retrieves the value entered on the command line. The `action()` method takes an anonymous function as a parameter.
+The `dialog()` method will display a message to the user to inform a input value, while the `action()` method retrieves the value entered on the command line.
 
-**Confirmation box**
+The `action()` method performs an action using the previously entered value. This method uses an anonymous function with the variable `$message` as a parameter.
+
+### Confirmation box
 
 You can also use a "yes/no" confirmation, or any other value.
 
@@ -314,7 +328,8 @@ You can also use a "yes/no" confirmation, or any other value.
 use Solital\Core\Console\InputOutput;
 
 $input_output = new InputOutput();
-$input_output->confirmDialog('What you want?', 'Y', 'N', false)->confirm(function () {
+$input_output->confirmDialog('What you want?', 'Y', 'N', false);
+$input_output->confirm(function () {
     echo "accepted" . PHP_EOL;
 })->refuse(function () {
     echo "denied" . PHP_EOL;
@@ -323,14 +338,29 @@ $input_output->confirmDialog('What you want?', 'Y', 'N', false)->confirm(functio
 
 In the first parameter of the `confirmDialog` method, you will define the question. The second parameter will be the value of the answer if it is positive, if not, the third parameter will receive the value of the answer if it is negative. The fourth parameter will define if the answer is know sensitive, if not, set it to `false`.
 
-**Customizing colors**
+This method must be used together with two other methods: `confirm()` and `refuse()`.
 
-To customize the colors of the message that is displayed from the CLI, you can pass the color name in the constructor of the `InputOutput` class.
+### Customizing colors
 
-The available colors are: `green`, `yellow` and `blue`.
+To customize the colors of the message that is displayed from the CLI, you must use the `color()` method. To use the available colors, you must use the `ColorsEnum` enum.
 
 ```php
-$input_output = new InputOutput('green'); // green - yellow - blue
+use Solital\Core\Console\Output\ColorsEnum;
+
+$input_output = new InputOutput();
+$inout_output->color(ColorsEnum::GREEN);
+```
+
+### Reading passwords
+
+By default, the previous methods display input to the user. However, in the case of passwords, you must use the `password()` method.
+
+You can take the entered password and use it in another part of your code.
+
+```php
+$input_output = new InputOutput();
+$password = $input_output->password("Enter the password");
+echo $password;
 ```
 
 ## Data output to the console
@@ -474,6 +504,106 @@ ConsoleOutput::status('creating_user', function () {
     return true;
 })->printStatus('accept', 'not accept', false);
 ```
+
+## Calling a command within another
+
+If you have a command, and want to call another command within the same class, you can use the `call()` method.
+
+For example, you have an `InsertCommand` class:
+
+```php
+<?php
+
+namespace Solital\Console\Command;
+
+use Solital\Core\Console\Command;
+use Solital\Core\Console\Interface\CommandInterface;
+
+class InsertCommand extends Command implements CommandInterface
+{
+    /**
+     * @var string
+     */
+    protected string $command = "cmd:insert";
+
+    /**
+     * @var array
+     */
+    protected array $arguments = [];
+
+    /**
+     * @var array
+     */
+	  protected array $options = [];
+
+    /**
+     * @var string
+     */
+    protected string $description = "";
+
+    /**
+     * @param object $arguments
+     * @param object $options
+     * 
+     * @return mixed
+     */
+    #[\Override]
+    public function handle(object $arguments, object $options): mixed
+    {
+        echo "Insert a value";
+        return $this;
+    }
+}
+```
+
+And you also have an `UpdateCommand` class. You can execute the command from the previous class within this new class.
+
+```php
+<?php
+
+namespace Solital\Console\Command;
+
+use Solital\Core\Console\Command;
+use Solital\Core\Console\Interface\CommandInterface;
+
+class UpdateCommand extends Command implements CommandInterface
+{
+    /**
+     * @var string
+     */
+    protected string $command = "cmd:update";
+
+    /**
+     * @var array
+     */
+    protected array $arguments = [];
+
+    /**
+     * @var array
+     */
+    protected array $options = [];
+
+    /**
+     * @var string
+     */
+    protected string $description = "";
+
+    /**
+     * @param object $arguments
+     * @param object $options
+     * 
+     * @return mixed
+     */
+    #[\Override]
+    public function handle(object $arguments, object $options): mixed
+    {
+        Command::call('cmd:insert');
+        return $this;
+    }
+}
+```
+
+**NOTE:** You cannot call the same command on the same classe.
 
 ## Progress Bar
 

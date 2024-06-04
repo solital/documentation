@@ -115,3 +115,78 @@ You can use this resource on a specific route with the `resource()` method.
 ```php
 Course::resource('/resource', ResourceController::class);
 ```
+
+## Helpers for controllers
+
+Solital has some helpers for you to use in your controllers. The helpers below have methods that should only be used in controllers.
+
+### Password
+
+You can use password helpers, or use the `passHash` and `passVerify` methods.
+
+**Password hash**
+
+```php
+pass_hash($password, int $cost = 10)
+
+# With method on Controller
+$this->passHash($password, $info = false)
+```
+
+**Password verify**
+
+```php
+pass_verify($password, string $hash)
+
+# With method on Controller
+$this->passVerify($password, $hash)
+```
+
+### Request
+
+You have the option to limit the number of requests in a controller, and also check if a value has already been sent previously. 
+
+**Request limit**
+
+```php
+request_limit(string $key, int $limit = 5, int $seconds = 60)
+
+# With method on Controller
+$this->requestLimit(string $key, int $limit = 5, int $seconds = 60)
+```
+
+**Request repeat**
+
+```php
+request_repeat(string $key, string $value)
+
+# With method on Controller
+$this->requestRepeat(string $key, string $value)
+```
+
+**Redirect to another router**
+
+```php
+to_route(string $url, ?int $code = null)
+
+# Or, use a method on Controller
+$this->redirect(string $url, ?int $code = null)
+```
+
+**Remove params from URL**
+
+```php
+remove_param()
+
+# With method on Controller
+$this->removeParamsUrl()
+```
+
+**Get input-parameters**
+
+```php
+input(string $index = null, string $defaultValue = null, ...$methods)
+
+# With method on Controller
+$this->getRequestParams(string $index = null, string $defaultValue = null, ...$methods)
+```

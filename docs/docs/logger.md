@@ -73,3 +73,22 @@ mail:
     level: debug
     processor: [IntrospectionProcessor, MemoryUsageProcessor, WebProcessor]
 ```
+
+## Customer handlers
+
+By default, Solital offers two Monolog handlers. If you want to add one or several custom handlers, you can use the `customHandler()` method.
+
+```php
+$handler[] = new StreamHandler('path/to/log.log', Level::Debug);
+
+Logger::customHandler('custom-channel', $handler)->debug('My info message');
+```
+
+If necessary, you can use the third parameter to use a processor.
+
+```php
+$handler[] = new StreamHandler('path/to/log.log', Level::Debug);
+$processor = new IntrospectionProcessor();
+
+Logger::customHandler('custom-channel', $handler, $processor)->debug('My info message');
+```
