@@ -50,7 +50,19 @@ $res = Hash::decrypt('word_to_decrypt')->isValid();
 pre($res);
 ```
 
-## Sodium encryption
+## Changing the encryption type
+
+Solital uses OpenSSL and Sodium to perform value encryption. To change the encryption, change the `crypt` value in the `bootstrap.yaml` file.
+
+```yaml
+crypt: sodium
+```
+
+## Sodium encryption (Core <= 4.4)
+
+**IMPORTANT: The documentation below is deprecated and is only for users using Solital Core in version 4.4 or lower. Starting with version 4.5, Solital uses the `crypt` configuration in the `bootstrap.yaml` file**
+
+**The functions below will be removed in a future version 5.0**
 
 Solital supports Sodium encryption. To enable, make sure that libsodium is installed in your development environment. You can use the `Hash::checkSodium()` method to check if libsodium is installed.
 

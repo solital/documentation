@@ -11,3 +11,7 @@ php vinci generate:files
 ```
 
 When you install a new Solital update using `composer update`, run the above command, so new files are copied to the `app/config` folder. Other files may be copied to other folders in this process.
+
+## Changing settings at runtime
+
+Solital uses the `runtime.yaml` file to change settings at runtime. Feel free to change these values.

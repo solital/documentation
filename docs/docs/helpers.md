@@ -84,6 +84,18 @@ decodeJSON($value, bool $toArray = false)
 message(string $key, string $msg = "")
 ```
 
+* Cryptograph an value using `Hash` class without having to instantiate it
+
+```php
+encrypt(string $value, string $time = '+1 hour')
+```
+
+* Decryptograph an value using `Hash` class without having to instantiate it
+
+```php
+decrypt(string $key)
+```
+
 * Handles PHP sessions. 
 
 To get a value from an existing session, leave the `$value` parameter empty. To create a new session, inform the session key in the first parameter, and the session value in the second parameter. See more in [Session and Cookies](session-and-cookie.md).
