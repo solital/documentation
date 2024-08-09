@@ -252,8 +252,9 @@ class UserCommand extends Command implements CommandInterface
     }
 }
 ```
-
-**ATTENTION: Don't forget to use the `Override` attribute in the `handle`** method
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">Don't forget to use the `Override` attribute in the `handle` method</h6>
+</div>
 
 In the `$command` variable, you will define the custom command that will be executed. The `$arguments` variable will have an array of values containing all arguments (if your custom command has no arguments, leave this variable empty). The variable `$options` must contain mandatory options for your command, otherwise use the options dynamically. Lastly, the `$description` variable will have a short description of what the custom command does.
 
@@ -452,7 +453,9 @@ If you need to increase or decrease the banner size, change the third parameter.
 ConsoleOutput::banner("My message", ColorsEnum::BG_BLUE, 40)->print();
 ```
 
-**NOTE:** If you use `ColorsEnum`, use values that start with `BG_`.
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">If you use `ColorsEnum`, use values that start with `BG_`</h6>
+</div>
 
 ### Debug messages
 
@@ -465,7 +468,9 @@ ConsoleOutput::debugMessage("My message", $title, $color)->print();
 - **$title (optional)**: The title that will be displayed indicating the debug value.
 - **$color (optional)**: color using `ColorsEnum` or an integer number.
 
-**NOTE:** If you use `ColorsEnum`, use values that start with `BG_`.
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">If you use `ColorsEnum`, use values that start with `BG_`</h6>
+</div>
 
 ### Clearing console messages
 
@@ -603,7 +608,9 @@ class UpdateCommand extends Command implements CommandInterface
 }
 ```
 
-**NOTE:** You cannot call the same command on the same classe.
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">You cannot call the same command on the same classe</h6>
+</div>
 
 ## Progress Bar
 

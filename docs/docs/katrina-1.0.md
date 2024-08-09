@@ -373,7 +373,7 @@ public function delete()
 }
 ```
 
-** Force delete with foreign key **
+**Force delete with foreign key**
 
 In some cases there may be a need to delete a record with the foreign key from another table. To disable foreign key checking, you can use the third parameter as `true`.
 

@@ -6,9 +6,10 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 
 .hljs {
   display: block;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   padding: 0.5em;
-  background: #F0F0F0;
+  background: #002451 !important;
+  color: #fff !important;
 }
 
 
@@ -29,7 +30,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-meta-keyword,
 .hljs-doctag,
 .hljs-name {
-  font-weight: bold;
+  font-weight: 400;
 }
 
 
@@ -49,7 +50,7 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 .hljs-title,
 .hljs-section {
   color: #880000;
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .hljs-regexp,
@@ -95,5 +96,9 @@ Original highlight.js style (c) Ivan Sagalaev <maniac@softwaremaniacs.org>
 }
 
 .hljs-strong {
-  font-weight: bold;
+  font-weight: 400;
+}
+
+.hljs-title.function {
+  color: #12d600 !important;
 }

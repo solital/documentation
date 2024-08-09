@@ -1,4 +1,8 @@
-**If you are looking for the old <span style="font-weight: bold !important;">Valid</span> class, use [this link](validation-component.md)**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">
+    If you are looking for the old <span class="fw-bold">Valid</span> class, use <a href="https://solital.github.io/site/docs/4.x/validation-component/">this link</a>
+    </h6>
+</div>
 
 ## Introduction
 

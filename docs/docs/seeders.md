@@ -31,7 +31,7 @@ class UserSeed extends Seeder
 
 All code you create must be inside the `run()` method.
 
-**Calling other Seeders**
+### Calling other Seeders
 
 You can call other seeders within a seeder. For that use the `call()` method.
 

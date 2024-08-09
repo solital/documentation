@@ -81,7 +81,7 @@ class Migration20211220193145 extends Migration
         Katrina::createTable("user")
             ->int('id')->primary()
             // ...
-            ->createdUpdateAt()
+            ->createdUpdatedAt()
             ->closeTable();
     }
 

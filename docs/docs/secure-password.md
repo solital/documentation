@@ -48,7 +48,9 @@ As mentioned in the introduction, the `SecurePassword` package uses a â€œpepperâ
 
 If this variable is present in the `.env` file, then you can delete the `peeper` in the `auth.yaml` file.
 
-**NOTE: Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting. If you are using Solital Core >= 4.2, the `pepper` variable will not be present in the `auth.yaml` file. Instead, Solital will use the value of the `APP_HASH` variable.**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting. If you are using Solital Core >= 4.2, the `pepper` variable will not be present in the `auth.yaml` file. Instead, Solital will use the value of the `APP_HASH` variable.</h6>
+</div>
 
 ### Changing Peeper encryption
 

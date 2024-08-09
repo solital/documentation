@@ -1,4 +1,8 @@
-**If you are looking for the old <span style="font-weight: bold !important;">Convertime</span> class, use [this link](convertime.md)**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">
+    If you are looking for the old <span class="fw-bold">Convertime</span> class, use <a href="https://solital.github.io/site/docs/4.x/convertime/">this link</a>
+    </h6>
+</div>
 
 Dates are an important part of any system. To manipulate dates in Solital, you can use the `Temporal` component. The `Temporal` component uses the `DateTimeImmutable` class.
 

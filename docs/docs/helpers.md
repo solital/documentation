@@ -108,7 +108,13 @@ To get a value from an existing session, leave the `$value` parameter empty. To 
  * $delete: if the value is `true`, the session will be deleted.
  * $take: returns the requested value and removes it from the session.
  */
-session(string $key, mixed $value = null, mixed $defaultValue = null, bool $delete = false, bool $take = false)
+session(
+    string $key, 
+    mixed $value = null, 
+    mixed $defaultValue = null, 
+    bool $delete = false, 
+    bool $take = false
+)
 ```
 
 * Memorize provides simple in-var cache for closures. It can be used to create lazy functions. Function takes closure and optional argument paramsHash. If the closure with the same arguments was run before memorize will return result from cache without the closure call. At the first call result will be calculated and stored in cache.

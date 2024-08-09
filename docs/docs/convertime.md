@@ -1,4 +1,8 @@
-**This class is deprecated and will be removed soon. Please use the [Temporal](date-and-time.md) component**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">
+    This class is deprecated and will be removed soon. Please use the <a href="https://solital.github.io/site/docs/4.x/date-and-time/">Temporal</a> component
+    </h6>
+</div>
 
 It is possible to manipulate dates and times using the `Convertime` class. To begin, run the instance: 
 

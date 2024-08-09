@@ -169,9 +169,13 @@ If you want to remove this structure, use `php vinci auth:skeleton --login --rem
 
 ## Authentication using Sodium encryption
 
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">The methods below are deprecated and will be removed in a future version 5.0</h6>
+</div>
+
 You can create an authentication using Sodium encryption.
 
-**Generating a sodium key**
+### Generating a sodium key
 
 First, you need to generate a sodium key. This key is automatically renewed with each new request, so it can be stored in a database, in the session or in another type of storage.
 
@@ -181,7 +185,7 @@ use Solital\Core\Security\Hash;
 $key = Hash::getSodiumKey();
 ```
 
-**Encrypting the password**
+### Encrypting the password
 
 Use `Auth::sodium()` to encrypt your password. Remember to use it in conjunction with the generated key.
 
@@ -195,7 +199,7 @@ $encoded = Auth::sodium('password', $key);
 pre($encoded);
 ```
 
-**Verifying the password with Sodium**
+### Verifying the password with Sodium
 
 To verify the password generated using the `Auth::sodium()` method, use `Auth::sodiumVerify()` together with the generated key, password and hash.
 

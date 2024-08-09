@@ -243,7 +243,10 @@ Output
 ## `except_multiple()`
 The except_multiple method returns all items in the data array except for those with the specified keys:
 ```php
-collection([['product_id' => 1, 'price' => 100, 'discount' => false],['product_id' => 2, 'price' => 500, 'discount' => true]]);
+collection([
+    ['product_id' => 1, 'price' => 100, 'discount' => false],
+    ['product_id' => 2, 'price' => 500, 'discount' => true]
+]);
 $filtered = $make_data->except_multiple(['price', 'discount']);
 $filtered->all();
 ```

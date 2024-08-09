@@ -50,7 +50,7 @@ Application::getRoot('/folder_name');
 app_get_root('/folder_name');
 ```
 
-## Access `app` folder
+## Access "app" folder
 
 Return directory in `app/` folder
 

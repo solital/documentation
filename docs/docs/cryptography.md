@@ -2,7 +2,9 @@
 
 Solital makes use of OpenSSL and Sodium encryption. If you are using Core >= 4.2, you should find the following variables in your `.env` file: `APP_HASH`, `FIRST_SECRET` and `SECOND_SECRET`. The `APP_HASH` variable is the main variable used by Solital, but if this variable is not available, the other two can be used instead.
 
-**NOTE: For the variables `FIRST_SECRET` and `SECOND_SECRET`, use encrypted characters. If the variable `APP_HASH` is empty, run the command `php vinci generate:hash`**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">For the variables `FIRST_SECRET` and `SECOND_SECRET`, use encrypted characters. If the variable `APP_HASH` is empty, run the command `php vinci generate:hash`</h6>
+</div>
 
 ## Encrypt
 
@@ -60,9 +62,9 @@ crypt: sodium
 
 ## Sodium encryption (Core <= 4.4)
 
-**IMPORTANT: The documentation below is deprecated and is only for users using Solital Core in version 4.4 or lower. Starting with version 4.5, Solital uses the `crypt` configuration in the `bootstrap.yaml` file**
-
-**The functions below will be removed in a future version 5.0**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">The documentation below is deprecated and is only for users using Solital Core in version 4.4 or lower. Starting with version 4.5, Solital uses the `crypt` configuration in the `bootstrap.yaml` file and the functions below will be removed in a future version 5.0</h6>
+</div>
 
 Solital supports Sodium encryption. To enable, make sure that libsodium is installed in your development environment. You can use the `Hash::checkSodium()` method to check if libsodium is installed.
 

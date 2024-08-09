@@ -12,13 +12,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="{{ "css/reset.css"|url }}">
   <link rel="stylesheet" href="{{ "css/bootstrap.min.css"|url }}">
   <link rel="stylesheet" href="{{ "css/sidebar.css"|url }}">
   <link rel="stylesheet" href="{{ "css/style.css"|url }}">
   <link rel="stylesheet" href="{{ "css/styles/default.css"|url }}">
-  <link rel="stylesheet" href="{{ "css/styles/atom-one-dark.css"|url }}">
+  <link rel="stylesheet" href="{{ "css/styles/tomorrow-night-blue.css"|url }}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
   {% for path in config.extra_css %}
@@ -28,8 +29,12 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="{{ "js/bootstrap.min.js"|url }}"></script>
   <script src="{{ "js/bootstrap.bundle.min.js"|url }}"></script>
-  <script src="{{ "js/highlight.pack.js"|url }}"></script>
+  <script src="{{ "js/highlight.min.js"|url }}"></script>
   <script src="{{ "js/scripts.js"|url }}"></script>
+  <script src="{{ "js/php.min.js"|url }}"></script>
+  <script src="{{ "js/php-template.min.js"|url }}"></script>
+  <script src="{{ "js/bash.min.js"|url }}"></script>
+  <script src="{{ "js/yaml.min.js"|url }}"></script>
   <script>hljs.highlightAll();</script>
 
   {% block extrahead %}

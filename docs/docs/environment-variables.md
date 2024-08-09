@@ -16,7 +16,9 @@ Dotenv::isset('MY_ENVIRONMENT_VARIABLE');
 
 * Key used for encryption and passwords. Use the `php vinci generate:hash` command to generate a key.
 
-**WARNING: When creating a new project, an encrypted key is already generated. Changing the generated key can break your project**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">WARNING: When creating a new project, an encrypted key is already generated. Changing the generated key can break your project</h6>
+</div>
 
 ```bash
 APP_HASH=
@@ -52,7 +54,9 @@ MAIL_PORT=
 
 * Variables used in encryption. It is recommended that you add new values to these variables.
 
-**NOTE: If you are using the `APP_HASH` variable, then it is not necessary to use the variables below**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">If you are using the `APP_HASH` variable, then it is not necessary to use the variables below</h6>
+</div>
 
 ```bash
 FIRST_SECRET=first_secret

@@ -1,4 +1,8 @@
-**This class is deprecated and will be removed soon.**
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">
+    This class is deprecated and removed in Core 4.4. Please use the <a href="https://solital.github.io/site/docs/4.x/validation/">Validation</a> class
+    </h6>
+</div>
 
 You can validate email, string, array and others.
 

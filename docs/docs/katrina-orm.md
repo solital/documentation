@@ -2,7 +2,7 @@
 
 Katrina ORM is currently at version **2.x**. To read documentation for previous versions choose one of the links below.
 
-[1.x](katrina-1.0.md)
+<p><a class="btn btn-outline-primary" target="_blank" href="https://solital.github.io/site/docs/4.x/katrina-1.0/">1.x</a></p>
 
 ## Getting Started
 
@@ -766,7 +766,10 @@ To use pagination with relationship in another table, in the third parameter pas
 
 ```php
 $users = new User();
-$values = $users->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key']);
+$values = $users->pagination(
+  "your_table", 3, 
+  ["foreign_table", "column_foreign_key", "column_primary_key"]
+);
 ```
 
 ### Pagination with other table (INNER JOIN)
@@ -776,7 +779,12 @@ If you want to use pagination with a table that has a foreign key, pass an array
 In the first index, insert the name of the table that is linked to the current table, in the second index the name of the column that contains the foreign key and in the third index the column name of the primary key of the table that references the current table
 
 ```php
-$values = (new User)->pagination('your_table', 3, ['foreign_table', 'column_foreign_key', 'column_primary_key'], "status=true");
+$users = new User();
+$values = $users->pagination(
+  "your_table", 3, 
+  ["foreign_table", "column_foreign_key", "column_primary_key"], 
+  "status=true"
+);
 ```
 
 ### WHERE clause
@@ -784,7 +792,8 @@ $values = (new User)->pagination('your_table', 3, ['foreign_table', 'column_fore
 To use the WHERE clause, use the fourth parameter as shown below.
 
 ```php
-$values = (new User)->pagination('your_table', 3, null, "status=true");
+$users = new User();
+$values = $users->pagination("your_table", 3, null, "status=true");
 ```
 
 ### Wolf Template
@@ -792,10 +801,11 @@ $values = (new User)->pagination('your_table', 3, null, "status=true");
 Data pagination is widely used in project templates. You can integrate pagination into Wolf Template as follows:
 
 ```php
-$values = (new User)->pagination('your_table', 3);
+$users = new User();
+$values = $users->pagination("your_table", 3);
 
-return view('home', [
-    'values' => $values
+return view("home", [
+    "values" => $values
 ]);
 ```
 
@@ -896,8 +906,11 @@ To change the arrows (`<<` and `>>`), use the parameters of the `getArrows()` me
 The `pagination()` method uses a basic SELECT statement. If you need to use a much more complex SELECT, consider using the `customPagination()` method.
 
 ```php
-$values = (new User)->customPagination("SELECT created_at, order_status, idSession, SUM(idOrder) AS idOrder FROM `tb_order` 
-GROUP BY created_at, order_status, idSession", 3);
+$user = new User();
+$values = $user->customPagination(
+  "SELECT created_at, order_status, idSession, SUM(idOrder) AS idOrder FROM `tb_order` 
+  GROUP BY created_at, order_status, idSession", 3
+);
 ```
 
 ### Customizing arrows CSS

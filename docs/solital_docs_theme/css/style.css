@@ -23,9 +23,9 @@ pre {
 }
 
 code {
-    font-family: "Mukta", sans-serif;
-    font-size: 17px;
-    font-weight: 600;
+    font-family: "Source Code Pro", monospace;
+    font-size: 14px !important;
+    font-weight: 400;
     color: #EE0000;
 }
 
@@ -54,7 +54,7 @@ table tbody tr {
     padding: 20px !important;
     letter-spacing: 0.13vh !important;
     font-size: 2, 4vh !important;
-    font-weight: 500 !important;
+    /* font-weight: 400 !important; */
 }
 
 .cmd-vinci {

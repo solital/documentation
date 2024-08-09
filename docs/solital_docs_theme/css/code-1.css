@@ -1,10 +1,10 @@
-.hljs {
+/* .hljs {
     letter-spacing: 0.1vh !important;
     font-size: 15px !important;
     background: #1C1C1C !important;
     color: #FFF !important;
     font-weight: 200 !important;
-}
+} */
 
 .language-bash .hljs .hljs-string {
     color: #FFD700 !important;
