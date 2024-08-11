@@ -68,7 +68,8 @@ Course::group(['prefix' => '/admin', 'middleware' => middleware('login')], funct
 If you only have one route that needs to add middleware, use the `addMiddleware` method.
 
 ```php
-Course::match(['get', 'post'], '/user/login', 'UserMiddleware@login')->addMiddleware('\Solital\Middleware\UserMiddleware:guest');
+Course::match(['get', 'post'], '/user/login', 'UserMiddleware@login')
+    ->addMiddleware('\Solital\Middleware\UserMiddleware:guest');
 ```
 
 ## Restrict access to IP

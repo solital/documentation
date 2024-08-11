@@ -396,8 +396,9 @@ class CustomExceptionHandler implements ExceptionHandlerInterface
 		/* Other error */
 		if($error instanceof MyCustomException) {
 			$request->setRewriteRoute(
-				// Add new route based on current url (minus query-string) and add custom parameters.
-				(new RouteUrl(url(null, null, []), 'PageController@error'))->setParameters(['exception' => $error])
+				/* Add new route based on current url (minus query-string) and add custom parameters. */
+				(new RouteUrl(url(null, null, []), 'PageController@error'))
+                    ->setParameters(['exception' => $error])
 			);
 			return;	
 		}
@@ -423,13 +424,21 @@ By default the router will merge exception-handlers to any handlers provided by 
 If you want your groups exception handler to be executed independently, you can add the `mergeExceptionHandlers` attribute and set it to `false`.
 
 ```php
-Course::group(['prefix' => '/', 'exceptionHandler' => FirstExceptionHandler::class, 'mergeExceptionHandlers' => false], function() {
+Course::group([
+    'prefix' => '/', 
+    'exceptionHandler' => FirstExceptionHandler::class, 
+    'mergeExceptionHandlers' => false
+], function() {
 
 	Course::group(['prefix' => '/admin', 'exceptionHandler' => SecondExceptionHandler::class], function() {
 		// Both SecondExceptionHandler and FirstExceptionHandler will trigger (in that order).
 	});
 	
-	Course::group(['prefix' => '/user', 'exceptionHandler' => SecondExceptionHandler::class, 'mergeExceptionHandlers' => false], function() {
+	Course::group([
+        'prefix' => '/user', 
+        'exceptionHandler' => SecondExceptionHandler::class, 
+        'mergeExceptionHandlers' => false
+    ], function() {
 		// Only SecondExceptionHandler will trigger.
 	});
 });
@@ -562,7 +571,6 @@ class Router extends Course {
     }
 }
 ```
----
 
 ## Form Method Spoofing
 
@@ -595,7 +603,10 @@ use Solital\Core\Course\Course;
 /* Adding custom csrfVerifier here */
 Course::csrfVerifier(new \Demo\Middlewares\CsrfVerifier());
 
-Course::group(['middleware' => \Demo\Middlewares\Site::class, 'exceptionHandler' => \Demo\Handlers\CustomExceptionHandler::class], function() {
+Course::group([
+    'middleware' => \Demo\Middlewares\Site::class, 
+    'exceptionHandler' => \Demo\Handlers\CustomExceptionHandler::class
+], function() {
 
     Course::get('/answers/{id}', 'ControllerAnswers@show', ['where' => ['id' => '[0-9]+']]);
 
