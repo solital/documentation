@@ -12,7 +12,7 @@ But, if you want to check if a variable exists, you can use the `isset()` method
 Dotenv::isset('MY_ENVIRONMENT_VARIABLE');
 ```
 
-## Solital Variables
+## Environment variables
 
 * Key used for encryption and passwords. Use the `php vinci generate:hash` command to generate a key.
 
@@ -25,6 +25,10 @@ APP_HASH=
 ```
 
 * Displays all errors that Solital or PHP raises. Activate only in development mode
+
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">Since Solital Core 4.5.2, this environment no longer used. Use `exceptions.yaml` file instead</h6>
+</div>
 
 ```bash
 ERRORS_DISPLAY=true
