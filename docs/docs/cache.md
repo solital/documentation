@@ -98,7 +98,7 @@ $cache->clear();
 
 To use the cache in Solital you will need to install a caching extension using PECL.
 
-To make life easier for developers, you can use the [brenno-duarte/php-pecl-extensions](https://github.com/brenno-duarte/php-pecl-extensions) package to install PECL extensions.
+To make life easier for developers, you can use the [brenno-duarte/pecl](https://github.com/brenno-duarte/pecl) package to install PECL extensions.
 
 ```
 composer require brenno-duarte/php-pecl-extensions

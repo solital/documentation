@@ -212,13 +212,11 @@ php vinci create:cmd UserCommand
 
 namespace Solital\Console\Command;
 
-use Solital\Core\Console\{Command, MessageTrait};
+use Solital\Core\Console\Command;
 use Solital\Core\Console\Interface\CommandInterface;
 
 class UserCommand extends Command implements CommandInterface
 {
-    use MessageTrait;
-
     /**
      * @var string
      */
@@ -267,6 +265,8 @@ Arguments can be retrieved using the `$arguments` variable:
 ```bash
 php vinci user:cmd myArgument
 ```
+
+In the class:
 
 ```php
 protected array $arguments = ['name'];

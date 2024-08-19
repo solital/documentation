@@ -23,13 +23,13 @@ The standard structure of a schedule is as follows:
 
 namespace Solital\Schedule;
 
-use Solital\Core\Schedule\Schedule;
+use Solital\Core\Schedule\TaskSchedule;
 use Solital\Core\Schedule\ScheduleInterface;
 
 /**
  * @generated class generated using Vinci Console
  */
-class UserSchedule extends Schedule implements ScheduleInterface
+class UserSchedule extends TaskSchedule implements ScheduleInterface
 {
 	/**
 	 * Construct with schedule time
@@ -49,9 +49,17 @@ class UserSchedule extends Schedule implements ScheduleInterface
 }
 ```
 
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">Since Solital Core 4.5.2, all schedules extend from the `TaskSchedule` class</h6>
+</div>
+
 The code that will be executed must be inside the `handle` method.
 
-### Changing the time
+## Changing the time
+
+Solital allows you to set a time for each task to run. You can use the `$time` property or attributes.
+
+### Using "$time" property
 
 To change the time that the schedule will run, you can change the `$time` property inside the constructor.
 
@@ -61,6 +69,37 @@ public function __construct()
     $this->time = "everyMinute";
 }
 ```
+
+### Using Attributes
+
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">This feature is available since Solital Core 4.5.2</h6>
+</div>
+
+Using properties may seem too simple for some people. Using attributes, you gain the ability to define what time or on what days a task will be executed.
+
+See an example below:
+
+```php
+use Solital\Core\Schedule\Attribute\EveryMinute;
+use Solital\Core\Schedule\TaskSchedule;
+use Solital\Core\Schedule\ScheduleInterface;
+
+#[EveryMinute()]
+class EmailScheduler extends TaskSchedule implements ScheduleInterface
+{
+    public function handle(): mixed
+    {    
+        return $this;
+    }
+}
+```
+
+Unlike the `$time` property, you can change the time that schedules will run using the constructor attribute. You can see all the attributes available in the [Github repository](https://github.com/solital/core/tree/master/src/Schedule/Attribute).
+
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">If you use the `$time` property together with the attributes, the priority will be given to the attributes</h6>
+</div>
 
 Solital makes use of the [php-cron-scheduler](https://packagist.org/packages/peppeocchi/php-cron-scheduler) component to schedule tasks. Therefore, you can access the documentation for that component to see the available options.
 
