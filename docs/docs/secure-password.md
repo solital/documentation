@@ -49,7 +49,7 @@ As mentioned in the introduction, the `SecurePassword` package uses a â€œpepperâ
 If this variable is present in the `.env` file, then you can delete the `peeper` in the `auth.yaml` file.
 
 <div class="alert alert-info mt-4" role="alert">
-    <h6 class="fw-semibold">Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting. If you are using Solital Core >= 4.2, the `pepper` variable will not be present in the `auth.yaml` file. Instead, Solital will use the value of the `APP_HASH` variable.</h6>
+    <h6 class="fw-semibold">Don't change the value of this key too often, as you will need to create a new password each time this value changes. Change only if necessary or if your project is just starting. If you are using Solital Core >= 4.2, the <strong>pepper</strong> variable will not be present in the <strong>auth.yaml</strong> file. Instead, Solital will use the value of the <strong>APP_HASH</strong> variable.</h6>
 </div>
 
 ### Changing Peeper encryption
@@ -58,4 +58,64 @@ By default, peeper is encrypted using OpenSSL. You can switch to Sodium encrypti
 
 ```yaml
 crypt_type: sodium
+```
+
+## Password Policy
+
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">Available since Core 4.6.0</h6>
+</div>
+
+You can set some requirements when creating a password, such as password length, special characters, etc.
+
+```php
+use Solital\Core\Auth\Password;
+
+$password = new Password();
+$password->setMinimumLength(15);
+$password->requireUppercase();
+$password->requireDigits();
+$password->requireSpecialChars();
+$password->setSpecialChars('!@#%');
+$result = $password->validatePassword('strongpassword');
+
+if ($result === true) {
+    echo "Password meets the policy requirements.";
+    // Go and do things with it
+} else {
+    echo "Password validation failed. Errors:\n";
+    print_r($result);
+    // Go and display these error messages to your user
+}
+```
+
+### Customizing error messages
+
+To customize error messages, you should use the `setCustomErrorMessages` method. Using the example from the previous topic, the code would look like this:
+
+```php
+use Solital\Core\Auth\Password;
+
+$customErrorMessages = [
+    'min_length' => 'Your password is too short. It must be at least 15 characters long.',
+    'uppercase' => 'Your password must contain at least one uppercase letter.',
+];
+
+$password = new Password();
+$password->setMinimumLength(15);
+$password->requireUppercase();
+$password->requireDigits();
+$password->requireSpecialChars();
+$password->setSpecialChars('!@#%');
+$password->setCustomErrorMessages($customErrorMessages);
+$result = $password->validatePassword('strongpassword');
+
+if ($result === true) {
+    echo "Password meets the policy requirements.";
+    // Go and do things with it
+} else {
+    echo "Password validation failed. Errors:\n";
+    print_r($result);
+    // Go and display these error messages to your user
+}
 ```

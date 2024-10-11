@@ -123,6 +123,12 @@ session(
 memorize(Closure $lambda, $paramsHash = null)
 ```
 
+* Create a Cookie instance (Available since Core 4.6.0)
+
+```php
+cookie(string $name)
+```
+
 ## Output
 
 * Formatted `var_dump`.

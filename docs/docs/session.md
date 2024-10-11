@@ -1,83 +1,3 @@
-## Managing Cookies
-
-### Static method
-
-This library provides a static method that is compatible to PHP’s built-in `setcookie(...)` function but includes support for more recent features such as the `SameSite` attribute:
-
-```php
-use Solital\Core\Resource\Cookie;
-
-Cookie::setcookie('SID', '31d4d96e407aad42');
-// or
-Cookie::setcookie('SID', '31d4d96e407aad42', time() + 3600, '/~rasmus/', 'example.com', true, true, 'Lax');
-```
-
-### Builder pattern
-
-Instances of the `Cookie` class let you build a cookie conveniently by setting individual properties. This class uses reasonable defaults that may differ from defaults of the `setcookie` function.
-
-```php
-$cookie = new Cookie('SID');
-$cookie->setValue('31d4d96e407aad42');
-$cookie->setMaxAge(60 * 60 * 24);
-// $cookie->setExpiryTime(time() + 60 * 60 * 24);
-$cookie->setPath('/~rasmus/');
-$cookie->setDomain('example.com');
-$cookie->setHttpOnly(true);
-$cookie->setSecureOnly(true);
-$cookie->setSameSiteRestriction('Strict');
-
-// echo $cookie;
-// or
-$cookie->save();
-// or
-// $cookie->saveAndSet();
-```
-
-The method calls can also be chained:
-
-```php
-(new Cookie('SID'))
-    ->setValue('31d4d96e407aad42')
-    ->setMaxAge(60 * 60 * 24)
-    ->setSameSiteRestriction('None')
-    ->save();
-```
-
-A cookie can later be deleted simply like this:
-
-```php
-$cookie->delete();
-// or
-$cookie->deleteAndUnset();
-```
-
-**Note:** For the deletion to work, the cookie must have the same settings as the cookie that was originally saved – except for its value, which doesn’t need to be set. So you should remember to pass appropriate values to `setPath(...)`, `setDomain(...)`, `setHttpOnly(...)` and `setSecureOnly(...)` again.
-
-### Reading cookies
-
-* Checking whether a cookie exists:
-
-```php
-Cookie::exists('first_visit');
-```
-
-* Reading a cookie’s value (with optional default value):
-
-```php
-Cookie::get('first_visit');
-// or
-Cookie::get('first_visit', \time());
-```
-
-### Parsing cookies
-
-```php
-$cookieHeader = 'Set-Cookie: test=php.net; expires=Thu, 
-09-Jun-2016 16:30:32 GMT; Max-Age=3600; path=/~rasmus/; secure';
-$cookieInstance = Cookie::parse($cookieHeader);
-```
-
 ## Managing Sessions
 
 Using the `Session` class, you can start and resume sessions in a way that is compatible to PHP’s built-in `session_start()` function, while having access to the improved cookie handling from this library as well:
@@ -185,3 +105,57 @@ $value = session($key, take: true);
 ```
 
 This is often useful for flash messages, e.g. in combination with the `has(...)` method.
+
+## Advanced
+
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">Available in Core 4.6.0</h6>
+</div>
+
+### Changing default session options
+
+You can change some default session options using the `session.yaml` file.
+
+```yaml
+# Set the current session name
+name: 
+
+# Sets user-level session storage (files, sqlite, memcached, encrypt, pdo, apcu, dump)
+save_handler: files
+
+# Set the current session save path for memcached and redis
+save_path: localhost:11211
+
+# Specifies whether the module will use strict session id mode
+strict_mode: false
+
+# Set the current cache limiter
+cache_limiter: public
+
+# Set current cache expire
+cache_expire: 30
+
+# Specifies the number of seconds after which data will be seen as 'garbage' 
+# and potentially cleaned up. Default is 1440
+gc_max_lifetime: 1440
+
+# setGcProbability() in conjunction with session.gc_divisor is used to manage 
+# probability that the gc (garbage collection) routine is started. Defaults to 1
+gc_probability: 1
+
+# session.gc_divisor coupled with session.gc_probability defines the probability 
+# that the gc (garbage collection) process is started on every session initialization.
+gc_divisor: 100
+```
+
+### Change default handler
+
+You can change the default session handler using `save_handler` option. The available handlers are:
+
+- `files:` default handler
+- `sqlite:` saves the session using SQLite
+- `memcached:` saves the session on the Memcached server. You can change the default path using the `save_path` option
+- `encrypt:` same as the `files` option, but saves the session in encrypted form
+- `pdo:` saves the session in the database using the `.env` file
+- `apcu:` saves the session using APCu
+- `dump:` dumps the session

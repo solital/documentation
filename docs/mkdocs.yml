@@ -29,6 +29,7 @@ nav:
     - Wolf Template: wolf-template.md
   - Resources:
     - Browser Storage: browser-storage.md
+    - Cookie: cookie.md
     - Collection: collection.md
     - File System: file-system.md
     - JSON: json.md
@@ -36,8 +37,8 @@ nav:
     - Messages: messages.md
     - Number: number.md
     - Queue: queue.md
+    - Session: session.md
     - Strings: string-manipulate.md
-    - Session and Cookie: session-and-cookie.md
     - Validation: validation.md
     - Mask: mask.md
   - Security:

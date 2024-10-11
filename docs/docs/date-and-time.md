@@ -4,37 +4,40 @@
     </h6>
 </div>
 
+## Introduction
+
 Dates are an important part of any system. To manipulate dates in Solital, you can use the `Temporal` component. The `Temporal` component uses the `DateTimeImmutable` class.
 
 ```php
 use Solital\Core\Resource\Temporal\Temporal;
 
-$date_time = Temporal::now();
+$temporal = Temporal::now();
 ```
 
 The `now()` method takes the current date and time.
 
 
-## Returning in different formats
+### Returning in different formats
 
 You can return a date using one of the following methods:
 
 ```php
-$date_time->toAtom();
-$date_time->toCookie();
-$date_time->toISO8601Expanded();
-$date_time->toRFC1036();
-$date_time->toRFC1123();
-$date_time->toRFC2822();
-$date_time->toRFC3339();
-$date_time->toRFC3339Extended();
-$date_time->toRFC7231();
-$date_time->toRFC822();
-$date_time->toRFC850();
-$date_time->toRSS();
-$date_time->toW3C();
-$date_time->toUnixTimestamp();
-$date_time->toFormat('Y-m-d');
+$temporal->toAtom();
+$temporal->toCookie();
+$temporal->toISO8601Expanded();
+$temporal->toRFC1036();
+$temporal->toRFC1123();
+$temporal->toRFC2822();
+$temporal->toRFC3339();
+$temporal->toRFC3339Extended();
+$temporal->toRFC7231();
+$temporal->toRFC822();
+$temporal->toRFC850();
+$temporal->toRSS();
+$temporal->toW3C();
+$temporal->toUnixTimestamp();
+$temporal->toFormat('Y-m-d');
+$temporal->toi18nFormat('YYYY-MM-dd'); // Available since Core 4.6.0
 ```
 
 ## Adding and removing date and time
@@ -121,18 +124,47 @@ $result = Temporal::now()->subMinutes(3)->toFormat('H:i:s');
 var_dump($result);
 ```
 
+### Set micro seconds
+
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">Abailable since Core 4.6.0</h6>
+</div>
+
+```php
+$result = Temporal::now()->setMicrosecond(10000)->toFormat('H:i:s');
+var_dump($result);
+```
+
 ## Returning specific times
 
 The Temporal component has methods to return specific times from a date/time, such as years, days, name of the month, and others.
 
 **Date**
 
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">
+    The methods <strong>getMonthName</strong> and <strong>getMonthShortName</strong> are deprecated since Core 4.6.0. Instead of, use <strong>getTextualMonth</strong> and <strong>getTextualShortMonth</strong> methods
+    </h6>
+</div>
+
 ```php
 Temporal::now()->getDay();
 Temporal::now()->getYear();
 Temporal::now()->getMonthInt();
-Temporal::now()->getMonthName();
-Temporal::now()->getMonthShortName();
+Temporal::now()->getMonthName(); // Deprecated
+Temporal::now()->getMonthName(); // Deprecated
+```
+
+The methods below are available since Core 4.6.0
+
+```php
+Temporal::now()->getTextualDay();
+Temporal::now()->getTextualShortDay();
+Temporal::now()->getTextualMonth();
+Temporal::now()->getTextualShortMonth();
+Temporal::now()->getLastDayOfMonth();
+Temporal::now()->getEasterDate();
+Temporal::now()->getEasterDateOrthodox();
 ```
 
 **Time**
@@ -141,6 +173,7 @@ Temporal::now()->getMonthShortName();
 Temporal::now()->getHour();
 Temporal::now()->getMinute();
 Temporal::now()->getSecond();
+Temporal::now()->getMicrosecond(); // Available since Core 4.6.0
 ```
 
 ## Date on different days
@@ -149,6 +182,12 @@ If you want to manipulate a date other than the current date, you can use the `c
 
 ```php
 echo Temporal::createDatetime('2024-04-04 08:20:10')->toRFC1123();
+```
+
+Or, you can use `createFromTimeStamp` method (available since Core 4.6.0). This method has a polyfill to PHP 8.3.
+
+```php
+echo Temporal::createFromTimeStamp('1703155440')->toRFC1123();
 ```
 
 If you need to get the date of the previous day, the current day or the next day, there are three methods to do this job.
@@ -172,6 +211,7 @@ Temporal::now()->isFriday();
 Temporal::now()->isSaturday();
 Temporal::now()->isSunday();
 Temporal::now()->isWeekend();
+Temporal::now()->isLeapYear(); // Available since Core 4.6.0
 ```
 
 ## Returning DateTimeImmutable instance

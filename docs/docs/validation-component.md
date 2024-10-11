@@ -1,6 +1,6 @@
 <div class="alert alert-info mt-4" role="alert">
     <h6 class="fw-semibold">
-    This class is deprecated and removed in Core 4.4. Please use the <a href="https://solital.github.io/site/docs/4.x/validation/">Validation</a> class
+    This class was removed in Core 4.4. Please use the <a href="https://solital.github.io/site/docs/4.x/validation/">Validation</a> class
     </h6>
 </div>
 

@@ -21,7 +21,7 @@ Course::get('/', function () {
 });
 ```
 
-## Markers in Wolf
+### Markers in Wolf
 
 Wolf uses markers to interpret PHP code within views. That is, when using `{{ }}`, Wolf will interpret these characters as `<?= ?>`. Likewise, when using `{% %}`, Wolf will interpret it as `<?php ?>`.
 
@@ -70,6 +70,12 @@ $wolf->setArgs([
     'xss' => '<script>alert("hello")</script>'
 ], false);
 ```
+
+If you want to render plain HTML code, you can use the static `renderHhtml` method:
+
+```php
+echo Wolf::renderHtml("<h1>Solital</h1>");
+```
         
 ## Loading CSS, JS and images
 
@@ -101,7 +107,7 @@ To load a file outside the `_css`,` _js` and `_img` folder, use the `load_file` 
 
 ## Cache templates
 
-**Cache on all pages**
+### Cache on all pages
 
 If you have a template that takes a long time to load, or is rarely accessed, consider creating a cache of that template.
 
@@ -117,7 +123,7 @@ wolf_cache:
 
 In `time`, you can define if you want to cache your views for 1 minute, 1 hour, 1 day or 1 week.
 
-**Cache on a single page**
+### Cache on a single page
 
 If you don't want to create a cache file for all templates, consider using the `setCacheTime` method before `setView` method to generate a cache file for each template. This class will create a cache file just for a single view (or for several if you add this class in the Controller's constructor).
 
