@@ -61,6 +61,12 @@ Solital allows you to set a time for each task to run. You can use the `$time` p
 
 ### Using "$time" property
 
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">
+    Using <span class="fw-bold">$time</span> property is deprecated and will be removed in future 5.0 version
+    </h6>
+</div>
+
 To change the time that the schedule will run, you can change the `$time` property inside the constructor.
 
 ```php
@@ -98,7 +104,7 @@ class EmailScheduler extends TaskSchedule implements ScheduleInterface
 Unlike the `$time` property, you can change the time that schedules will run using the constructor attribute. You can see all the attributes available in the [Github repository](https://github.com/solital/core/tree/master/src/Schedule/Attribute).
 
 <div class="alert alert-info mt-4" role="alert">
-    <h6 class="fw-semibold">If you use the `$time` property together with the attributes, the priority will be given to the attributes</h6>
+    <h6 class="fw-semibold">If you use the <span class="fw-bold">$time</span> property together with the attributes, the priority will be given to the attributes</h6>
 </div>
 
 Solital makes use of the [php-cron-scheduler](https://packagist.org/packages/peppeocchi/php-cron-scheduler) component to schedule tasks. Therefore, you can access the documentation for that component to see the available options.

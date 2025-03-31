@@ -1,5 +1,11 @@
 ## Managing Sessions
 
+<div class="alert alert-info mt-4" role="alert">
+    <h6 class="fw-semibold">
+    The method <span class="fw-bold">Session::start()</span> is deprecated
+    </h6>
+</div>
+
 Using the `Session` class, you can start and resume sessions in a way that is compatible to PHP’s built-in `session_start()` function, while having access to the improved cookie handling from this library as well:
 
 ```php

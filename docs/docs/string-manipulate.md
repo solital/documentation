@@ -338,6 +338,15 @@ echo $str->value();
 
 The methods below must be used statically.
 
+### `between()`
+
+Returns everything in a source string that exists between the first occurance of each of the two key substrings
+
+```php
+$res = $ Str::between('Hello, this is a [sample] string.', '[', ']');
+pre($res); // sample
+```
+
 ### `compare()`
 
 Binary safe string comparison. 
@@ -379,6 +388,15 @@ $res = Str::countChars('abababcabc');
 pre($res);
 ```
 
+### `doesntContain()`
+
+Does current string not contain a subtring?
+
+```php
+$res = Str::doesntContain('dedede', 'abababcabc');
+pre($res);
+```
+
 ### `endsWith()`
 
 Checks if haystack ends with needle
@@ -409,6 +427,14 @@ Returns a string containing all unique characters (in current string).
 
 ```php
 echo Str::uniqueChars('abcabdabcd');
+```
+
+### `uuid()`
+
+Returns the identifier as a raw binary string
+
+```php
+echo Str::uuid();
 ```
 
 ### `wordCount()`

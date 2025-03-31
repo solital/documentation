@@ -98,7 +98,7 @@ decrypt(string $key)
 
 * Handles PHP sessions. 
 
-To get a value from an existing session, leave the `$value` parameter empty. To create a new session, inform the session key in the first parameter, and the session value in the second parameter. See more in [Session and Cookies](session-and-cookie.md).
+To get a value from an existing session, leave the `$value` parameter empty. To create a new session, inform the session key in the first parameter, and the session value in the second parameter. See more [here](session.md).
 
 ```php
 /**

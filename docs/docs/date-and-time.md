@@ -143,16 +143,16 @@ The Temporal component has methods to return specific times from a date/time, su
 
 <div class="alert alert-info mt-4" role="alert">
     <h6 class="fw-semibold">
-    The methods <strong>getMonthName</strong> and <strong>getMonthShortName</strong> are deprecated since Core 4.6.0. Instead of, use <strong>getTextualMonth</strong> and <strong>getTextualShortMonth</strong> methods
+    The methods <strong>getMonthName</strong>, <strong>getMonthShortName</strong> and <strong>getMonthInt</strong> are deprecated. Instead of, use <strong>getTextualMonth</strong>, <strong>getTextualShortMonth</strong> and <strong>getMonth</strong> methods
     </h6>
 </div>
 
 ```php
 Temporal::now()->getDay();
 Temporal::now()->getYear();
-Temporal::now()->getMonthInt();
+Temporal::now()->getMonthInt(); // Deprecated
 Temporal::now()->getMonthName(); // Deprecated
-Temporal::now()->getMonthName(); // Deprecated
+Temporal::now()->getMonthShortName(); // Deprecated
 ```
 
 The methods below are available since Core 4.6.0
@@ -165,6 +165,12 @@ Temporal::now()->getTextualShortMonth();
 Temporal::now()->getLastDayOfMonth();
 Temporal::now()->getEasterDate();
 Temporal::now()->getEasterDateOrthodox();
+```
+
+The method below are available since Core 4.7.0
+
+```php
+Temporal::now()->getMonth();
 ```
 
 **Time**

@@ -101,7 +101,9 @@ HttpClient::get('http://127.0.0.1:8080/api/get')->basicAuth('user', 'pass')->res
 For authentications using the bearer token, you can use the `bearerAuth()` method to provide the authentication token.
 
 ```php
-HttpClient::get('http://127.0.0.1:8080/api/get')->bearerAuth('2edac0d91305c9207d36eda3cbf2c0d7')->responseJson();
+HttpClient::get('http://127.0.0.1:8080/api/get')
+    ->bearerAuth('2edac0d91305c9207d36eda3cbf2c0d7')
+    ->responseJson();
 ```
 
 ## Securing your API
